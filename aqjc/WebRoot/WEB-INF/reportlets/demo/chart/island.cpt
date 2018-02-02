@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="6.5.6">
+<TableDataMap>
+<TableData name="洲际" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [洲际]A]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1600200,952500,1104900,342900,723900,723900,723900,723900,723900,723900,723900,723900,685800,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[38100,5040000,5040000,5040000,5040000,5040000,5040000,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="0" cs="6" s="0">
+<O>
+<![CDATA[全球销售情况分析]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="1" s="1">
+<O>
+<![CDATA[洲际]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" s="1">
+<O>
+<![CDATA[实际值(百万)]]></O>
+<Expand/>
+</C>
+<C c="3" r="1" s="1">
+<O>
+<![CDATA[实际销售额(百万)]]></O>
+<Expand/>
+</C>
+<C c="4" r="1" s="1">
+<O>
+<![CDATA[实际制造成本(百万)]]></O>
+<Expand/>
+</C>
+<C c="5" r="1" s="1">
+<O>
+<![CDATA[实际杂费(百万)]]></O>
+<Expand/>
+</C>
+<C c="6" r="1" s="1">
+<O>
+<![CDATA[实际利润(百万)]]></O>
+<Expand/>
+</C>
+<C c="1" r="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="洲际"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<NameJavaScriptGroup>
+<NameJavaScript name="动态参数1">
+<JavaScript class="com.fr.base.js.ParameterJavaScript">
+<Parameters>
+<Parameter>
+<Attributes name="P"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B3]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<Expand dir="0"/>
+</C>
+<C c="2" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际值"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$/1000000]]></Result>
+<Parameters/>
+</O>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$P = B3]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Scope val="1"/>
+<Background name="ColorBackground" color="-103"/>
+</HighlightAction>
+</Highlight>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性2]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[row()%2==1]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$P!=B3]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Scope val="1"/>
+<Background name="ColorBackground" color="-1"/>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="3" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际销售额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$/1000000]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="4" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际制造成本"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$/1000000]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="5" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际杂费"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$/1000000]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="6" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际利润"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$/1000000]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="0" r="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="1" r="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="2" r="3">
+<Expand/>
+</C>
+<C c="3" r="3">
+<Expand/>
+</C>
+<C c="4" r="3">
+<Expand/>
+</C>
+<C c="5" r="3">
+<Expand/>
+</C>
+<C c="6" r="3">
+<Expand/>
+</C>
+<C c="0" r="4">
+<Expand/>
+</C>
+<C c="1" r="4" cs="6" rs="16">
+<O t="SubReport">
+<SubReportAttr extendOwnerParameter="true"/>
+<packee class="com.fr.report.LinkWorkBookTemplate">
+<Path>
+<![CDATA[demo/chart/islandcountry.cpt]]></Path>
+</packee>
+<KVS/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="5">
+<Expand/>
+</C>
+<C c="0" r="6">
+<Expand/>
+</C>
+<C c="0" r="7">
+<Expand/>
+</C>
+<C c="0" r="8">
+<Expand/>
+</C>
+<C c="0" r="9">
+<Expand/>
+</C>
+<C c="0" r="10">
+<Expand/>
+</C>
+<C c="0" r="11">
+<Expand/>
+</C>
+<C c="0" r="12">
+<Expand/>
+</C>
+<C c="0" r="13">
+<Expand/>
+</C>
+<C c="0" r="14">
+<Expand/>
+</C>
+<C c="0" r="15">
+<Expand/>
+</C>
+<C c="0" r="16">
+<Expand/>
+</C>
+<C c="0" r="17">
+<Expand/>
+</C>
+<C c="0" r="18">
+<Expand/>
+</C>
+<C c="0" r="19">
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting orientation="1">
+<Margin top="286560" left="574560" bottom="286560" right="574560"/>
+</PaperSetting>
+<Background name="NullBackground"/>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="黑体" style="1" size="144" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="ColorBackground" color="-3355444"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-16776961" underline="1"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

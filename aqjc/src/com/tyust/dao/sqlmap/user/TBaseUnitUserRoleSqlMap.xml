@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UnitUserRole">
+
+  <typeAlias alias="unitUserRole" type="com.tyust.bean.user.TBaseUnitUserRole"/>
+  <typeAlias alias="unitRole" type="com.tyust.bean.unit.TBaseUnitRole"/>
+  
+  <resultMap id="UnitUserRoleResult" class="unitUserRole">
+    <result property="roleId" column="ROLE_ID"/>
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="userId" column="USER_ID"/>
+  </resultMap>
+  
+  <resultMap class="unitRole" id="UnitRoleResult">
+  <result property="unitId" column="UNIT_ID"/>
+  <result property="roleId" column="ROLE_ID"/>
+  <result property="roleName" column="ROLE_NAME"/>
+  <result property="createUnitId" column="CREATE_UNIT_ID"/>
+  <result property="description" column="DESCRIPTION"/>
+  <result property="inuse" column="INUSE"/>
+  </resultMap>
+  <select id="selectAllUnitUserRoles" resultMap="UnitUserRoleResult">
+    SELECT 
+    ROLE_ID AS roleId,
+    UNIT_ID AS unitId,
+    USER_ID AS userId
+     FROM T_BASE_UNIT_USER_ROLE
+  </select>
+   <select id="selUnitUserRoles" resultMap="UnitUserRoleResult">
+    SELECT 
+    ROLE_ID ,
+    UNIT_ID ,
+    USER_ID 
+     FROM T_BASE_UNIT_USER_ROLE
+    where UNIT_ID = #unitId#
+  </select>
+  <!-- 根据机构ID和角色ID查询权限 -->
+  <select id="selUserRoles" parameterClass = "unitUserRole" resultMap="UnitUserRoleResult">
+    SELECT 
+    ROLE_ID ,
+    UNIT_ID ,
+    USER_ID  
+    FROM T_BASE_UNIT_USER_ROLE
+    where UNIT_ID = #unitId# and USER_ID = #userId#
+  </select>
+  
+  <insert id="addUserRole" parameterClass="unitUserRole">
+  INSERT INTO T_BASE_UNIT_USER_ROLE(
+  ROLE_ID,
+  UNIT_ID,
+  USER_ID)VALUES(#roleId#,#unitId#,#userId#)
+  </insert>
+  
+<delete id="delUserRole" parameterClass="string">
+DELETE FROM T_BASE_UNIT_USER_ROLE WHERE USER_ID =#userId#
+</delete>
+
+<resultMap class="unitRole" id="UnitRoleResult1">
+  <result property="unitId" column="UNIT_ID"/>
+  <result property="roleId" column="ROLE_ID"/>
+  <result property="roleName" column="ROLE_NAME"/>
+  </resultMap>
+  
+<select id="findRoleByUnitIds" parameterClass="string" resultMap="UnitRoleResult1">
+	SELECT UNIT_ID,ROLE_ID,ROLE_NAME FROM T_BASE_UNIT_ROLE WHERE INUSE = 1 AND UNIT_ID=#unitId#
+</select>
+
+<select id="selectIsExistUserRole" parameterClass="string" resultClass="int">
+SELECT COUNT(USER_ID) FROM T_BASE_UNIT_USER_ROLE WHERE USER_ID = #userId#
+</select>
+</sqlMap>

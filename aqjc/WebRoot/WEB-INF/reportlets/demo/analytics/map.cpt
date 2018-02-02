@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [business]A]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="10" rs="27">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MapPlot">
+<MapPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${SERIES}"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+</AttrContents>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<NameJavaScriptGroup>
+<NameJavaScript name="JavaScript1">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters>
+<Parameter>
+<Attributes name="province"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SERIES]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<Content>
+<![CDATA[var pa=parent.FR.SessionMgr.getContentPane();
+pa.getWidgetByName("iframeEditor1").setValue("ReportServer?reportlet=/demo/analytics/business.cpt&__showtoolbar__=false&province="+FR.cjkEncode(province)+"");
+pa.getWidgetByName("iframeEditor2").setValue("ReportServer?reportlet=/demo/analytics/light.cpt&__showtoolbar__=false&province="+FR.cjkEncode(province)+"");
+pa.getWidgetByName("area").setValue(province);]]></Content>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<newattr201106 mapName="China"/>
+<KeyMap>
+<KeyValue key="" value="Anshun"/>
+<KeyValue key="北京" value="Beijing"/>
+<KeyValue key="新疆" value="Xinjiang"/>
+<KeyValue key="广东" value="Guangdong"/>
+<KeyValue key="江苏" value="Jiangsu"/>
+<KeyValue key="河北" value="Hebei"/>
+<KeyValue key="福建" value="Fujian"/>
+<KeyValue key="上海" value="Shanghai"/>
+<KeyValue key="湖北" value="Hubei"/>
+<KeyValue key="湖南" value="Hunan"/>
+<KeyValue key="山东" value="Shandong"/>
+<KeyValue key="河南" value="Henan"/>
+<KeyValue key="安徽" value="Anhui"/>
+<KeyValue key="陕西" value="Shaanxi"/>
+<KeyValue key="山西" value="Shanxi"/>
+<KeyValue key="黑龙江" value="Heilongjiang"/>
+</KeyMap>
+</MapPlot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="province" valueName="sum" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds1]]></Name>
+</TableData>
+<CategoryName value=""/>
+</OneValueCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="30240000" height="23184000"/>
+<Margin top="286560" left="574560" bottom="286560" right="574560"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<StyleList/>
+</WorkBook>

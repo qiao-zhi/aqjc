@@ -1,0 +1,30 @@
+
+.wj_table {
+	background: none repeat scroll 0 0 #E8F1FF;
+	border:1px solid #C9DEEC;
+	width:98%;
+	margin-top: 15px;
+	padding-top:5px;
+}
+.wj_table tr td input {
+	width:250px;
+}
+#user_list_choose span input,#notSendUnit span input,#existAttach input{
+	width:10px;
+}
+.title_td {
+    color: #2D465F;
+    font-family: Verdana;
+    font-size: 12px;
+    margin: 0;
+    padding:0;
+    padding-right: 5px;
+}
+.wj_table tr {
+    background-color: #F8FDFF;
+    font-size: 12px;
+    line-height: 30px;
+}
+.input_width{
+	width:300px;
+}

@@ -1,0 +1,2387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT distinct top 10 姓氏+名字 as 姓名,sum(单价*数量*(1-折扣)) as 销售额
+FROM S雇员,S订单,S订单明细
+where S雇员.雇员ID=S订单.雇员ID and S订单.订单ID=S订单明细.订单ID
+group by 姓氏+名字
+order by sum(单价*数量*(1-折扣)) desc]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT distinct top 10 姓氏+名字 as 姓名,sum(单价*数量*(1-折扣)) as 回款额
+FROM S雇员,S订单,S订单明细
+where S雇员.雇员ID=S订单.雇员ID and S订单.订单ID=S订单明细.订单ID and S订单.是否已付=true
+group by 姓氏+名字
+order by sum(单价*数量*(1-折扣)) desc]]></Query>
+</TableData>
+<TableData name="ds5" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="nian" isAutoInc="false"/>
+<O>
+<![CDATA[2010]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT top 5 S订单.客户ID,S客户.公司名称,sum(单价*数量*(1-折扣)) as 回款额
+FROM S订单,S订单明细,S雇员,S客户
+where S订单.雇员ID=S雇员.雇员ID and S订单.订单ID=S订单明细.订单ID and S订单.是否已付=true and year(S订单.订购日期)='${nian}' and (S雇员.姓氏+S雇员.名字)='${gu}' and S订单.客户ID=S客户.客户ID
+group by S订单.客户ID,S客户.公司名称
+order by sum(单价*数量*(1-折扣))
+]]></Query>
+</TableData>
+<TableData name="ds6" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="nian" isAutoInc="false"/>
+<O>
+<![CDATA[2010]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT  month(S订单.订购日期) as 月份,sum(单价*数量*(1-折扣)) as 销售额
+FROM S订单,S订单明细,S雇员
+where S订单.雇员ID=S雇员.雇员ID and S订单.订单ID=S订单明细.订单ID and year(S订单.订购日期)='${nian}' and (S雇员.姓氏+S雇员.名字)='${gu}'
+group by month(S订单.订购日期)
+]]></Query>
+</TableData>
+<TableData name="ds9" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [回款率]A
+where 雇员姓名='${gu}']]></Query>
+</TableData>
+<TableData name="ds10" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 雇员姓名,所占比 
+FROM 销售额占比
+where 雇员姓名='${gu}'
+union
+select '其他' , sum(所占比) 
+from 销售额占比
+where 雇员姓名<>'${gu}'
+
+]]></Query>
+</TableData>
+<TableData name="ds11" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [各个值段所占]A
+where 雇员姓名='${gu}']]></Query>
+</TableData>
+<TableData name="ds12" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [订单月阶]A
+where 雇员姓名='${gu}']]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,0,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,576000,720000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2592000,2592000,2592000,2592000,2592000,2592000,2592000,2592000,2592000,2592000,2592000,2592000,38100,0,114300,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="姓名"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand dir="0"/>
+</C>
+<C c="1" r="0" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="销售额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="2" r="0" s="0">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="姓名"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0" leftParentDefault="false"/>
+</C>
+<C c="3" r="0" s="1">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="回款额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="1" cs="15" rs="13" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[排名前十的销售员销量一览表]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="96" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16777114"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="6" seriesLabel="${VALUE}"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+</AttrContents>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrTrendLine">
+<AttrTrendLine>
+<TrendLineList>
+<ConditionTrendLine>
+<TrendLine>
+<Attr equation="1" square="6" trendLineName="趋势线" moveAverage="2"/>
+<LineStyleInfo>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+<AttrColor>
+<Attr color="-16751053"/>
+</AttrColor>
+<AttrLineStyle>
+<newAttr lineStyle="1"/>
+</AttrLineStyle>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+</LineStyleInfo>
+</TrendLine>
+<Attr forward="0" backward="0" paneName="趋势线1"/>
+</ConditionTrendLine>
+</TrendLineList>
+</AttrTrendLine>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<NameJavaScriptGroup>
+<NameJavaScript name="图表超链2">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="A16"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+<NameJavaScript name="图表超链1">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="G16"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+<NameJavaScript name="图表超链4">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="A29"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+<NameJavaScript name="图表超链3">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="G29"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+<NameJavaScript name="图表超链5">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="A42"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+<NameJavaScript name="6">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=CATEGORY]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="G42"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<OuterLight>
+<Attr outerSize="14" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="5" shadowAlpha="0.6" shadowColor="-8355712"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[单位:万]]></O>
+<TextAttr>
+<Attr alignText="1">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="0" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<NormalReportDataDefinition>
+<Series>
+<SeriesDefinition>
+<SeriesName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[='排名前十']]></Attributes>
+</O>
+</SeriesName>
+<SeriesValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($e1=2,d1,b1)]]></Attributes>
+</O>
+</SeriesValue>
+</SeriesDefinition>
+</Series>
+<Category>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($e1=2,c1,a1)]]></Attributes>
+</O>
+</Category>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</NormalReportDataDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="14" s="2">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="14" s="2">
+<Expand/>
+</C>
+<C c="9" r="14" s="2">
+<Expand/>
+</C>
+<C c="10" r="14" s="2">
+<Expand/>
+</C>
+<C c="11" r="14" s="2">
+<Expand/>
+</C>
+<C c="12" r="14" s="2">
+<Expand/>
+</C>
+<C c="13" r="14" s="2">
+<Expand/>
+</C>
+<C c="14" r="14" s="2">
+<Expand/>
+</C>
+<C c="0" r="15" cs="6" rs="13" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[="按月统计" + $gu + "的订单金额"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="false"/>
+<newColor/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16751002"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="6" seriesLabel="${VALUE}"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+</AttrContents>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[单位:万]]></O>
+<TextAttr>
+<Attr alignText="1">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="0" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds6]]></Name>
+</TableData>
+<CategoryName value="月份"/>
+<ChartSummaryColumn name="销售额" function="com.fr.data.util.function.SumFunction" customName=""/>
+</MoreNameCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="15" cs="6" rs="13">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$gu + "的前五位客户回款额"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="false"/>
+<newColor/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16751104"/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[单位:万]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="0" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="1"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="true" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds5]]></Name>
+</TableData>
+<CategoryName value="公司名称"/>
+<ChartSummaryColumn name="回款额" function="com.fr.data.util.function.NoneFunction" customName="回款额"/>
+</MoreNameCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="12" r="15" s="2">
+<Expand/>
+</C>
+<C c="13" r="15" s="2">
+<Expand/>
+</C>
+<C c="14" r="15" s="2">
+<Expand/>
+</C>
+<C c="12" r="16" s="2">
+<Expand/>
+</C>
+<C c="13" r="16" s="2">
+<Expand/>
+</C>
+<C c="14" r="16" s="2">
+<Expand/>
+</C>
+<C c="12" r="17" s="2">
+<Expand/>
+</C>
+<C c="13" r="17" s="2">
+<Expand/>
+</C>
+<C c="14" r="17" s="2">
+<Expand/>
+</C>
+<C c="12" r="18" s="2">
+<Expand/>
+</C>
+<C c="13" r="18" s="2">
+<Expand/>
+</C>
+<C c="14" r="18" s="2">
+<Expand/>
+</C>
+<C c="12" r="19" s="2">
+<Expand/>
+</C>
+<C c="13" r="19" s="2">
+<Expand/>
+</C>
+<C c="14" r="19" s="2">
+<Expand/>
+</C>
+<C c="12" r="20" s="2">
+<Expand/>
+</C>
+<C c="13" r="20" s="2">
+<Expand/>
+</C>
+<C c="14" r="20" s="2">
+<Expand/>
+</C>
+<C c="12" r="21" s="2">
+<Expand/>
+</C>
+<C c="13" r="21" s="2">
+<Expand/>
+</C>
+<C c="14" r="21" s="2">
+<Expand/>
+</C>
+<C c="12" r="22" s="2">
+<Expand/>
+</C>
+<C c="13" r="22" s="2">
+<Expand/>
+</C>
+<C c="14" r="22" s="2">
+<Expand/>
+</C>
+<C c="12" r="23" s="2">
+<Expand/>
+</C>
+<C c="13" r="23" s="2">
+<Expand/>
+</C>
+<C c="14" r="23" s="2">
+<Expand/>
+</C>
+<C c="12" r="24" s="2">
+<Expand/>
+</C>
+<C c="13" r="24" s="2">
+<Expand/>
+</C>
+<C c="14" r="24" s="2">
+<Expand/>
+</C>
+<C c="12" r="25" s="2">
+<Expand/>
+</C>
+<C c="13" r="25" s="2">
+<Expand/>
+</C>
+<C c="14" r="25" s="2">
+<Expand/>
+</C>
+<C c="12" r="26" s="2">
+<Expand/>
+</C>
+<C c="13" r="26" s="2">
+<Expand/>
+</C>
+<C c="14" r="26" s="2">
+<Expand/>
+</C>
+<C c="12" r="27" s="2">
+<Expand/>
+</C>
+<C c="13" r="27" s="2">
+<Expand/>
+</C>
+<C c="14" r="27" s="2">
+<Expand/>
+</C>
+<C c="0" r="28" cs="6" rs="13" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$gu + "的客户资源数"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="false"/>
+<newColor/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16764058"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="6" seriesLabel="${VALUE}"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+</AttrContents>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[单位:个]]></O>
+<TextAttr>
+<Attr alignText="1">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="0" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.15" interval="0.67"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="雇员姓名" valueName="客户数" function="com.fr.data.util.function.SumFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds12]]></Name>
+</TableData>
+<CategoryName value="月阶"/>
+</OneValueCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="28" cs="6" rs="13" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$gu + "的每月回款率"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.LinePlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-13408768"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrMarkerType">
+<AttrMarkerType>
+<Attr markerType="NullMarker"/>
+</AttrMarkerType>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="14" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="5" shadowAlpha="0.6" shadowColor="-8355712"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<Show Curve="false"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds9]]></Name>
+</TableData>
+<CategoryName value="月份"/>
+<ChartSummaryColumn name="回款率" function="com.fr.data.util.function.SumFunction" customName="回款率"/>
+</MoreNameCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="12" r="28" s="2">
+<Expand/>
+</C>
+<C c="13" r="28" s="2">
+<Expand/>
+</C>
+<C c="14" r="28" s="2">
+<Expand/>
+</C>
+<C c="12" r="29" s="2">
+<Expand/>
+</C>
+<C c="13" r="29" s="2">
+<Expand/>
+</C>
+<C c="14" r="29" s="2">
+<Expand/>
+</C>
+<C c="12" r="30" s="2">
+<Expand/>
+</C>
+<C c="13" r="30" s="2">
+<Expand/>
+</C>
+<C c="14" r="30" s="2">
+<Expand/>
+</C>
+<C c="12" r="31" s="2">
+<Expand/>
+</C>
+<C c="13" r="31" s="2">
+<Expand/>
+</C>
+<C c="14" r="31" s="2">
+<Expand/>
+</C>
+<C c="12" r="32" s="2">
+<Expand/>
+</C>
+<C c="13" r="32" s="2">
+<Expand/>
+</C>
+<C c="14" r="32" s="2">
+<Expand/>
+</C>
+<C c="12" r="33" s="2">
+<Expand/>
+</C>
+<C c="13" r="33" s="2">
+<Expand/>
+</C>
+<C c="14" r="33" s="2">
+<Expand/>
+</C>
+<C c="12" r="34" s="2">
+<Expand/>
+</C>
+<C c="13" r="34" s="2">
+<Expand/>
+</C>
+<C c="14" r="34" s="2">
+<Expand/>
+</C>
+<C c="12" r="35" s="2">
+<Expand/>
+</C>
+<C c="13" r="35" s="2">
+<Expand/>
+</C>
+<C c="14" r="35" s="2">
+<Expand/>
+</C>
+<C c="12" r="36" s="2">
+<Expand/>
+</C>
+<C c="13" r="36" s="2">
+<Expand/>
+</C>
+<C c="14" r="36" s="2">
+<Expand/>
+</C>
+<C c="12" r="37" s="2">
+<Expand/>
+</C>
+<C c="13" r="37" s="2">
+<Expand/>
+</C>
+<C c="14" r="37" s="2">
+<Expand/>
+</C>
+<C c="12" r="38" s="2">
+<Expand/>
+</C>
+<C c="13" r="38" s="2">
+<Expand/>
+</C>
+<C c="14" r="38" s="2">
+<Expand/>
+</C>
+<C c="12" r="39" s="2">
+<Expand/>
+</C>
+<C c="13" r="39" s="2">
+<Expand/>
+</C>
+<C c="14" r="39" s="2">
+<Expand/>
+</C>
+<C c="12" r="40" s="2">
+<Expand/>
+</C>
+<C c="13" r="40" s="2">
+<Expand/>
+</C>
+<C c="14" r="40" s="2">
+<Expand/>
+</C>
+<C c="0" r="41" cs="6" rs="13" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="ColorBackground" color="-1"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$gu + "订单在总额中的比重"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.PiePlot">
+<Plot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="false"/>
+<newColor/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16751053" endColor="-2039808"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-16751053" endColor="-2039808"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="true" position="6" seriesLabel="${PERCENT}"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+</AttrContents>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="14" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="5" shadowAlpha="0.6" shadowColor="-8355712"/>
+</Shadow>
+<PieAttr subType="1" smallPercent="0.15" startAngle="0" separate="13" isSeparateOut="true"/>
+</Plot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="雇员姓名" valueName="所占比" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds10]]></Name>
+</TableData>
+<CategoryName value="aaa"/>
+</OneValueCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="41" cs="6" rs="13">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$gu + "的客户资源质量"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="黑体" style="0" size="80" foreground="-8355712"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.PiePlot">
+<Plot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-10066432" endColor="-2039808"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-10066432" endColor="-2039808"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="14" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="5" shadowAlpha="0.6" shadowColor="-8355712"/>
+</Shadow>
+<PieAttr subType="1" smallPercent="0.15" startAngle="100" separate="10" isSeparateOut="false"/>
+</Plot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="值段" valueName="单子" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds11]]></Name>
+</TableData>
+<CategoryName value="雇员姓名"/>
+</OneValueCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="12" r="41" s="2">
+<Expand/>
+</C>
+<C c="13" r="41" s="2">
+<Expand/>
+</C>
+<C c="14" r="41" s="2">
+<Expand/>
+</C>
+<C c="12" r="42" s="2">
+<Expand/>
+</C>
+<C c="13" r="42" s="2">
+<Expand/>
+</C>
+<C c="14" r="42" s="2">
+<Expand/>
+</C>
+<C c="12" r="43" s="2">
+<Expand/>
+</C>
+<C c="13" r="43" s="2">
+<Expand/>
+</C>
+<C c="14" r="43" s="2">
+<Expand/>
+</C>
+<C c="12" r="44" s="2">
+<Expand/>
+</C>
+<C c="13" r="44" s="2">
+<Expand/>
+</C>
+<C c="14" r="44" s="2">
+<Expand/>
+</C>
+<C c="12" r="45" s="2">
+<Expand/>
+</C>
+<C c="13" r="45" s="2">
+<Expand/>
+</C>
+<C c="14" r="45" s="2">
+<Expand/>
+</C>
+<C c="12" r="46" s="2">
+<Expand/>
+</C>
+<C c="13" r="46" s="2">
+<Expand/>
+</C>
+<C c="14" r="46" s="2">
+<Expand/>
+</C>
+<C c="12" r="47" s="2">
+<Expand/>
+</C>
+<C c="13" r="47" s="2">
+<Expand/>
+</C>
+<C c="14" r="47" s="2">
+<Expand/>
+</C>
+<C c="12" r="48" s="2">
+<Expand/>
+</C>
+<C c="13" r="48" s="2">
+<Expand/>
+</C>
+<C c="14" r="48" s="2">
+<Expand/>
+</C>
+<C c="12" r="49" s="2">
+<Expand/>
+</C>
+<C c="13" r="49" s="2">
+<Expand/>
+</C>
+<C c="14" r="49" s="2">
+<Expand/>
+</C>
+<C c="12" r="50" s="2">
+<Expand/>
+</C>
+<C c="13" r="50" s="2">
+<Expand/>
+</C>
+<C c="14" r="50" s="2">
+<Expand/>
+</C>
+<C c="12" r="51" s="2">
+<Expand/>
+</C>
+<C c="13" r="51" s="2">
+<Expand/>
+</C>
+<C c="14" r="51" s="2">
+<Expand/>
+</C>
+<C c="12" r="52" s="2">
+<Expand/>
+</C>
+<C c="13" r="52" s="2">
+<Expand/>
+</C>
+<C c="14" r="52" s="2">
+<Expand/>
+</C>
+<C c="12" r="53" s="2">
+<Expand/>
+</C>
+<C c="13" r="53" s="2">
+<Expand/>
+</C>
+<C c="14" r="53" s="2">
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="34560000" height="42768000"/>
+<Margin top="286560" left="574560" bottom="286560" right="574560"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="false" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="949" height="33"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.RadioGroup">
+<Listener event="statechange">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.options.form.getWidgetByName("widget2").fireEvent("click");]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="e1"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="销售额"/>
+<Dict key="2" value="回款额"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[1]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="672" y="10" width="140" height="23"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="widget2"/>
+<WidgetAttr invisible="true"/>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="220" y="10" width="80" height="23"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Parameter>
+<Attributes name="e1" isAutoInc="false"/>
+<O t="I">
+<![CDATA[0]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="nian" isAutoInc="false"/>
+<O>
+<![CDATA[2010]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="gu" isAutoInc="false"/>
+<O>
+<![CDATA[张颖]]></O>
+</Parameter>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 环境检测申请信息 -->
+	<package name="enApplyInfo" namespace="/" extends="base,json-default">
+	
+		<action name="enApplyInfo_*" class="com.tyust.web.action.en.EnApplyInfoAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="enApplyInfo_downAttach" class="com.tyust.web.action.en.EnApplyInfoAction" method="downAttach">
+		<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-word</param>
+				<param name="inputName">inStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+		
+		<action name="enApplyInfo_selEnPic" class="com.tyust.web.action.en.EnApplyInfoAction" method="selEnPic">
+			
+		</action>
+		<action name="enApplyInfo_selAllApplyList" class="com.tyust.web.action.en.EnApplyInfoAction" method="selAllApplyList">
+			
+		</action>
+		
+	</package>
+	
+	<!-- 环境检测报告信息 -->
+	<package name="enTestReport" namespace="/" extends="base,json-default">
+		<action name="enTestReport_*" class="com.tyust.web.action.en.EnTestReportAction" method="{1}">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		
+		<action name="enTestReport_selEnPic" class="com.tyust.web.action.en.EnTestReportAction" method="selEnPic">
+
+		</action>
+		<action name="enTestReport_selEnTestReportList" class="com.tyust.web.action.en.EnTestReportAction" method="selEnTestReportList">
+
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//iBATIS.com//DTD SQL Map Config 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" maxRequests="256" maxSessions="128"
+		maxTransactions="64" useStatementNamespaces="true" />
+<typeAlias alias="String" type="java.lang.String" />
+<!-- 字典（系统字典、行政区划） -->	
+	<sqlMap resource="com/tyust/dao/sqlmap/dic/DIC_SYSTEM_DICTIONARY_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/dic/dictionarySqlMap.xml" />
+<!-- 用户（用户、角色、菜单）-->
+	<sqlMap resource="com/tyust/dao/sqlmap/user/T_BASE_USER_INFO_SqlMap.xml"/>	
+	<sqlMap resource="com/tyust/dao/sqlmap/user/TBaseModuleSqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/user/TBaseUserInfoSqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/user/TBaseUnitUserRoleSqlMap.xml" /> 
+<!-- 机构  -->
+	<sqlMap resource="com/tyust/dao/sqlmap/unit/RoleModule.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/unit/TBaseUnitInfoSqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/unit/TBaseUnitRoleSqlMap.xml" />
+	
+<!-- 日志  -->
+	<sqlMap resource="com/tyust/dao/sqlmap/log/Log.xml" />
+	
+<!--设备检测-->	
+	<sqlMap resource="com/tyust/dao/sqlmap/app/T_DEVICE_BASE_INFO_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/app/NT_INSTRUMENT_INFO_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/app/NT_REPORT_INSTRUMENT_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/app/NT_TEST_REPORT_PIC_SqlMap.xml" />
+	
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_APPLY_DEVICE_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_DEVICE_APPLY_AUDIT_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_DEVICE_TEST_APPLY_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_DEVICE_TEST_REPORT_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_APPLY_AUDIT_SMJ_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/device/NT_DEVICE_TEST_APPLY_ATTACH_SqlMap.xml" />
+<!--屏蔽室检测-->
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_BASE_INFO_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_BUILDER_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_DEVICE_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_TEST_APPLY_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_APPLY_AUDIT_SqlMap.xml" />
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/NT_PBS_TEST_RPT_SqlMap.xml" />
+	
+	<!-- 屏蔽室申请信息表 -->
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/PBS_APPLY_INFO_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/PBS_PIC_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/PBS_ATTACH_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tyust/dao/sqlmap/pbs/PBS_TEST_REPORT_SqlMap.xml"/>
+	
+	<!-- 环境检测 -->
+	<sqlMap resource="com/tyust/dao/sqlmap/en/ENVIRONMENT_APPLY_INFO_SqlMap.xml"/>
+	<sqlMap resource="com/tyust/dao/sqlmap/en/ENVIRONMENT_ATTACH_SqlMap.xml"/>
+	<sqlMap resource="com/tyust/dao/sqlmap/en/EN_PIC_SqlMap.xml"/>
+	<sqlMap resource="com/tyust/dao/sqlmap/en/ENVIRONMENT_TEST_INSTRUMENT_SqlMap.xml"/>
+	<sqlMap resource="com/tyust/dao/sqlmap/en/ENVIRONMENT_TEST_REPORT_SqlMap.xml"/>
+	
+	<sqlMap resource="com/tyust/dao/sqlmap/en/ENVIRONMENT_APPLY_AUDIT_SqlMap.xml"/>
+</sqlMapConfig>
+

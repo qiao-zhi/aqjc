@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DatasourceManager xmlVersion="20120203" releaseVersion="7.0.0">
+<ConnectionMap>
+<Connection name="FRDemo" class="com.fr.data.impl.JDBCDatabaseConnection">
+<DatabaseAttr/>
+<JDBCDatabaseAttr url="jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ=${ENV_HOME}\..\FRDemo.mdb" driver="sun.jdbc.odbc.JdbcOdbcDriver" user="" password="___" encryptPassword="true">
+<DBCPAttr/>
+</JDBCDatabaseAttr>
+</Connection>
+<Connection name="JDBC2" class="com.fr.data.impl.JDBCDatabaseConnection">
+<DatabaseAttr originalCharsetName="UTF-8" newCharsetName="UTF-8"/>
+<JDBCDatabaseAttr url="jdbc:mysql://127.0.0.1:3306/steap?characterEncoding=UTF-8&amp;allowMultiQueries=true" driver="com.mysql.jdbc.Driver" user="root" password="___006100210065007b" encryptPassword="true">
+<DBCPAttr/>
+</JDBCDatabaseAttr>
+</Connection>
+<Connection name="JDBC3" class="com.fr.data.impl.JDBCDatabaseConnection">
+<DatabaseAttr originalCharsetName="UTF-8" newCharsetName="UTF-8"/>
+<JDBCDatabaseAttr url="jdbc:mysql://localhost:3306/testpic" driver="com.mysql.jdbc.Driver" user="root" password="___006100210065007b" encryptPassword="true">
+<DBCPAttr/>
+</JDBCDatabaseAttr>
+</Connection>
+</ConnectionMap>
+<TableDataMap>
+<TableData name="员工信息表" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM 员工信息表]]></Query>
+</TableData>
+<TableData name="用户信息表" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [userinfo]A]]></Query>
+</TableData>
+<TableData name="System1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[JDBC2]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[Select * from PUBLIC.FR_T_SYSTEM1]]></Query>
+</TableData>
+<TableData name="pictures" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="specialistId" isAutoInc="false"/>
+<O>
+<![CDATA[SL100001]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[JDBC2]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select CONCAT("signature/", signature) as signature
+from specialist_library
+where specialistId='${specialistId}']]></Query>
+</TableData>
+</TableDataMap>
+<ADHOCMap>
+<TableData name="员工信息表" class="com.fr.data.impl.ADHOCNamedTableData">
+<DBTableDataName>
+<![CDATA[员工信息表]]></DBTableDataName>
+</TableData>
+<TableData name="员工信息表_SQL视图" class="com.fr.data.impl.ADHOCSQLTableData">
+<DBConnectionName>
+<![CDATA[FRDemo]]></DBConnectionName>
+<Query>
+<![CDATA[select * from 员工信息表]]></Query>
+</TableData>
+</ADHOCMap>
+</DatasourceManager>

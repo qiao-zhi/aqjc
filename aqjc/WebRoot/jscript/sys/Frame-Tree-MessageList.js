@@ -1,0 +1,1 @@
+function _width(){var a=$(document).width();$("iframe").css({height:"100%","float":"left"});var b=$("iframe");2==b.length&&(b.eq(0).css("width",300),b.eq(1).css("width",a-300)),$(window).resize(function(){_width()})}$(function(){_width()});

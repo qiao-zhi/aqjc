@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_TEST_REPORT_PIC" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.app.TestReportPic" >
+    <result column="PIC_ID" property="picId" jdbcType="VARCHAR" />
+    <result column="REPORT_ID" property="reportId" jdbcType="VARCHAR" />
+    <result column="PIC_URL" property="picUrl" jdbcType="VARCHAR" />
+    <result column="UPLOAD_DATE" property="uploadDate" jdbcType="TIMESTAMP" />
+    <result column="PIC_NAME" property="picName" jdbcType="VARCHAR" />
+    <result column="PIC_TYPE" property="picType" jdbcType="CHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    PIC_ID, REPORT_ID, PIC_URL, UPLOAD_DATE, PIC_NAME, PIC_TYPE, REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.app.TestReportPicExample" >
+    select
+    <isParameterPresent >
+      <isEqual property="distinct" compareValue="true" >
+        distinct
+      </isEqual>
+    </isParameterPresent>
+    <include refid="NT_TEST_REPORT_PIC.Base_Column_List" />
+    from NT_TEST_REPORT_PIC
+    <isParameterPresent >
+      <include refid="NT_TEST_REPORT_PIC.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.app.TestReportPic" >
+    select 
+    <include refid="NT_TEST_REPORT_PIC.Base_Column_List" />
+    from NT_TEST_REPORT_PIC
+    where PIC_ID = #picId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.app.TestReportPic" >
+    delete from NT_TEST_REPORT_PIC
+    where PIC_ID = #picId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.app.TestReportPicExample" >
+    delete from NT_TEST_REPORT_PIC
+    <include refid="NT_TEST_REPORT_PIC.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.app.TestReportPic" >
+    insert into NT_TEST_REPORT_PIC (PIC_ID, REPORT_ID, PIC_URL, UPLOAD_DATE, 
+      PIC_NAME, PIC_TYPE, REMARK)
+    values (#picId:VARCHAR#, #reportId:VARCHAR#, #picUrl:VARCHAR#, #uploadDate:TIMESTAMP#, 
+      #picName:VARCHAR#, #picType:CHAR#, #remark:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.app.TestReportPic" >
+    insert into NT_TEST_REPORT_PIC
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="picId" >
+        PIC_ID
+      </isNotNull>
+      <isNotNull prepend="," property="reportId" >
+        REPORT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="picUrl" >
+        PIC_URL
+      </isNotNull>
+      <isNotNull prepend="," property="uploadDate" >
+        UPLOAD_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="picName" >
+        PIC_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="picType" >
+        PIC_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="picId" >
+        #picId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="reportId" >
+        #reportId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="picUrl" >
+        #picUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="uploadDate" >
+        #uploadDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="picName" >
+        #picName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="picType" >
+        #picType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.app.TestReportPicExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_TEST_REPORT_PIC
+    <include refid="NT_TEST_REPORT_PIC.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_TEST_REPORT_PIC
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.picId" >
+        PIC_ID = #record.picId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.reportId" >
+        REPORT_ID = #record.reportId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.picUrl" >
+        PIC_URL = #record.picUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.uploadDate" >
+        UPLOAD_DATE = #record.uploadDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.picName" >
+        PIC_NAME = #record.picName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.picType" >
+        PIC_TYPE = #record.picType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_TEST_REPORT_PIC.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_TEST_REPORT_PIC
+    set PIC_ID = #record.picId:VARCHAR#,
+      REPORT_ID = #record.reportId:VARCHAR#,
+      PIC_URL = #record.picUrl:VARCHAR#,
+      UPLOAD_DATE = #record.uploadDate:TIMESTAMP#,
+      PIC_NAME = #record.picName:VARCHAR#,
+      PIC_TYPE = #record.picType:CHAR#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_TEST_REPORT_PIC.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.app.TestReportPic" >
+    update NT_TEST_REPORT_PIC
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="reportId" >
+        REPORT_ID = #reportId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="picUrl" >
+        PIC_URL = #picUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="uploadDate" >
+        UPLOAD_DATE = #uploadDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="picName" >
+        PIC_NAME = #picName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="picType" >
+        PIC_TYPE = #picType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where PIC_ID = #picId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.app.TestReportPic" >
+    update NT_TEST_REPORT_PIC
+    set REPORT_ID = #reportId:VARCHAR#,
+      PIC_URL = #picUrl:VARCHAR#,
+      UPLOAD_DATE = #uploadDate:TIMESTAMP#,
+      PIC_NAME = #picName:VARCHAR#,
+      PIC_TYPE = #picType:CHAR#,
+      REMARK = #remark:VARCHAR#
+    where PIC_ID = #picId:VARCHAR#
+  </update>
+</sqlMap>

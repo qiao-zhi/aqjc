@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20111025" releaseVersion="6.5.6">
+<TableDataMap>
+<TableData name="洲际" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT
+     洲际.洲际 AS 洲际,
+     洲际.国家 AS 国家,
+     洲际.实际值/1000000 AS 实际值,
+     洲际.实际销售额/1000000 AS 实际销售额,
+     洲际.实际制造成本/1000000 AS 实际制造成本,
+     洲际.实际杂费/1000000 AS 实际杂费,
+     洲际.实际利润/1000000 AS 实际利润
+FROM
+     洲际 洲际]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1028700,1028700,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[5040000,5040000,5040000,5040000,5040000,5040000,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O>
+<![CDATA[国家]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$P = null]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="0" s="0">
+<O>
+<![CDATA[实际值(百万)]]></O>
+<Expand/>
+</C>
+<C c="2" r="0" s="0">
+<O>
+<![CDATA[实际销售额(百万)]]></O>
+<Expand/>
+</C>
+<C c="3" r="0" s="0">
+<O>
+<![CDATA[实际制造成本(百万)]]></O>
+<Expand/>
+</C>
+<C c="4" r="0" s="0">
+<O>
+<![CDATA[实际杂费(百万)]]></O>
+<Expand/>
+</C>
+<C c="5" r="0" s="0">
+<O>
+<![CDATA[实际利润(百万)]]></O>
+<Expand/>
+</C>
+<C c="0" r="1" s="1">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="国家"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[洲际]]></CNAME>
+<Compare op="0">
+<Parameter>
+<Attributes name="P"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$P = null]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand dir="0"/>
+</C>
+<C c="1" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际值"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="2" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际销售额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际制造成本"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际杂费"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="洲际" columnName="实际利润"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="2" cs="6" rs="15">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-3355444"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<HotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</HotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="3" seriesLabel="${VALUE}"/>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#,##0]]></Format>
+</AttrContents>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<MeterStyle>
+<Attr meterAngle="270" maxArrowAngle="270" units="" tickLabelsVisible="true" dialShape="180" startValue="=0.0" endValue="=100" tickSize="=20"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.0]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-103" beginValue="=0.0" endValue="=33"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-26164" beginValue="=33" endValue="=66"/>
+<MeterInterval label="分段区域3(默认)" backgroudColor="-10040065" beginValue="=66" endValue="=100"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B1:F1]]></Attributes>
+</O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B2:F2]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$P = null]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting orientation="1">
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-3355444"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-52"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-52"/>
+<Border>
+<Top style="1" color="-8355712"/>
+<Bottom style="1" color="-8355712"/>
+<Left style="1" color="-8355712"/>
+<Right style="1" color="-8355712"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

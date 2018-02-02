@@ -1,0 +1,4 @@
+/*  begin*/
+#Nav {background: linear-gradient(to bottom, #EFF5FF 0px, #E0ECFF 100%) repeat-x;border-bottom: 1px solid #95B8E7;border-top: 1px solid #95B8E7;color: #0E2D5F;padding:5px;font-size: 12px;}
+#Nav span {margin-right: 20px;color: #0E2D5F;font-weight: bold;height: 16px;line-height: 16px}
+.btn-nav {display: block;width:67px;height:23px;background: url(../../images/sys/btn-nav1.png) no-repeat;text-align: center;float: right;line-height: 23px;margin-top: -5px;color: #000}

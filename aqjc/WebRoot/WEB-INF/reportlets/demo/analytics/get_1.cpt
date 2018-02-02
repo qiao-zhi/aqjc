@@ -1,0 +1,2904 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="c"/>
+<O>
+<![CDATA[China]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="type"/>
+<O>
+<![CDATA[纯收入]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [get]A
+where type='${type}'
+AND country='${c}']]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="type"/>
+<O>
+<![CDATA[纯收入]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [get]A
+where type='${type}']]></Query>
+</TableData>
+<TableData name="ds3" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[select sum from get where type='纯收入' and year1='2005'
+AND cate='现实' and season='Q2' and country='China']]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,723900,723900,723900,723900,723900,723900,723900,914400,723900,1028700,1485900,1295400,0,609600,609600,609600,609600,609600,609600,609600,609600,609600,609600,609600,609600,609600,1447800,0,723900,723900,723900,723900,152400,723900,723900,723900,723900,876300,723900,723900,723900,723900,723900,266700,723900,723900,723900,1181100,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,2400300,2743200,2743200,2743200,3086100,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="8" rs="14" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="ColorBackground" color="-398635"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MapPlot">
+<MapPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<NameJavaScriptGroup>
+<NameJavaScript name="图表超链1">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="c"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SERIES]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="A16"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<newattr201106 mapName="World"/>
+</MapPlot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="country" valueName="sum" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+</OneValueCDDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="0" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="2" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="3" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="4" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="5" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="6" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="7" r="14">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="销售成本"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="研究与开发"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营销及日常管理费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业成本及费用"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="营业收益"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="证券资产净值的收益与损失"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="净利息及其他"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="税前收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="纳税准备金"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type="收益净额"]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="0" r="15" cs="8" rs="14" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="ColorBackground" color="-398635"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$type]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="1" size="96"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.CustomPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.plot.CustomAttr">
+<CustomAttr>
+<ConditionAttr name=""/>
+<customattr renderer="1"/>
+</CustomAttr>
+</DefaultAttr>
+<ConditionAttrList>
+<List index="0">
+<CustomAttr>
+<ConditionAttr name="条件属性1">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrAxisPosition">
+<AttrAxisPosition>
+<Attr axisPosition="LEFT"/>
+</AttrAxisPosition>
+</Attr>
+</AttrList>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[3]]></CNUMBER>
+<CNAME>
+<![CDATA[系列序号]]></CNAME>
+<Compare op="0">
+<O t="I">
+<![CDATA[1]]></O>
+</Compare>
+</Condition>
+</ConditionAttr>
+<customattr renderer="1"/>
+</CustomAttr>
+</List>
+<List index="1">
+<CustomAttr>
+<ConditionAttr name="条件属性2">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrAxisPosition">
+<AttrAxisPosition>
+<Attr axisPosition="RIGHT"/>
+</AttrAxisPosition>
+</Attr>
+</AttrList>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[3]]></CNUMBER>
+<CNAME>
+<![CDATA[系列序号]]></CNAME>
+<Compare op="0">
+<O t="I">
+<![CDATA[2]]></O>
+</Compare>
+</Condition>
+</ConditionAttr>
+<customattr renderer="2"/>
+</CustomAttr>
+</List>
+</ConditionAttrList>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<CustomBar class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrTrendLine">
+<AttrTrendLine/>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</CustomBar>
+<CustomBarStack class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="true"/>
+<BarAttr isHorizontal="false" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</CustomBarStack>
+<CustomLine class="com.fr.chart.plot.LinePlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrLineStyle">
+<AttrLineStyle>
+<newAttr lineStyle="2"/>
+</AttrLineStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrColor">
+<AttrColor>
+<Attr color="-16777216"/>
+</AttrColor>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrMarkerType">
+<AttrMarkerType>
+<Attr markerType="RoundFilledMarker"/>
+</AttrMarkerType>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<Show Curve="false"/>
+</CategoryPlot>
+</CustomLine>
+<CustomLineStack class="com.fr.chart.plot.LinePlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="true"/>
+<Show Curve="false"/>
+</CategoryPlot>
+</CustomLineStack>
+<CustomArea class="com.fr.chart.plot.AreaPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<AreaAttr Curve="false"/>
+</CategoryPlot>
+</CustomArea>
+<CustomAreaStack class="com.fr.chart.plot.AreaPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="true"/>
+<AreaAttr Curve="false"/>
+</CategoryPlot>
+</CustomAreaStack>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="cate" valueName="sum" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds1]]></Name>
+</TableData>
+<CategoryName value="season"/>
+</OneValueCDDefinition>
+</O>
+<Expand/>
+</C>
+<C c="0" r="29">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="sum"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[4]]></CNUMBER>
+<CNAME>
+<![CDATA[season]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[Q2]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[1]]></CNUMBER>
+<CNAME>
+<![CDATA[year1]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[2005]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[3]]></CNUMBER>
+<CNAME>
+<![CDATA[country]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[China]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[5]]></CNUMBER>
+<CNAME>
+<![CDATA[cate]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[现实]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="1" r="29">
+<O t="DSColumn">
+<Attributes dsName="ds3" columnName="sum"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="2" r="29" s="1">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=(A30 / B30) * 100]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="3" r="29" s="1">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C30 + 12]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="29" s="1">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C30 / 2]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="29" s="1">
+<Expand/>
+</C>
+<C c="0" r="30" s="2">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="30" s="3">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="30" cs="4" rs="10" s="3">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[="Q2/05"+$type+"a% of 纯收入"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="1" size="96"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="360" maxArrowAngle="360" units="%" tickLabelsVisible="true" dialShape="1" startValue="=0.0" endValue="=100" tickSize="=10"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=50.0"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=50.0" endValue="=100.0"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O>
+<![CDATA[]]></O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C30]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="30" s="3">
+<Expand/>
+</C>
+<C c="7" r="30" s="4">
+<Expand/>
+</C>
+<C c="0" r="31" s="5">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="31" s="6">
+<Expand/>
+</C>
+<C c="6" r="31" s="6">
+<Expand/>
+</C>
+<C c="7" r="31" s="7">
+<Expand/>
+</C>
+<C c="0" r="32" s="5">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="32" s="6">
+<Expand/>
+</C>
+<C c="6" r="32" s="6">
+<Expand/>
+</C>
+<C c="7" r="32" s="7">
+<Expand/>
+</C>
+<C c="0" r="33" s="5">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="33" s="6">
+<Expand/>
+</C>
+<C c="6" r="33" s="6">
+<Expand/>
+</C>
+<C c="7" r="33" s="7">
+<Expand/>
+</C>
+<C c="0" r="34" s="5">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="34" s="6">
+<Expand/>
+</C>
+<C c="6" r="34" s="6">
+<Expand/>
+</C>
+<C c="7" r="34" s="7">
+<Expand/>
+</C>
+<C c="0" r="35" s="5">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="35" s="6">
+<Expand/>
+</C>
+<C c="6" r="35" s="6">
+<Expand/>
+</C>
+<C c="7" r="35" s="7">
+<Expand/>
+</C>
+<C c="0" r="36" s="5">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="36" s="6">
+<Expand/>
+</C>
+<C c="6" r="36" s="6">
+<Expand/>
+</C>
+<C c="7" r="36" s="7">
+<Expand/>
+</C>
+<C c="0" r="37" s="5">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="37" s="6">
+<Expand/>
+</C>
+<C c="6" r="37" s="6">
+<Expand/>
+</C>
+<C c="7" r="37" s="7">
+<Expand/>
+</C>
+<C c="0" r="38" s="5">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="38" s="6">
+<Expand/>
+</C>
+<C c="6" r="38" s="6">
+<Expand/>
+</C>
+<C c="7" r="38" s="7">
+<Expand/>
+</C>
+<C c="0" r="39" s="5">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="1" r="39" s="6">
+<Expand/>
+</C>
+<C c="6" r="39" s="6">
+<Expand/>
+</C>
+<C c="7" r="39" s="7">
+<Expand/>
+</C>
+<C c="0" r="40" cs="4" rs="10" s="8">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[十二个月的增长]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="1" size="96"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="180" maxArrowAngle="180" units="%" tickLabelsVisible="true" dialShape="180" startValue="=0.0" endValue="=100" tickSize="=10"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=50.0"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=50.0" endValue="=100.0"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O>
+<![CDATA[]]></O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=D30]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type = "纯收入"]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[$type == NULL]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="4" r="40" cs="4" rs="10" s="9">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[本年度迄今增长]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="1" size="96"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="180" maxArrowAngle="180" units="%" tickLabelsVisible="true" dialShape="180" startValue="=0.0" endValue="=100" tickSize="=10"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=50.0"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=50.0" endValue="=100.0"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O>
+<![CDATA[]]></O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=E30]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="22176000" height="22032000"/>
+<Margin top="286560" left="0" bottom="0" right="0"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-398635"/>
+<Bottom style="1" color="-398635"/>
+<Left style="1" color="-398635"/>
+<Right style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Top style="1" color="-398635"/>
+<Left style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Top style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Top style="1" color="-398635"/>
+<Right style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Left style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Right style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Bottom style="1" color="-398635"/>
+<Left style="1" color="-398635"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-398635"/>
+<Border>
+<Bottom style="1" color="-398635"/>
+<Right style="1" color="-398635"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

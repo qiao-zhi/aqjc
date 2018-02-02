@@ -1,0 +1,79 @@
+#tooltip {
+	position: absolute;
+	z-index: 1000;
+	max-width: 300px;
+	width: auto !important;
+	width: auto;
+	text-align: left;
+	padding: 3px;
+	display: none
+}
+
+#tooltip p,.content {
+	margin: 0;
+	padding: 0;
+	color: #000;
+	font: 12px verdana, arial, sans-serif;
+}
+
+#tooltip p em {
+	display: block;
+	margin-top: 3px;
+	color: #f60;
+	font-style: normal;
+	font-weight: bold;
+}
+
+/**圆角**/
+
+
+.b1,.b2,.b3,.b4,.b5,.b6,.b7,.b8 {
+	height: 1px;
+	font-size: 1px;
+	overflow: hidden;
+	display: block;
+}
+
+.b1,.b8 {
+	margin: 0 5px;
+}
+
+.b2,.b7 {
+	margin: 0 3px;
+	border-right: 2px solid;
+	border-left: 2px solid;
+}
+
+.b3,.b6 {
+	margin: 0 2px;
+	border-right: 1px solid;
+	border-left: 1px solid;
+}
+
+.b4,.b5 {
+	margin: 0 1px;
+	border-right: 1px solid;
+	border-left: 1px solid;
+	height: 2px;
+}
+
+.content {
+	border-right: 1px solid;
+	border-left: 1px solid;
+	overflow: hidden;
+}
+
+.color3 .b2,.color3 .b3,.color3 .b4,.color3 .b5,.color3 .b6,.color3 .b7,.color3 .content
+	{
+	border-color: #BBE1F1;
+}
+
+.color3 .b1,.color3 .b8 {
+	background: #BBE1F1;
+}
+
+.color3 .b2,.color3 .b3,.color3 .b4,.color3 .b5,.color3 .b6,.color3 .b7,.color3 .content
+	{
+	background: #4DB4EC;
+}
+.content {padding:3px;}

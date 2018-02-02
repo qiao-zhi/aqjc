@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="收入成本" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="year"/>
+<O>
+<![CDATA[2009]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 科目代码,会计科目,借方发生额,贷方发生额
+FROM 收入成本
+where 年份=${year}
+]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,1143000,1143000,723900,723900,685800,685800,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[4381500,4381500,4381500,4381500,4381500,4381500,876300,876300,3619500,4343400,4191000,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O>
+<![CDATA[投入产出比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="1" cs="2" rs="7" s="1">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="3" seriesLabel="${VALUE}"/>
+</AttrContents>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="180" maxArrowAngle="180" units="万" tickLabelsVisible="true" dialShape="180" startValue="=0" endValue="=200" tickSize="=25"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="80"/>
+</Attr>
+</TextAttr>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=80"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=80" endValue="=150"/>
+<MeterInterval label="分段区域3(默认)" backgroudColor="-1807222" beginValue="=150" endValue="=200"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=I3]]></Attributes>
+</O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=J3]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="1" cs="2" rs="7" s="2">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="3" seriesLabel="${VALUE}"/>
+</AttrContents>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="180" maxArrowAngle="180" units="" tickLabelsVisible="true" dialShape="180" startValue="=0" endValue="=200" tickSize="=25"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="80"/>
+</Attr>
+</TextAttr>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=80"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=80" endValue="=150"/>
+<MeterInterval label="分段区域3(默认)" backgroudColor="-1807222" beginValue="=150" endValue="=200"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=I4]]></Attributes>
+</O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=J4]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="1" cs="2" rs="7" s="3">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="false" position="3" seriesLabel="${VALUE}"/>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+</AttrContents>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="180" maxArrowAngle="180" units="" tickLabelsVisible="true" dialShape="180" startValue="=0" endValue="=1" tickSize="=0.2"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="80"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0" endValue="=0.33"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=0.33" endValue="=0.66"/>
+<MeterInterval label="分段区域3(默认)" backgroudColor="-1807222" beginValue="=0.66" endValue="=1"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MeterReportDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<MeterDefinition201109 meterType="0"/>
+<meterDefinitionName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=I5]]></Attributes>
+</O>
+</meterDefinitionName>
+<meterDefinitionValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=J5]]></Attributes>
+</O>
+</meterDefinitionValue>
+</MeterReportDefinition>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="1">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="7" r="1">
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="9" r="1">
+<O t="DSColumn">
+<Attributes dsName="收入成本" columnName="借方发生额"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="10" r="1">
+<O t="DSColumn">
+<Attributes dsName="收入成本" columnName="贷方发生额"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="2">
+<Expand/>
+</C>
+<C c="7" r="2">
+<Expand/>
+</C>
+<C c="8" r="2">
+<O>
+<![CDATA[主营业务收入(单位：万)]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="9" r="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(K2) / 10000]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="10" r="2">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(J2) / 10000]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="6" r="3">
+<Expand/>
+</C>
+<C c="7" r="3">
+<Expand/>
+</C>
+<C c="8" r="3">
+<O>
+<![CDATA[主营业务利润(单位：万)]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="9" r="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=(J3 - K3)]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="4">
+<Expand/>
+</C>
+<C c="7" r="4">
+<Expand/>
+</C>
+<C c="8" r="4">
+<O>
+<![CDATA[利润率]]></O>
+<Expand/>
+</C>
+<C c="9" r="4" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=J4 / J3]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="6" r="5">
+<Expand/>
+</C>
+<C c="7" r="5">
+<Expand/>
+</C>
+<C c="6" r="6">
+<Expand/>
+</C>
+<C c="7" r="6">
+<Expand/>
+</C>
+<C c="6" r="7">
+<Expand/>
+</C>
+<C c="7" r="7">
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="26496000" height="7056000"/>
+<Margin top="122400" left="0" bottom="122400" right="0"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72" foreground="-8355712"/>
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="2">
+<IM>
+<![CDATA[lO<9(kN.ld@UNU%p%320@UNU)#I6cXfRW$ncQ/@&<0O5<@n=S@[oX!K%L!+t*8LGkV28*<fV
+1DR2+&2#M*'iG9!?fn`jEHhj.>Qf/%>^"4u8^;2W-f-"/[-Ps"#=CT4LGm?)6rkX]Ap9;)cg,
+:Xp=M>^R`IX>57);OBFYLBS"_e1Gss7S9)tL+\09b!LY7c2&TIA?%9m4n<NhHK^]A5-XNuS&?
+,PUblK>Iu.A7%J~
+]]></IM>
+</Background>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+<Bottom style="6" color="-6697729"/>
+<Left style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+<Bottom style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+<Bottom style="6" color="-6697729"/>
+<Right style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

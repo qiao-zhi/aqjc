@@ -1,0 +1,20 @@
+.tool_bar{
+	height:36px;
+	width:190px;
+	background: url("../../images/sys/tool_bar.png") no-repeat;
+	font-size:12px;
+	font-weight: bold;
+	float:left;
+	padding-left: 20px;
+    padding-top: 12px;
+}
+.btn-save input{
+	float:right;
+	margin-right:10px;
+	margin-top:5px;
+}
+
+
+
+
+

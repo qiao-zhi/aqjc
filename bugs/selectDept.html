@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.juzhong{
+				margin: 0 auto;
+			}
+			#testDiv{
+				width: 300px;
+			}
+			#testDiv input{
+				width: 100%;
+			}
+			#testDiv select{
+				width: 100%;
+				height: 200px;
+			}
+		</style>
+		<script>
+		window.onload=function(){
+			
+			var oBtn=document.getElementById("search");
+			var oTxt=document.getElementById("text");
+			var oSt=document.getElementById("bumen");
+			var oP=oSt.getElementsByTagName("option");
+			var NUM=document.getElementById("num");
+			//对应赋值编号
+			var index;
+			for(var i=0;i<oP.length;i++){
+				oP[i].index=i;
+			}
+			//进行匹配
+			oTxt.onkeyup=function(){
+				for(var i=0;i<oP.length;i++){
+					var txt=oTxt.value.toLowerCase();
+					/*oP[i].xuhao=i;*/
+					//判断是中文匹配正确  或者 拼音匹配正确
+					if(oP[i].innerHTML.search(txt)!=-1||oP[i].value.search(txt)!=-1){
+						//显示正确的
+						oP[i].style.display="block";
+					}
+					else{
+						//隐藏不正确的
+						oP[i].style.display="none";
+					}
+				}
+			}
+			//赋值到输入框
+			for(var i=0;i<oP.length;i++){
+				oP[i].onclick=function(){
+					oTxt.value=this.innerHTML;
+					NUM.innerHTML=this.index;
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div class="juzhong" id="testDiv">
+			<label>您选择的是：<span id="num"></span></label>
+			<input type="text" name="" id="text"/>
+			<input type="button" id="search" value="搜索"/>
+			<br />
+			<select multiple id="bumen">
+			//value表示部门的缩写
+				<option value="ty">太原市机要局</option>
+				<option value="dt">大同市机要局</option>
+				<option value="yc">运城市机要局</option>
+				<option value="bj">北京市机要局</option>
+				<option value="ty">太原</option>
+			</select>
+		</div>
+		
+		<br /><br /><br />
+		html5自带的标签，也带模糊查询
+		<input type="" name="" id="" value="" list="options"/>		
+		<datalist id="options">
+			<option value="太原市机要局">
+			<option value="大同市机要局">
+			<option value="运城市机要局">
+			<option value="太原">
+			<option value="北京市机要局">
+			<option>大同市</option>
+		</datalist>
+	</body>
+	
+</html>

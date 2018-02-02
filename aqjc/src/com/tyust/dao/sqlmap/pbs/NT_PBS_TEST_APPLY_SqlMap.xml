@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_PBS_TEST_APPLY" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.pbs.PbsTestApply" >
+    <result column="TEST_APPLY_ID" property="testApplyId" jdbcType="VARCHAR" />
+    <result column="APPLY_UNIT" property="applyUnit" jdbcType="VARCHAR" />
+    <result column="PBS_ID" property="pbsId" jdbcType="VARCHAR" />
+    <result column="APPLY_DATE" property="applyDate" jdbcType="TIMESTAMP" />
+    <result column="PBS_BUILDER_ID" property="pbsBuilderId" jdbcType="VARCHAR" />
+    <result column="APPLY_TEST_GRADE" property="applyTestGrade" jdbcType="CHAR" />
+    <result column="APPLY_TEST_TYPE" property="applyTestType" jdbcType="CHAR" />
+    <result column="APPLY_STATE" property="applyState" jdbcType="CHAR" />
+    <result column="APPLY_USER" property="applyUser" jdbcType="VARCHAR" />
+    <result column="REMARK1" property="remark1" jdbcType="VARCHAR" />
+    <result column="REMARK2" property="remark2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    TEST_APPLY_ID, APPLY_UNIT, PBS_ID, APPLY_DATE, PBS_BUILDER_ID, APPLY_TEST_GRADE, 
+    APPLY_TEST_TYPE, APPLY_STATE, APPLY_USER, REMARK1, REMARK2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsTestApplyExample" >
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+	           <![CDATA[SELECT * FROM
+				(
+				SELECT A.*, ROWNUM RN
+				FROM (
+			]]>
+		</isEqual>
+	</isParameterPresent>
+    select
+    TEST_APPLY_ID, APPLY_UNIT, app.PBS_ID, APPLY_DATE, PBS_BUILDER_ID, APPLY_TEST_GRADE, 
+    APPLY_TEST_TYPE, APPLY_STATE, APPLY_USER, us.name as REMARK1, pbs.pbs_name as REMARK2
+    from NT_PBS_TEST_APPLY app
+    left join T_BASE_USER_INFO us on app.APPLY_USER = us.user_id
+    left join NT_PBS_BASE_INFO pbs on app.PBS_ID = pbs.PBS_ID
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+            <![CDATA[
+				) A
+				WHERE ROWNUM <=#limit#
+				)
+				WHERE RN >#start#
+			]]>
+		</isEqual>
+	</isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    select 
+    <include refid="NT_PBS_TEST_APPLY.Base_Column_List" />
+    from NT_PBS_TEST_APPLY
+    where TEST_APPLY_ID = #testApplyId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    delete from NT_PBS_TEST_APPLY
+    where TEST_APPLY_ID = #testApplyId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.pbs.PbsTestApplyExample" >
+    delete from NT_PBS_TEST_APPLY
+    <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    insert into NT_PBS_TEST_APPLY (TEST_APPLY_ID, APPLY_UNIT, PBS_ID, APPLY_DATE, 
+      PBS_BUILDER_ID, APPLY_TEST_GRADE, APPLY_TEST_TYPE, APPLY_STATE, 
+      APPLY_USER, REMARK1, REMARK2)
+    values (#testApplyId:VARCHAR#, #applyUnit:VARCHAR#, #pbsId:VARCHAR#, #applyDate:TIMESTAMP#, 
+      #pbsBuilderId:VARCHAR#, #applyTestGrade:CHAR#, #applyTestType:CHAR#, #applyState:CHAR#, 
+      #applyUser:VARCHAR#, #remark1:VARCHAR#, #remark2:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    insert into NT_PBS_TEST_APPLY
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="testApplyId" >
+        TEST_APPLY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applyUnit" >
+        APPLY_UNIT
+      </isNotNull>
+      <isNotNull prepend="," property="pbsId" >
+        PBS_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applyDate" >
+        APPLY_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="pbsBuilderId" >
+        PBS_BUILDER_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestGrade" >
+        APPLY_TEST_GRADE
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestType" >
+        APPLY_TEST_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="applyState" >
+        APPLY_STATE
+      </isNotNull>
+      <isNotNull prepend="," property="applyUser" >
+        APPLY_USER
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="testApplyId" >
+        #testApplyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyUnit" >
+        #applyUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsId" >
+        #pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyDate" >
+        #applyDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsBuilderId" >
+        #pbsBuilderId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestGrade" >
+        #applyTestGrade:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestType" >
+        #applyTestType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyState" >
+        #applyState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyUser" >
+        #applyUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        #remark2:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.pbs.PbsTestApplyExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_PBS_TEST_APPLY
+    <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_PBS_TEST_APPLY
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.testApplyId" >
+        TEST_APPLY_ID = #record.testApplyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyUnit" >
+        APPLY_UNIT = #record.applyUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsId" >
+        PBS_ID = #record.pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyDate" >
+        APPLY_DATE = #record.applyDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsBuilderId" >
+        PBS_BUILDER_ID = #record.pbsBuilderId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyTestGrade" >
+        APPLY_TEST_GRADE = #record.applyTestGrade:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyTestType" >
+        APPLY_TEST_TYPE = #record.applyTestType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyState" >
+        APPLY_STATE = #record.applyState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyUser" >
+        APPLY_USER = #record.applyUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark1" >
+        REMARK1 = #record.remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark2" >
+        REMARK2 = #record.remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_PBS_TEST_APPLY
+    set TEST_APPLY_ID = #record.testApplyId:VARCHAR#,
+      APPLY_UNIT = #record.applyUnit:VARCHAR#,
+      PBS_ID = #record.pbsId:VARCHAR#,
+      APPLY_DATE = #record.applyDate:TIMESTAMP#,
+      PBS_BUILDER_ID = #record.pbsBuilderId:VARCHAR#,
+      APPLY_TEST_GRADE = #record.applyTestGrade:CHAR#,
+      APPLY_TEST_TYPE = #record.applyTestType:CHAR#,
+      APPLY_STATE = #record.applyState:CHAR#,
+      APPLY_USER = #record.applyUser:VARCHAR#,
+      REMARK1 = #record.remark1:VARCHAR#,
+      REMARK2 = #record.remark2:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    update NT_PBS_TEST_APPLY
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applyUnit" >
+        APPLY_UNIT = #applyUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsId" >
+        PBS_ID = #pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyDate" >
+        APPLY_DATE = #applyDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsBuilderId" >
+        PBS_BUILDER_ID = #pbsBuilderId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestGrade" >
+        APPLY_TEST_GRADE = #applyTestGrade:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyTestType" >
+        APPLY_TEST_TYPE = #applyTestType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyState" >
+        APPLY_STATE = #applyState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyUser" >
+        APPLY_USER = #applyUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1 = #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2 = #remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where TEST_APPLY_ID = #testApplyId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsTestApply" >
+    update NT_PBS_TEST_APPLY
+    set APPLY_UNIT = #applyUnit:VARCHAR#,
+      PBS_ID = #pbsId:VARCHAR#,
+      APPLY_DATE = #applyDate:TIMESTAMP#,
+      PBS_BUILDER_ID = #pbsBuilderId:VARCHAR#,
+      APPLY_TEST_GRADE = #applyTestGrade:CHAR#,
+      APPLY_TEST_TYPE = #applyTestType:CHAR#,
+      APPLY_STATE = #applyState:CHAR#,
+      APPLY_USER = #applyUser:VARCHAR#,
+      REMARK1 = #remark1:VARCHAR#,
+      REMARK2 = #remark2:VARCHAR#
+    where TEST_APPLY_ID = #testApplyId:VARCHAR#
+  </update>
+  
+  <select id="selSubList" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsTestApplyExample" >
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+	           <![CDATA[SELECT * FROM
+				(
+				SELECT A.*, ROWNUM RN
+				FROM (
+			]]>
+		</isEqual>
+	</isParameterPresent>
+    select
+    TEST_APPLY_ID, APPLY_UNIT, app.PBS_ID, APPLY_DATE, PBS_BUILDER_ID, APPLY_TEST_GRADE, 
+    APPLY_TEST_TYPE, APPLY_STATE, APPLY_USER, un.unit_name as REMARK1, pbs.pbs_name as REMARK2
+    from NT_PBS_TEST_APPLY app
+    left join T_BASE_UNIT_INFO un on app.APPLY_UNIT = un.unit_id
+    left join NT_PBS_BASE_INFO pbs on app.PBS_ID = pbs.PBS_ID
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_APPLY.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+            <![CDATA[
+				) A
+				WHERE ROWNUM <=#limit#
+				)
+				WHERE RN >#start#
+			]]>
+		</isEqual>
+	</isParameterPresent>
+  </select>
+</sqlMap>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_PBS_APPLY_AUDIT" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.pbs.PbsApplyAudit" >
+    <result column="AUDIT_ID" property="auditId" jdbcType="VARCHAR" />
+    <result column="PBS_APPLY_ID" property="pbsApplyId" jdbcType="VARCHAR" />
+    <result column="AUDIT_DATE" property="auditDate" jdbcType="TIMESTAMP" />
+    <result column="AUDIT_OPPINON" property="auditOppinon" jdbcType="VARCHAR" />
+    <result column="AUDIT_RESULT" property="auditResult" jdbcType="CHAR" />
+    <result column="AUDIT_USER" property="auditUser" jdbcType="VARCHAR" />
+    <result column="REMARK1" property="remark1" jdbcType="VARCHAR" />
+    <result column="REMARK2" property="remark2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    AUDIT_ID, PBS_APPLY_ID, AUDIT_DATE, AUDIT_OPPINON, AUDIT_RESULT, AUDIT_USER, REMARK1, 
+    REMARK2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsApplyAuditExample" >
+    select
+    <isParameterPresent >
+      <isEqual property="distinct" compareValue="true" >
+        distinct
+      </isEqual>
+    </isParameterPresent>
+    <include refid="NT_PBS_APPLY_AUDIT.Base_Column_List" />
+    from NT_PBS_APPLY_AUDIT
+    <isParameterPresent >
+      <include refid="NT_PBS_APPLY_AUDIT.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    select 
+    <include refid="NT_PBS_APPLY_AUDIT.Base_Column_List" />
+    from NT_PBS_APPLY_AUDIT
+    where AUDIT_ID = #auditId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    delete from NT_PBS_APPLY_AUDIT
+    where AUDIT_ID = #auditId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.pbs.PbsApplyAuditExample" >
+    delete from NT_PBS_APPLY_AUDIT
+    <include refid="NT_PBS_APPLY_AUDIT.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    insert into NT_PBS_APPLY_AUDIT (AUDIT_ID, PBS_APPLY_ID, AUDIT_DATE, AUDIT_OPPINON, 
+      AUDIT_RESULT, AUDIT_USER, REMARK1, REMARK2)
+    values (#auditId:VARCHAR#, #pbsApplyId:VARCHAR#, #auditDate:TIMESTAMP#, #auditOppinon:VARCHAR#, 
+      #auditResult:CHAR#, #auditUser:VARCHAR#, #remark1:VARCHAR#, #remark2:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    insert into NT_PBS_APPLY_AUDIT
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="auditId" >
+        AUDIT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="pbsApplyId" >
+        PBS_APPLY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="auditDate" >
+        AUDIT_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="auditOppinon" >
+        AUDIT_OPPINON
+      </isNotNull>
+      <isNotNull prepend="," property="auditResult" >
+        AUDIT_RESULT
+      </isNotNull>
+      <isNotNull prepend="," property="auditUser" >
+        AUDIT_USER
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="auditId" >
+        #auditId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsApplyId" >
+        #pbsApplyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditDate" >
+        #auditDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="auditOppinon" >
+        #auditOppinon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditResult" >
+        #auditResult:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditUser" >
+        #auditUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        #remark2:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.pbs.PbsApplyAuditExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_PBS_APPLY_AUDIT
+    <include refid="NT_PBS_APPLY_AUDIT.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_PBS_APPLY_AUDIT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.auditId" >
+        AUDIT_ID = #record.auditId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsApplyId" >
+        PBS_APPLY_ID = #record.pbsApplyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.auditDate" >
+        AUDIT_DATE = #record.auditDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.auditOppinon" >
+        AUDIT_OPPINON = #record.auditOppinon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.auditResult" >
+        AUDIT_RESULT = #record.auditResult:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.auditUser" >
+        AUDIT_USER = #record.auditUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark1" >
+        REMARK1 = #record.remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark2" >
+        REMARK2 = #record.remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_PBS_APPLY_AUDIT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_PBS_APPLY_AUDIT
+    set AUDIT_ID = #record.auditId:VARCHAR#,
+      PBS_APPLY_ID = #record.pbsApplyId:VARCHAR#,
+      AUDIT_DATE = #record.auditDate:TIMESTAMP#,
+      AUDIT_OPPINON = #record.auditOppinon:VARCHAR#,
+      AUDIT_RESULT = #record.auditResult:CHAR#,
+      AUDIT_USER = #record.auditUser:VARCHAR#,
+      REMARK1 = #record.remark1:VARCHAR#,
+      REMARK2 = #record.remark2:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_PBS_APPLY_AUDIT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    update NT_PBS_APPLY_AUDIT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="pbsApplyId" >
+        PBS_APPLY_ID = #pbsApplyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditDate" >
+        AUDIT_DATE = #auditDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="auditOppinon" >
+        AUDIT_OPPINON = #auditOppinon:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditResult" >
+        AUDIT_RESULT = #auditResult:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="auditUser" >
+        AUDIT_USER = #auditUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1 = #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2 = #remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where AUDIT_ID = #auditId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsApplyAudit" >
+    update NT_PBS_APPLY_AUDIT
+    set PBS_APPLY_ID = #pbsApplyId:VARCHAR#,
+      AUDIT_DATE = #auditDate:TIMESTAMP#,
+      AUDIT_OPPINON = #auditOppinon:VARCHAR#,
+      AUDIT_RESULT = #auditResult:CHAR#,
+      AUDIT_USER = #auditUser:VARCHAR#,
+      REMARK1 = #remark1:VARCHAR#,
+      REMARK2 = #remark2:VARCHAR#
+    where AUDIT_ID = #auditId:VARCHAR#
+  </update>
+  
+  <select id="selNewAuditInfo" resultMap="BaseResultMap" parameterClass="java.lang.String">
+  	 select AUDIT_ID, PBS_APPLY_ID, AUDIT_DATE, AUDIT_OPPINON, AUDIT_RESULT, AUDIT_USER, us.name as REMARK1, 
+     REMARK2 from NT_pbs_APPLY_AUDIT au left join t_base_user_info us on au.AUDIT_USER = us.user_id
+     where PBS_APPLY_ID=#applyId# and rownum=1 order by AUDIT_DATE desc
+  </select>
+</sqlMap>

@@ -1,0 +1,31 @@
+html,body  {height: 100%}
+body {margin:0;padding:0;}
+#Tip {height: 32px;background: url(../../images/sys/gis/map_bg.png) repeat-x;}
+#TipPostion {float: right;margin-right: 30px;}
+.btnPos {float: left;font-size: 12px;padding-top: 10px;margin-right: 15px;cursor: pointer;position: relative;color: #094B7D;z-index: 10;}
+.map_serach,.map_mark {	background-image: url(../../images/sys/gis/map_icon.png);background-repeat: no-repeat;float: left;width: 16px;height: 16px;width: 16px;	margin-right: 5px}
+.map_serach {background-position: 0px 0px;}
+.map_mark {	background-position: 0px -34px;}
+#addEvent:hover,#serachEvent:hover {text-decoration:underline;color: red}
+.tool_s {position: absolute;z-index: 999;border: 1px solid #C3C3C2;	top: 28px;left: 0px;background: #fff;width: 100px;}
+#wrapperAll {width: 100%;position: relative;overflow: hidden;}
+#map {float:left;height:100%;}
+#mapInfo {	background: none repeat scroll 0 0 #FFFFFF;	border-left: 1px solid #CCCCCC;	width: 309px;	height: 100%;	position: absolute;	right: 0;	top: 0;	display: none;	z-index: 999;	overflow: scroll;}
+#Fold div {position: absolute;z-index: 1000}
+#Fold_v {background: url("../../images/sys/gis/shad_v.png") repeat-y scroll 0 0 transparent;font-size: 0;height: 100%;right: 0px;top: 0px;width: 4px;}
+#Fold_h {background: url("../../images/sys/gis/shad_h.png") repeat-x scroll 0 0 transparent;font-size: 0;height: 6px;left: 0;top: 0;width: 100%;}
+.expansion,.fold {width: 14px;height:49px;cursor:pointer;top:44%;right:0px;}
+.expansion {background:url(../../images/sys/gis/arrow_show.png) no-repeat 0 0;}
+.fold {background: url(../../images/sys/gis/arrow_show.png) no-repeat 0 -49px;}
+.serach-info {font-size:12px;margin:5px 0; padding: 5px 0px 10px 20px; -moz-transition:all .3s ease-in }
+.serach-info:hover {background: #F0F0F0}
+.serach-title {margin-bottom: 10px;cursor: pointer;}
+.serach-btn  a {display: inline-block; margin-right:20px; color: #3C6FCB;text-decoration: none;padding-left: 20px; margin-bottom: 10px;}
+.serach-btn  a:hover {text-decoration: underline;}
+.a-update {background: url(../../images/sys/gis/a-update.gif) no-repeat 0 ;}
+.a-del {background: url(../../images/sys/gis/a-del.gif) no-repeat 0 ;}
+.a-find {background: url(../../images/sys/gis/a-find.gif) no-repeat 0 ;}
+.a-diao {background: url(../../images/sys/gis/a-chou.gif) no-repeat 0 ;}
+.a-tiao {background: url(../../images/sys/gis/a-diao.gif) no-repeat 0 ;}
+.over-serach {margin-top: 20px; font-size:12px;font-weight: bold;text-align: right;padding-right: 20px;background:#9cd9f3;height: 30px; line-height: 30px;color: #4a4a4a}
+#output {top:10px;left:60px;position: absolute;font-size:12px;color:#9CB156}

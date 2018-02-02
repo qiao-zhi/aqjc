@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_PBS_TEST_RPT" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.pbs.PbsTestRpt" >
+    <result column="TEST_RPT_ID" property="testRptId" jdbcType="VARCHAR" />
+    <result column="RPT_CODE" property="rptCode" jdbcType="VARCHAR" />
+    <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
+    <result column="TEST_PERSON" property="testPerson" jdbcType="VARCHAR" />
+    <result column="TEST_DATE" property="testDate" jdbcType="TIMESTAMP" />
+    <result column="SAMPLE_NAME" property="sampleName" jdbcType="VARCHAR" />
+    <result column="TEST_ITEM" property="testItem" jdbcType="VARCHAR" />
+    <result column="TEST_STANDARDS" property="testStandards" jdbcType="VARCHAR" />
+    <result column="TEST_POS" property="testPos" jdbcType="VARCHAR" />
+    <result column="XNPJ" property="xnpj" jdbcType="VARCHAR" />
+    <result column="TEST_RESULT" property="testResult" jdbcType="VARCHAR" />
+    <result column="RPT_STATE" property="rptState" jdbcType="CHAR" />
+    <result column="PBS_STATE" property="pbsState" jdbcType="VARCHAR" />
+    <result column="DELEGATE_UNIT" property="delegateUnit" jdbcType="VARCHAR" />
+    <result column="SH_PERSON" property="shPerson" jdbcType="VARCHAR" />
+    <result column="SH_DATE" property="shDate" jdbcType="TIMESTAMP" />
+    <result column="PZ_PERSON" property="pzPerson" jdbcType="VARCHAR" />
+    <result column="PZ_DATE" property="pzDate" jdbcType="TIMESTAMP" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    TEST_RPT_ID, RPT_CODE, APPLY_ID, TEST_PERSON, TEST_DATE, SAMPLE_NAME, TEST_ITEM, 
+    TEST_STANDARDS, TEST_POS, XNPJ, TEST_RESULT, RPT_STATE, PBS_STATE, DELEGATE_UNIT, 
+    SH_PERSON, SH_DATE, PZ_PERSON, PZ_DATE, REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsTestRptExample" >
+    select
+    <isParameterPresent >
+      <isEqual property="distinct" compareValue="true" >
+        distinct
+      </isEqual>
+    </isParameterPresent>
+    <include refid="NT_PBS_TEST_RPT.Base_Column_List" />
+    from NT_PBS_TEST_RPT
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_RPT.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    select 
+    <include refid="NT_PBS_TEST_RPT.Base_Column_List" />
+    from NT_PBS_TEST_RPT
+    where TEST_RPT_ID = #testRptId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    delete from NT_PBS_TEST_RPT
+    where TEST_RPT_ID = #testRptId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.pbs.PbsTestRptExample" >
+    delete from NT_PBS_TEST_RPT
+    <include refid="NT_PBS_TEST_RPT.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    insert into NT_PBS_TEST_RPT (TEST_RPT_ID, RPT_CODE, APPLY_ID, TEST_PERSON, 
+      TEST_DATE, SAMPLE_NAME, TEST_ITEM, TEST_STANDARDS, 
+      TEST_POS, XNPJ, TEST_RESULT, RPT_STATE, PBS_STATE, 
+      DELEGATE_UNIT, SH_PERSON, SH_DATE, PZ_PERSON, 
+      PZ_DATE, REMARK)
+    values (#testRptId:VARCHAR#, #rptCode:VARCHAR#, #applyId:VARCHAR#, #testPerson:VARCHAR#, 
+      #testDate:TIMESTAMP#, #sampleName:VARCHAR#, #testItem:VARCHAR#, #testStandards:VARCHAR#, 
+      #testPos:VARCHAR#, #xnpj:VARCHAR#, #testResult:VARCHAR#, #rptState:CHAR#, #pbsState:VARCHAR#, 
+      #delegateUnit:VARCHAR#, #shPerson:VARCHAR#, #shDate:TIMESTAMP#, #pzPerson:VARCHAR#, 
+      #pzDate:TIMESTAMP#, #remark:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    insert into NT_PBS_TEST_RPT
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="testRptId" >
+        TEST_RPT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="rptCode" >
+        RPT_CODE
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="testPerson" >
+        TEST_PERSON
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        TEST_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        SAMPLE_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="testItem" >
+        TEST_ITEM
+      </isNotNull>
+      <isNotNull prepend="," property="testStandards" >
+        TEST_STANDARDS
+      </isNotNull>
+      <isNotNull prepend="," property="testPos" >
+        TEST_POS
+      </isNotNull>
+      <isNotNull prepend="," property="xnpj" >
+        XNPJ
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        TEST_RESULT
+      </isNotNull>
+      <isNotNull prepend="," property="rptState" >
+        RPT_STATE
+      </isNotNull>
+      <isNotNull prepend="," property="pbsState" >
+        PBS_STATE
+      </isNotNull>
+      <isNotNull prepend="," property="delegateUnit" >
+        DELEGATE_UNIT
+      </isNotNull>
+      <isNotNull prepend="," property="shPerson" >
+        SH_PERSON
+      </isNotNull>
+      <isNotNull prepend="," property="shDate" >
+        SH_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="pzPerson" >
+        PZ_PERSON
+      </isNotNull>
+      <isNotNull prepend="," property="pzDate" >
+        PZ_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="testRptId" >
+        #testRptId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="rptCode" >
+        #rptCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testPerson" >
+        #testPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        #testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        #sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testItem" >
+        #testItem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testStandards" >
+        #testStandards:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testPos" >
+        #testPos:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="xnpj" >
+        #xnpj:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        #testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="rptState" >
+        #rptState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsState" >
+        #pbsState:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="delegateUnit" >
+        #delegateUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="shPerson" >
+        #shPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="shDate" >
+        #shDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="pzPerson" >
+        #pzPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pzDate" >
+        #pzDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.pbs.PbsTestRptExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_PBS_TEST_RPT
+    <include refid="NT_PBS_TEST_RPT.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_PBS_TEST_RPT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.testRptId" >
+        TEST_RPT_ID = #record.testRptId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.rptCode" >
+        RPT_CODE = #record.rptCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyId" >
+        APPLY_ID = #record.applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testPerson" >
+        TEST_PERSON = #record.testPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testDate" >
+        TEST_DATE = #record.testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sampleName" >
+        SAMPLE_NAME = #record.sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testItem" >
+        TEST_ITEM = #record.testItem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testStandards" >
+        TEST_STANDARDS = #record.testStandards:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testPos" >
+        TEST_POS = #record.testPos:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.xnpj" >
+        XNPJ = #record.xnpj:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testResult" >
+        TEST_RESULT = #record.testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.rptState" >
+        RPT_STATE = #record.rptState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsState" >
+        PBS_STATE = #record.pbsState:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.delegateUnit" >
+        DELEGATE_UNIT = #record.delegateUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.shPerson" >
+        SH_PERSON = #record.shPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.shDate" >
+        SH_DATE = #record.shDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pzPerson" >
+        PZ_PERSON = #record.pzPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pzDate" >
+        PZ_DATE = #record.pzDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_RPT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_PBS_TEST_RPT
+    set TEST_RPT_ID = #record.testRptId:VARCHAR#,
+      RPT_CODE = #record.rptCode:VARCHAR#,
+      APPLY_ID = #record.applyId:VARCHAR#,
+      TEST_PERSON = #record.testPerson:VARCHAR#,
+      TEST_DATE = #record.testDate:TIMESTAMP#,
+      SAMPLE_NAME = #record.sampleName:VARCHAR#,
+      TEST_ITEM = #record.testItem:VARCHAR#,
+      TEST_STANDARDS = #record.testStandards:VARCHAR#,
+      TEST_POS = #record.testPos:VARCHAR#,
+      XNPJ = #record.xnpj:VARCHAR#,
+      TEST_RESULT = #record.testResult:VARCHAR#,
+      RPT_STATE = #record.rptState:CHAR#,
+      PBS_STATE = #record.pbsState:VARCHAR#,
+      DELEGATE_UNIT = #record.delegateUnit:VARCHAR#,
+      SH_PERSON = #record.shPerson:VARCHAR#,
+      SH_DATE = #record.shDate:TIMESTAMP#,
+      PZ_PERSON = #record.pzPerson:VARCHAR#,
+      PZ_DATE = #record.pzDate:TIMESTAMP#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_PBS_TEST_RPT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    update NT_PBS_TEST_RPT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="rptCode" >
+        RPT_CODE = #rptCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID = #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testPerson" >
+        TEST_PERSON = #testPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        TEST_DATE = #testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        SAMPLE_NAME = #sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testItem" >
+        TEST_ITEM = #testItem:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testStandards" >
+        TEST_STANDARDS = #testStandards:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testPos" >
+        TEST_POS = #testPos:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="xnpj" >
+        XNPJ = #xnpj:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        TEST_RESULT = #testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="rptState" >
+        RPT_STATE = #rptState:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsState" >
+        PBS_STATE = #pbsState:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="delegateUnit" >
+        DELEGATE_UNIT = #delegateUnit:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="shPerson" >
+        SH_PERSON = #shPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="shDate" >
+        SH_DATE = #shDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="pzPerson" >
+        PZ_PERSON = #pzPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pzDate" >
+        PZ_DATE = #pzDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where TEST_RPT_ID = #testRptId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsTestRpt" >
+    update NT_PBS_TEST_RPT
+    set RPT_CODE = #rptCode:VARCHAR#,
+      APPLY_ID = #applyId:VARCHAR#,
+      TEST_PERSON = #testPerson:VARCHAR#,
+      TEST_DATE = #testDate:TIMESTAMP#,
+      SAMPLE_NAME = #sampleName:VARCHAR#,
+      TEST_ITEM = #testItem:VARCHAR#,
+      TEST_STANDARDS = #testStandards:VARCHAR#,
+      TEST_POS = #testPos:VARCHAR#,
+      XNPJ = #xnpj:VARCHAR#,
+      TEST_RESULT = #testResult:VARCHAR#,
+      RPT_STATE = #rptState:CHAR#,
+      PBS_STATE = #pbsState:VARCHAR#,
+      DELEGATE_UNIT = #delegateUnit:VARCHAR#,
+      SH_PERSON = #shPerson:VARCHAR#,
+      SH_DATE = #shDate:TIMESTAMP#,
+      PZ_PERSON = #pzPerson:VARCHAR#,
+      PZ_DATE = #pzDate:TIMESTAMP#,
+      REMARK = #remark:VARCHAR#
+    where TEST_RPT_ID = #testRptId:VARCHAR#
+  </update>
+</sqlMap>

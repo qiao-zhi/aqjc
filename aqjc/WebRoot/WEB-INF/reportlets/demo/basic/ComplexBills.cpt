@@ -1,0 +1,1606 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20111025" releaseVersion="6.5.6">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [供电发票]A]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.poly.PolyWorkSheet" name="sheet1">
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting orientation="1">
+<PaperSize width="42768000" height="60480000"/>
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1562100,1181100,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="0">
+<O>
+<![CDATA[红联]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" cs="7" s="1">
+<O>
+<![CDATA[江川供电责任有限公司]]></O>
+<Expand/>
+</C>
+<C c="0" r="1" cs="9" s="2">
+<O>
+<![CDATA[线 路 第 一 种 工 作 票]]></O>
+<Expand/>
+</C>
+<C c="5" r="2" s="3">
+<O>
+<![CDATA[编号：]]></O>
+<Expand/>
+</C>
+<C c="6" r="2" cs="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="TICKET_CODE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block1" x="0" y="0" width="24726900" height="3505200"/>
+<PolyBlockAttr class="com.fr.report.poly.PolyBlockAttr">
+<PBAttr/>
+</PolyBlockAttr>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,723900,723900,457200,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2971800,2743200,3505200,1295400,1485900,914400,1905000,914400,1143000,914400,1143000,914400,1143000,914400,1143000,914400,723900,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="5">
+<Expand/>
+</C>
+<C c="1" r="0" s="6">
+<Expand/>
+</C>
+<C c="2" r="0" s="6">
+<Expand/>
+</C>
+<C c="3" r="0" s="7">
+<Expand/>
+</C>
+<C c="4" r="0" s="8">
+<Expand/>
+</C>
+<C c="5" r="0" s="6">
+<Expand/>
+</C>
+<C c="6" r="0" s="6">
+<Expand/>
+</C>
+<C c="7" r="0" s="6">
+<Expand/>
+</C>
+<C c="8" r="0" s="6">
+<Expand/>
+</C>
+<C c="9" r="0" s="6">
+<Expand/>
+</C>
+<C c="10" r="0" s="6">
+<Expand/>
+</C>
+<C c="11" r="0" s="6">
+<Expand/>
+</C>
+<C c="12" r="0" s="6">
+<Expand/>
+</C>
+<C c="13" r="0" s="6">
+<Expand/>
+</C>
+<C c="14" r="0" s="6">
+<Expand/>
+</C>
+<C c="15" r="0" s="6">
+<Expand/>
+</C>
+<C c="16" r="0" s="7">
+<Expand/>
+</C>
+<C c="0" r="1" s="9">
+<O>
+<![CDATA[工作负责人：]]></O>
+<Expand/>
+</C>
+<C c="1" r="1" cs="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_PRINCI"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" s="10">
+<Expand/>
+</C>
+<C c="4" r="1" rs="3" s="11">
+<O>
+<![CDATA[计划工作时间]]></O>
+<Expand/>
+</C>
+<C c="5" r="1" s="3">
+<O>
+<![CDATA[自]]></O>
+<Expand/>
+</C>
+<C c="6" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_BEGIN_YY"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="1">
+<O>
+<![CDATA[年]]></O>
+<Expand/>
+</C>
+<C c="8" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_BEGIN_MM"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="9" r="1">
+<O>
+<![CDATA[月]]></O>
+<Expand/>
+</C>
+<C c="10" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_BEGIN_DD"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="11" r="1">
+<O>
+<![CDATA[日]]></O>
+<Expand/>
+</C>
+<C c="12" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_BEGIN_HH"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="13" r="1">
+<O>
+<![CDATA[时]]></O>
+<Expand/>
+</C>
+<C c="14" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_BEGIN_MI"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="15" r="1">
+<O>
+<![CDATA[分]]></O>
+<Expand/>
+</C>
+<C c="16" r="1" s="10">
+<Expand/>
+</C>
+<C c="0" r="2" s="9">
+<Expand/>
+</C>
+<C c="1" r="2">
+<Expand/>
+</C>
+<C c="2" r="2">
+<Expand/>
+</C>
+<C c="3" r="2" s="10">
+<Expand/>
+</C>
+<C c="5" r="2" s="3">
+<Expand/>
+</C>
+<C c="6" r="2">
+<Expand/>
+</C>
+<C c="7" r="2">
+<Expand/>
+</C>
+<C c="16" r="2" s="10">
+<Expand/>
+</C>
+<C c="0" r="3" s="9">
+<O>
+<![CDATA[单位和班组：]]></O>
+<Expand/>
+</C>
+<C c="1" r="3" cs="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_DEPART"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="10">
+<Expand/>
+</C>
+<C c="5" r="3" s="3">
+<O>
+<![CDATA[至]]></O>
+<Expand/>
+</C>
+<C c="6" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_END_TIME_YY"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="3">
+<O>
+<![CDATA[年]]></O>
+<Expand/>
+</C>
+<C c="8" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_END_TIME_MM"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="9" r="3">
+<O>
+<![CDATA[月]]></O>
+<Expand/>
+</C>
+<C c="10" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_END_TIME_DD"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="11" r="3">
+<O>
+<![CDATA[日]]></O>
+<Expand/>
+</C>
+<C c="12" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_END_TIME_HH"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="13" r="3">
+<O>
+<![CDATA[时]]></O>
+<Expand/>
+</C>
+<C c="14" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="PLAN_END_TIME_MI"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="15" r="3">
+<O>
+<![CDATA[分]]></O>
+<Expand/>
+</C>
+<C c="16" r="3" s="10">
+<Expand/>
+</C>
+<C c="0" r="4" s="12">
+<Expand/>
+</C>
+<C c="1" r="4" s="4">
+<Expand/>
+</C>
+<C c="2" r="4" s="4">
+<Expand/>
+</C>
+<C c="3" r="4" s="13">
+<Expand/>
+</C>
+<C c="4" r="4" s="14">
+<Expand/>
+</C>
+<C c="5" r="4" s="4">
+<Expand/>
+</C>
+<C c="6" r="4" s="4">
+<Expand/>
+</C>
+<C c="7" r="4" s="4">
+<Expand/>
+</C>
+<C c="8" r="4" s="4">
+<Expand/>
+</C>
+<C c="9" r="4" s="4">
+<Expand/>
+</C>
+<C c="10" r="4" s="4">
+<Expand/>
+</C>
+<C c="11" r="4" s="4">
+<Expand/>
+</C>
+<C c="12" r="4" s="4">
+<Expand/>
+</C>
+<C c="13" r="4" s="4">
+<Expand/>
+</C>
+<C c="14" r="4" s="4">
+<Expand/>
+</C>
+<C c="15" r="4" s="4">
+<Expand/>
+</C>
+<C c="16" r="4" s="13">
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block2" x="0" y="3848100" width="24726900" height="3276600"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,2095500,723900,381000,723900,2095500,723900,2095500,723900,2095500,723900,1143000,723900,1143000,723900,1143000,3429000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3467100,16878300,1600200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="5">
+<O>
+<![CDATA[工作班人员：]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" s="6">
+<Expand/>
+</C>
+<C c="2" r="0" s="6">
+<Expand/>
+</C>
+<C c="3" r="0" s="7">
+<Expand/>
+</C>
+<C c="0" r="1" cs="4" s="15">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_MEMBER"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="2" s="9">
+<Expand/>
+</C>
+<C c="1" r="2" s="3">
+<O>
+<![CDATA[共]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_MEMBER_COUNT"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="2" s="10">
+<O>
+<![CDATA[人]]></O>
+<Expand/>
+</C>
+<C c="0" r="3" cs="4" s="14">
+<Expand/>
+</C>
+<C c="0" r="4" s="5">
+<O>
+<![CDATA[工作任务：]]></O>
+<Expand/>
+</C>
+<C c="1" r="4" s="6">
+<Expand/>
+</C>
+<C c="2" r="4" s="6">
+<Expand/>
+</C>
+<C c="3" r="4" s="7">
+<Expand/>
+</C>
+<C c="0" r="5" cs="4" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_TASK"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="6" s="5">
+<O>
+<![CDATA[停电线路名称：]]></O>
+<Expand/>
+</C>
+<C c="1" r="6" s="6">
+<Expand/>
+</C>
+<C c="2" r="6" s="6">
+<Expand/>
+</C>
+<C c="3" r="6" s="7">
+<Expand/>
+</C>
+<C c="0" r="7" cs="4" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_LINE_N"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="8" s="5">
+<O>
+<![CDATA[工作地段：]]></O>
+<Expand/>
+</C>
+<C c="1" r="8" s="6">
+<Expand/>
+</C>
+<C c="2" r="8" s="6">
+<Expand/>
+</C>
+<C c="3" r="8" s="7">
+<Expand/>
+</C>
+<C c="0" r="9" cs="4" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="WORK_PLACE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="10" rs="6" s="16">
+<O>
+<![CDATA[工作要求的安全措施]]></O>
+<Expand/>
+</C>
+<C c="1" r="10" cs="3" s="8">
+<O>
+<![CDATA[应断开(拉开)断路器和隔离开关：]]></O>
+<Expand/>
+</C>
+<C c="1" r="11" cs="3" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="SAFE_BREAKE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="12" cs="3" s="8">
+<O>
+<![CDATA[应合接地开关、装设接地线：]]></O>
+<Expand/>
+</C>
+<C c="1" r="13" cs="3" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="SAFE_GROUND"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="14" cs="3" s="8">
+<O>
+<![CDATA[应设遮拦、应挂标示牌：]]></O>
+<Expand/>
+</C>
+<C c="1" r="15" cs="3" s="14">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="SAFE_MARK"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="16" s="17">
+<O>
+<![CDATA[保留的带电线路或带电设备]]></O>
+<Expand/>
+</C>
+<C c="1" r="16" cs="3" s="18">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="RESAVE_LINE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block3" x="0" y="7124700" width="24726900" height="21450300"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[2324100,1143000,1181100,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3467100,4762500,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" rs="2" s="19">
+<O>
+<![CDATA[应装设的地线]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" s="17">
+<O>
+<![CDATA[线路名称及杆号]]></O>
+<Expand/>
+</C>
+<C c="2" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE1"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE2"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE3"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE4"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE5"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE6"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="1" rs="2" s="17">
+<O>
+<![CDATA[接地线编号]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE11"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE22"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE33"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE44"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE55"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="GROUND_LINE66"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="2" s="21">
+<O>
+<![CDATA[接附页]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block4" x="0" y="28536900" width="24726900" height="4686300"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[11010900,723900,304800,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,4953000,3810000,1524000,4953000,3810000,2895600,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="17">
+<O>
+<![CDATA[其他安全注意事项]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" cs="6" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="OTHER_SAFE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="0" r="1" rs="2" s="17">
+<O>
+<![CDATA[签发]]></O>
+<Expand/>
+</C>
+<C c="1" r="1" s="22">
+<O>
+<![CDATA[工作票签发人签名：]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="TICKET_SIGN"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1" s="7">
+<Expand/>
+</C>
+<C c="4" r="1" s="22">
+<O>
+<![CDATA[工作票会签人签名：]]></O>
+<Expand/>
+</C>
+<C c="5" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="TICKET_DOUB"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="1" s="7">
+<Expand/>
+</C>
+<C c="1" r="2" s="4">
+<Expand/>
+</C>
+<C c="2" r="2" s="4">
+<Expand/>
+</C>
+<C c="3" r="2" s="13">
+<Expand/>
+</C>
+<C c="4" r="2" s="4">
+<Expand/>
+</C>
+<C c="5" r="2" s="4">
+<Expand/>
+</C>
+<C c="6" r="2" s="13">
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block5" x="28803600" y="0" width="24726900" height="12077700"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[266700,723900,723900,266700,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,4419600,1905000,914400,1143000,914400,1143000,914400,1143000,914400,1143000,914400,2628900,3429000,419100,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" rs="4" s="17">
+<O>
+<![CDATA[工作延期]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" s="5">
+<Expand/>
+</C>
+<C c="2" r="0" s="6">
+<Expand/>
+</C>
+<C c="3" r="0" s="6">
+<Expand/>
+</C>
+<C c="4" r="0" s="6">
+<Expand/>
+</C>
+<C c="5" r="0" s="6">
+<Expand/>
+</C>
+<C c="6" r="0" s="6">
+<Expand/>
+</C>
+<C c="7" r="0" s="6">
+<Expand/>
+</C>
+<C c="8" r="0" s="6">
+<Expand/>
+</C>
+<C c="9" r="0" s="6">
+<Expand/>
+</C>
+<C c="10" r="0" s="6">
+<Expand/>
+</C>
+<C c="11" r="0" s="6">
+<Expand/>
+</C>
+<C c="12" r="0" s="6">
+<Expand/>
+</C>
+<C c="13" r="0" s="6">
+<Expand/>
+</C>
+<C c="14" r="0" s="7">
+<Expand/>
+</C>
+<C c="1" r="1" s="23">
+<O>
+<![CDATA[有效期延长到：]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PLAN_TIME_YY"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1">
+<O>
+<![CDATA[年]]></O>
+<Expand/>
+</C>
+<C c="4" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PLAN_TIME_MM"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1">
+<O>
+<![CDATA[月]]></O>
+<Expand/>
+</C>
+<C c="6" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PLAN_TIME_DD"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="1">
+<O>
+<![CDATA[日]]></O>
+<Expand/>
+</C>
+<C c="8" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PLAN_TIME_HH"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="9" r="1">
+<O>
+<![CDATA[时]]></O>
+<Expand/>
+</C>
+<C c="10" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PLAN_TIME_MI"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="11" r="1">
+<O>
+<![CDATA[分]]></O>
+<Expand/>
+</C>
+<C c="12" r="1" s="3">
+<O>
+<![CDATA[申请方式：]]></O>
+<Expand/>
+</C>
+<C c="13" r="1" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_APPLY"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="14" r="1" s="10">
+<Expand/>
+</C>
+<C c="1" r="2" s="23">
+<O>
+<![CDATA[工作负责人签名：]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" cs="8" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_PRINC"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="10" r="2" cs="3" s="3">
+<O>
+<![CDATA[工作许可人签名：]]></O>
+<Expand/>
+</C>
+<C c="13" r="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="DELAY_ASSEN"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="14" r="2" s="10">
+<Expand/>
+</C>
+<C c="1" r="3" s="12">
+<Expand/>
+</C>
+<C c="2" r="3" s="4">
+<Expand/>
+</C>
+<C c="3" r="3" s="4">
+<Expand/>
+</C>
+<C c="4" r="3" s="4">
+<Expand/>
+</C>
+<C c="5" r="3" s="4">
+<Expand/>
+</C>
+<C c="6" r="3" s="4">
+<Expand/>
+</C>
+<C c="7" r="3" s="4">
+<Expand/>
+</C>
+<C c="8" r="3" s="4">
+<Expand/>
+</C>
+<C c="9" r="3" s="4">
+<Expand/>
+</C>
+<C c="10" r="3" s="4">
+<Expand/>
+</C>
+<C c="11" r="3" s="4">
+<Expand/>
+</C>
+<C c="12" r="3" s="4">
+<Expand/>
+</C>
+<C c="13" r="3" s="4">
+<Expand/>
+</C>
+<C c="14" r="3" s="13">
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block7" x="28803600" y="13906500" width="24726900" height="2019300"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,419100,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,5029200,4648200,533400,1905000,914400,1143000,914400,1143000,914400,1143000,914400,1143000,914400,685800,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" rs="3" s="17">
+<O>
+<![CDATA[工作许可]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" s="17">
+<O>
+<![CDATA[许可的命令方式]]></O>
+<Expand/>
+</C>
+<C c="2" r="0" s="17">
+<O>
+<![CDATA[许可人]]></O>
+<Expand/>
+</C>
+<C c="3" r="0" cs="12" s="17">
+<O>
+<![CDATA[许可工作的时间]]></O>
+<Expand/>
+</C>
+<C c="1" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ORDER_TYPE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="2" r="1" rs="2" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="TICKET_ASSE"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="1">
+<Expand/>
+</C>
+<C c="4" r="1" s="24">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ASSENT_TIME_YY"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="1">
+<O>
+<![CDATA[年]]></O>
+<Expand/>
+</C>
+<C c="6" r="1" s="24">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ASSENT_TIME_MM"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="7" r="1">
+<O>
+<![CDATA[月]]></O>
+<Expand/>
+</C>
+<C c="8" r="1" s="24">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ASSENT_TIME_DD"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="9" r="1">
+<O>
+<![CDATA[日]]></O>
+<Expand/>
+</C>
+<C c="10" r="1" s="24">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ASSENT_TIME_HH"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="11" r="1">
+<O>
+<![CDATA[时]]></O>
+<Expand/>
+</C>
+<C c="12" r="1" s="24">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ASSENT_TIME_MI"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="13" r="1">
+<O>
+<![CDATA[分]]></O>
+<Expand/>
+</C>
+<C c="14" r="1" s="10">
+<Expand/>
+</C>
+<C c="3" r="2" s="4">
+<Expand/>
+</C>
+<C c="4" r="2" s="4">
+<Expand/>
+</C>
+<C c="5" r="2" s="4">
+<Expand/>
+</C>
+<C c="6" r="2" s="4">
+<Expand/>
+</C>
+<C c="7" r="2" s="4">
+<Expand/>
+</C>
+<C c="8" r="2" s="4">
+<Expand/>
+</C>
+<C c="9" r="2" s="4">
+<Expand/>
+</C>
+<C c="10" r="2" s="4">
+<Expand/>
+</C>
+<C c="11" r="2" s="4">
+<Expand/>
+</C>
+<C c="12" r="2" s="4">
+<Expand/>
+</C>
+<C c="13" r="2" s="4">
+<Expand/>
+</C>
+<C c="14" r="2" s="13">
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block8" x="28803600" y="12039600" width="24726900" height="1905000"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,2933700,800100,266700,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,5295900,3848100,1028700,5410200,5067300,1295400,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" rs="4" s="17">
+<O>
+<![CDATA[增加工作内容]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" cs="6" s="8">
+<O>
+<![CDATA[不需要变更安全措施下增加的工作项目：]]></O>
+<Expand/>
+</C>
+<C c="1" r="1" cs="6" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ADD_WORK_IT"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="2" s="23">
+<O>
+<![CDATA[工作负责人签名：]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ADD_WORK_PR"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="2">
+<Expand/>
+</C>
+<C c="4" r="2" s="3">
+<O>
+<![CDATA[工作许可人签名：]]></O>
+<Expand/>
+</C>
+<C c="5" r="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="ADD_WORK_AS"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="6" r="2" s="10">
+<Expand/>
+</C>
+<C c="1" r="3" s="12">
+<Expand/>
+</C>
+<C c="2" r="3" s="4">
+<Expand/>
+</C>
+<C c="3" r="3" s="4">
+<Expand/>
+</C>
+<C c="4" r="3" s="4">
+<Expand/>
+</C>
+<C c="5" r="3" s="4">
+<Expand/>
+</C>
+<C c="6" r="3" s="13">
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block9" x="28803600" y="15887700" width="24726900" height="4762500"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1676400,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,21945600,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" s="17">
+<O>
+<![CDATA[备注]]></O>
+<Expand/>
+</C>
+<C c="1" r="0" s="20">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="REMARK"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block19" x="28803600" y="20612100" width="24726900" height="1714500"/>
+</Block>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="黑体" style="1" size="96"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="黑体" style="1" size="112"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="80"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1" color="-16777216"/>
+<Left style="1"/>
+<Right style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="1"/>
+</Border>
+</Style>
+<Style imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1"/>
+<Bottom style="1"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

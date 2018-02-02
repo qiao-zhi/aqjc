@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DicSystemDictionary">
+	  <typeAlias alias="dictionary" type="com.tyust.bean.dic.DicSystemDictionary"/>
+	  
+	  <resultMap class="dictionary" id="dictionaryResult">
+	  <result property="dictionaryOptionId" column="DICTIONARY_OPTION_ID"/>
+	  <result property="dictionaryOptionName" column="DICTIONARY_OPTION_NAME"/>
+	  <result property="upDictionaryOptionId" column="UP_DICTIONARY_OPTION_ID"/>
+	  <result property="isUse" column="IS_USE"/>
+	  <result property="descriptions" column="DESCRIPTIONS"/>
+	  <result property="sortNo" column="SORT_NO"/> 
+	  <result property="flag" column="FLAG"/>
+	  <result property="englishName" column="ENGLISH_NAME"/>
+	  <result property="dataType" column="DATA_TYPE"/>
+	  <result property="matchDicId" column="MATCH_DIC_ID"/>
+	  </resultMap>
+	  
+	  <resultMap class="dictionary" id="itemsResult">
+	  <result property="dictionaryOptionId" column="DICTIONARY_OPTION_ID"/>
+	  <result property="dictionaryOptionName" column="DICTIONARY_OPTION_NAME"/>
+	  </resultMap>
+	  
+	  <select id="selectItemsByupid" parameterClass="string" resultMap="itemsResult">
+	     SELECT DICTIONARY_OPTION_ID,DICTIONARY_OPTION_NAME
+              FROM DIC_SYSTEM_DICTIONARY WHERE UP_DICTIONARY_OPTION_ID = #upDictionaryOptionId# AND FLAG = 0 ORDER BY SORT_NO,DICTIONARY_OPTION_ID
+	  </select>
+	  
+	  <select id="selectDicByid" parameterClass="string" resultMap="dictionaryResult">
+          SELECT DICTIONARY_OPTION_ID,DICTIONARY_OPTION_NAME,UP_DICTIONARY_OPTION_ID,IS_USE,DESCRIPTIONS,SORT_NO,FLAG,ENGLISH_NAME,DATA_TYPE,MATCH_DIC_ID
+              FROM DIC_SYSTEM_DICTIONARY WHERE DICTIONARY_OPTION_ID = #dictionaryOptionId# AND FLAG = 0    	  
+	  </select>
+	  
+	  <select id="selectDicByupid" parameterClass="java.util.HashMap" resultMap="dictionaryResult">
+	      SELECT d1.DICTIONARY_OPTION_ID,d1.DICTIONARY_OPTION_NAME,d1.UP_DICTIONARY_OPTION_ID,d1.IS_USE,
+	      		d1.DESCRIPTIONS,d1.SORT_NO,d1.FLAG,d1.ENGLISH_NAME,d1.DATA_TYPE,d2.DICTIONARY_OPTION_NAME as MATCH_DIC_ID
+          FROM DIC_SYSTEM_DICTIONARY d1 
+          left join DIC_SYSTEM_DICTIONARY d2 on(d1.UP_DICTIONARY_OPTION_ID = d2.DICTIONARY_OPTION_ID)
+          WHERE d1.remark2=#unitId# and d1.UP_DICTIONARY_OPTION_ID = #upDictionaryOptionId# AND d1.FLAG = 0 
+          ORDER BY d1.SORT_NO,d1.DICTIONARY_OPTION_ID
+	  </select>
+	  
+	  <insert id="insertDic" parameterClass="dictionary">
+	  INSERT INTO DIC_SYSTEM_DICTIONARY(DICTIONARY_OPTION_ID,DICTIONARY_OPTION_NAME,UP_DICTIONARY_OPTION_ID,IS_USE,DESCRIPTIONS,SORT_NO,FLAG,ENGLISH_NAME,DATA_TYPE,remark2)
+	   VALUES (#dictionaryOptionId#,#dictionaryOptionName#,#upDictionaryOptionId#,#isUse#,#descriptions#,#sortNo#,#flag#,#englishName#,#dataType#,#remark2#)
+	  </insert>
+	  
+	  <delete id="deleteDic" parameterClass="dictionary">
+	   UPDATE DIC_SYSTEM_DICTIONARY SET FLAG = -1 WHERE DICTIONARY_OPTION_ID = #dictionaryOptionId# OR UP_DICTIONARY_OPTION_ID LIKE #dictionaryOptionId#||'%'
+	  </delete>
+	  
+	  <select id="selectMaxidByUpid" parameterClass="string" resultClass="string">
+	  SELECT MAX(DICTIONARY_OPTION_ID) FROM DIC_SYSTEM_DICTIONARY WHERE UP_DICTIONARY_OPTION_ID = #upDictionaryOptionId#
+	  </select>
+	  
+	  <update id="updateDic" parameterClass="dictionary">
+	   UPDATE DIC_SYSTEM_DICTIONARY SET 
+	   DICTIONARY_OPTION_NAME = #dictionaryOptionName#,
+	   IS_USE = #isUse#,
+	   DESCRIPTIONS = #descriptions#,
+	   SORT_NO = #sortNo#,
+	   ENGLISH_NAME = #englishName#,
+	   DATA_TYPE = #dataType#
+	   WHERE DICTIONARY_OPTION_ID = #dictionaryOptionId#
+	  </update>
+	  
+	  <select id="selectNameByid" parameterClass="string" resultClass="string">
+	    SELECT DICTIONARY_OPTION_NAME FROM DIC_SYSTEM_DICTIONARY WHERE DICTIONARY_OPTION_ID = #dictionaryOptionId#
+	  </select>
+</sqlMap>
+  

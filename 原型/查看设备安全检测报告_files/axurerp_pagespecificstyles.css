@@ -1,0 +1,6151 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../查看设备安全检测报告_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:35px;
+    top:49px;
+    width:963px;
+    height:111px;
+}
+
+#u0_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:969px;
+    height:117px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:48px;
+    width:959px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../查看设备安全检测报告_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:139px;
+    top:82px;
+    width:554px;
+    height:48px;
+}
+
+#u2_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:554px;
+    height:48px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:16px;
+    width:550px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../查看设备安全检测报告_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:89px;
+    top:82px;
+    width:50px;
+    height:45px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:50px;
+    height:45px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:14px;
+    width:46px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6 {
+    position:absolute;
+    left:720px;
+    top:131px;
+    width:120px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7 {
+    position:absolute;
+    left:850px;
+    top:131px;
+    width:60px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8 {
+    position:absolute;
+    left:920px;
+    top:131px;
+    width:60px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u9 {
+    position:absolute;
+    left:35px;
+    top:170px;
+    width:327px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../查看设备安全检测报告_files/u10_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:35px;
+    top:208px;
+    width:963px;
+    height:62px;
+}
+
+#u10_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:969px;
+    height:68px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:20px;
+    width:959px;
+    height:21px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12 {
+    position:absolute;
+    left:770px;
+    top:895px;
+    width:100px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#u13 {
+    position:absolute;
+    left:15px;
+    top:265px;
+    width:1003px;
+    height:731px;
+    overflow:hidden;
+}
+
+#pd5u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u14_normal {
+    background-image: url('../查看设备安全检测报告_files/u14_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:960px;
+    height:372px;
+}
+
+#u14_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:966px;
+    height:378px;
+}
+
+.u15 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:956px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:40px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u16_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18 {
+    position:absolute;
+    left:856px;
+    top:8px;
+    width:120px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u19_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u19_container {
+    position:absolute;
+    left:145px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u19_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u20 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:260px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u21_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:375px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../查看设备安全检测报告_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:485px;
+    top:7px;
+    width:150px;
+    height:30px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_normal {
+    background-image: url('../查看设备安全检测报告_files/u27_normal.png');
+}
+
+.u27_container {
+    position:absolute;
+    left:645px;
+    top:8px;
+    width:115px;
+    height:30px;
+}
+
+#u27_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u28 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u29 {
+    position:absolute;
+    left:65px;
+    top:60px;
+    width:160px;
+    height:40px
+}
+
+.u30_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u30_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u30_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u31 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u32_normal {
+    background-image: url('../查看设备安全检测报告_files/u32_normal.png');
+}
+
+.u32_container {
+    position:absolute;
+    left:65px;
+    top:130px;
+    width:815px;
+    height:220px;
+}
+
+#u32_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:821px;
+    height:226px;
+}
+
+.u33 {
+    position:absolute;
+    left:2px;
+    top:102px;
+    width:811px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u34_normal {
+    background-image: url('../查看设备安全检测报告_files/u34_normal.png');
+}
+
+.u34_container {
+    position:absolute;
+    left:82px;
+    top:120px;
+    width:78px;
+    height:20px;
+}
+
+#u34_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:84px;
+    height:26px;
+}
+
+.u35 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:74px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u36_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u36_container {
+    position:absolute;
+    left:81px;
+    top:150px;
+    width:218px;
+    height:182px;
+}
+
+#u36_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u37 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u38_container {
+    position:absolute;
+    left:90px;
+    top:159px;
+    width:165px;
+    height:130px;
+}
+
+#u38_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u39 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u40 {
+    position:absolute;
+    left:90px;
+    top:275px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u40 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u41_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u41_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u41_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u42 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u43_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u43_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u43_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u44 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u45_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u45_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u45_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u46 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u47_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u47_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u47_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u48 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u49 {
+    position:absolute;
+    left:148px;
+    top:316px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u50_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u50_container {
+    position:absolute;
+    left:342px;
+    top:149px;
+    width:218px;
+    height:182px;
+}
+
+#u50_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u51 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u52_container {
+    position:absolute;
+    left:351px;
+    top:158px;
+    width:165px;
+    height:130px;
+}
+
+#u52_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u53 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u54 {
+    position:absolute;
+    left:351px;
+    top:274px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u54 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u55_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u55_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u55_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u56 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u57_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u57_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u57_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u58 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u59_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u59_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u59_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u60 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u61_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u61_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u61_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u62 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u63 {
+    position:absolute;
+    left:409px;
+    top:315px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u64_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u64_container {
+    position:absolute;
+    left:612px;
+    top:149px;
+    width:218px;
+    height:182px;
+}
+
+#u64_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u65 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u66_container {
+    position:absolute;
+    left:621px;
+    top:158px;
+    width:165px;
+    height:130px;
+}
+
+#u66_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u67 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u68 {
+    position:absolute;
+    left:621px;
+    top:274px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u68 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u69_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u69_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u69_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u70 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u71_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u71_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u71_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u72 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u73_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u73_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u73_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u74 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u75_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u75_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u75_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u76 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u77 {
+    position:absolute;
+    left:679px;
+    top:315px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#pd4u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u78_normal {
+    background-image: url('../查看设备安全检测报告_files/u78_normal.png');
+}
+
+.u78_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:970px;
+    height:372px;
+}
+
+#u78_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:378px;
+}
+
+.u79 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:966px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u80_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u80_container {
+    position:absolute;
+    left:40px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u80_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u81 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u82_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u82_container {
+    position:absolute;
+    left:145px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u82_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u83 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u84_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u84_container {
+    position:absolute;
+    left:260px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u84_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u85 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u86_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u86_container {
+    position:absolute;
+    left:375px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u86_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u87 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u88_normal {
+    background-image: url('../查看设备安全检测报告_files/u88_normal.png');
+}
+
+.u88_container {
+    position:absolute;
+    left:485px;
+    top:8px;
+    width:150px;
+    height:30px;
+}
+
+#u88_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u89 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u90_normal {
+    background-image: url('../查看设备安全检测报告_files/u90_normal.png');
+}
+
+.u90_container {
+    position:absolute;
+    left:645px;
+    top:7px;
+    width:115px;
+    height:30px;
+}
+
+#u90_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u91 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u92 {
+    position:absolute;
+    left:65px;
+    top:60px;
+    width:160px;
+    height:40px
+}
+
+.u93_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u93_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u93_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u94 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u95_normal {
+    background-image: url('../查看设备安全检测报告_files/u32_normal.png');
+}
+
+.u95_container {
+    position:absolute;
+    left:65px;
+    top:130px;
+    width:815px;
+    height:220px;
+}
+
+#u95_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:821px;
+    height:226px;
+}
+
+.u96 {
+    position:absolute;
+    left:2px;
+    top:102px;
+    width:811px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u97_normal {
+    background-image: url('../查看设备安全检测报告_files/u34_normal.png');
+}
+
+.u97_container {
+    position:absolute;
+    left:82px;
+    top:120px;
+    width:78px;
+    height:20px;
+}
+
+#u97_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:84px;
+    height:26px;
+}
+
+.u98 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:74px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u99_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u99_container {
+    position:absolute;
+    left:81px;
+    top:150px;
+    width:218px;
+    height:182px;
+}
+
+#u99_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u100 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u101_container {
+    position:absolute;
+    left:90px;
+    top:159px;
+    width:165px;
+    height:130px;
+}
+
+#u101_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u102 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u103 {
+    position:absolute;
+    left:90px;
+    top:275px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u103 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u104_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u104_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u104_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u105 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u106_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u106_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u106_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u107 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u108_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u108_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u108_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u109 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u110_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u110_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u110_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u111 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u112 {
+    position:absolute;
+    left:148px;
+    top:316px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u113_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u113_container {
+    position:absolute;
+    left:342px;
+    top:149px;
+    width:218px;
+    height:182px;
+}
+
+#u113_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u114 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u115_container {
+    position:absolute;
+    left:351px;
+    top:158px;
+    width:165px;
+    height:130px;
+}
+
+#u115_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u116 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u117 {
+    position:absolute;
+    left:351px;
+    top:274px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u117 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u118_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u118_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u118_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u119 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u120_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u120_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u120_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u121 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u122_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u122_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u122_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u123 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u124_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u124_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u124_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u125 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u126 {
+    position:absolute;
+    left:409px;
+    top:315px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u127_normal {
+    background-image: url('../查看设备安全检测报告_files/u36_normal.png');
+}
+
+.u127_container {
+    position:absolute;
+    left:612px;
+    top:149px;
+    width:218px;
+    height:182px;
+}
+
+#u127_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:224px;
+    height:188px;
+}
+
+.u128 {
+    position:absolute;
+    left:2px;
+    top:83px;
+    width:214px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u129_container {
+    position:absolute;
+    left:621px;
+    top:158px;
+    width:165px;
+    height:130px;
+}
+
+#u129_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:165px;
+    height:130px;
+}
+
+.u130 {
+    position:absolute;
+    left:2px;
+    top:57px;
+    width:161px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u131 {
+    position:absolute;
+    left:621px;
+    top:274px;
+    width:201px;
+    height:41px;
+    overflow:hidden;
+}
+
+#pd0u131 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:201px;
+    height:41px;
+    
+}
+
+.u132_normal {
+    background-image: url('../查看设备安全检测报告_files/u41_normal.png');
+}
+
+.u132_container {
+    position:absolute;
+    left:2px;
+    top:3px;
+    width:180px;
+    height:37px;
+}
+
+#u132_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:186px;
+    height:43px;
+}
+
+.u133 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:176px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u134_normal {
+    background-image: url('../查看设备安全检测报告_files/u43_normal.png');
+}
+
+.u134_container {
+    position:absolute;
+    left:5px;
+    top:8px;
+    width:27px;
+    height:25px;
+}
+
+#u134_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:27px;
+    height:25px;
+}
+
+.u135 {
+    position:absolute;
+    left:2px;
+    top:4px;
+    width:23px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u136_normal {
+    background-image: url('../查看设备安全检测报告_files/u45_normal.png');
+}
+
+.u136_container {
+    position:absolute;
+    left:59px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u136_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u137 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u138_normal {
+    background-image: url('../查看设备安全检测报告_files/u47_normal.png');
+}
+
+.u138_container {
+    position:absolute;
+    left:115px;
+    top:6px;
+    width:28px;
+    height:28px;
+}
+
+#u138_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:28px;
+    height:28px;
+}
+
+.u139 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:24px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u140 {
+    position:absolute;
+    left:679px;
+    top:315px;
+    width:50px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u141 {
+    position:absolute;
+    left:871px;
+    top:8px;
+    width:105px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#pd3u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u142_normal {
+    background-image: url('../查看设备安全检测报告_files/u78_normal.png');
+}
+
+.u142_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:970px;
+    height:372px;
+}
+
+#u142_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:378px;
+}
+
+.u143 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:966px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u144_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u144_container {
+    position:absolute;
+    left:40px;
+    top:8px;
+    width:90px;
+    height:30px;
+}
+
+#u144_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u145 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u146_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u146_container {
+    position:absolute;
+    left:145px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u146_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u147 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u148_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u148_container {
+    position:absolute;
+    left:260px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u148_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u149 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u150_normal {
+    background-image: url('../查看设备安全检测报告_files/u150_normal.png');
+}
+
+.u150_container {
+    position:absolute;
+    left:375px;
+    top:8px;
+    width:90px;
+    height:30px;
+}
+
+#u150_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u151 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u152_normal {
+    background-image: url('../查看设备安全检测报告_files/u25_normal.png');
+}
+
+.u152_container {
+    position:absolute;
+    left:485px;
+    top:7px;
+    width:150px;
+    height:30px;
+}
+
+#u152_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u153 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u154_normal {
+    background-image: url('../查看设备安全检测报告_files/u90_normal.png');
+}
+
+.u154_container {
+    position:absolute;
+    left:645px;
+    top:7px;
+    width:115px;
+    height:30px;
+}
+
+#u154_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u155 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u156 {
+    position:absolute;
+    left:50px;
+    top:65px;
+    width:855px;
+    height:40px
+}
+
+.u157_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u157_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u157_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u158 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u159_normal {
+    background-image: url('../查看设备安全检测报告_files/u159_normal.png');
+}
+
+.u159_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:166px;
+    height:35px;
+}
+
+#u159_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:172px;
+    height:41px;
+}
+
+.u160 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:162px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u161_normal {
+    background-image: url('../查看设备安全检测报告_files/u161_normal.png');
+}
+
+.u161_container {
+    position:absolute;
+    left:321px;
+    top:0px;
+    width:140px;
+    height:35px;
+}
+
+#u161_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:146px;
+    height:41px;
+}
+
+.u162 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:136px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u163_normal {
+    background-image: url('../查看设备安全检测报告_files/u163_normal.png');
+}
+
+.u163_container {
+    position:absolute;
+    left:461px;
+    top:0px;
+    width:389px;
+    height:35px;
+}
+
+#u163_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:395px;
+    height:41px;
+}
+
+.u164 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:385px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u165 {
+    position:absolute;
+    left:50px;
+    top:100px;
+    width:855px;
+    height:40px
+}
+
+.u166_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u166_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u166_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u167 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u168_normal {
+    background-image: url('../查看设备安全检测报告_files/u159_normal.png');
+}
+
+.u168_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:166px;
+    height:35px;
+}
+
+#u168_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:172px;
+    height:41px;
+}
+
+.u169 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:162px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u170_normal {
+    background-image: url('../查看设备安全检测报告_files/u161_normal.png');
+}
+
+.u170_container {
+    position:absolute;
+    left:321px;
+    top:0px;
+    width:140px;
+    height:35px;
+}
+
+#u170_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:146px;
+    height:41px;
+}
+
+.u171 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:136px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u172_normal {
+    background-image: url('../查看设备安全检测报告_files/u163_normal.png');
+}
+
+.u172_container {
+    position:absolute;
+    left:461px;
+    top:0px;
+    width:389px;
+    height:35px;
+}
+
+#u172_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:395px;
+    height:41px;
+}
+
+.u173 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:385px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u174_normal {
+    background-image: url('../查看设备安全检测报告_files/u174_normal.png');
+}
+
+.u174_container {
+    position:absolute;
+    left:50px;
+    top:149px;
+    width:850px;
+    height:255px;
+}
+
+#u174_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:856px;
+    height:261px;
+}
+
+.u175 {
+    position:absolute;
+    left:2px;
+    top:120px;
+    width:846px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u176 {
+    position:absolute;
+    left:61px;
+    top:174px;
+    width:838px;
+    height:145px
+}
+
+.u177_normal {
+    background-image: url('../查看设备安全检测报告_files/u177_normal.png');
+}
+
+.u177_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:74px;
+    height:35px;
+}
+
+#u177_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u178 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u179_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u179_container {
+    position:absolute;
+    left:74px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u179_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u180 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u181_normal {
+    background-image: url('../查看设备安全检测报告_files/u181_normal.png');
+}
+
+.u181_container {
+    position:absolute;
+    left:229px;
+    top:0px;
+    width:343px;
+    height:35px;
+}
+
+#u181_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u182 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u183_normal {
+    background-image: url('../查看设备安全检测报告_files/u183_normal.png');
+}
+
+.u183_container {
+    position:absolute;
+    left:572px;
+    top:0px;
+    width:261px;
+    height:35px;
+}
+
+#u183_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u184 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u185_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u185_container {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:74px;
+    height:35px;
+}
+
+#u185_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u186 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u187_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u187_container {
+    position:absolute;
+    left:74px;
+    top:35px;
+    width:155px;
+    height:35px;
+}
+
+#u187_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u188 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u189_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u189_container {
+    position:absolute;
+    left:229px;
+    top:35px;
+    width:343px;
+    height:35px;
+}
+
+#u189_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u190 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u191_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u191_container {
+    position:absolute;
+    left:572px;
+    top:35px;
+    width:261px;
+    height:35px;
+}
+
+#u191_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u192 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u193_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u193_container {
+    position:absolute;
+    left:0px;
+    top:70px;
+    width:74px;
+    height:35px;
+}
+
+#u193_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u194 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u195_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u195_container {
+    position:absolute;
+    left:74px;
+    top:70px;
+    width:155px;
+    height:35px;
+}
+
+#u195_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u196 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u197_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u197_container {
+    position:absolute;
+    left:229px;
+    top:70px;
+    width:343px;
+    height:35px;
+}
+
+#u197_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u198 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u199_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u199_container {
+    position:absolute;
+    left:572px;
+    top:70px;
+    width:261px;
+    height:35px;
+}
+
+#u199_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u200 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u201_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u201_container {
+    position:absolute;
+    left:0px;
+    top:105px;
+    width:74px;
+    height:35px;
+}
+
+#u201_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u202 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u203_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u203_container {
+    position:absolute;
+    left:74px;
+    top:105px;
+    width:155px;
+    height:35px;
+}
+
+#u203_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u204 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u205_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u205_container {
+    position:absolute;
+    left:229px;
+    top:105px;
+    width:343px;
+    height:35px;
+}
+
+#u205_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u206 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u207_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u207_container {
+    position:absolute;
+    left:572px;
+    top:105px;
+    width:261px;
+    height:35px;
+}
+
+#u207_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u208 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u209_normal {
+    background-image: url('../查看设备安全检测报告_files/u209_normal.png');
+}
+
+.u209_container {
+    position:absolute;
+    left:73px;
+    top:139px;
+    width:60px;
+    height:20px;
+}
+
+#u209_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:66px;
+    height:26px;
+}
+
+.u210 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:56px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u211 {
+    position:absolute;
+    left:872px;
+    top:8px;
+    width:104px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#pd2u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u212_normal {
+    background-image: url('../查看设备安全检测报告_files/u78_normal.png');
+}
+
+.u212_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:970px;
+    height:372px;
+}
+
+#u212_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:378px;
+}
+
+.u213 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:966px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u214_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u214_container {
+    position:absolute;
+    left:40px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u214_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u215 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u216_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u216_container {
+    position:absolute;
+    left:145px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u216_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u217 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u218_normal {
+    background-image: url('../查看设备安全检测报告_files/u218_normal.png');
+}
+
+.u218_container {
+    position:absolute;
+    left:260px;
+    top:8px;
+    width:100px;
+    height:30px;
+}
+
+#u218_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u219 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u220_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u220_container {
+    position:absolute;
+    left:375px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u220_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u221 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u222_normal {
+    background-image: url('../查看设备安全检测报告_files/u25_normal.png');
+}
+
+.u222_container {
+    position:absolute;
+    left:485px;
+    top:7px;
+    width:150px;
+    height:30px;
+}
+
+#u222_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u223 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u224_normal {
+    background-image: url('../查看设备安全检测报告_files/u90_normal.png');
+}
+
+.u224_container {
+    position:absolute;
+    left:645px;
+    top:7px;
+    width:115px;
+    height:30px;
+}
+
+#u224_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u225 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u226 {
+    position:absolute;
+    left:87px;
+    top:91px;
+    width:865px;
+    height:145px
+}
+
+.u227_normal {
+    background-image: url('../查看设备安全检测报告_files/u177_normal.png');
+}
+
+.u227_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:74px;
+    height:35px;
+}
+
+#u227_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u228 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u229_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u229_container {
+    position:absolute;
+    left:74px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u229_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u230 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u231_normal {
+    background-image: url('../查看设备安全检测报告_files/u231_normal.png');
+}
+
+.u231_container {
+    position:absolute;
+    left:229px;
+    top:0px;
+    width:247px;
+    height:35px;
+}
+
+#u231_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:253px;
+    height:41px;
+}
+
+.u232 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:243px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u233_normal {
+    background-image: url('../查看设备安全检测报告_files/u233_normal.png');
+}
+
+.u233_container {
+    position:absolute;
+    left:476px;
+    top:0px;
+    width:176px;
+    height:35px;
+}
+
+#u233_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:182px;
+    height:41px;
+}
+
+.u234 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:172px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u235_normal {
+    background-image: url('../查看设备安全检测报告_files/u235_normal.png');
+}
+
+.u235_container {
+    position:absolute;
+    left:652px;
+    top:0px;
+    width:208px;
+    height:35px;
+}
+
+#u235_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:214px;
+    height:41px;
+}
+
+.u236 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:204px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u237_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u237_container {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:74px;
+    height:35px;
+}
+
+#u237_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u238 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u239_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u239_container {
+    position:absolute;
+    left:74px;
+    top:35px;
+    width:155px;
+    height:35px;
+}
+
+#u239_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u240 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u241_normal {
+    background-image: url('../查看设备安全检测报告_files/u241_normal.png');
+}
+
+.u241_container {
+    position:absolute;
+    left:229px;
+    top:35px;
+    width:247px;
+    height:35px;
+}
+
+#u241_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:253px;
+    height:41px;
+}
+
+.u242 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:243px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u243_normal {
+    background-image: url('../查看设备安全检测报告_files/u243_normal.png');
+}
+
+.u243_container {
+    position:absolute;
+    left:476px;
+    top:35px;
+    width:176px;
+    height:35px;
+}
+
+#u243_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:182px;
+    height:41px;
+}
+
+.u244 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:172px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u245_normal {
+    background-image: url('../查看设备安全检测报告_files/u245_normal.png');
+}
+
+.u245_container {
+    position:absolute;
+    left:652px;
+    top:35px;
+    width:208px;
+    height:35px;
+}
+
+#u245_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:214px;
+    height:41px;
+}
+
+.u246 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:204px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u247_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u247_container {
+    position:absolute;
+    left:0px;
+    top:70px;
+    width:74px;
+    height:35px;
+}
+
+#u247_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u248 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u249_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u249_container {
+    position:absolute;
+    left:74px;
+    top:70px;
+    width:155px;
+    height:35px;
+}
+
+#u249_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u250 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u251_normal {
+    background-image: url('../查看设备安全检测报告_files/u241_normal.png');
+}
+
+.u251_container {
+    position:absolute;
+    left:229px;
+    top:70px;
+    width:247px;
+    height:35px;
+}
+
+#u251_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:253px;
+    height:41px;
+}
+
+.u252 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:243px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u253_normal {
+    background-image: url('../查看设备安全检测报告_files/u243_normal.png');
+}
+
+.u253_container {
+    position:absolute;
+    left:476px;
+    top:70px;
+    width:176px;
+    height:35px;
+}
+
+#u253_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:182px;
+    height:41px;
+}
+
+.u254 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:172px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u255_normal {
+    background-image: url('../查看设备安全检测报告_files/u245_normal.png');
+}
+
+.u255_container {
+    position:absolute;
+    left:652px;
+    top:70px;
+    width:208px;
+    height:35px;
+}
+
+#u255_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:214px;
+    height:41px;
+}
+
+.u256 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:204px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u257_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u257_container {
+    position:absolute;
+    left:0px;
+    top:105px;
+    width:74px;
+    height:35px;
+}
+
+#u257_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u258 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u259_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u259_container {
+    position:absolute;
+    left:74px;
+    top:105px;
+    width:155px;
+    height:35px;
+}
+
+#u259_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u260 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u261_normal {
+    background-image: url('../查看设备安全检测报告_files/u241_normal.png');
+}
+
+.u261_container {
+    position:absolute;
+    left:229px;
+    top:105px;
+    width:247px;
+    height:35px;
+}
+
+#u261_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:253px;
+    height:41px;
+}
+
+.u262 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:243px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u263_normal {
+    background-image: url('../查看设备安全检测报告_files/u243_normal.png');
+}
+
+.u263_container {
+    position:absolute;
+    left:476px;
+    top:105px;
+    width:176px;
+    height:35px;
+}
+
+#u263_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:182px;
+    height:41px;
+}
+
+.u264 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:172px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u265_normal {
+    background-image: url('../查看设备安全检测报告_files/u245_normal.png');
+}
+
+.u265_container {
+    position:absolute;
+    left:652px;
+    top:105px;
+    width:208px;
+    height:35px;
+}
+
+#u265_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:214px;
+    height:41px;
+}
+
+.u266 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:204px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u267 {
+    position:absolute;
+    left:87px;
+    top:241px;
+    width:323px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u268 {
+    position:absolute;
+    left:865px;
+    top:8px;
+    width:111px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#pd1u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u269_normal {
+    background-image: url('../查看设备安全检测报告_files/u78_normal.png');
+}
+
+.u269_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:970px;
+    height:372px;
+}
+
+#u269_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:378px;
+}
+
+.u270 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:966px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u271_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u271_container {
+    position:absolute;
+    left:40px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u271_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u272 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u273_normal {
+    background-image: url('../查看设备安全检测报告_files/u273_normal.png');
+}
+
+.u273_container {
+    position:absolute;
+    left:145px;
+    top:8px;
+    width:100px;
+    height:30px;
+}
+
+#u273_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u274 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u275_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u275_container {
+    position:absolute;
+    left:260px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u275_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u276 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u277_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u277_container {
+    position:absolute;
+    left:375px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u277_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u278 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u279_normal {
+    background-image: url('../查看设备安全检测报告_files/u25_normal.png');
+}
+
+.u279_container {
+    position:absolute;
+    left:485px;
+    top:7px;
+    width:150px;
+    height:30px;
+}
+
+#u279_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u280 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u281_normal {
+    background-image: url('../查看设备安全检测报告_files/u90_normal.png');
+}
+
+.u281_container {
+    position:absolute;
+    left:645px;
+    top:7px;
+    width:115px;
+    height:30px;
+}
+
+#u281_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u282 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u283 {
+    position:absolute;
+    left:50px;
+    top:65px;
+    width:855px;
+    height:40px
+}
+
+.u284_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u284_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u284_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u285 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u286_normal {
+    background-image: url('../查看设备安全检测报告_files/u286_normal.png');
+}
+
+.u286_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:695px;
+    height:35px;
+}
+
+#u286_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:701px;
+    height:41px;
+}
+
+.u287 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:691px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u288 {
+    position:absolute;
+    left:210px;
+    top:70px;
+    width:680px;
+    height:25px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#u289 {
+    position:absolute;
+    left:50px;
+    top:100px;
+    width:855px;
+    height:295px
+}
+
+.u290_normal {
+    background-image: url('../查看设备安全检测报告_files/u290_normal.png');
+}
+
+.u290_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:290px;
+}
+
+#u290_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:296px;
+}
+
+.u291 {
+    position:absolute;
+    left:2px;
+    top:137px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u292_normal {
+    background-image: url('../查看设备安全检测报告_files/u292_normal.png');
+}
+
+.u292_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:695px;
+    height:290px;
+}
+
+#u292_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:701px;
+    height:296px;
+}
+
+.u293 {
+    position:absolute;
+    left:2px;
+    top:137px;
+    width:691px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u294 {
+    position:absolute;
+    left:210px;
+    top:110px;
+    width:680px;
+    height:270px;
+    ;
+    ;
+    text-align: left;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+.u295 {
+    position:absolute;
+    left:875px;
+    top:8px;
+    width:101px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+
+#pd0u13 {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:1003px;
+    height:731px;
+    
+}
+
+.u296_normal {
+    background-image: url('../查看设备安全检测报告_files/u78_normal.png');
+}
+
+.u296_container {
+    position:absolute;
+    left:20px;
+    top:38px;
+    width:970px;
+    height:372px;
+}
+
+#u296_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:976px;
+    height:378px;
+}
+
+.u297 {
+    position:absolute;
+    left:2px;
+    top:178px;
+    width:966px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u298_normal {
+    background-image: url('../查看设备安全检测报告_files/u298_normal.png');
+}
+
+.u298_container {
+    position:absolute;
+    left:40px;
+    top:8px;
+    width:90px;
+    height:30px;
+}
+
+#u298_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u299 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u300_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u300_container {
+    position:absolute;
+    left:145px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u300_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u301 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u302_normal {
+    background-image: url('../查看设备安全检测报告_files/u19_normal.png');
+}
+
+.u302_container {
+    position:absolute;
+    left:260px;
+    top:7px;
+    width:100px;
+    height:30px;
+}
+
+#u302_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:106px;
+    height:36px;
+}
+
+.u303 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:96px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u304_normal {
+    background-image: url('../查看设备安全检测报告_files/u16_normal.png');
+}
+
+.u304_container {
+    position:absolute;
+    left:375px;
+    top:7px;
+    width:90px;
+    height:30px;
+}
+
+#u304_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:96px;
+    height:36px;
+}
+
+.u305 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:86px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u306_normal {
+    background-image: url('../查看设备安全检测报告_files/u25_normal.png');
+}
+
+.u306_container {
+    position:absolute;
+    left:485px;
+    top:7px;
+    width:150px;
+    height:30px;
+}
+
+#u306_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:156px;
+    height:36px;
+}
+
+.u307 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:146px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u308_normal {
+    background-image: url('../查看设备安全检测报告_files/u90_normal.png');
+}
+
+.u308_container {
+    position:absolute;
+    left:645px;
+    top:7px;
+    width:115px;
+    height:30px;
+}
+
+#u308_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:121px;
+    height:36px;
+}
+
+.u309 {
+    position:absolute;
+    left:2px;
+    top:8px;
+    width:111px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u310 {
+    position:absolute;
+    left:50px;
+    top:65px;
+    width:855px;
+    height:40px
+}
+
+.u311_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u311_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u311_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u312 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u313_normal {
+    background-image: url('../查看设备安全检测报告_files/u159_normal.png');
+}
+
+.u313_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:166px;
+    height:35px;
+}
+
+#u313_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:172px;
+    height:41px;
+}
+
+.u314 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:162px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u315_normal {
+    background-image: url('../查看设备安全检测报告_files/u161_normal.png');
+}
+
+.u315_container {
+    position:absolute;
+    left:321px;
+    top:0px;
+    width:140px;
+    height:35px;
+}
+
+#u315_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:146px;
+    height:41px;
+}
+
+.u316 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:136px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u317_normal {
+    background-image: url('../查看设备安全检测报告_files/u163_normal.png');
+}
+
+.u317_container {
+    position:absolute;
+    left:461px;
+    top:0px;
+    width:389px;
+    height:35px;
+}
+
+#u317_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:395px;
+    height:41px;
+}
+
+.u318 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:385px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u319 {
+    position:absolute;
+    left:50px;
+    top:100px;
+    width:855px;
+    height:40px
+}
+
+.u320_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u320_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u320_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u321 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u322_normal {
+    background-image: url('../查看设备安全检测报告_files/u159_normal.png');
+}
+
+.u322_container {
+    position:absolute;
+    left:155px;
+    top:0px;
+    width:166px;
+    height:35px;
+}
+
+#u322_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:172px;
+    height:41px;
+}
+
+.u323 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:162px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u324_normal {
+    background-image: url('../查看设备安全检测报告_files/u161_normal.png');
+}
+
+.u324_container {
+    position:absolute;
+    left:321px;
+    top:0px;
+    width:140px;
+    height:35px;
+}
+
+#u324_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:146px;
+    height:41px;
+}
+
+.u325 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:136px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u326_normal {
+    background-image: url('../查看设备安全检测报告_files/u163_normal.png');
+}
+
+.u326_container {
+    position:absolute;
+    left:461px;
+    top:0px;
+    width:389px;
+    height:35px;
+}
+
+#u326_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:395px;
+    height:41px;
+}
+
+.u327 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:385px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u328_normal {
+    background-image: url('../查看设备安全检测报告_files/u174_normal.png');
+}
+
+.u328_container {
+    position:absolute;
+    left:50px;
+    top:149px;
+    width:850px;
+    height:255px;
+}
+
+#u328_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:856px;
+    height:261px;
+}
+
+.u329 {
+    position:absolute;
+    left:2px;
+    top:120px;
+    width:846px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+#u330 {
+    position:absolute;
+    left:61px;
+    top:174px;
+    width:838px;
+    height:145px
+}
+
+.u331_normal {
+    background-image: url('../查看设备安全检测报告_files/u177_normal.png');
+}
+
+.u331_container {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:74px;
+    height:35px;
+}
+
+#u331_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u332 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u333_normal {
+    background-image: url('../查看设备安全检测报告_files/u30_normal.png');
+}
+
+.u333_container {
+    position:absolute;
+    left:74px;
+    top:0px;
+    width:155px;
+    height:35px;
+}
+
+#u333_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u334 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u335_normal {
+    background-image: url('../查看设备安全检测报告_files/u181_normal.png');
+}
+
+.u335_container {
+    position:absolute;
+    left:229px;
+    top:0px;
+    width:343px;
+    height:35px;
+}
+
+#u335_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u336 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u337_normal {
+    background-image: url('../查看设备安全检测报告_files/u183_normal.png');
+}
+
+.u337_container {
+    position:absolute;
+    left:572px;
+    top:0px;
+    width:261px;
+    height:35px;
+}
+
+#u337_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u338 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u339_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u339_container {
+    position:absolute;
+    left:0px;
+    top:35px;
+    width:74px;
+    height:35px;
+}
+
+#u339_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u340 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u341_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u341_container {
+    position:absolute;
+    left:74px;
+    top:35px;
+    width:155px;
+    height:35px;
+}
+
+#u341_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u342 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u343_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u343_container {
+    position:absolute;
+    left:229px;
+    top:35px;
+    width:343px;
+    height:35px;
+}
+
+#u343_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u344 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u345_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u345_container {
+    position:absolute;
+    left:572px;
+    top:35px;
+    width:261px;
+    height:35px;
+}
+
+#u345_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u346 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u347_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u347_container {
+    position:absolute;
+    left:0px;
+    top:70px;
+    width:74px;
+    height:35px;
+}
+
+#u347_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u348 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u349_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u349_container {
+    position:absolute;
+    left:74px;
+    top:70px;
+    width:155px;
+    height:35px;
+}
+
+#u349_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u350 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u351_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u351_container {
+    position:absolute;
+    left:229px;
+    top:70px;
+    width:343px;
+    height:35px;
+}
+
+#u351_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u352 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u353_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u353_container {
+    position:absolute;
+    left:572px;
+    top:70px;
+    width:261px;
+    height:35px;
+}
+
+#u353_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u354 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u355_normal {
+    background-image: url('../查看设备安全检测报告_files/u185_normal.png');
+}
+
+.u355_container {
+    position:absolute;
+    left:0px;
+    top:105px;
+    width:74px;
+    height:35px;
+}
+
+#u355_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:80px;
+    height:41px;
+}
+
+.u356 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:70px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u357_normal {
+    background-image: url('../查看设备安全检测报告_files/u187_normal.png');
+}
+
+.u357_container {
+    position:absolute;
+    left:74px;
+    top:105px;
+    width:155px;
+    height:35px;
+}
+
+#u357_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:161px;
+    height:41px;
+}
+
+.u358 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:151px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u359_normal {
+    background-image: url('../查看设备安全检测报告_files/u189_normal.png');
+}
+
+.u359_container {
+    position:absolute;
+    left:229px;
+    top:105px;
+    width:343px;
+    height:35px;
+}
+
+#u359_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:349px;
+    height:41px;
+}
+
+.u360 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:339px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u361_normal {
+    background-image: url('../查看设备安全检测报告_files/u191_normal.png');
+}
+
+.u361_container {
+    position:absolute;
+    left:572px;
+    top:105px;
+    width:261px;
+    height:35px;
+}
+
+#u361_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:267px;
+    height:41px;
+}
+
+.u362 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:257px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u363_normal {
+    background-image: url('../查看设备安全检测报告_files/u209_normal.png');
+}
+
+.u363_container {
+    position:absolute;
+    left:73px;
+    top:139px;
+    width:60px;
+    height:20px;
+}
+
+#u363_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:66px;
+    height:26px;
+}
+
+.u364 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:56px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u365 {
+    position:absolute;
+    left:871px;
+    top:8px;
+    width:100px;
+    height:25px;
+    ;
+    ;
+    text-align: center;;
+    font-family:'Arial';
+    font-size: 13px;
+    color:#000000;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    
+}
+

@@ -1,0 +1,1 @@
+https://github.com/indrimuska/jquery-editable-select

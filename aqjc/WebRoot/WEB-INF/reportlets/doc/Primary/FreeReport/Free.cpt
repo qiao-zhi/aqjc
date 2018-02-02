@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20110221">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [订单]A]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1371600,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,2743200,4343400,3429000,4305300,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="1" r="0" cs="4" s="0">
+<O>
+<![CDATA[订单统计表]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="1" r="1" s="1">
+<O>
+<![CDATA[订单号：]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="2" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订单ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="2" s="1">
+<O>
+<![CDATA[客户编号：]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="2" r="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="客户ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0" leftParentDefault="false" left="C2"/>
+</C>
+<C c="3" r="2" s="1">
+<O>
+<![CDATA[成交时间：]]></O>
+<Expand/>
+</C>
+<C c="4" r="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订购日期"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" s="1">
+<O>
+<![CDATA[发货时间：]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="2" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="发货日期"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0" leftParentDefault="false" left="C2"/>
+</C>
+<C c="3" r="3" s="1">
+<O>
+<![CDATA[运货商：]]></O>
+<Expand/>
+</C>
+<C c="4" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="运货商"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="4" s="1">
+<O>
+<![CDATA[地址：]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="2" r="4" cs="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主地址"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0" leftParentDefault="false" left="C2"/>
+</C>
+<C c="1" r="5" s="1">
+<O>
+<![CDATA[到货时间：]]></O>
+<Expand leftParentDefault="false" left="C2"/>
+</C>
+<C c="2" r="5" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="到货日期"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0" leftParentDefault="false" left="C2"/>
+</C>
+<C c="3" r="5" s="1">
+<O>
+<![CDATA[订单总额：]]></O>
+<Expand/>
+</C>
+<C c="4" r="5" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="应付金额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting/>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0">
+<FRFont name="SimSun" style="1" size="96"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="4">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="产品号"/>
+<O>
+<![CDATA[17]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [产品]A where 产品ID=${产品号}]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [供应商]A]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1257300,381000,723900,723900,723900,571500,723900,723900,723900,571500,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3168000,3168000,3168000,3168000,3168000,3168000,3168000,3168000,3168000,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="9" s="0">
+<O>
+<![CDATA[产品明细]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="1">
+<Expand/>
+</C>
+<C c="2" r="1">
+<Expand/>
+</C>
+<C c="3" r="1">
+<Expand/>
+</C>
+<C c="4" r="1">
+<Expand/>
+</C>
+<C c="5" r="1">
+<Expand/>
+</C>
+<C c="6" r="1">
+<Expand/>
+</C>
+<C c="7" r="1">
+<Expand/>
+</C>
+<C c="8" r="1">
+<Expand/>
+</C>
+<C c="0" r="2" cs="9" s="1">
+<O>
+<![CDATA[ 产品信息]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="3" s="2">
+<O>
+<![CDATA[产品名称]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="3" s="2">
+<O>
+<![CDATA[供应商]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="3" s="2">
+<O>
+<![CDATA[类别]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="3" s="2">
+<O>
+<![CDATA[单位数量]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="3" s="2">
+<O>
+<![CDATA[成本价]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="3" s="2">
+<O>
+<![CDATA[单价]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="3" s="2">
+<O>
+<![CDATA[库存量]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="7" r="3" s="2">
+<O>
+<![CDATA[订购量]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="3" s="2">
+<O>
+<![CDATA[再订购量]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="产品ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<DBDictAttr tableName="产品" schemaName="" ki="0" vi="1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="1" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="供应商ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<DBDictAttr tableName="供应商" schemaName="" ki="0" vi="1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="2" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="类别ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<DBDictAttr tableName="类别" schemaName="" ki="0" vi="1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="3" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="单位数量"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="4" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="成本价"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="单价"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="6" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="库存量"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="7" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订购量"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="8" r="4" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="再订购量"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="0" r="5" cs="9" s="4">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="6" cs="9" s="1">
+<O>
+<![CDATA[ 供应商信息]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="7" s="5">
+<O>
+<![CDATA[供应商名称]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="7" s="5">
+<O>
+<![CDATA[联系人姓名]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="7" s="5">
+<O>
+<![CDATA[联系人职务]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="7" s="5">
+<O>
+<![CDATA[电话]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="7" s="5">
+<O>
+<![CDATA[地区]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="7" s="5">
+<O>
+<![CDATA[城市]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="7" s="5">
+<O>
+<![CDATA[邮编]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="7" r="7" cs="2" s="5">
+<O>
+<![CDATA[地址]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="供应商ID"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[1]]></CNUMBER>
+<CNAME>
+<![CDATA[供应商ID]]></CNAME>
+<Compare op="0">
+<ColumnRow column="1" row="4"/>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="1" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="联系人姓名"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="2" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="联系人职务"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="3" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="电话"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="4" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="地区"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="城市"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="6" r="8" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="邮政编码"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="7" r="8" cs="2" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="地址"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="0" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="9" s="7">
+<Expand/>
+</C>
+<C c="2" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="9" s="7">
+<Expand/>
+</C>
+<C c="6" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="7" r="9" s="7">
+<Expand/>
+</C>
+<C c="8" r="9" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="10" s="8">
+<O>
+<![CDATA[返回上一级]]></O>
+<NameJavaScriptGroup>
+<NameJavaScript name="网络报表1">
+<JavaScript class="com.fr.base.js.ReportletHyperlink">
+<JavaScript class="com.fr.base.js.ReportletHyperlink">
+<Parameters>
+<Parameter>
+<Attributes name="订单号"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=$订单号]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_self]]></TargetFrame>
+<Features width="600" height="400"/>
+<ReportletName extendParameters="true">
+<![CDATA[/demo/basic/DetailedDrillB.cpt]]></ReportletName>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[len(产品号) = 0]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.ValueHighlightAction">
+<O>
+<![CDATA[]]></O>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<Margin top="286560" left="574560" bottom="286560" right="574560"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="黑体" style="1" size="144" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="ColorBackground" color="-2624775"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="ColorBackground" color="-1"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="2" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-16776961" underline="1"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

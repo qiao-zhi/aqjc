@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="应付应收金额" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="leixing"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 类型标注,sum(金额)/1000000 as 总金额 FROM [应收应付]A where 类型标注=${leixing} group by 类型标注]]></Query>
+</TableData>
+<TableData name="分公司应收应付占比" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="leixing"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT sum(a.金额) as 金额,a.地区 FROM [应收应付]A as a where a.类型标注=${leixing} group by a.地区]]></Query>
+</TableData>
+<TableData name="账龄" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="leixing"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT sum(a.金额) as 金额,a.账龄类型 FROM [应收应付]A as a where a.类型标注=${leixing} group by a.账龄类型]]></Query>
+</TableData>
+<TableData name="前五" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="aaa"/>
+<O>
+<![CDATA[180天]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="leixing"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT top 5 a.客户名称,a.金额 FROM [应收应付]A as a where a.类型标注=${leixing} and a.账龄类型 = '${aaa}'  order by a.金额 desc 
+union all
+
+select '其它',sum(金额)  from 应收应付 where 类型标注=${leixing} and 账龄类型 = '${aaa}' and 客户名称 not in 
+(
+SELECT top 5 a.客户名称 FROM [应收应付]A as a where a.类型标注=${leixing} and a.账龄类型 = '${aaa}'  order by a.金额 desc 
+) 
+]]></Query>
+</TableData>
+</TableDataMap>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[990600,10782300,419100,9753600,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[14401800,2019300,15659100,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="1" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($leixing==1,"应收账款总额","应付账款总额")]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.MeterPlot">
+<MeterPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="false" interactiveHighlight="false" interactiveOuterlight="false" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBackground">
+<AttrBackground>
+<Background name="ColorBackground" color="-13159"/>
+</AttrBackground>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrAlpha">
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<MeterStyle>
+<Attr meterAngle="360" maxArrowAngle="360" units="/百万" tickLabelsVisible="true" dialShape="360" startValue="=0.0" endValue="=70" tickSize="=10"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<IntervalList>
+<MeterInterval label="分段区域1(默认)" backgroudColor="-15487261" beginValue="=0.0" endValue="=30"/>
+<MeterInterval label="分段区域2(默认)" backgroudColor="-270258" beginValue="=30" endValue="=50"/>
+<MeterInterval label="分段区域3(默认)" backgroudColor="-1807222" beginValue="=50" endValue="=70"/>
+</IntervalList>
+</MeterStyle>
+</MeterPlot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[应付应收金额]]></Name>
+</TableData>
+<CategoryName value=""/>
+<ChartSummaryColumn name="总金额" function="com.fr.data.util.function.NoneFunction" customName="总金额"/>
+</MoreNameCDDefinition>
+</O>
+<Expand/>
+</C>
+<C c="1" r="1" s="1">
+<Expand/>
+</C>
+<C c="2" r="1" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[="各分公司"+if($leixing==1,"应收账款总额","应付账款总额")]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.PiePlot">
+<Plot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="16" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-65536" endColor="-65307"/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr startColor="-65536" endColor="-65307"/>
+</AttrFillStyle>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="80"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<PieAttr subType="1" smallPercent="0.15" startAngle="100" separate="10" isSeparateOut="false"/>
+</Plot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[分公司应收应付占比]]></Name>
+</TableData>
+<CategoryName value="地区"/>
+<ChartSummaryColumn name="金额" function="com.fr.data.util.function.NoneFunction" customName="金额"/>
+</MoreNameCDDefinition>
+</O>
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<Expand/>
+</C>
+<C c="0" r="3" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($leixing==1,"应收","应付")+"账款账龄分布"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.PiePlot">
+<Plot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="16" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrBorder">
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="80"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<NameJavaScriptGroup>
+<NameJavaScript name="图表超链1">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<JavaScript class="com.fr.web.ChartHyperRelateCellLink">
+<Parameters>
+<Parameter>
+<Attributes name="aaa"/>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SERIES]]></Attributes>
+</O>
+</Parameter>
+</Parameters>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="500" height="270"/>
+<realateName realateValue="C4"/>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<PieAttr subType="1" smallPercent="0.15" startAngle="100" separate="0" isSeparateOut="false"/>
+</Plot>
+</Plot>
+</Chart>
+</Chart>
+<OneValueCDDefinition seriesName="账龄类型" valueName="金额" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[账龄]]></Name>
+</TableData>
+</OneValueCDDefinition>
+</O>
+<Expand/>
+</C>
+<C c="1" r="3" s="1">
+<Expand/>
+</C>
+<C c="2" r="3" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-1"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="0.3"/>
+</AttrAlpha>
+</GI>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[="账龄在"+if(len($aaa)==0,"180天",$aaa)+"的前五名客户"]]></Attributes>
+</O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar3DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name=""/>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="true"/>
+<newColor borderColor="-8355712"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="1" visible="false" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[注：最后一个统计的是其余客户个数和其余总金额]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="1"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="true" overlap="-0.5" interval="1.0"/>
+<Attr3D horizontalDrawBar="true" seriesIntervalPercent="0.0"/>
+<Projection mode="2" elevation="15" rotation="20" focus="800"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[前五]]></Name>
+</TableData>
+<CategoryName value="客户名称"/>
+<ChartSummaryColumn name="金额" function="com.fr.data.util.function.NoneFunction" customName="金额"/>
+</MoreNameCDDefinition>
+</O>
+<Expand/>
+</C>
+<C c="1" r="4" s="1">
+<Expand/>
+</C>
+<C c="2" r="7">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="0" r="19">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="47520000" height="42768000"/>
+<Margin top="986400" left="2743200" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="false" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="800" height="75"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label1"/>
+<WidgetAttr/>
+<LabelAttr verticalcenter="true" textalign="4" autoline="true"/>
+<FRFont name="SimSun" style="1" size="132" foreground="-16751002"/>
+<widgetValue>
+<O>
+<![CDATA[应 收 账 款 与 应 付 账 款 分 析]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="0" y="0" width="464" height="42"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label2"/>
+<WidgetAttr/>
+<LabelAttr verticalcenter="true" textalign="2" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<widgetValue>
+<O>
+<![CDATA[选择统计维度：]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="38" y="52" width="124" height="23"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.RadioGroup">
+<Listener event="statechange">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.options.form.getWidgetByCell("E3").fireEvent("click");]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="leixing"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="应收"/>
+<Dict key="2" value="应付"/>
+</CustomDictAttr>
+</Dictionary>
+</InnerWidget>
+<BoundsAttr x="162" y="52" width="232" height="23"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="widget4"/>
+<WidgetAttr invisible="true"/>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="419" y="52" width="45" height="23"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Background name="NullBackground"/>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-4144960"/>
+<Bottom style="6" color="-4144960"/>
+<Left style="6" color="-4144960"/>
+<Right style="6" color="-4144960"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.EmbeddedTableData">
+<Parameters/>
+<ColumnNames>
+<![CDATA[Company,,.,,Year,,.,,Season,,.,,Income,,.,,Costs]]></ColumnNames>
+<ColumnTypes>
+<![CDATA[java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String]]></ColumnTypes>
+<RowData>
+<![CDATA[Kp=_t"#14=CNCCsZM_4<g+YA5$l(SFKT75iY!\@f+9?8]A]AiJfGm/6JP><OXOkNh<Op$M9i^N
+0Z%h">X]A3pt;^0B^fb$`S[J'(.ANiT]A;s(b())$&7rZrtA:>F_!jaIX51hc9TZ2:bVI;Pb+$
+"N)`st6W1pg/R`4$A]A,&<,&E3XmYCjQ*\dtr"@LfYUO5?6QK,iL\0OQWk/,-:Gk1K[dJ&SS#
+B1s)&6?fP$)^?n/<1*Jande2$t3X>;&C`W(icKs&P$3D&lqKQ^SYO'<lWli2b&ZjqGG+!83L
+HLX!su[e5sW:'NR\^<XGa<A8;Mq%/i^FNWC_?A]A15"U1-1Os4\7&_H!]Au9#;ljK\SAhr\`!L
+_dbo7[H=&8hKE-[WfSUFfJB7)_DocIX:nk>CcU)&K/tdoL?#9UK8r9c#h(KZ#rFfBYk=cOX3
+\67^.i$tVLU?:Y'1Cfh#\O$*n"/d!b06*Yaq1U\l$OjX<Wp?4aNX"a#ok0D+>Zpm5UURehlA
+;NT6E]AGLUSD,$XAQ3&@Y47c"KcT9U<giT_*qV=qe6B/\Jk%kF0U>WBD\hZ~
+]]></RowData>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<ServerPrinter/>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[首页]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[上一页]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[下一页]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[末页]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[打印[客户端]A]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[打印]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[输出]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[邮件]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1371600,495300,838200,838200,838200,838200,723900,876300,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[4191000,4191000,4191000,4191000,4191000,4191000,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="6" s="0">
+<O>
+<![CDATA[企业历年销售明细一览表]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="1" cs="6">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="2" s="1">
+<O>
+<![CDATA[企业]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<O>
+<![CDATA[年度]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="1">
+<O>
+<![CDATA[季度]]></O>
+<Expand/>
+</C>
+<C c="3" r="2" s="1">
+<O>
+<![CDATA[营业收入（万元）]]></O>
+<Expand/>
+</C>
+<C c="4" r="2" s="1">
+<O>
+<![CDATA[营业成本（万元）]]></O>
+<Expand/>
+</C>
+<C c="5" r="2" s="1">
+<O>
+<![CDATA[利润（万元）]]></O>
+<Expand/>
+</C>
+<C c="0" r="3" rs="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="Company"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" rs="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="Year"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[Year]]></CNAME>
+<Compare op="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=year(today()) - $Year]]></Attributes>
+</O>
+</Compare>
+</Condition>
+<Complex order="1"/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="Season"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="Income"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="Costs"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="5" r="3" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=D4 - E4]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="4" cs="3" s="4">
+<O>
+<![CDATA[利润总额：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="4" s="5">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(F4)]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="5" s="6">
+<Expand/>
+</C>
+<C c="0" r="6" cs="6" s="7">
+<O>
+<![CDATA[企业历年销售明细一览表说明：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="7" cs="6" s="8">
+<O>
+<![CDATA[1、参数处理器：时间段]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="8" cs="6" s="8">
+<O>
+<![CDATA[     该报表中，您任意输入年度，如输入“去年”，即可查询出相对当前年度上一年的销售记录，该功能通过参数处理器可]]></O>
+<Expand/>
+</C>
+<C c="0" r="9" cs="6" s="9">
+<O>
+<![CDATA[     实现。]]></O>
+<Expand/>
+</C>
+<C c="1" r="10">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="11">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="12">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="14">
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="42768316" height="60482073"/>
+<Margin top="287999" left="575999" bottom="287999" right="575999"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+<ReportWriteAttr/>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="true" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="800" height="39"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label1"/>
+<WidgetAttr/>
+<LabelAttr verticalcenter="true" textalign="4" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<widgetValue>
+<O>
+<![CDATA[选择时间段：]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="0" y="9" width="81" height="19"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.ComboBox">
+<WidgetName name="Year"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="去年"/>
+<Dict key="2" value="前两年"/>
+<Dict key="5" value="前五年"/>
+<Dict key="10" value="前十年"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</InnerWidget>
+<BoundsAttr x="81" y="9" width="112" height="19"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="widget3"/>
+<WidgetAttr/>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+<FRFont name="SimSun" style="0" size="72"/>
+</InnerWidget>
+<BoundsAttr x="222" y="9" width="63" height="19"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Parameter>
+<Attributes name="Year" isAutoInc="false"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="黑体" style="1" size="144" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6894375"/>
+<Bottom style="1" color="-6894375"/>
+<Left style="1" color="-6894375"/>
+<Right style="1" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-10066330"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6894375"/>
+<Bottom style="1" color="-6894375"/>
+<Left style="1" color="-6894375"/>
+<Right style="1" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Top style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Bottom style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

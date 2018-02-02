@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserInfo">
+
+  <typeAlias alias="userInfo" type="com.tyust.bean.user.TBaseUserInfo"/>
+  <typeAlias alias="commonality" type="com.tyust.common.CommonalityBean"/>
+  <resultMap id="Login" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+    <result property="sex" column="SEX"/>
+    <result property="birthday" column="BIRTHDAY"/>
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="unitName" column="UNIT_NAME"/>
+   <!--   <result property="areaId" column="AREA_ID"/>-->
+    <result property="duty" column="DUTY"/>
+    <result property="tecduty" column="TECDUTY"/>
+    <result property="password" column="PASSWORD"/>
+    <result property="inuse" column="INUSE"/>
+    <result property="telephone" column="TELEPHONE"/>
+    <result property="email" column="EMAIL"/>
+    <result property="createUnitId" column="CREATE_UNIT_ID"/>
+    <result property="cardId" column="CARD_ID"/>
+    <result property="name" column="NAME"/>
+    <result property="mobile" column="MOBILE"/>
+    <result property="userComment" column="USER_COMMENT"/>
+    <result property="createTime" column="CREATE_TIME"/>
+    <result property="lastLoginTime" column="LAST_LOGIN_TIME"/>
+    </resultMap>
+   <resultMap id="userWithUnit" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+    <result property="unitName" column="UNIT_NAME"/>
+   </resultMap>
+  
+   <resultMap id="UserInfoResult" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+    <result property="sex" column="SEX"/>
+    <result property="birthday" column="BIRTHDAY"/>
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="duty" column="DUTY"/>
+    <result property="tecduty" column="TECDUTY"/>
+    <result property="password" column="PASSWORD"/>
+    <result property="inuse" column="INUSE"/>
+    <result property="telephone" column="TELEPHONE"/>
+    <result property="email" column="EMAIL"/>
+    <result property="createUnitId" column="CREATE_UNIT_ID"/>
+    <result property="cardId" column="CARD_ID"/>
+    <result property="name" column="NAME"/>
+    <result property="mobile" column="MOBILE"/>
+    <result property="userComment" column="USER_COMMENT"/>
+    <result property="createTime" column="CREATE_TIME"/>
+    <result property="lastLoginTime" column="LAST_LOGIN_TIME"/>
+     <result property="roleId" column="ROLE_ID"/>
+  </resultMap>
+ 
+  <resultMap id="BaseUserInfoResult" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+    <result property="sex" column="SEX"/>
+    <result property="birthday" column="BIRTHDAY"/>
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="duty" column="DUTY"/>
+    <result property="tecduty" column="TECDUTY"/>
+    <result property="password" column="PASSWORD"/>
+    <result property="inuse" column="INUSE"/>
+    <result property="telephone" column="TELEPHONE"/>
+    <result property="email" column="EMAIL"/>
+    <result property="createUnitId" column="CREATE_UNIT_ID"/>
+    <result property="cardId" column="CARD_ID"/>
+    <result property="name" column="NAME"/>
+    <result property="mobile" column="MOBILE"/>
+    <result property="userComment" column="USER_COMMENT"/>
+    <result property="createTime" column="CREATE_TIME"/>
+    <result property="lastLoginTime" column="LAST_LOGIN_TIME"/>
+  </resultMap>
+ 
+  <resultMap id="isExistResult" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+  </resultMap>
+  <!-- sel User by commonality -->
+  <select id="sqlserver_selUserInfo" resultMap="UserInfoResult" parameterClass="commonality">
+      <![CDATA[
+		SELECT top $limit$
+	USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    INUSE,
+    TELEPHONE,
+    EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    CREATE_TIME,
+    LAST_LOGIN_TIME,
+    ROLE_ID
+		 FROM (
+		SELECT S.*,R.ROLE_NAME AS ROLE_ID  FROM ( 
+		select U.*,T.ROLE_ID AS ROLEID 
+		from T_BASE_USER_INFO U LEFT OUTER JOIN T_BASE_UNIT_USER_ROLE T ON U.USER_ID = T.USER_ID 
+		WHERE U.UNIT_ID = #id# 
+		)S LEFT OUTER JOIN T_BASE_UNIT_ROLE R ON S.ROLEID = R.ROLE_ID
+		) A
+		where user_id not in (
+			select top $start$ USER_ID from 
+			(
+			SELECT S.*,R.ROLE_NAME AS ROLE_ID  FROM ( 
+			select U.*,T.ROLE_ID AS ROLEID 
+			from T_BASE_USER_INFO U LEFT OUTER JOIN T_BASE_UNIT_USER_ROLE T ON U.USER_ID = T.USER_ID 
+			WHERE U.UNIT_ID = #id# 
+			)S LEFT OUTER JOIN T_BASE_UNIT_ROLE R ON S.ROLEID = R.ROLE_ID
+			) B
+		) ORDER BY $sortname$ $sortorder$ 
+		]]>
+  </select>
+  <select id="selUserInfo" resultMap="UserInfoResult" parameterClass="commonality">
+      <![CDATA[
+		SELECT 
+	USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    INUSE,
+    TELEPHONE,
+    EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    CREATE_TIME,
+    LAST_LOGIN_TIME,
+    ROLE_ID
+		 FROM (
+		SELECT A.*, ROWNUM RN 
+		FROM (
+		SELECT S.*,R.ROLE_NAME AS ROLE_ID  FROM (
+		select U.*,T.ROLE_ID AS ROLEID from T_BASE_USER_INFO U LEFT OUTER JOIN T_BASE_UNIT_USER_ROLE T ON U.USER_ID = T.USER_ID WHERE U.UNIT_ID = #id# order by CREATE_TIME desc
+		)S LEFT OUTER JOIN T_BASE_UNIT_ROLE R ON S.ROLEID = R.ROLE_ID
+		) A 
+		WHERE ROWNUM <= #end#
+		)
+		WHERE RN > #start# ORDER BY $sortname$ $sortorder$ 
+		]]>
+  </select>
+    <!-- sel User by Id -->
+  <select id="selUserInfoById" resultMap="BaseUserInfoResult" parameterClass="string">
+    SELECT 
+    USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    INUSE,
+    TELEPHONE,
+    EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    CREATE_TIME,
+    LAST_LOGIN_TIME
+     FROM T_BASE_USER_INFO WHERE USER_ID = #userId#
+  </select>
+      <!-- sel User by unitId -->
+  <select id="selUserInfoByUnitId" resultMap="UserInfoResult" parameterClass="string">
+    SELECT 
+    USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    INUSE,
+    TELEPHONE,
+    EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    CREATE_TIME,
+    LAST_LOGIN_TIME,
+   LAST_LOGIN_TIME as ROLE_ID
+     FROM T_BASE_USER_INFO WHERE UNIT_ID = #unitId#
+  </select>
+ <!-- user Login -->
+ <select id="login" resultMap="Login" parameterClass="userInfo">
+ SELECT USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    u.UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    INUSE,
+    u.TELEPHONE,
+    u.EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    CREATE_TIME,
+    LAST_LOGIN_TIME,
+    n.UNIT_NAME
+   FROM T_BASE_USER_INFO u left join T_BASE_UNIT_INFO n on(u.unit_id=n.unit_id) WHERE USER_NAME =#userName# AND PASSWORD=#password#
+ </select>
+ <!-- add User -->
+ <!-- 
+ <insert id="addUser" parameterClass="userInfo">
+  INSERT INTO T_BASE_USER_INFO(
+    USER_ID,
+    USER_NAME,
+    SEX ,
+    BIRTHDAY,
+    UNIT_ID,
+    DUTY,
+    TECDUTY,
+    PASSWORD,
+    TELEPHONE,
+    EMAIL,
+    CREATE_UNIT_ID,
+    CARD_ID,
+    NAME,
+    MOBILE,
+    USER_COMMENT,
+    LAST_LOGIN_TIME
+  )VALUES(#userId#,#userName#,#sex#,#birthday#,#unitId#,#duty#,#tecduty#,#password#,#telephone#,
+  #email#,#createUnitId#,#cardId#,#name#,#mobile#,#userComment#,#lastLoginTime#)
+ </insert>
+  -->
+  <insert id="addUser" parameterClass="userInfo" >
+    <!--
+      WARNING - This element is automatically generated by Apache iBATIS ibator, do not modify.
+    -->
+    insert into T_BASE_USER_INFO
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="userId" >
+        USER_ID
+      </isNotNull>
+      <isNotNull prepend="," property="userName" >
+        USER_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="sex" >
+        SEX
+      </isNotNull>
+      <isNotNull prepend="," property="birthday" >
+        BIRTHDAY
+      </isNotNull>
+      <isNotNull prepend="," property="unitId" >
+        UNIT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="duty" >
+        DUTY
+      </isNotNull>
+      <isNotNull prepend="," property="tecduty" >
+        TECDUTY
+      </isNotNull>
+      <isNotNull prepend="," property="password" >
+        PASSWORD
+      </isNotNull>
+      <isNotNull prepend="," property="inuse" >
+        INUSE
+      </isNotNull>
+      <isNotNull prepend="," property="telephone" >
+        TELEPHONE
+      </isNotNull>
+      <isNotNull prepend="," property="email" >
+        EMAIL
+      </isNotNull>
+      <isNotNull prepend="," property="createUnitId" >
+        CREATE_UNIT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="cardId" >
+        CARD_ID
+      </isNotNull>
+      <isNotNull prepend="," property="name" >
+        NAME
+      </isNotNull>
+      <isNotNull prepend="," property="mobile" >
+        MOBILE
+      </isNotNull>
+      <isNotNull prepend="," property="userComment" >
+        USER_COMMENT
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        CREATE_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="lastLoginTime" >
+        LAST_LOGIN_TIME
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="userId" >
+        #userId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userName" >
+        #userName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sex" >
+        #sex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="birthday" >
+        #birthday:DATE#
+      </isNotNull>
+      <isNotNull prepend="," property="unitId" >
+        #unitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="duty" >
+        #duty:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="tecduty" >
+        #tecduty:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="password" >
+        #password:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="inuse" >
+        #inuse:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="telephone" >
+        #telephone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="email" >
+        #email:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createUnitId" >
+        #createUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="cardId" >
+        #cardId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="name" >
+        #name:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="mobile" >
+        #mobile:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="userComment" >
+        #userComment:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="createTime" >
+        #createTime:DATE#
+      </isNotNull>
+      <isNotNull prepend="," property="lastLoginTime" >
+        #lastLoginTime:DATE#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+ <!-- delete User -->
+<delete id="delUser" parameterClass="string">
+DELETE FROM T_BASE_USER_INFO WHERE USER_ID=#userId#
+</delete>
+<!-- update User -->
+<update id="updateUser" parameterClass="userInfo">
+     UPDATE T_bASE_USER_INFO
+     SET USER_NAME =#userName#,
+      NAME = #name#,
+      SEX = #sex#,
+      DUTY = #duty#,
+      TELEPHONE = #telephone#,
+      EMAIL = #email#,
+      INUSE=#inuse#,
+      USER_COMMENT = #userComment# WHERE USER_ID = #userId#
+</update>
+<!-- update Password -->
+<update id="updatePwd" parameterClass="userInfo">
+UPDATE T_BASE_USER_INFO
+     set PASSWORD = #password# WHERE USER_ID=#userId#
+</update>
+
+<select id="userIsExist" parameterClass="string" resultMap="isExistResult">
+ SELECT USER_ID,
+    USER_NAME
+ FROM T_BASE_USER_INFO WHERE USER_NAME =#value#
+</select>
+<!-- User Count -->
+<select id="userAllCount" parameterClass="string" resultClass="int">
+	SELECT COUNT(*) FROM T_BASE_USER_INFO WHERE UNIT_ID=#unitId# and CREATE_UNIT_ID !='0'
+</select>
+<!-- update User Inuse -->
+<update id="updateUserInuse" parameterClass="userInfo">
+UPDATE T_BASE_USER_INFO SET INUSE = #inuse# WHERE USER_ID=#userId#
+</update>
+
+<update id="updateUserLastLoginTime" parameterClass="userInfo">
+UPDATE T_BASE_USER_INFO SET LAST_LOGIN_TIME = #lastLoginTime# WHERE USER_ID = #userId#
+</update>
+<!-- login jsp update PassWord -->
+<update id="updatepassword" parameterClass="java.util.HashMap">
+UPDATE T_BASE_USER_INFO SET PASSWORD = #newPwd# WHERE USER_NAME = #username# and PASSWORD=#oldPwd#
+</update>
+<!-- check User -->
+<select id="selectUser" parameterClass="java.util.HashMap" resultClass="int">
+select count(*) from T_BASE_USER_INFO where USER_NAME = #username# and PASSWORD=#password#
+</select>
+
+<select id="selectUserWithUnit" resultMap="userWithUnit">
+	select t.user_id,t.user_name,u.unit_name from T_BASE_USER_INFO t left join t_yj_unit_info u on u.unit_id=t.unit_id 
+	where t.user_name!='1' and t.user_name != 'ROOT' and t.user_id!=#mUserId#
+	order by unit_name
+</select>
+</sqlMap>

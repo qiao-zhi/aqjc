@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UnitInfo">
+  <typeAlias alias="unitInfo" type="com.tyust.bean.unit.TBaseUnitInfo"/>
+  <typeAlias alias="userInfo" type="com.tyust.bean.user.TBaseUserInfo"/>
+  <typeAlias alias="commonality" type="com.tyust.common.CommonalityBean" />
+  
+  <resultMap id="UnitInfoResult" class="unitInfo">
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="upUnitId" column="UP_UNIT_ID"/>
+    <result property="unitClass" column="UNIT_CLASS"/>
+    <result property="unitName" column="UNIT_NAME"/>
+    <result property="address" column="ADDRESS"/>
+    <result property="telephone" column="TELEPHONE"/>
+    <result property="contactPerson" column="CONTACT_PERSON"/>   
+    <result property="email" column="EMAIL"/>
+    <result property="header" column="HEADER"/>
+    <result property="createDate" column="CREATE_DATE"/>
+  </resultMap>
+    <resultMap id="UnitInfoResult2" class="unitInfo">
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="upUnitId" column="UP_UNIT_ID"/>
+    <result property="unitClass" column="UNIT_CLASS"/>
+    <result property="unitName" column="UNIT_NAME"/>
+    <result property="address" column="ADDRESS"/>
+    <result property="telephone" column="TELEPHONE"/>
+    <result property="contactPerson" column="CONTACT_PERSON"/>   
+    <result property="email" column="EMAIL"/>
+    <result property="header" column="HEADER"/>
+  </resultMap>
+  
+<!-- 查询机构详细信息 -->
+  <select id="selectUnitInfo" resultMap="UnitInfoResult2" parameterClass="string">
+    SELECT 
+	    UNIT_ID,
+	    UP_UNIT_ID,
+	    UNIT_CLASS,
+	    UNIT_NAME,
+	    ADDRESS,
+	    TELEPHONE,
+	    CONTACT_PERSON,
+	    EMAIL,
+	    HEADER
+	    FROM T_BASE_UNIT_INFO 
+     WHERE UNIT_ID =#unitId#
+  </select>
+  
+  <!-- 根据部门名称模糊查询 部门ID-->
+  <select id="selectUnitInfoByUnitName" resultMap="UnitInfoResult" parameterClass="string">
+  	SELECT
+  		*
+  	FROM T_BASE_UNIT_INFO
+  	WHERE UNIT_NAME LIKE '%'||#unitName#||'%'	
+  </select>
+  
+<!-- 查询同级别下是否存在同名机构 -->
+  <select id="selUnitInfo" resultMap="UnitInfoResult" parameterClass="unitInfo">
+    SELECT 
+    UNIT_ID,
+    UP_UNIT_ID,
+    UNIT_CLASS,
+    UNIT_NAME,
+    ADDRESS,
+    TELEPHONE,
+    CONTACT_PERSON,
+    EMAIL,
+    HEADER,
+    CREATE_DATE
+    FROM T_BASE_UNIT_INFO 
+    where UP_UNIT_ID = #upUnitId# AND UNIT_NAME =#unitName#
+  </select>
+  
+  <resultMap id="UnitIn" class="unitInfo">
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="upUnitId" column="UP_UNIT_ID"/>
+    <result property="unitName" column="UNIT_NAME"/>
+    <result property="unitClass" column="UNIT_CLASS"/>
+  </resultMap>
+  <select id="findByUpid" resultMap="UnitIn" parameterClass="string">
+     SELECT UNIT_ID,UP_UNIT_ID,UNIT_NAME,UNIT_CLASS
+	 FROM T_BASE_UNIT_INFO WHERE UP_UNIT_ID = #pid# 
+  </select>
+  
+  <select id="findAllByUpid" parameterClass="commonality" resultMap="UnitInfoResult">
+   SELECT * from (
+		SELECT A.*, ROWNUM RN 
+			FROM (
+		SELECT 
+		UNIT_ID,
+	    UP_UNIT_ID,
+	    UNIT_CLASS,
+	    UNIT_NAME,
+	    ADDRESS,
+	    TELEPHONE,
+	    CONTACT_PERSON,
+	    EMAIL,
+	    HEADER,
+	    CREATE_DATE
+		FROM 
+		T_BASE_UNIT_INFO 
+		WHERE UP_UNIT_ID = #id# 
+		<isNotNull property="text1"> and UNIT_NAME like concat(#text1#,'%')</isNotNull>
+		order by CREATE_DATE desc
+		) A 
+		WHERE 
+			
+	<![CDATA[
+		ROWNUM <= #end# 
+		)
+		WHERE RN >= #start# order by $sortname$ $sortorder$
+	]]>
+	
+<!--	select TOP $end$ * from T_BASE_UNIT_INFO
+	where UNIT_ID NOT IN
+        (
+         select TOP $start$ UNIT_ID FROM T_BASE_UNIT_INFO WHERE UP_UNIT_ID = #id#
+         <isNotNull property="text1"> and UNIT_NAME like #text1#+'%'</isNotNull>
+         order by $sortname$ $sortorder$
+        ) 
+     AND UP_UNIT_ID = #id# 
+     <isNotNull property="text1"> and UNIT_NAME like #text1#+'%'</isNotNull>
+     order by $sortname$ $sortorder$  -->
+  </select>
+  
+  <!-- 查询全部部门信息 -->
+  <select id="findAll" resultMap="UnitInfoResult">
+   SELECT 
+		UNIT_ID,
+	    UP_UNIT_ID,
+	    UNIT_CLASS,
+	    UNIT_NAME,
+	    ADDRESS,
+	    TELEPHONE,
+	    CONTACT_PERSON,
+	    EMAIL,
+	    HEADER,
+	    CREATE_DATE
+		FROM 
+		T_BASE_UNIT_INFO 
+  </select>
+  <!-- 插入机构 -->
+  <insert id="savaUnit" parameterClass="unitInfo">
+  INSERT INTO T_BASE_UNIT_INFO (  
+    UNIT_ID,
+    UP_UNIT_ID,
+    UNIT_NAME,
+    UNIT_CLASS,
+    ADDRESS,
+    TELEPHONE,
+    CONTACT_PERSON,
+    EMAIL,
+    HEADER,
+    CREATE_DATE
+    ) VALUES (
+    #unitId#,#upUnitId#,#unitName#,#unitClass#,#address#,#telephone#,
+    #contactPerson#,#email#,#header#,#createDate:DATE#)
+  </insert>
+  
+  <!-- 更新机构 -->
+  <update id="updateUnit" parameterClass="unitInfo">
+  UPDATE T_BASE_UNIT_INFO SET
+    UNIT_NAME = #unitName#,
+    ADDRESS = #address#,
+    TELEPHONE =#telephone#,
+    CONTACT_PERSON = #contactPerson#,
+    EMAIL = #email#,
+    HEADER = #header#,
+    UNIT_CLASS = #unitClass#
+    WHERE UNIT_ID = #unitId#
+  </update>
+  
+  <!-- 根据机构ID删除机构 -->
+  <delete id="delUnit" parameterClass="string">
+   DELETE FROM T_BASE_UNIT_INFO WHERE UNIT_ID=#unitId# 
+  </delete>
+  
+  <!-- 根据机构名称删除角色 -->
+  <delete id="delRoleByUnit" parameterClass="string">
+   DELETE FROM T_BASE_UNIT_ROLE WHERE UNIT_ID=#unitId#
+  </delete>
+  
+  <select id="maxUnit" resultMap="UnitIn">
+   SELECT 
+    UNIT_ID,
+    UP_UNIT_ID,
+    UNIT_CLASS,
+    UNIT_NAME
+    FROM T_BASE_UNIT_INFO where UP_UNIT_ID=0
+  </select>
+
+  <resultMap id="Login" class="userInfo">
+    <result property="userId" column="USER_ID"/>
+    <result property="userName" column="USER_NAME"/>
+  </resultMap>
+  
+  <select id="selectCountByUpid" parameterClass="string" resultClass="int">
+     SELECT COUNT(*) FROM T_BASE_UNIT_INFO WHERE UP_UNIT_ID = #upid#
+  </select>
+
+  <!-- 注册用户时保存单位信息 -->
+  <insert id="registerUnit" parameterClass="unitInfo">
+	  INSERT INTO T_BASE_UNIT_INFO (UNIT_ID,UNIT_NAME,CREATE_DATE,UP_UNIT_ID) 
+	  VALUES 
+	  (#unitId#,#unitName#,#createDate:DATE#,#upUnitId#)
+  </insert>
+</sqlMap>

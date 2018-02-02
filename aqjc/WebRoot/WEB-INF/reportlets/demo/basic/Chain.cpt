@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 订单ID,产品ID,单价*数量*(1-折扣) as 金额 FROM 订单明细]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 订单ID,客户ID,month(订购日期) as month,year(订购日期) as year FROM 订单
+where year(订购日期) in (2010,2011)]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1447800,419100,762000,723900,0,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2400300,2476500,3024000,2209800,800100,2209800,723900,3024000,3024000,3024000,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="12" s="0">
+<O>
+<![CDATA[同比环比等财务统计表]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="1" cs="10">
+<Expand/>
+</C>
+<C c="0" r="2" s="1">
+<O>
+<![CDATA[年份]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<O>
+<![CDATA[月份]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="1">
+<O>
+<![CDATA[销售额]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="2" cs="2" s="1">
+<O>
+<![CDATA[月份环比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="2" cs="2" s="1">
+<O>
+<![CDATA[年份同比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="7" r="2" s="2">
+<O>
+<![CDATA[占比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="2" s="3">
+<O>
+<![CDATA[年内排名]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="9" r="2" s="3">
+<O>
+<![CDATA[总排名]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="10" r="2" s="2">
+<O>
+<![CDATA[年内累计]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="11" r="2" s="2">
+<O>
+<![CDATA[总累计]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="3" rs="2" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="year"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex order="1"/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" s="4">
+<O t="DSColumn">
+<Attributes dsName="ds2" columnName="month"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.CustomGrouper">
+<Attr other="1"/>
+<ConditionListGroup>
+<Display>
+<![CDATA[1]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[1]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[2]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[2]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[3]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[3]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[4]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[4]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[5]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[5]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[6]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[6]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[7]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[7]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[8]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[8]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[9]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[9]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[10]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[10]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[11]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[11]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+<ConditionListGroup>
+<Display>
+<![CDATA[12]]></Display>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[month]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[12]]></O>
+</Compare>
+</Condition>
+</ConditionListGroup>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="5">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="金额"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[订单ID]]></CNAME>
+<Compare op="0">
+<AnDSColumn dsName="ds2" columnName="订单ID"/>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="3" s="6">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C4 / C4[B4:-1]A]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[&B4 = 1]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.ValueHighlightAction">
+<O>
+<![CDATA[    --]]></O>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand leftParentDefault="false" left="B4"/>
+</C>
+<C c="4" r="3" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[D4 > 1]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="1">
+<IM>
+<![CDATA[!M'C'qMA$D7h#eD$31&+%7s)Y;?-[s'EA+5)[HKF!!)W(30+%>"_:1m5u`*_4]AD_a'3?#W)(
+B<p>`'7@6*XBS$]A`fC=9i[nC7,Z5MUlM3?nB8)C([fs5q.%QUgQ?A#A?73Y\H<%jcC+2+Rqk
+=&J[E!/P[GAlg<H_rbho;B6O%:Hi*:+rRXPrMIFID%fm(^!@+'#Q=\b+@q-A\(9GU1H&fifO
+26Bp6V3Fdp6fF>nH4e_A4_#UH+-Y;'>*8%Ou)8)QGuJR3'i(u'F:]AT(3Yq-iei$"M\s.4dM[
+eS,*ldEc\N$kh7345m4JTO`/o$kE#;L`_?bAn#V-^h]AQDQFiOY%,L$#0oQZn]AOAllH3*&*t%
+IP/efio$=3#//=?-'13#Gut?bJ8W'e/o7oX<;fa'CsT<Rcs:u:?[P)s<.1[8`<`dQL&E)r8J
+=mX'"5(3^YQ>Y*b9#lh0`fbCUFl3C>3mE/`f;lPbIMU,Cmro@N^%*P@+QG8_[bn5C[<!W,0*
+"8pA_I*R2")H!gBcEk;(S^?XhBM_-[(R[5$PG$8Sg5WhPu!L6N>na+6\`9cL6^Gk60[+p+AD
+gTeoZIl/uGFiJoXfm29HL]AC?;tm0SX7PX]AAQ`JV6igGZVSTV#_;g5(CM1pg:!>6dXlARgj/`
+./cUuE".pBOl:$pUK:Qj#\qsME$:NPjam]AGi[g'&NpG.SbW)sWoEJnOoUKgdQgAbgnlQP\I\
+?"/gEDHV@_Bu@K:H*nYqAWPl0n'3F;:Z'd^PB,Vio`Hb%'I:6GBGr``J>.c$9T,=Pj3!Tke+
+ET]AiJ(RC&"#Q,1Bh=>K]AX2>T"_\8k\7u/`[Nq@,;X42cR9N>R0$KCiAa:!)tupK=B_u%^>\+
+RWke"e6+^n[m&UNK?K8f6<hh/ePu8Np]A+C-*m_,I@,P>gO7<t<A0+mBE`b+W5E6YjR4]Ae1R-
+PR$APm?_6NW$7SRoqUplOCT\=%7*VoiZ@Q@u3B/+ZKC>`MO8X7WH]ACb;CPR/C!7G.?E:`]A"X
+hbcaCBcoV]A^S9CgtbG#ZVVg>l/(FXOTeLOE2Ae8pfQ\6:Br'-Q'!TV,V%+sbUh,3E8`DqAll
+X'\D,Tm+.8o><l_jggiKF$(4KC*Sq7[(h;J=dGt2`3Q2V7+/((Jcm#e_eWH0YHHU+J@N8NMm
+L)5B779dVhs!8KW^jFZ_$-##q6;l]AnLaq0J"^F"a_r40VRfqdQIJ@NJUCP3]AG`-mWu)+FX+V
+(lPpV(F6jn966(tQdT:C_*$To(HZL/sC*&_+mPT!8B%C_kBlP3CieE2j(d'OmCJptMr")3V3
+(@l.#+6r<E%iZGa>9Io.lV!a9jTYmEf>A7I('EE_a:)f7YH6$+Mhg!_n9tOMob+7(S^c%#P2
+m7=lB(OWHumI0gklQ:lbo]Aq1cHUcCbC<Dp@,DU_qg?5^m[UC,qdf&W$q4'tS8UD`7'.$]A7o/
+NZ[IB@F3A/B2t&IFj0O$)W8iD/1D$/oL]AfH"VnNl?=5'1>-'m7)>W]A1k6uI`%T&-+V#H1E]AI
+$FCBsi*taWmaEONB_c51Kf/?t>4'F]AkKJ*HC\=l/Le&JW"]Ae+?ucQ6P:%k&HSOB7t:^Z6j%+
+dJgnVu%S7jnq7calD$?r%T;e><K@Ttd_>aD'gb2q_P9_%:d2OW[ZkS@b3(*7%0el1Upga<Br
+b`l3:;\Mq(e$HE$_5r"@oq0W=*-^/$*GONMHVN-@q94;M<(FEb@!Hg>^aM&8#N9R0Uj.L9-V
+:]AICR)GU%Q+?=Q':WK'HLq>+-Au3.qSH999XL`2Z3U.0fdUq@DS.WH23!Rr89,!!#SZ:.26O
+@"J~
+]]></IM>
+</Background>
+</HighlightAction>
+</Highlight>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性2]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[D4>0]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[D4<1]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="1">
+<IM>
+<![CDATA[!Ghq'qMA$D7h#eD$31&+%7s)Y;?-[s'EA+5)@-BE!!#";lRDl7"Z&_<5u`*_9iMR<'4i#0n#
+d)9hiK#"T/k:2$j[.X#n+ULVB?'FJd,Yp+CRkf!u(h\gHa.P-HP)!R!%5r?T)!d+cLt+NK!(
+O0o!oX+'.*tl`Ikd[Cu;5^@0A9\tAb'g:R"R]A[-I=n+48D7h3t0VB^+O867[EBsNa._nZKP?
+,bqfh&r&0aPAsD*\l4P84,qf"GAH8J9=<4,q6ts+,L#Y5ZNbC&fopJFQa)@'27D#RXq_0O@W
+8[0usg2hX.ZcG9&kdYIY-2,Dq4##V2?%%#co2&5nXF$ptGW_]AEa+]An^N@oeeQ5B?p86kIGeL
+5!63ugYP9rTTT;D=e@mpXH8U@T_h+p?ZX>=\]AIq#+I(IK[Q<8O.hi`/G@\:.B/uuLO;_+($S
+jq7$Su-$+$!Wa*qarH+0):&0/dghkJAP.!qnE6H]A:jNb',8;pR;VQZEnrQgGHf5WYSOS9\O"
+e3dTGBB>[4hHaeAM<h<r"fDBE-J^R`)Zq@Q&En6G8F#*VWs/=u@T+n#SM&j]AC#82^)I'Yb[X
+(UP7m]AAQ;([B\:dmD0U!IL5B/J[V1G5j2gZW/$6CBO=#c*h:(*f>K!1f\"ume"c?e>7Ss//4
+*Z$Is9HEB.B8kH2]Ae]A@C8Uc[E(,D9`NK>;hUK2-%W5ll[ek;:8NJm!\-[n?^RKhH:o"X5g>D
+>a`iDD@Mj/&hZ0-QoCoLTQX37gNj)8i_@`A^hORa]A&\%FkKQL1-EuOM%ID3q.rE.[*s[hhq/
+WgOoJQ"L-f1ZX=+J;L%7D[7P_a?0@E(jdA<gisfsa`WO8tf-07*A)H$<f'=W./UbP>/;h:!!
+S!-O!(.`RDf\CVM&VEqd'8CrZY8I;]AWj`i,o6W&=6j]AoKPc/-6R>fj*S&m2`\OV$CYe90JC%
+<-4LZG-q<03sbonLU&6-_4=='!*lJk7<)hR_JXjPQ$QBKp?@=g4J8\3Gi7rhZ1.fDuo/0JF<
+O0ihmt7N=A@Y!G#l\/n[o<Ztc7o!8X%u/+Rk@q!)[FEmcP.,!dj_FU"KiNle3`j,6i+VCFJB
+19lp\rBP6,7K5GZ3gVU#RQFG?:@*fZJ!3D,VI3C<PZTJ^!;:R$@jW(`.WRARpMTT!%mU#*EL
+Q'm'Rt-IIVP;gs$R5`r<@3QW*5(a;fL1%j8b^raW=pB@pi#g2Ip^?S[u\Qj_Hba1HY=gn+cF
+T'Rbt*8hm^f;bke1'HA.4C^4XZ'bR^dg_GIc#cf,r;d%Y[@XVq;$Jue:m\Jq0Q8,:OWeR3_J
+1:a!(f:#bo-Iu4BY6ZbL-^a<WlDu%aM>WHX3S]AQ%O=_JVbHfFSa\^.Qd\b>9E@rp.+ep3D;p
+fZL[?Fp3LkD3SKMt[78ui5N2Z?QkC^2@!.KIl\C"rW;9&ZcTW)0([1-O,o/!*\9=cpr4BsmE
+E)_tAhD!I9Jq@e.P:m!e=m3a3SHJLZ`j,nYc_<?-@SB5d?eTa,F^eTE<Ya)ihV6<:M\b^caL
+3eeA!i4b\G(hOepTlL+r!CPJl,K).`l-F)AXQK@#,=!4s(T".K[ZBm+Ske_Rp-C3^?=8U`1-
+8M4ZXoKg@b&Q:3MP"N,[@i+7>.Ib*?0hrAa"G'A.Q\bl?\jkAuGcQt042>^.tT0Z<g_@`Ni&
+6Mq48WlGLE=gpgnN*5DNinrY?/7)mp84-[&%]AAVm^5(/*KOL/^:ld"QH;2c&!V]AC=EeLbm/R
++d!(fUS7'8jaJc~
+]]></IM>
+</Background>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="5" r="3" s="6">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C4 / C4[A4:-1,B4:+0]A]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[&A4==1]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="1">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[C4[A4:-1,B4:+0]A==0]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.ValueHighlightAction">
+<O>
+<![CDATA[    --]]></O>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand leftParentDefault="false" left="B4"/>
+</C>
+<C c="6" r="3" s="7">
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[F4 > 1]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="1">
+<IM>
+<![CDATA[!M'C'qMA$D7h#eD$31&+%7s)Y;?-[s'EA+5)[HKF!!)W(30+%>"_:1m5u`*_4]AD_a'3?#W)(
+B<p>`'7@6*XBS$]A`fC=9i[nC7,Z5MUlM3?nB8)C([fs5q.%QUgQ?A#A?73Y\H<%jcC+2+Rqk
+=&J[E!/P[GAlg<H_rbho;B6O%:Hi*:+rRXPrMIFID%fm(^!@+'#Q=\b+@q-A\(9GU1H&fifO
+26Bp6V3Fdp6fF>nH4e_A4_#UH+-Y;'>*8%Ou)8)QGuJR3'i(u'F:]AT(3Yq-iei$"M\s.4dM[
+eS,*ldEc\N$kh7345m4JTO`/o$kE#;L`_?bAn#V-^h]AQDQFiOY%,L$#0oQZn]AOAllH3*&*t%
+IP/efio$=3#//=?-'13#Gut?bJ8W'e/o7oX<;fa'CsT<Rcs:u:?[P)s<.1[8`<`dQL&E)r8J
+=mX'"5(3^YQ>Y*b9#lh0`fbCUFl3C>3mE/`f;lPbIMU,Cmro@N^%*P@+QG8_[bn5C[<!W,0*
+"8pA_I*R2")H!gBcEk;(S^?XhBM_-[(R[5$PG$8Sg5WhPu!L6N>na+6\`9cL6^Gk60[+p+AD
+gTeoZIl/uGFiJoXfm29HL]AC?;tm0SX7PX]AAQ`JV6igGZVSTV#_;g5(CM1pg:!>6dXlARgj/`
+./cUuE".pBOl:$pUK:Qj#\qsME$:NPjam]AGi[g'&NpG.SbW)sWoEJnOoUKgdQgAbgnlQP\I\
+?"/gEDHV@_Bu@K:H*nYqAWPl0n'3F;:Z'd^PB,Vio`Hb%'I:6GBGr``J>.c$9T,=Pj3!Tke+
+ET]AiJ(RC&"#Q,1Bh=>K]AX2>T"_\8k\7u/`[Nq@,;X42cR9N>R0$KCiAa:!)tupK=B_u%^>\+
+RWke"e6+^n[m&UNK?K8f6<hh/ePu8Np]A+C-*m_,I@,P>gO7<t<A0+mBE`b+W5E6YjR4]Ae1R-
+PR$APm?_6NW$7SRoqUplOCT\=%7*VoiZ@Q@u3B/+ZKC>`MO8X7WH]ACb;CPR/C!7G.?E:`]A"X
+hbcaCBcoV]A^S9CgtbG#ZVVg>l/(FXOTeLOE2Ae8pfQ\6:Br'-Q'!TV,V%+sbUh,3E8`DqAll
+X'\D,Tm+.8o><l_jggiKF$(4KC*Sq7[(h;J=dGt2`3Q2V7+/((Jcm#e_eWH0YHHU+J@N8NMm
+L)5B779dVhs!8KW^jFZ_$-##q6;l]AnLaq0J"^F"a_r40VRfqdQIJ@NJUCP3]AG`-mWu)+FX+V
+(lPpV(F6jn966(tQdT:C_*$To(HZL/sC*&_+mPT!8B%C_kBlP3CieE2j(d'OmCJptMr")3V3
+(@l.#+6r<E%iZGa>9Io.lV!a9jTYmEf>A7I('EE_a:)f7YH6$+Mhg!_n9tOMob+7(S^c%#P2
+m7=lB(OWHumI0gklQ:lbo]Aq1cHUcCbC<Dp@,DU_qg?5^m[UC,qdf&W$q4'tS8UD`7'.$]A7o/
+NZ[IB@F3A/B2t&IFj0O$)W8iD/1D$/oL]AfH"VnNl?=5'1>-'m7)>W]A1k6uI`%T&-+V#H1E]AI
+$FCBsi*taWmaEONB_c51Kf/?t>4'F]AkKJ*HC\=l/Le&JW"]Ae+?ucQ6P:%k&HSOB7t:^Z6j%+
+dJgnVu%S7jnq7calD$?r%T;e><K@Ttd_>aD'gb2q_P9_%:d2OW[ZkS@b3(*7%0el1Upga<Br
+b`l3:;\Mq(e$HE$_5r"@oq0W=*-^/$*GONMHVN-@q94;M<(FEb@!Hg>^aM&8#N9R0Uj.L9-V
+:]AICR)GU%Q+?=Q':WK'HLq>+-Au3.qSH999XL`2Z3U.0fdUq@DS.WH23!Rr89,!!#SZ:.26O
+@"J~
+]]></IM>
+</Background>
+</HighlightAction>
+</Highlight>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性2]]></Name>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[F4 < 1]]></Formula>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[F4 > 0]]></Formula>
+</Condition>
+</JoinCondition>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="1">
+<IM>
+<![CDATA[!Ghq'qMA$D7h#eD$31&+%7s)Y;?-[s'EA+5)@-BE!!#";lRDl7"Z&_<5u`*_9iMR<'4i#0n#
+d)9hiK#"T/k:2$j[.X#n+ULVB?'FJd,Yp+CRkf!u(h\gHa.P-HP)!R!%5r?T)!d+cLt+NK!(
+O0o!oX+'.*tl`Ikd[Cu;5^@0A9\tAb'g:R"R]A[-I=n+48D7h3t0VB^+O867[EBsNa._nZKP?
+,bqfh&r&0aPAsD*\l4P84,qf"GAH8J9=<4,q6ts+,L#Y5ZNbC&fopJFQa)@'27D#RXq_0O@W
+8[0usg2hX.ZcG9&kdYIY-2,Dq4##V2?%%#co2&5nXF$ptGW_]AEa+]An^N@oeeQ5B?p86kIGeL
+5!63ugYP9rTTT;D=e@mpXH8U@T_h+p?ZX>=\]AIq#+I(IK[Q<8O.hi`/G@\:.B/uuLO;_+($S
+jq7$Su-$+$!Wa*qarH+0):&0/dghkJAP.!qnE6H]A:jNb',8;pR;VQZEnrQgGHf5WYSOS9\O"
+e3dTGBB>[4hHaeAM<h<r"fDBE-J^R`)Zq@Q&En6G8F#*VWs/=u@T+n#SM&j]AC#82^)I'Yb[X
+(UP7m]AAQ;([B\:dmD0U!IL5B/J[V1G5j2gZW/$6CBO=#c*h:(*f>K!1f\"ume"c?e>7Ss//4
+*Z$Is9HEB.B8kH2]Ae]A@C8Uc[E(,D9`NK>;hUK2-%W5ll[ek;:8NJm!\-[n?^RKhH:o"X5g>D
+>a`iDD@Mj/&hZ0-QoCoLTQX37gNj)8i_@`A^hORa]A&\%FkKQL1-EuOM%ID3q.rE.[*s[hhq/
+WgOoJQ"L-f1ZX=+J;L%7D[7P_a?0@E(jdA<gisfsa`WO8tf-07*A)H$<f'=W./UbP>/;h:!!
+S!-O!(.`RDf\CVM&VEqd'8CrZY8I;]AWj`i,o6W&=6j]AoKPc/-6R>fj*S&m2`\OV$CYe90JC%
+<-4LZG-q<03sbonLU&6-_4=='!*lJk7<)hR_JXjPQ$QBKp?@=g4J8\3Gi7rhZ1.fDuo/0JF<
+O0ihmt7N=A@Y!G#l\/n[o<Ztc7o!8X%u/+Rk@q!)[FEmcP.,!dj_FU"KiNle3`j,6i+VCFJB
+19lp\rBP6,7K5GZ3gVU#RQFG?:@*fZJ!3D,VI3C<PZTJ^!;:R$@jW(`.WRARpMTT!%mU#*EL
+Q'm'Rt-IIVP;gs$R5`r<@3QW*5(a;fL1%j8b^raW=pB@pi#g2Ip^?S[u\Qj_Hba1HY=gn+cF
+T'Rbt*8hm^f;bke1'HA.4C^4XZ'bR^dg_GIc#cf,r;d%Y[@XVq;$Jue:m\Jq0Q8,:OWeR3_J
+1:a!(f:#bo-Iu4BY6ZbL-^a<WlDu%aM>WHX3S]AQ%O=_JVbHfFSa\^.Qd\b>9E@rp.+ep3D;p
+fZL[?Fp3LkD3SKMt[78ui5N2Z?QkC^2@!.KIl\C"rW;9&ZcTW)0([1-O,o/!*\9=cpr4BsmE
+E)_tAhD!I9Jq@e.P:m!e=m3a3SHJLZ`j,nYc_<?-@SB5d?eTa,F^eTE<Ya)ihV6<:M\b^caL
+3eeA!i4b\G(hOepTlL+r!CPJl,K).`l-F)AXQK@#,=!4s(T".K[ZBm+Ske_Rp-C3^?=8U`1-
+8M4ZXoKg@b&Q:3MP"N,[@i+7>.Ib*?0hrAa"G'A.Q\bl?\jkAuGcQt042>^.tT0Z<g_@`Ni&
+6Mq48WlGLE=gpgnN*5DNinrY?/7)mp84-[&%]AAVm^5(/*KOL/^:ld"QH;2c&!V]AC=EeLbm/R
++d!(fUS7'8jaJc~
+]]></IM>
+</Background>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="7" r="3" s="8">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C4 / C5]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="8" r="3" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=count(C4[!0;!0]A{C4 > $C4 && A4 = $A4}) + 1]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="9" r="3" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=count(C4[!0;!0]A{C4 > $C4}) + 1]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="10" r="3" s="9">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=K4[B4:-1]A + C4]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="11" r="3" s="9">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(&B4 > 1, L4[B4:-1]A, L4[A4:-1,B4:!-1]A) + C4]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="4" s="10">
+<Expand/>
+</C>
+<C c="2" r="4" s="11">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=sum(C4)]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="4" s="10">
+<Expand/>
+</C>
+<C c="4" r="4" s="10">
+<Expand/>
+</C>
+<C c="5" r="4" s="10">
+<Expand/>
+</C>
+<C c="6" r="4" s="10">
+<Expand/>
+</C>
+<C c="7" r="4" s="10">
+<Expand/>
+</C>
+<C c="8" r="4" s="10">
+<Expand/>
+</C>
+<C c="9" r="4" s="10">
+<Expand/>
+</C>
+<C c="10" r="4" s="10">
+<Expand/>
+</C>
+<C c="11" r="4" s="10">
+<Expand/>
+</C>
+<C c="0" r="6" cs="12" s="12">
+<O>
+<![CDATA[同比环比等财务统计表说明：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="7" cs="12" s="13">
+<O>
+<![CDATA[FR中使用层次坐标公式可以轻松实现环比、同期比、累计、排名等财务统计表]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="8" cs="12" s="14">
+<O>
+<![CDATA[1、环比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="9" cs="12" s="14">
+<O>
+<![CDATA[   该表中销售额是按照月份汇总，并按照年份分组。环比指的是当月销售额与上月对比变化比例。]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="10" cs="12" s="14">
+<O>
+<![CDATA[2、同比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="11" cs="12" s="14">
+<O>
+<![CDATA[   同比指的是当月数据与上年同期数据的变化比例。]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="0" r="12" cs="12" s="14">
+<O>
+<![CDATA[3、占比]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="13" cs="12" s="13">
+<O>
+<![CDATA[   当前月在该年中所占比例]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="14" cs="12" s="13">
+<O>
+<![CDATA[4、排名]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="15" cs="12" s="13">
+<O>
+<![CDATA[   如该表中在每一年内各月销售额排名及所有年中各月销售额排名]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="16" cs="12" s="13">
+<O>
+<![CDATA[5、累计]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="17" cs="12" s="15">
+<O>
+<![CDATA[   如该表中同一年内每个月的销售额依次累计及所有年所有月的销售额累计]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<Margin top="287999" left="575999" bottom="287999" right="575999"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="黑体" style="1" size="132" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-2624775"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-10066330"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72" foreground="-10066330"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+<FRFont name="SimSun" style="0" size="72" foreground="-10066330"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00%]]></Format>
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="ColorBackground" color="-1"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="宋体" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Top style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="宋体" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Bottom style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

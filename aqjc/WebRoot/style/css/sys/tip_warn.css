@@ -1,0 +1,87 @@
+﻿/*
+Time   : 2010-09-27 PM 3.42
+Examine: Finish
+*/
+.addTable {
+	overflow:hidden;
+	background:#ECECEC;
+	display: none;
+}
+.addTable1 {
+	overflow:hidden;
+	background:#ECECEC;
+	border: 1px solid #808080;
+}
+.TableTit {
+	height:24px;
+	font-size:14px;
+	font-weight:bold;
+	background:url(../../images/tip/wbg.gif) repeat-x;
+	color:#333;
+	border-top:1px solid #8DB2E3;
+	border-left:1px solid #8DB2E3;
+	border-right:1px solid #8DB2E3;
+	padding-left:10px;
+	line-height:24px;
+}   
+.img_btn {
+	margin-top:5px;
+	*margin-top:-17px;
+	margin-right:10px;
+	float:right;
+	display:block;
+	width: 13px; 
+	height: 13px;
+	background:url(../../images/tip/close_icon.gif) no-repeat;
+	cursor: pointer;
+}
+#warn_ul {
+	list-style: none;
+	margin: 10px 20px;
+	font-size: 12px;
+}
+#warn_ul li {
+	line-height: 30px;
+	float: left;
+}
+#warn_ul li div {
+	width:200px;
+	float: left;
+	text-align: left
+}
+#warn_ul li input.Input{
+	width: 150px;
+	border: 1px solid #7494BE;
+}
+#btn_span {
+	text-align: center;
+	display: block;
+	margin-bottom: 10px;
+	clear: both;
+}
+#btn_updatePwd,#btn_submitPwd,#btn_JiaoSe,#btn_reset  {
+	clear:both;
+	border:0;
+	background:url(../../images/tip/btn_lgrey.jpg) no-repeat transparent;
+	width:52px;
+	height:20px;
+	color:#09F;
+}
+#TMessage {
+	background:url(../../images/tip/baocun.gif) no-repeat center #fff;
+}
+.warn_title{
+	width: 250px;
+	font-size: 14px;
+	
+}
+.warn_value{
+	color: red;
+}
+.warn_detail{
+	float: right;
+    margin-right: 50px;
+    color: blue;
+    font-size: 12px;
+    text-decoration: none;
+}

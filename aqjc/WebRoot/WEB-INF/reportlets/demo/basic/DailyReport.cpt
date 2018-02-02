@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20111025" releaseVersion="6.5.6">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [分界口货车出入情况]A]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true" html="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.poly.PolyWorkSheet" name="sheet1">
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting orientation="1">
+<PaperSize width="42768000" height="60480000"/>
+<Margin top="410400" left="576000" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1333500,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2362200,2362200,2362200,2362200,2362200,2362200,2362200,2362200,2476500,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="13" s="0">
+<O>
+<![CDATA[朔 黄 铁 路 运 输 日 况]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block1" x="1295400" y="762000" width="32308800" height="1371600"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1295400,723900,723900,723900,1296000,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2743200,2476500,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="3" s="1">
+<O>
+<![CDATA[分界口货车出入情况]]></O>
+<Expand/>
+</C>
+<C c="0" r="1" cs="2" rs="2" s="2">
+<O>
+<![CDATA[出入车及管内到达]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="交出\接入"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="1"/>
+</C>
+<C c="2" r="2" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="车型"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="1"/>
+</C>
+<C c="0" r="3" rs="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="累计方式"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="出入车地点及管内到达"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="值"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="1" r="4" s="4">
+<O>
+<![CDATA[合计]]></O>
+<Expand/>
+</C>
+<C c="2" r="4" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=SUM(C4)]]></Attributes>
+</O>
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block2" x="19281600" y="2095500" width="8001000" height="17107500"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1295400,864000,864000,864000,864000,864000,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[3600000,3657600,3600000,3600000,3528000,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="5" s="1">
+<O>
+<![CDATA[运 输 收 入 单位:元]]></O>
+<Expand/>
+</C>
+<C c="0" r="1" cs="2" s="2">
+<O>
+<![CDATA[当日]]></O>
+<Expand/>
+</C>
+<C c="2" r="1" cs="2" s="2">
+<O>
+<![CDATA[累]]></O>
+<Expand/>
+</C>
+<C c="4" r="1" s="2">
+<O>
+<![CDATA[年累]]></O>
+<Expand/>
+</C>
+<C c="0" r="2" cs="2" s="3">
+<O t="BigDecimal">
+<![CDATA[33974872.47]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" cs="2" s="3">
+<O>
+<![CDATA[33974872.47 ]]></O>
+<Expand/>
+</C>
+<C c="4" r="2" s="3">
+<O t="BigDecimal">
+<![CDATA[8914304128.66]]></O>
+<Expand/>
+</C>
+<C c="0" r="3" s="2">
+<O>
+<![CDATA[朔黄全线]]></O>
+<Expand/>
+</C>
+<C c="1" r="3" s="2">
+<O>
+<![CDATA[运用车]]></O>
+<Expand/>
+</C>
+<C c="2" r="3" s="2">
+<O>
+<![CDATA[工作量]]></O>
+<Expand/>
+</C>
+<C c="3" r="3" s="2">
+<O>
+<![CDATA[周转时间]]></O>
+<Expand/>
+</C>
+<C c="4" r="3" s="2">
+<O>
+<![CDATA[停时]]></O>
+<Expand/>
+</C>
+<C c="0" r="4" s="3">
+<O>
+<![CDATA[计划]]></O>
+<Expand/>
+</C>
+<C c="1" r="4" s="3">
+<O t="I">
+<![CDATA[10424]]></O>
+<Expand/>
+</C>
+<C c="2" r="4" s="3">
+<O t="I">
+<![CDATA[6949]]></O>
+<Expand/>
+</C>
+<C c="3" r="4" s="3">
+<O t="D">
+<![CDATA[1.5]]></O>
+<Expand/>
+</C>
+<C c="4" r="4" s="3">
+<O>
+<![CDATA[11.5 ]]></O>
+<Expand/>
+</C>
+<C c="0" r="5" s="3">
+<O>
+<![CDATA[实际]]></O>
+<Expand/>
+</C>
+<C c="1" r="5" s="3">
+<O t="I">
+<![CDATA[10180]]></O>
+<Expand/>
+</C>
+<C c="2" r="5" s="3">
+<O t="I">
+<![CDATA[7486]]></O>
+<Expand/>
+</C>
+<C c="3" r="5" s="3">
+<O t="D">
+<![CDATA[1.36]]></O>
+<Expand/>
+</C>
+<C c="4" r="5" s="3">
+<O t="D">
+<![CDATA[10.3]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block4" x="1295400" y="2095500" width="18023700" height="5653500"/>
+</Block>
+<Block class="com.fr.report.poly.PolyECBlock">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1523520,1152000,864000,864000,864000,864000,864000,864000,864000,936000,936000,936000,1143000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[1676400,1524000,1600200,1219200,1714500,1440000,2304000,1440000,1440000,1714500,1943100,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="11" s="1">
+<O>
+<![CDATA[技 术 站 作 业 情 况]]></O>
+<Expand/>
+</C>
+<C c="0" r="1" cs="11" s="1">
+<O>
+<![CDATA[神 池 南  ]]></O>
+<Expand/>
+</C>
+<C c="0" r="2" cs="3" s="2">
+<O>
+<![CDATA[运用车]]></O>
+<Expand/>
+</C>
+<C c="3" r="2" cs="2" s="2">
+<O>
+<![CDATA[重车]]></O>
+<Expand/>
+</C>
+<C c="5" r="2" s="2">
+<O>
+<![CDATA[空车]]></O>
+<Expand/>
+</C>
+<C c="6" r="2" s="2">
+<O>
+<![CDATA[接重(吨)]]></O>
+<Expand/>
+</C>
+<C c="7" r="2" cs="2" s="2">
+<O>
+<![CDATA[停时]]></O>
+<Expand/>
+</C>
+<C c="9" r="2" cs="2" s="2">
+<O>
+<![CDATA[中时]]></O>
+<Expand/>
+</C>
+<C c="0" r="3" s="3">
+<O>
+<![CDATA[计划]]></O>
+<Expand/>
+</C>
+<C c="1" r="3" s="3">
+<O>
+<![CDATA[朔黄]]></O>
+<Expand/>
+</C>
+<C c="2" r="3" s="3">
+<O t="I">
+<![CDATA[1050]]></O>
+<Expand/>
+</C>
+<C c="3" r="3" cs="2" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="5" r="3" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="6" r="3" s="3">
+<O t="I">
+<![CDATA[451667]]></O>
+<Expand/>
+</C>
+<C c="7" r="3" s="3">
+<O t="D">
+<![CDATA[20.0]]></O>
+<Expand/>
+</C>
+<C c="8" r="3" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="9" r="3" s="3">
+<O t="D">
+<![CDATA[1.5]]></O>
+<Expand/>
+</C>
+<C c="10" r="3" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="0" r="4" s="3">
+<O>
+<![CDATA[实际]]></O>
+<Expand/>
+</C>
+<C c="1" r="4" s="3">
+<O>
+<![CDATA[朔黄]]></O>
+<Expand/>
+</C>
+<C c="2" r="4" s="3">
+<O t="I">
+<![CDATA[796]]></O>
+<Expand/>
+</C>
+<C c="3" r="4" cs="2" s="3">
+<O t="I">
+<![CDATA[317]]></O>
+<Expand/>
+</C>
+<C c="5" r="4" s="3">
+<O t="I">
+<![CDATA[479]]></O>
+<Expand/>
+</C>
+<C c="6" r="4" s="3">
+<O t="I">
+<![CDATA[480586]]></O>
+<Expand/>
+</C>
+<C c="7" r="4" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="8" r="4" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="9" r="4" s="3">
+<O t="D">
+<![CDATA[1.3]]></O>
+<Expand/>
+</C>
+<C c="10" r="4" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="0" r="5" s="3">
+<O>
+<![CDATA[全站]]></O>
+<Expand/>
+</C>
+<C c="1" r="5" s="3">
+<O t="I">
+<![CDATA[935]]></O>
+<Expand/>
+</C>
+<C c="2" r="5" s="3">
+<O t="I">
+<![CDATA[450]]></O>
+<Expand/>
+</C>
+<C c="3" r="5" cs="2" s="3">
+<O t="I">
+<![CDATA[485]]></O>
+<Expand/>
+</C>
+<C c="5" r="5" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="6" r="5" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="7" r="5" s="3">
+<Expand/>
+</C>
+<C c="8" r="5" cs="3" s="3">
+<Expand/>
+</C>
+<C c="0" r="6" cs="3" s="3">
+<O>
+<![CDATA[解体]]></O>
+<Expand/>
+</C>
+<C c="3" r="6" cs="2" s="3">
+<O>
+<![CDATA[编  组]]></O>
+<Expand/>
+</C>
+<C c="5" r="6" cs="6" s="3">
+<O>
+<![CDATA[办理车]]></O>
+<Expand/>
+</C>
+<C c="0" r="7" s="3">
+<Expand/>
+</C>
+<C c="1" r="7" cs="2" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="3" r="7" s="3">
+<Expand/>
+</C>
+<C c="4" r="7" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="5" r="7" s="3">
+<O t="I">
+<![CDATA[488]]></O>
+<Expand/>
+</C>
+<C c="6" r="7" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="7" r="7" cs="2" s="3">
+<O t="I">
+<![CDATA[32364]]></O>
+<Expand/>
+</C>
+<C c="9" r="7" cs="2" s="3">
+<O>
+<![CDATA[辆]]></O>
+<Expand/>
+</C>
+<C c="0" r="8" cs="11" s="1">
+<O>
+<![CDATA[肃 宁 北]]></O>
+<Expand/>
+</C>
+<C c="0" r="9" cs="3" s="2">
+<O>
+<![CDATA[运用车]]></O>
+<Expand/>
+</C>
+<C c="3" r="9" cs="2" s="2">
+<O>
+<![CDATA[重车]]></O>
+<Expand/>
+</C>
+<C c="5" r="9" s="2">
+<O>
+<![CDATA[空车]]></O>
+<Expand/>
+</C>
+<C c="6" r="9" cs="2" s="2">
+<O>
+<![CDATA[停  时]]></O>
+<Expand/>
+</C>
+<C c="8" r="9" cs="3" s="2">
+<O>
+<![CDATA[中   时]]></O>
+<Expand/>
+</C>
+<C c="0" r="10" s="3">
+<O>
+<![CDATA[计划]]></O>
+<Expand/>
+</C>
+<C c="1" r="10" cs="2" s="3">
+<O t="I">
+<![CDATA[900]]></O>
+<Expand/>
+</C>
+<C c="3" r="10" cs="2" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="5" r="10" s="3">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="6" r="10" s="3">
+<O t="I">
+<![CDATA[2]]></O>
+<Expand/>
+</C>
+<C c="7" r="10" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="8" r="10" cs="2" s="3">
+<O t="D">
+<![CDATA[1.4]]></O>
+<Expand/>
+</C>
+<C c="10" r="10" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="0" r="11" s="3">
+<O>
+<![CDATA[实际]]></O>
+<Expand/>
+</C>
+<C c="1" r="11" cs="2" s="3">
+<O t="I">
+<![CDATA[474]]></O>
+<Expand/>
+</C>
+<C c="3" r="11" cs="2" s="3">
+<O t="I">
+<![CDATA[132]]></O>
+<Expand/>
+</C>
+<C c="5" r="11" s="3">
+<O t="I">
+<![CDATA[342]]></O>
+<Expand/>
+</C>
+<C c="6" r="11" s="3">
+<O t="I">
+<![CDATA[5]]></O>
+<Expand/>
+</C>
+<C c="7" r="11" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="8" r="11" cs="2" s="3">
+<O t="D">
+<![CDATA[1.2]]></O>
+<Expand/>
+</C>
+<C c="10" r="11" s="3">
+<O>
+<![CDATA[小时]]></O>
+<Expand/>
+</C>
+<C c="0" r="12" cs="3" s="2">
+<O>
+<![CDATA[接重（吨）]]></O>
+<Expand/>
+</C>
+<C c="3" r="12" cs="3" s="2">
+<O>
+<![CDATA[甩重]]></O>
+<Expand/>
+</C>
+<C c="6" r="12" cs="2" s="2">
+<O>
+<![CDATA[补空]]></O>
+<Expand/>
+</C>
+<C c="8" r="12" cs="3" s="2">
+<O>
+<![CDATA[办理车]]></O>
+<Expand/>
+</C>
+<C c="0" r="13" s="3">
+<O>
+<![CDATA[计划]]></O>
+<Expand/>
+</C>
+<C c="1" r="13" cs="2" s="3">
+<O t="I">
+<![CDATA[406287]]></O>
+<Expand/>
+</C>
+<C c="3" r="13" cs="2" s="3">
+<O t="I">
+<![CDATA[13]]></O>
+<Expand/>
+</C>
+<C c="5" r="13" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="6" r="13" s="3">
+<O t="I">
+<![CDATA[16]]></O>
+<Expand/>
+</C>
+<C c="7" r="13" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="8" r="13" cs="2" s="3">
+<O t="I">
+<![CDATA[433]]></O>
+<Expand/>
+</C>
+<C c="10" r="13" s="3">
+<O>
+<![CDATA[列]]></O>
+<Expand/>
+</C>
+<C c="0" r="14" s="3">
+<O>
+<![CDATA[实际]]></O>
+<Expand/>
+</C>
+<C c="1" r="14" cs="2" s="3">
+<O t="I">
+<![CDATA[460888]]></O>
+<Expand/>
+</C>
+<C c="3" r="14" cs="2" s="3">
+<O t="I">
+<![CDATA[137]]></O>
+<Expand/>
+</C>
+<C c="5" r="14" s="3">
+<O>
+<![CDATA[辆]]></O>
+<Expand/>
+</C>
+<C c="6" r="14" s="3">
+<O t="I">
+<![CDATA[127]]></O>
+<Expand/>
+</C>
+<C c="7" r="14" s="3">
+<O>
+<![CDATA[辆]]></O>
+<Expand/>
+</C>
+<C c="8" r="14" cs="2" s="3">
+<O t="I">
+<![CDATA[28579]]></O>
+<Expand/>
+</C>
+<C c="10" r="14" s="3">
+<O>
+<![CDATA[辆]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<PECBAttr blockName="block3" x="1295400" y="7710900" width="18054000" height="14465220"/>
+</Block>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="1" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="1" size="132" foreground="-16751002"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="108" foreground="-16737895"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="ColorBackground" color="-1577999"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-3342337"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

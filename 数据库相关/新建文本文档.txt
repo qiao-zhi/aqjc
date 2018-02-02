@@ -1,0 +1,1 @@
+expdp dumpfile=pump_dir:sbgl20160425.expdp schemas=sbgl nologfile=y

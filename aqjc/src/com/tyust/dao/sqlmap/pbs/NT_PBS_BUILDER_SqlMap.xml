@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_PBS_BUILDER" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.pbs.PbsBuilder" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="PBS_ID" property="pbsId" jdbcType="VARCHAR" />
+    <result column="UNIT_NAME" property="unitName" jdbcType="VARCHAR" />
+    <result column="UNIT_TYPE" property="unitType" jdbcType="VARCHAR" />
+    <result column="BUSINESS_SCOPE" property="businessScope" jdbcType="VARCHAR" />
+    <result column="UNIT_ADDRESS" property="unitAddress" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="VARCHAR" />
+    <result column="UNIT_TEL" property="unitTel" jdbcType="VARCHAR" />
+    <result column="UNIT_EMAIL" property="unitEmail" jdbcType="VARCHAR" />
+    <result column="LEGAL_PERSON" property="legalPerson" jdbcType="VARCHAR" />
+    <result column="LP_POSITION" property="lpPosition" jdbcType="VARCHAR" />
+    <result column="LP_TELPHONE" property="lpTelphone" jdbcType="VARCHAR" />
+    <result column="LP_TAX" property="lpTax" jdbcType="VARCHAR" />
+    <result column="LP_EMAIL" property="lpEmail" jdbcType="VARCHAR" />
+    <result column="ZZZS_URL" property="zzzsUrl" jdbcType="VARCHAR" />
+    <result column="YYZZ_URL" property="yyzzUrl" jdbcType="VARCHAR" />
+    <result column="BUILDER_INTRO" property="builderIntro" jdbcType="VARCHAR" />
+    <result column="RESEARCH_ABILITY" property="researchAbility" jdbcType="VARCHAR" />
+    <result column="QUALITY_MANAGE" property="qualityManage" jdbcType="VARCHAR" />
+    <result column="AFTER_SERVICE" property="afterService" jdbcType="VARCHAR" />
+    <result column="EMPLOYEE_MANAGE" property="employeeManage" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, PBS_ID, UNIT_NAME, UNIT_TYPE, BUSINESS_SCOPE, UNIT_ADDRESS, POST_CODE, UNIT_TEL, 
+    UNIT_EMAIL, LEGAL_PERSON, LP_POSITION, LP_TELPHONE, LP_TAX, LP_EMAIL, ZZZS_URL, YYZZ_URL, 
+    BUILDER_INTRO, RESEARCH_ABILITY, QUALITY_MANAGE, AFTER_SERVICE, EMPLOYEE_MANAGE, 
+    REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsBuilderExample" >
+    select
+    <isParameterPresent >
+      <isEqual property="distinct" compareValue="true" >
+        distinct
+      </isEqual>
+    </isParameterPresent>
+    <include refid="NT_PBS_BUILDER.Base_Column_List" />
+    from NT_PBS_BUILDER
+    <isParameterPresent >
+      <include refid="NT_PBS_BUILDER.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    select 
+    <include refid="NT_PBS_BUILDER.Base_Column_List" />
+    from NT_PBS_BUILDER
+    where ID = #id:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    delete from NT_PBS_BUILDER
+    where ID = #id:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.pbs.PbsBuilderExample" >
+    delete from NT_PBS_BUILDER
+    <include refid="NT_PBS_BUILDER.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    insert into NT_PBS_BUILDER (ID, PBS_ID, UNIT_NAME, UNIT_TYPE, BUSINESS_SCOPE, 
+      UNIT_ADDRESS, POST_CODE, UNIT_TEL, UNIT_EMAIL, 
+      LEGAL_PERSON, LP_POSITION, LP_TELPHONE, LP_TAX, 
+      LP_EMAIL, ZZZS_URL, YYZZ_URL, BUILDER_INTRO, 
+      RESEARCH_ABILITY, QUALITY_MANAGE, AFTER_SERVICE, EMPLOYEE_MANAGE, 
+      REMARK)
+    values (#id:VARCHAR#, #pbsId:VARCHAR#, #unitName:VARCHAR#, #unitType:VARCHAR#, #businessScope:VARCHAR#, 
+      #unitAddress:VARCHAR#, #postCode:VARCHAR#, #unitTel:VARCHAR#, #unitEmail:VARCHAR#, 
+      #legalPerson:VARCHAR#, #lpPosition:VARCHAR#, #lpTelphone:VARCHAR#, #lpTax:VARCHAR#, 
+      #lpEmail:VARCHAR#, #zzzsUrl:VARCHAR#, #yyzzUrl:VARCHAR#, #builderIntro:VARCHAR#, 
+      #researchAbility:VARCHAR#, #qualityManage:VARCHAR#, #afterService:VARCHAR#, #employeeManage:VARCHAR#, 
+      #remark:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    insert into NT_PBS_BUILDER
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="id" >
+        ID
+      </isNotNull>
+      <isNotNull prepend="," property="pbsId" >
+        PBS_ID
+      </isNotNull>
+      <isNotNull prepend="," property="unitName" >
+        UNIT_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="unitType" >
+        UNIT_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="businessScope" >
+        BUSINESS_SCOPE
+      </isNotNull>
+      <isNotNull prepend="," property="unitAddress" >
+        UNIT_ADDRESS
+      </isNotNull>
+      <isNotNull prepend="," property="postCode" >
+        POST_CODE
+      </isNotNull>
+      <isNotNull prepend="," property="unitTel" >
+        UNIT_TEL
+      </isNotNull>
+      <isNotNull prepend="," property="unitEmail" >
+        UNIT_EMAIL
+      </isNotNull>
+      <isNotNull prepend="," property="legalPerson" >
+        LEGAL_PERSON
+      </isNotNull>
+      <isNotNull prepend="," property="lpPosition" >
+        LP_POSITION
+      </isNotNull>
+      <isNotNull prepend="," property="lpTelphone" >
+        LP_TELPHONE
+      </isNotNull>
+      <isNotNull prepend="," property="lpTax" >
+        LP_TAX
+      </isNotNull>
+      <isNotNull prepend="," property="lpEmail" >
+        LP_EMAIL
+      </isNotNull>
+      <isNotNull prepend="," property="zzzsUrl" >
+        ZZZS_URL
+      </isNotNull>
+      <isNotNull prepend="," property="yyzzUrl" >
+        YYZZ_URL
+      </isNotNull>
+      <isNotNull prepend="," property="builderIntro" >
+        BUILDER_INTRO
+      </isNotNull>
+      <isNotNull prepend="," property="researchAbility" >
+        RESEARCH_ABILITY
+      </isNotNull>
+      <isNotNull prepend="," property="qualityManage" >
+        QUALITY_MANAGE
+      </isNotNull>
+      <isNotNull prepend="," property="afterService" >
+        AFTER_SERVICE
+      </isNotNull>
+      <isNotNull prepend="," property="employeeManage" >
+        EMPLOYEE_MANAGE
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="id" >
+        #id:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsId" >
+        #pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitName" >
+        #unitName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitType" >
+        #unitType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="businessScope" >
+        #businessScope:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitAddress" >
+        #unitAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="postCode" >
+        #postCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitTel" >
+        #unitTel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitEmail" >
+        #unitEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="legalPerson" >
+        #legalPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpPosition" >
+        #lpPosition:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpTelphone" >
+        #lpTelphone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpTax" >
+        #lpTax:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpEmail" >
+        #lpEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="zzzsUrl" >
+        #zzzsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="yyzzUrl" >
+        #yyzzUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="builderIntro" >
+        #builderIntro:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="researchAbility" >
+        #researchAbility:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="qualityManage" >
+        #qualityManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="afterService" >
+        #afterService:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="employeeManage" >
+        #employeeManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.pbs.PbsBuilderExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_PBS_BUILDER
+    <include refid="NT_PBS_BUILDER.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_PBS_BUILDER
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.id" >
+        ID = #record.id:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsId" >
+        PBS_ID = #record.pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.unitName" >
+        UNIT_NAME = #record.unitName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.unitType" >
+        UNIT_TYPE = #record.unitType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.businessScope" >
+        BUSINESS_SCOPE = #record.businessScope:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.unitAddress" >
+        UNIT_ADDRESS = #record.unitAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.postCode" >
+        POST_CODE = #record.postCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.unitTel" >
+        UNIT_TEL = #record.unitTel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.unitEmail" >
+        UNIT_EMAIL = #record.unitEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.legalPerson" >
+        LEGAL_PERSON = #record.legalPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.lpPosition" >
+        LP_POSITION = #record.lpPosition:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.lpTelphone" >
+        LP_TELPHONE = #record.lpTelphone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.lpTax" >
+        LP_TAX = #record.lpTax:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.lpEmail" >
+        LP_EMAIL = #record.lpEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.zzzsUrl" >
+        ZZZS_URL = #record.zzzsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.yyzzUrl" >
+        YYZZ_URL = #record.yyzzUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.builderIntro" >
+        BUILDER_INTRO = #record.builderIntro:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.researchAbility" >
+        RESEARCH_ABILITY = #record.researchAbility:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.qualityManage" >
+        QUALITY_MANAGE = #record.qualityManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.afterService" >
+        AFTER_SERVICE = #record.afterService:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.employeeManage" >
+        EMPLOYEE_MANAGE = #record.employeeManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_PBS_BUILDER.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_PBS_BUILDER
+    set ID = #record.id:VARCHAR#,
+      PBS_ID = #record.pbsId:VARCHAR#,
+      UNIT_NAME = #record.unitName:VARCHAR#,
+      UNIT_TYPE = #record.unitType:VARCHAR#,
+      BUSINESS_SCOPE = #record.businessScope:VARCHAR#,
+      UNIT_ADDRESS = #record.unitAddress:VARCHAR#,
+      POST_CODE = #record.postCode:VARCHAR#,
+      UNIT_TEL = #record.unitTel:VARCHAR#,
+      UNIT_EMAIL = #record.unitEmail:VARCHAR#,
+      LEGAL_PERSON = #record.legalPerson:VARCHAR#,
+      LP_POSITION = #record.lpPosition:VARCHAR#,
+      LP_TELPHONE = #record.lpTelphone:VARCHAR#,
+      LP_TAX = #record.lpTax:VARCHAR#,
+      LP_EMAIL = #record.lpEmail:VARCHAR#,
+      ZZZS_URL = #record.zzzsUrl:VARCHAR#,
+      YYZZ_URL = #record.yyzzUrl:VARCHAR#,
+      BUILDER_INTRO = #record.builderIntro:VARCHAR#,
+      RESEARCH_ABILITY = #record.researchAbility:VARCHAR#,
+      QUALITY_MANAGE = #record.qualityManage:VARCHAR#,
+      AFTER_SERVICE = #record.afterService:VARCHAR#,
+      EMPLOYEE_MANAGE = #record.employeeManage:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_PBS_BUILDER.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    update NT_PBS_BUILDER
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="pbsId" >
+        PBS_ID = #pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitName" >
+        UNIT_NAME = #unitName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitType" >
+        UNIT_TYPE = #unitType:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="businessScope" >
+        BUSINESS_SCOPE = #businessScope:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitAddress" >
+        UNIT_ADDRESS = #unitAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="postCode" >
+        POST_CODE = #postCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitTel" >
+        UNIT_TEL = #unitTel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="unitEmail" >
+        UNIT_EMAIL = #unitEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="legalPerson" >
+        LEGAL_PERSON = #legalPerson:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpPosition" >
+        LP_POSITION = #lpPosition:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpTelphone" >
+        LP_TELPHONE = #lpTelphone:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpTax" >
+        LP_TAX = #lpTax:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="lpEmail" >
+        LP_EMAIL = #lpEmail:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="zzzsUrl" >
+        ZZZS_URL = #zzzsUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="yyzzUrl" >
+        YYZZ_URL = #yyzzUrl:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="builderIntro" >
+        BUILDER_INTRO = #builderIntro:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="researchAbility" >
+        RESEARCH_ABILITY = #researchAbility:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="qualityManage" >
+        QUALITY_MANAGE = #qualityManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="afterService" >
+        AFTER_SERVICE = #afterService:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="employeeManage" >
+        EMPLOYEE_MANAGE = #employeeManage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where ID = #id:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsBuilder" >
+    update NT_PBS_BUILDER
+    set PBS_ID = #pbsId:VARCHAR#,
+      UNIT_NAME = #unitName:VARCHAR#,
+      UNIT_TYPE = #unitType:VARCHAR#,
+      BUSINESS_SCOPE = #businessScope:VARCHAR#,
+      UNIT_ADDRESS = #unitAddress:VARCHAR#,
+      POST_CODE = #postCode:VARCHAR#,
+      UNIT_TEL = #unitTel:VARCHAR#,
+      UNIT_EMAIL = #unitEmail:VARCHAR#,
+      LEGAL_PERSON = #legalPerson:VARCHAR#,
+      LP_POSITION = #lpPosition:VARCHAR#,
+      LP_TELPHONE = #lpTelphone:VARCHAR#,
+      LP_TAX = #lpTax:VARCHAR#,
+      LP_EMAIL = #lpEmail:VARCHAR#,
+      ZZZS_URL = #zzzsUrl:VARCHAR#,
+      YYZZ_URL = #yyzzUrl:VARCHAR#,
+      BUILDER_INTRO = #builderIntro:VARCHAR#,
+      RESEARCH_ABILITY = #researchAbility:VARCHAR#,
+      QUALITY_MANAGE = #qualityManage:VARCHAR#,
+      AFTER_SERVICE = #afterService:VARCHAR#,
+      EMPLOYEE_MANAGE = #employeeManage:VARCHAR#,
+      REMARK = #remark:VARCHAR#
+    where ID = #id:VARCHAR#
+  </update>
+</sqlMap>

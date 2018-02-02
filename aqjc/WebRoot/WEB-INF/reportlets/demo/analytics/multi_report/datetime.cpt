@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT
+     订单明细.产品ID as 订单明细_产品ID,
+     format(订单.订购日期,'yyyy-MM-dd') AS 订单_订购日期,
+     YEAR(订单.订购日期) AS 年份,
+     LEFT (format(订单.订购日期,'yyyy-MM-dd'),7) AS 月份, 
+     订单.货主城市 AS 订单_货主城市,
+     订单.货主地区 AS 订单_货主地区,
+     sum(订单明细.单价*订单明细.数量*(1-订单明细.折扣)) as 营业额,
+     sum(订单明细.进价*订单明细.数量) as 成本
+FROM
+     订单 订单 INNER JOIN 订单明细 订单明细 ON 订单.订单ID = 订单明细.订单ID
+where year(订购日期) in (1996,1997)
+group by YEAR(订单.订购日期),LEFT(format(订单.订购日期,'yyyy-MM-dd'),7),format(订单.订购日期,'yyyy-MM-dd'),订单.货主城市,订单.货主地区,订单明细.产品ID]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT
+     产品.产品名称 AS 产品_产品名称,
+     产品.产品ID AS 产品_产品ID,
+     类别.类别名称 AS 类别_类别名称
+FROM
+     产品 产品 INNER JOIN 类别 类别 ON 产品.类别ID = 类别.类别ID
+where 类别.类别ID<=3]]></Query>
+</TableData>
+<TableData name="ds3" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 订单ID,产品ID,单价*数量*(1-折扣) as 营业额,进价*数量 as 成本 FROM 订单明细 ]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars/>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[685800,685800,685800,685800,685800,685800,685800,685800,685800,685800,685800,685800,685800,685800,647700,685800,838200,1066800,647700,762000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[4762500,9410700,8724900,7086600,8724900,2209800,3505200,3048000,3048000,2743200,2743200]]></ColumnWidth>
+<FloatElementList>
+<com.fr.report.FloatElement>
+<FloatElementName name="Float11"/>
+<Location leftDistance="0" topDistance="228600" width="38747700" height="12153900"/>
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="Default">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="GradientBackground" color1="-986896" color2="-1" direction="1" useCell="true" begin="0.0" finish="0.0" cyclic="false"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[营业额&利润趋势图一览]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="96"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="true" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="false" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${SERIES}${VALUE}${CATEGORY}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrAlpha">
+<AttrAlpha>
+<Attr alpha="0.5"/>
+</AttrAlpha>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+<ConditionAttrList>
+<List index="0">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBackground">
+<AttrBackground>
+<Background name="ColorBackground" color="-5316353"/>
+</AttrBackground>
+</Attr>
+</AttrList>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[系列序号]]></CNAME>
+<Compare op="0">
+<O t="I">
+<![CDATA[1]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+</ConditionAttr>
+</List>
+<List index="1">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrBackground">
+<AttrBackground>
+<Background name="ColorBackground" color="-6474"/>
+</AttrBackground>
+</Attr>
+</AttrList>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[0]]></CNUMBER>
+<CNAME>
+<![CDATA[系列序号]]></CNAME>
+<Compare op="0">
+<O t="I">
+<![CDATA[2]]></O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+</ConditionAttr>
+</List>
+</ConditionAttrList>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="14" outerAlpha="0.8" outerColor="-8355712"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="5" shadowAlpha="0.6" shadowColor="-8355712"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false" verticalIntervalBackgroundColor="-986896"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="true"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="true"/>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="宋体" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<AxisLabelCount value="=1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.08" interval="4.44"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<NormalReportDataDefinition>
+<Series>
+<SeriesDefinition>
+<SeriesName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=[C20, E20]A]]></Attributes>
+</O>
+</SeriesName>
+<SeriesValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=[C21, E21]A]]></Attributes>
+</O>
+</SeriesValue>
+</SeriesDefinition>
+</Series>
+<Category>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B21]]></Attributes>
+</O>
+</Category>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</NormalReportDataDefinition>
+</O>
+<Style index="0"/>
+</com.fr.report.FloatElement>
+</FloatElementList>
+<CellElementList>
+<C c="1" r="0" s="1">
+<Expand/>
+</C>
+<C c="2" r="0" s="1">
+<Expand/>
+</C>
+<C c="3" r="0" s="1">
+<Expand/>
+</C>
+<C c="4" r="0" s="1">
+<Expand/>
+</C>
+<C c="2" r="1" s="1">
+<Expand/>
+</C>
+<C c="3" r="1" s="1">
+<Expand/>
+</C>
+<C c="4" r="1" s="1">
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<Expand/>
+</C>
+<C c="2" r="2" s="1">
+<Expand/>
+</C>
+<C c="3" r="2" s="1">
+<Expand/>
+</C>
+<C c="4" r="2" s="1">
+<Expand/>
+</C>
+<C c="1" r="3" s="1">
+<Expand/>
+</C>
+<C c="2" r="3" s="1">
+<Expand/>
+</C>
+<C c="3" r="3" s="1">
+<Expand/>
+</C>
+<C c="4" r="3" s="1">
+<Expand/>
+</C>
+<C c="1" r="4" s="1">
+<Expand/>
+</C>
+<C c="2" r="4" s="1">
+<Expand/>
+</C>
+<C c="3" r="4" s="1">
+<Expand/>
+</C>
+<C c="4" r="4" s="1">
+<Expand/>
+</C>
+<C c="1" r="5" s="1">
+<Expand/>
+</C>
+<C c="2" r="5" s="1">
+<Expand/>
+</C>
+<C c="3" r="5" s="1">
+<Expand/>
+</C>
+<C c="4" r="5" s="1">
+<Expand/>
+</C>
+<C c="1" r="6" s="1">
+<Expand/>
+</C>
+<C c="2" r="6" s="1">
+<Expand/>
+</C>
+<C c="3" r="6" s="1">
+<Expand/>
+</C>
+<C c="4" r="6" s="1">
+<Expand/>
+</C>
+<C c="1" r="7" s="1">
+<Expand/>
+</C>
+<C c="2" r="7" s="1">
+<Expand/>
+</C>
+<C c="3" r="7" s="1">
+<Expand/>
+</C>
+<C c="4" r="7" s="1">
+<Expand/>
+</C>
+<C c="1" r="8" s="1">
+<Expand/>
+</C>
+<C c="2" r="8" s="1">
+<Expand/>
+</C>
+<C c="3" r="8" s="1">
+<Expand/>
+</C>
+<C c="4" r="8" s="1">
+<Expand/>
+</C>
+<C c="1" r="9" s="1">
+<Expand/>
+</C>
+<C c="2" r="9" s="1">
+<Expand/>
+</C>
+<C c="3" r="9" s="1">
+<Expand/>
+</C>
+<C c="4" r="9" s="1">
+<Expand/>
+</C>
+<C c="1" r="10" s="1">
+<Expand/>
+</C>
+<C c="2" r="10" s="1">
+<Expand/>
+</C>
+<C c="3" r="10" s="1">
+<Expand/>
+</C>
+<C c="4" r="10" s="1">
+<Expand/>
+</C>
+<C c="1" r="11" s="1">
+<Expand/>
+</C>
+<C c="2" r="11" s="1">
+<Expand/>
+</C>
+<C c="3" r="11" s="1">
+<Expand/>
+</C>
+<C c="4" r="11" s="1">
+<Expand/>
+</C>
+<C c="1" r="12" s="1">
+<Expand/>
+</C>
+<C c="2" r="12" s="1">
+<Expand/>
+</C>
+<C c="3" r="12" s="1">
+<Expand/>
+</C>
+<C c="4" r="12" s="1">
+<Expand/>
+</C>
+<C c="1" r="13" s="1">
+<Expand/>
+</C>
+<C c="2" r="13" s="1">
+<Expand/>
+</C>
+<C c="3" r="13" s="1">
+<Expand/>
+</C>
+<C c="4" r="13" s="1">
+<Expand/>
+</C>
+<C c="1" r="14" s="1">
+<Expand/>
+</C>
+<C c="2" r="14" s="1">
+<Expand/>
+</C>
+<C c="3" r="14" s="1">
+<Expand/>
+</C>
+<C c="4" r="14" s="1">
+<Expand/>
+</C>
+<C c="1" r="15" s="1">
+<Expand/>
+</C>
+<C c="2" r="15" s="1">
+<Expand/>
+</C>
+<C c="3" r="15" s="1">
+<Expand/>
+</C>
+<C c="4" r="15" s="1">
+<Expand/>
+</C>
+<C c="1" r="16" s="1">
+<Expand/>
+</C>
+<C c="2" r="16" s="1">
+<Expand/>
+</C>
+<C c="3" r="16" s="1">
+<Expand/>
+</C>
+<C c="4" r="16" s="1">
+<Expand/>
+</C>
+<C c="1" r="17" s="1">
+<Expand/>
+</C>
+<C c="2" r="17" s="1">
+<Expand/>
+</C>
+<C c="3" r="17" s="1">
+<Expand/>
+</C>
+<C c="4" r="17" s="1">
+<Expand/>
+</C>
+<C c="0" r="18" cs="5" s="2">
+<Expand/>
+</C>
+<C c="0" r="19" s="3">
+<O>
+<![CDATA[序号]]></O>
+<Expand/>
+</C>
+<C c="1" r="19" s="3">
+<O>
+<![CDATA[日期]]></O>
+<Expand/>
+</C>
+<C c="2" r="19" s="3">
+<O>
+<![CDATA[营业额]]></O>
+<Expand/>
+</C>
+<C c="3" r="19" s="3">
+<Expand/>
+</C>
+<C c="4" r="19" s="3">
+<O>
+<![CDATA[利润]]></O>
+<Expand/>
+</C>
+<C c="0" r="20" s="4">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=&B21]]></Attributes>
+</O>
+<Expand dir="0" leftParentDefault="false" left="B21"/>
+</C>
+<C c="1" r="20" s="5">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(type = 1 || type='', ds1.group(年份), (if(type = 2, ds1.group(月份), ds1.group(订单_订购日期))))]]></Attributes>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0" leftParentDefault="false" upParentDefault="false"/>
+</C>
+<C c="2" r="20" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="营业额"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand/>
+</C>
+<C c="3" r="20" s="6">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="成本"/>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.SummaryGrouper">
+<FN>
+<![CDATA[com.fr.data.util.function.SumFunction]]></FN>
+</RG>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.ColWidthHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand/>
+</C>
+<C c="4" r="20" s="6">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C21 - D21]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="1" r="21" s="1">
+<Expand/>
+</C>
+<C c="2" r="21" s="1">
+<Expand/>
+</C>
+<C c="3" r="21" s="1">
+<Expand/>
+</C>
+<C c="4" r="21" s="1">
+<Expand/>
+</C>
+<C c="0" r="22">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="39744000" height="42768000"/>
+<Margin top="122400" left="7200" bottom="986400" right="2743200"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="false" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="938" height="33"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label1"/>
+<WidgetAttr/>
+<LabelAttr verticalcenter="true" textalign="4" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72"/>
+<widgetValue>
+<O>
+<![CDATA[时间维度选择：]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="0" y="10" width="110" height="23"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.RadioGroup">
+<Listener event="statechange">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.options.form.getWidgetByName("widget3").fireEvent("click");]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="type"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="按年"/>
+<Dict key="2" value="按月"/>
+<Dict key="3" value="按日期"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[1]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="110" y="10" width="384" height="23"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="widget3"/>
+<WidgetAttr invisible="true"/>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="566" y="10" width="72" height="23"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Parameter>
+<Attributes name="type"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+<Background name="NullBackground"/>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="2">
+<IM>
+<![CDATA[lO<9(kN.ld@UNU%p%320@UNU)#I6cXfRW$ncQ/@&<0O5<@n=S@[oX!K%L!+t*8LGkV28*<fV
+1DR2+&2#M*'iG9!?fn`jEHhj.>Qf/%>^"4u8^;2W-f-"/[-Ps"#=CT4LGm?)6rkX]Ap9;)cg,
+:Xp=M>^R`IX>57);OBFYLBS"_e1Gss7S9)tL+\09b!LY7c2&TIA?%9m4n<NhHK^]A5-XNuS&?
+,PUblK>Iu.A7%J~
+]]></IM>
+</Background>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1577999"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="宋体" style="0" size="72"/>
+<Background name="ColorBackground" color="-2431236"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="宋体" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0.00]]></Format>
+<FRFont name="宋体" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

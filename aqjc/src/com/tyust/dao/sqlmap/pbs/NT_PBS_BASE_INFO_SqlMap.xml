@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_PBS_BASE_INFO" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.pbs.PbsBaseInfo" >
+    <result column="PBS_ID" property="pbsId" jdbcType="VARCHAR" />
+    <result column="PBS_NAME" property="pbsName" jdbcType="VARCHAR" />
+    <result column="PBS_ADDRESS" property="pbsAddress" jdbcType="VARCHAR" />
+    <result column="COMPLETION_INFO" property="completionInfo" jdbcType="VARCHAR" />
+    <result column="MAINTENANCE_INFO" property="maintenanceInfo" jdbcType="VARCHAR" />
+    <result column="USAGE" property="usage" jdbcType="VARCHAR" />
+    <result column="MODEL" property="model" jdbcType="VARCHAR" />
+    <result column="DOOR_NUMS" property="doorNums" jdbcType="DECIMAL" />
+    <result column="DOOR_MODEL" property="doorModel" jdbcType="VARCHAR" />
+    <result column="GROUND_RESISTANCE" property="groundResistance" jdbcType="DECIMAL" />
+    <result column="INSULATION_RESISTANCE" property="insulationResistance" jdbcType="DECIMAL" />
+    <result column="GR_ANNEX" property="grAnnex" jdbcType="VARCHAR" />
+    <result column="IR_ANNEX" property="irAnnex" jdbcType="VARCHAR" />
+    <result column="TELCOM_CABLE_CROSS_WALL" property="telcomCableCrossWall" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="PBS_UNIT_ID" property="pbsUnitId" jdbcType="VARCHAR" />
+    <result column="BUILDER_UNIT_ID" property="builderUnitId" jdbcType="VARCHAR" />
+    <result column="DEVICE_NUM" property="deviceNum" jdbcType="DECIMAL" />
+    <result column="PBS_SIZE" property="pbsSize" jdbcType="VARCHAR" />
+    <result column="PM_PIC" property="pmPic" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    PBS_ID, PBS_NAME, PBS_ADDRESS, COMPLETION_INFO, MAINTENANCE_INFO, USAGE, MODEL, DOOR_NUMS, 
+    DOOR_MODEL, GROUND_RESISTANCE, INSULATION_RESISTANCE, GR_ANNEX, IR_ANNEX, TELCOM_CABLE_CROSS_WALL, 
+    REMARK, PBS_UNIT_ID, BUILDER_UNIT_ID, DEVICE_NUM, PBS_SIZE, PM_PIC
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsBaseInfoExample" >
+    select
+    pbs.PBS_ID, PBS_NAME, PBS_ADDRESS, COMPLETION_INFO, MAINTENANCE_INFO, USAGE, MODEL, DOOR_NUMS, 
+    DOOR_MODEL, GROUND_RESISTANCE, INSULATION_RESISTANCE, GR_ANNEX, IR_ANNEX, TELCOM_CABLE_CROSS_WALL, 
+    PBS_UNIT_ID, BUILDER_UNIT_ID, DEVICE_NUM, PBS_SIZE, PM_PIC,bd.UNIT_NAME as REMARK
+    from NT_PBS_BASE_INFO pbs
+    left join NT_PBS_BUILDER bd on pbs.PBS_ID = bd.PBS_ID
+    <isParameterPresent >
+      <include refid="NT_PBS_BASE_INFO.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    select 
+    <include refid="NT_PBS_BASE_INFO.Base_Column_List" />
+    from NT_PBS_BASE_INFO
+    where PBS_ID = #pbsId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    delete from NT_PBS_BASE_INFO
+    where PBS_ID = #pbsId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.pbs.PbsBaseInfoExample" >
+    delete from NT_PBS_BASE_INFO
+    <include refid="NT_PBS_BASE_INFO.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    insert into NT_PBS_BASE_INFO (PBS_ID, PBS_NAME, PBS_ADDRESS, COMPLETION_INFO, 
+      MAINTENANCE_INFO, USAGE, MODEL, DOOR_NUMS, 
+      DOOR_MODEL, GROUND_RESISTANCE, INSULATION_RESISTANCE, 
+      GR_ANNEX, IR_ANNEX, TELCOM_CABLE_CROSS_WALL, REMARK, 
+      PBS_UNIT_ID, BUILDER_UNIT_ID, DEVICE_NUM, PBS_SIZE, 
+      PM_PIC)
+    values (#pbsId:VARCHAR#, #pbsName:VARCHAR#, #pbsAddress:VARCHAR#, #completionInfo:VARCHAR#, 
+      #maintenanceInfo:VARCHAR#, #usage:VARCHAR#, #model:VARCHAR#, #doorNums:DECIMAL#, 
+      #doorModel:VARCHAR#, #groundResistance:DECIMAL#, #insulationResistance:DECIMAL#, 
+      #grAnnex:VARCHAR#, #irAnnex:VARCHAR#, #telcomCableCrossWall:VARCHAR#, #remark:VARCHAR#, 
+      #pbsUnitId:VARCHAR#, #builderUnitId:VARCHAR#, #deviceNum:DECIMAL#, #pbsSize:VARCHAR#, 
+      #pmPic:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    insert into NT_PBS_BASE_INFO
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="pbsId" >
+        PBS_ID
+      </isNotNull>
+      <isNotNull prepend="," property="pbsName" >
+        PBS_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="pbsAddress" >
+        PBS_ADDRESS
+      </isNotNull>
+      <isNotNull prepend="," property="completionInfo" >
+        COMPLETION_INFO
+      </isNotNull>
+      <isNotNull prepend="," property="maintenanceInfo" >
+        MAINTENANCE_INFO
+      </isNotNull>
+      <isNotNull prepend="," property="usage" >
+        USAGE
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        MODEL
+      </isNotNull>
+      <isNotNull prepend="," property="doorNums" >
+        DOOR_NUMS
+      </isNotNull>
+      <isNotNull prepend="," property="doorModel" >
+        DOOR_MODEL
+      </isNotNull>
+      <isNotNull prepend="," property="groundResistance" >
+        GROUND_RESISTANCE
+      </isNotNull>
+      <isNotNull prepend="," property="insulationResistance" >
+        INSULATION_RESISTANCE
+      </isNotNull>
+      <isNotNull prepend="," property="grAnnex" >
+        GR_ANNEX
+      </isNotNull>
+      <isNotNull prepend="," property="irAnnex" >
+        IR_ANNEX
+      </isNotNull>
+      <isNotNull prepend="," property="telcomCableCrossWall" >
+        TELCOM_CABLE_CROSS_WALL
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      <isNotNull prepend="," property="pbsUnitId" >
+        PBS_UNIT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="builderUnitId" >
+        BUILDER_UNIT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="deviceNum" >
+        DEVICE_NUM
+      </isNotNull>
+      <isNotNull prepend="," property="pbsSize" >
+        PBS_SIZE
+      </isNotNull>
+      <isNotNull prepend="," property="pmPic" >
+        PM_PIC
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="pbsId" >
+        #pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsName" >
+        #pbsName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsAddress" >
+        #pbsAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="completionInfo" >
+        #completionInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="maintenanceInfo" >
+        #maintenanceInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="usage" >
+        #usage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        #model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="doorNums" >
+        #doorNums:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="doorModel" >
+        #doorModel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="groundResistance" >
+        #groundResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="insulationResistance" >
+        #insulationResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="grAnnex" >
+        #grAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="irAnnex" >
+        #irAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="telcomCableCrossWall" >
+        #telcomCableCrossWall:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsUnitId" >
+        #pbsUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="builderUnitId" >
+        #builderUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deviceNum" >
+        #deviceNum:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsSize" >
+        #pbsSize:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pmPic" >
+        #pmPic:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.pbs.PbsBaseInfoExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_PBS_BASE_INFO
+    <include refid="NT_PBS_BASE_INFO.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_PBS_BASE_INFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.pbsId" >
+        PBS_ID = #record.pbsId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsName" >
+        PBS_NAME = #record.pbsName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsAddress" >
+        PBS_ADDRESS = #record.pbsAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.completionInfo" >
+        COMPLETION_INFO = #record.completionInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.maintenanceInfo" >
+        MAINTENANCE_INFO = #record.maintenanceInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.usage" >
+        USAGE = #record.usage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.model" >
+        MODEL = #record.model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.doorNums" >
+        DOOR_NUMS = #record.doorNums:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.doorModel" >
+        DOOR_MODEL = #record.doorModel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.groundResistance" >
+        GROUND_RESISTANCE = #record.groundResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.insulationResistance" >
+        INSULATION_RESISTANCE = #record.insulationResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.grAnnex" >
+        GR_ANNEX = #record.grAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.irAnnex" >
+        IR_ANNEX = #record.irAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.telcomCableCrossWall" >
+        TELCOM_CABLE_CROSS_WALL = #record.telcomCableCrossWall:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsUnitId" >
+        PBS_UNIT_ID = #record.pbsUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.builderUnitId" >
+        BUILDER_UNIT_ID = #record.builderUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.deviceNum" >
+        DEVICE_NUM = #record.deviceNum:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pbsSize" >
+        PBS_SIZE = #record.pbsSize:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.pmPic" >
+        PM_PIC = #record.pmPic:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_PBS_BASE_INFO.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_PBS_BASE_INFO
+    set PBS_ID = #record.pbsId:VARCHAR#,
+      PBS_NAME = #record.pbsName:VARCHAR#,
+      PBS_ADDRESS = #record.pbsAddress:VARCHAR#,
+      COMPLETION_INFO = #record.completionInfo:VARCHAR#,
+      MAINTENANCE_INFO = #record.maintenanceInfo:VARCHAR#,
+      USAGE = #record.usage:VARCHAR#,
+      MODEL = #record.model:VARCHAR#,
+      DOOR_NUMS = #record.doorNums:DECIMAL#,
+      DOOR_MODEL = #record.doorModel:VARCHAR#,
+      GROUND_RESISTANCE = #record.groundResistance:DECIMAL#,
+      INSULATION_RESISTANCE = #record.insulationResistance:DECIMAL#,
+      GR_ANNEX = #record.grAnnex:VARCHAR#,
+      IR_ANNEX = #record.irAnnex:VARCHAR#,
+      TELCOM_CABLE_CROSS_WALL = #record.telcomCableCrossWall:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#,
+      PBS_UNIT_ID = #record.pbsUnitId:VARCHAR#,
+      BUILDER_UNIT_ID = #record.builderUnitId:VARCHAR#,
+      DEVICE_NUM = #record.deviceNum:DECIMAL#,
+      PBS_SIZE = #record.pbsSize:VARCHAR#,
+      PM_PIC = #record.pmPic:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_PBS_BASE_INFO.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    update NT_PBS_BASE_INFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="pbsName" >
+        PBS_NAME = #pbsName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsAddress" >
+        PBS_ADDRESS = #pbsAddress:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="completionInfo" >
+        COMPLETION_INFO = #completionInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="maintenanceInfo" >
+        MAINTENANCE_INFO = #maintenanceInfo:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="usage" >
+        USAGE = #usage:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        MODEL = #model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="doorNums" >
+        DOOR_NUMS = #doorNums:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="doorModel" >
+        DOOR_MODEL = #doorModel:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="groundResistance" >
+        GROUND_RESISTANCE = #groundResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="insulationResistance" >
+        INSULATION_RESISTANCE = #insulationResistance:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="grAnnex" >
+        GR_ANNEX = #grAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="irAnnex" >
+        IR_ANNEX = #irAnnex:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="telcomCableCrossWall" >
+        TELCOM_CABLE_CROSS_WALL = #telcomCableCrossWall:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsUnitId" >
+        PBS_UNIT_ID = #pbsUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="builderUnitId" >
+        BUILDER_UNIT_ID = #builderUnitId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deviceNum" >
+        DEVICE_NUM = #deviceNum:DECIMAL#
+      </isNotNull>
+      <isNotNull prepend="," property="pbsSize" >
+        PBS_SIZE = #pbsSize:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="pmPic" >
+        PM_PIC = #pmPic:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where PBS_ID = #pbsId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.pbs.PbsBaseInfo" >
+    update NT_PBS_BASE_INFO
+    set PBS_NAME = #pbsName:VARCHAR#,
+      PBS_ADDRESS = #pbsAddress:VARCHAR#,
+      COMPLETION_INFO = #completionInfo:VARCHAR#,
+      MAINTENANCE_INFO = #maintenanceInfo:VARCHAR#,
+      USAGE = #usage:VARCHAR#,
+      MODEL = #model:VARCHAR#,
+      DOOR_NUMS = #doorNums:DECIMAL#,
+      DOOR_MODEL = #doorModel:VARCHAR#,
+      GROUND_RESISTANCE = #groundResistance:DECIMAL#,
+      INSULATION_RESISTANCE = #insulationResistance:DECIMAL#,
+      GR_ANNEX = #grAnnex:VARCHAR#,
+      IR_ANNEX = #irAnnex:VARCHAR#,
+      TELCOM_CABLE_CROSS_WALL = #telcomCableCrossWall:VARCHAR#,
+      REMARK = #remark:VARCHAR#,
+      PBS_UNIT_ID = #pbsUnitId:VARCHAR#,
+      BUILDER_UNIT_ID = #builderUnitId:VARCHAR#,
+      DEVICE_NUM = #deviceNum:DECIMAL#,
+      PBS_SIZE = #pbsSize:VARCHAR#,
+      PM_PIC = #pmPic:VARCHAR#
+    where PBS_ID = #pbsId:VARCHAR#
+  </update>
+</sqlMap>

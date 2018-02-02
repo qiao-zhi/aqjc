@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<!-- TBaseUnitRoleModule -->
+<sqlMap namespace="rolemodule">
+	<typeAlias alias="rmodule" type="com.tyust.bean.unit.TBaseUnitRoleModule"/>
+	<typeAlias alias="Basemodule" type="com.tyust.bean.user.TBaseDefinedUrl"/>
+	<insert id="savarolemodule" parameterClass="rmodule">
+		insert into t_base_unit_role_module (unit_id,role_id,module_id) values (#unitId#,#roleId#,#moduleId#);
+	</insert>
+	<delete id="delrolemodule" parameterClass="rmodule">
+		delete from t_base_unit_role_module where unit_id=#unitId# and role_id=#roleId#
+	</delete>
+	<delete id="delUnitRoleModule" parameterClass="string">
+		delete from t_base_unit_role_module where unit_id=#unitId#
+	</delete>
+	<resultMap id="rolemoduleResult" class="rmodule">
+	    <result property="unitId" column="unit_id"/>
+	    <result property="roleId" column="role_id"/>
+	    <result property="moduleId" column="module_id"/>
+    </resultMap>
+	<select id="selectRolemodule" resultMap="rolemoduleResult" parameterClass="rmodule">
+		select unit_id,role_id,module_id from t_base_unit_role_module where unit_id=#unitId# and role_id=#roleId#
+	</select>
+	<resultMap id="moduleResult" class="Basemodule">
+	    <result property="id" column="id"/>
+	    <result property="moduleId" column="module_id"/>
+	    <result property="moduleName" column="module_name"/>
+	    <result property="moduleUrl" column="module_url"/>
+	    <result property="memo1" column="MEMO1"/>
+	  </resultMap>
+	  <!-- 联合查询出用户所有的角色所需要的模块 -->
+	<select id="selectrm" resultMap="moduleResult" parameterClass="rmodule">
+		select b.id,a.module_id,b.module_name,b.MEMO1,b.module_url from t_base_defined_url b ,
+		(select unit_id,role_id,module_id from t_base_unit_role_module where unit_id=#unitId# and role_id=#roleId#)a
+		where b.module_id=a.module_id order by module_id
+	</select>
+</sqlMap>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_DEVICE_TEST_REPORT" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.device.DeviceTestReport" >
+    <result column="REPORT_ID" property="reportId" jdbcType="VARCHAR" />
+    <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
+    <result column="TEST_USER" property="testUser" jdbcType="VARCHAR" />
+    <result column="TEST_CODE" property="testCode" jdbcType="VARCHAR" />
+    <result column="SAMPLE_NAME" property="sampleName" jdbcType="VARCHAR" />
+    <result column="TEST_DATE" property="testDate" jdbcType="TIMESTAMP" />
+    <result column="TEST_RESULT" property="testResult" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="REMARK1" property="remark1" jdbcType="VARCHAR" />
+    <result column="REMARK2" property="remark2" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="BaseResultMap1" class="com.tyust.bean.device.DeviceTestReport" >
+    <result column="REPORT_ID" property="reportId" jdbcType="VARCHAR" />
+    <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
+    <result column="TEST_USER" property="testUser" jdbcType="VARCHAR" />
+    <result column="TEST_CODE" property="testCode" jdbcType="VARCHAR" />
+    <result column="SAMPLE_NAME" property="sampleName" jdbcType="VARCHAR" />
+    <result column="TEST_DATE" property="testDate" jdbcType="TIMESTAMP" />
+    <result column="TEST_RESULT" property="testResult" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="REMARK1" property="remark1" jdbcType="VARCHAR" />
+    <result column="REMARK2" property="remark2" jdbcType="VARCHAR" />
+    <result column="wtUnit"  property="wtUnit"  jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    REPORT_ID, APPLY_ID, TEST_USER, TEST_CODE, SAMPLE_NAME, TEST_DATE, TEST_RESULT, STATE, 
+    REMARK1, REMARK2
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap1" parameterClass="com.tyust.bean.device.DeviceTestReportExample" >
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+	           <![CDATA[SELECT * FROM
+				(
+				SELECT A.*, ROWNUM RN
+				FROM (
+			]]>
+		</isEqual>
+	</isParameterPresent>
+    select
+    REPORT_ID, rpt.APPLY_ID, TEST_USER, TEST_CODE, SAMPLE_NAME, TEST_DATE, TEST_RESULT, rpt.STATE, 
+     app.unit_ID as REMARK1, u.name as REMARK2, rpt.REMARK1 as wtUnit
+    from NT_DEVICE_TEST_REPORT rpt left join NT_DEVICE_TEST_APPLY app on (rpt.APPLY_ID = app.APPLY_ID)
+    left join t_base_user_info u on (rpt.test_user = u.user_id)
+    <isParameterPresent >
+     <!--   <include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />-->
+     <isNotNull property="stateValue" >
+        where rpt.state=#stateValue#
+      </isNotNull>
+     
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$  desc
+      </isNotNull>
+    </isParameterPresent>
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+            <![CDATA[
+				) A
+				WHERE ROWNUM <=#limit#
+				)
+				WHERE RN >#start#
+			]]>
+		</isEqual>
+	</isParameterPresent>
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    select 
+    <include refid="NT_DEVICE_TEST_REPORT.Base_Column_List" />
+    from NT_DEVICE_TEST_REPORT
+    where REPORT_ID = #reportId:VARCHAR#
+  </select>
+  
+  <select id="selectRptIdByApplyId" resultClass="java.lang.String" parameterClass="java.lang.String" >
+  	select report_id from nt_device_test_report where apply_id=#applyId# 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    delete from NT_DEVICE_TEST_REPORT
+    where REPORT_ID = #reportId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.device.DeviceTestReportExample" >
+    delete from NT_DEVICE_TEST_REPORT
+    <include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    insert into NT_DEVICE_TEST_REPORT (REPORT_ID, APPLY_ID, TEST_USER, TEST_CODE, 
+      SAMPLE_NAME, TEST_DATE, TEST_RESULT, STATE, 
+      REMARK1, REMARK2)
+    values (#reportId:VARCHAR#, #applyId:VARCHAR#, #testUser:VARCHAR#, #testCode:VARCHAR#, 
+      #sampleName:VARCHAR#, #testDate:TIMESTAMP#, #testResult:VARCHAR#, #state:CHAR#, 
+      #remark1:VARCHAR#, #remark2:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    insert into NT_DEVICE_TEST_REPORT
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="reportId" >
+        REPORT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="testUser" >
+        TEST_USER
+      </isNotNull>
+      <isNotNull prepend="," property="testCode" >
+        TEST_CODE
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        SAMPLE_NAME
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        TEST_DATE
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        TEST_RESULT
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        STATE
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="reportId" >
+        #reportId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testUser" >
+        #testUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testCode" >
+        #testCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        #sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        #testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        #testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        #state:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        #remark2:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.device.DeviceTestReportExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_DEVICE_TEST_REPORT rpt
+   
+    <isParameterPresent >
+     <!--   <include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />-->
+     <isNotNull property="stateValue" >
+        where rpt.state=#stateValue#
+      </isNotNull>
+     
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$  desc
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  
+  <select id="countByExample2" parameterClass="com.tyust.bean.device.DeviceTestReportExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_DEVICE_TEST_REPORT rpt
+   
+    <isParameterPresent >
+     	<include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />
+     
+    </isParameterPresent>
+  </select>
+  
+  <update id="updateByExampleSelective" >
+    update NT_DEVICE_TEST_REPORT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.reportId" >
+        REPORT_ID = #record.reportId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyId" >
+        APPLY_ID = #record.applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testUser" >
+        TEST_USER = #record.testUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testCode" >
+        TEST_CODE = #record.testCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.sampleName" >
+        SAMPLE_NAME = #record.sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testDate" >
+        TEST_DATE = #record.testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="record.testResult" >
+        TEST_RESULT = #record.testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.state" >
+        STATE = #record.state:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark1" >
+        REMARK1 = #record.remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark2" >
+        REMARK2 = #record.remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_DEVICE_TEST_REPORT
+    set REPORT_ID = #record.reportId:VARCHAR#,
+      APPLY_ID = #record.applyId:VARCHAR#,
+      TEST_USER = #record.testUser:VARCHAR#,
+      TEST_CODE = #record.testCode:VARCHAR#,
+      SAMPLE_NAME = #record.sampleName:VARCHAR#,
+      TEST_DATE = #record.testDate:TIMESTAMP#,
+      TEST_RESULT = #record.testResult:VARCHAR#,
+      STATE = #record.state:CHAR#,
+      REMARK1 = #record.remark1:VARCHAR#,
+      REMARK2 = #record.remark2:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_DEVICE_TEST_REPORT.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    update NT_DEVICE_TEST_REPORT
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID = #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testUser" >
+        TEST_USER = #testUser:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testCode" >
+        TEST_CODE = #testCode:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="sampleName" >
+        SAMPLE_NAME = #sampleName:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="testDate" >
+        TEST_DATE = #testDate:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="testResult" >
+        TEST_RESULT = #testResult:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="state" >
+        STATE = #state:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark1" >
+        REMARK1 = #remark1:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark2" >
+        REMARK2 = #remark2:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where REPORT_ID = #reportId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.device.DeviceTestReport" >
+    update NT_DEVICE_TEST_REPORT
+    set APPLY_ID = #applyId:VARCHAR#,
+      TEST_USER = #testUser:VARCHAR#,
+      TEST_CODE = #testCode:VARCHAR#,
+      SAMPLE_NAME = #sampleName:VARCHAR#,
+      TEST_DATE = #testDate:TIMESTAMP#,
+      TEST_RESULT = #testResult:VARCHAR#,
+      STATE = #state:CHAR#,
+      REMARK1 = #remark1:VARCHAR#,
+      REMARK2 = #remark2:VARCHAR#
+    where REPORT_ID = #reportId:VARCHAR#
+  </update>
+  
+  <select id="selMaxCode" parameterClass="java.lang.String" resultClass="java.lang.String">
+  	select max(substr(test_code,(length(test_code)-3),4)) from nt_device_test_report where substr(test_code,7,4) =#year#
+  </select>
+</sqlMap>

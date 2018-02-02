@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ibatorConfiguration
+  PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN"
+  "http://ibatis.apache.org/dtd/ibator-config_1_0.dtd">
+<ibatorConfiguration>
+	<classPathEntry location="H:\sbgl\aqjc\WebRoot\WEB-INF\lib\ojdbc6.jar" />
+	<ibatorContext id="test" targetRuntime="Ibatis2Java5">
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@localhost:1521:orcl" 
+			userId="sbgl"
+			password="sbgl">
+			<property name="remarksReporting" value="true"/> 
+		</jdbcConnection>
+	<javaModelGenerator targetPackage="com.tyust.bean.device" targetProject="aqjc" />
+    <sqlMapGenerator targetPackage="com.tyust.dao.sqlmap.device" targetProject="aqjc" />
+    <daoGenerator targetPackage="com.tyust.dao.device" targetProject="aqjc" type="SPRING" />
+	<!--	
+	<table tableName="NT_APPLY_AUDIT_SMJ" domainObjectName="ApplyAuditSmj">
+		<columnOverride column="UPLOAD_DATE" jdbcType="TIMESTAMP" />
+	</table>
+	<table tableName="NT_INSTRUMENT_INFO" domainObjectName="InstrumentInfo">
+	</table>
+	<table tableName="NT_REPORT_INSTRUMENT" domainObjectName="ReportInstrument">
+	</table>
+	<table tableName="NT_DEVICE_APPLY_AUDIT" domainObjectName="DeviceApplyAudit">
+			<columnOverride column="AUDIT_DATE" jdbcType="TIMESTAMP" />
+	</table>
+	<table tableName="NT_DEVICE_TEST_REPORT" domainObjectName="DeviceTestReport">
+			<columnOverride column="TEST_DATE" jdbcType="TIMESTAMP" />
+	</table>
+	<table tableName="NT_DEVICE_REPORT_PIC" domainObjectName="DeviceReportPic">
+			<columnOverride column="UPLOAD_DATE" jdbcType="TIMESTAMP" />
+	</table>
+	 <table tableName="PBS_APPLY_INFO" domainObjectName="PbsApplyInfo"></table>
+	 
+	 <table tableName="PBS_ATTACH" domainObjectName="PbsAttach"></table>
+	 <table tableName="PBS_TEST_REPORT" domainObjectName="PbsTestReport"></table>
+
+	  <table tableName="PBS_PIC" domainObjectName="PbsPic"></table>
+
+	 <table tableName="T_DEVICE_BASE_INFO" domainObjectName="DeviceBaseInfo"></table>
+	  
+	 <table tableName="ENVIRONMENT_APPLY_INFO" domainObjectName="EnApplyInfo"></table>
+	-->
+	<table tableName="NT_DEVICE_TEST_APPLY_ATTACH" domainObjectName="DeviceTestApplyAttach"></table>
+	</ibatorContext>
+</ibatorConfiguration>

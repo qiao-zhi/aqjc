@@ -1,0 +1,24 @@
+/* Mr.Yan begin*/
+body {margin:0 auto;padding: 0}
+#Nav {background: linear-gradient(to bottom, #EFF5FF 0px, #E0ECFF 100%) repeat-x;border-bottom: 1px solid #95B8E7;border-top: 1px solid #95B8E7;color: #0E2D5F;padding:5px;font-size: 12px;}
+#Nav span {margin-right: 20px;color: #0E2D5F;font-weight: bold;height: 16px;line-height: 16px}
+#searchDiv {padding:10px 0 10px 10px;}
+#serach-table {border-collapse: collapse; font-size: 12px;}
+.title-td {text-align: right; padding-right:20px; width: 100px; font-weight: bold;color: #444}
+.btn-td {padding-left: 30px;}
+.btn-nav {display: block;width:67px;height:23px;background: url(../../images/sys/btn-nav1.png) no-repeat;text-align: center;float: right;line-height: 23px;margin-top: -5px;color: #000}
+.btn-nav:hover {text-decoration: underline;}
+.formInfo-left,.formInfo-right {margin:20px 0 20px 10px;padding: 0;float: left;display: inline-block;}
+.formInfo-left input,.formInfo-right input {width: 130px;} 
+.formInfo-left li,.formInfo-right li { list-style: none;margin-bottom: 30px;}
+.title-li { width:60px; text-align: right;padding-right: 20px;display: inline-block;font-weight: bold;color: #444444}
+.tip-span {display: inline-block;width: 150px;padding-left: 5px;}
+#tabInfo-book {border-collapse: collapse; font-size: 12px;margin: 20px; width:780px}
+.title-td { width: 100px; padding:10px 20px 10px 0}
+.title-input {width: 450px;}
+.book_info {clear: both;margin-top: 10px;padding-left: 15px;width: 780px;}
+.apply_tab { font-size:12px;}
+/* Mr.Yan end*/
+.editor-postion-book {float:right;width:700px}
+.editor-postion {margin:20px;}
+.butn_class {float:right;margin-right:30px;height:20px;}

@@ -1,0 +1,907 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="6.5.6">
+<TableDataMap>
+<TableData name="lan" class="com.fr.data.impl.EmbeddedTableData">
+<Parameters/>
+<ColumnNames>
+<![CDATA[language,,.,,level]]></ColumnNames>
+<ColumnTypes>
+<![CDATA[java.lang.String,java.lang.String]]></ColumnTypes>
+<RowData>
+<![CDATA[F3RA(aXk`qHocWJo3KPM>[cF=[32VR@R4HEkE?nq8=WsKa>0;O%KH~
+]]></RowData>
+</TableData>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM EMPLOYEE]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<ServerPrinter/>
+<WebPageContent>
+<ToolBars/>
+<WebPage isPage="true" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+<WebWriteContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.write.Submit">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[提交]]></Text>
+<IconName>
+<![CDATA[submit]]></IconName>
+<Verify failVerifySubmit="false"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.write.Verify">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[数据校验]]></Text>
+<IconName>
+<![CDATA[verify]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[打印]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr disabled="true"/>
+<Text>
+<![CDATA[打印[客户端]A]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.write.ImportExcelData">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Import_Excel_Data')}]]></Text>
+<IconName>
+<![CDATA[excel]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<SelectedColor/>
+</WebWriteContent>
+</ReportWebAttr>
+<ReportExportAttr>
+<ExcelExportAttr/>
+<PDFExportAttr/>
+<HTMLExportAttr isTDHeavy="true"/>
+</ReportExportAttr>
+<Report class="com.fr.report.WorkSheet" name="Sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1524000,533400,838200,495300,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,762000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[419100,3429000,3048000,3429000,3048000,3429000,3048000,3352800,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="1" r="0" cs="7" s="0">
+<O>
+<![CDATA[员工信息登记表]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="1">
+<O>
+<![CDATA[ ]]></O>
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<O>
+<![CDATA[编号：]]></O>
+<Expand/>
+</C>
+<C c="2" r="2" s="2">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="2">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="4" r="2">
+<O>
+<![CDATA[]]></O>
+<Expand/>
+</C>
+<C c="6" r="2" s="1">
+<O>
+<![CDATA[填写日期：]]></O>
+<Expand/>
+</C>
+<C c="7" r="2" s="3">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=today()]]></Attributes>
+</O>
+<Expand/>
+</C>
+<C c="1" r="4" s="4">
+<O>
+<![CDATA[姓名：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="4" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="4" s="4">
+<O>
+<![CDATA[性别：]]></O>
+<Expand/>
+</C>
+<C c="4" r="4" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="Male" value="男"/>
+<Dict key="Female" value="女"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="Male" value="男"/>
+<Dict key="Female" value="女"/>
+</CustomDictAttr>
+</Dictionary>
+</Present>
+<Expand/>
+</C>
+<C c="5" r="4" s="4">
+<O>
+<![CDATA[出生年月：]]></O>
+<Expand/>
+</C>
+<C c="6" r="4" s="6">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.DateEditor">
+<WidgetAttr/>
+<DateAttr format="yyyy/MM"/>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="7" r="4" rs="5" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.MultiFileEditor">
+<WidgetAttr/>
+<FileAttr maxlength="1"/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="5" s="4">
+<O>
+<![CDATA[民族：]]></O>
+<Expand/>
+</C>
+<C c="2" r="5" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="5" s="4">
+<O>
+<![CDATA[政治面貌：]]></O>
+<Expand/>
+</C>
+<C c="4" r="5" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="党员" value="党员"/>
+<Dict key="团员" value="团员"/>
+<Dict key="无" value="无"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="5" s="4">
+<O>
+<![CDATA[籍贯：]]></O>
+<Expand/>
+</C>
+<C c="6" r="5" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="6" s="4">
+<O>
+<![CDATA[身高(cm)：]]></O>
+<Expand/>
+</C>
+<C c="2" r="6" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.NumberEditor">
+<WidgetAttr/>
+<NumberAttr allowNegative="false" minValue="100.0" maxValue="400.0">
+<widgetValue/>
+</NumberAttr>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="6" s="4">
+<O>
+<![CDATA[体重(kg)：]]></O>
+<Expand/>
+</C>
+<C c="4" r="6" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.NumberEditor">
+<WidgetAttr/>
+<NumberAttr allowNegative="false" minValue="30.0" maxValue="500.0">
+<widgetValue/>
+</NumberAttr>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="6" s="4">
+<O>
+<![CDATA[健康状况：]]></O>
+<Expand/>
+</C>
+<C c="6" r="6" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="一般" value="一般"/>
+<Dict key="差" value="差"/>
+<Dict key="良好" value="良好"/>
+<Dict key="好" value="好"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="7" s="7">
+<O>
+<![CDATA[身份证号：]]></O>
+<Expand/>
+</C>
+<C c="2" r="7" cs="3" s="5">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<EMSG>
+<![CDATA[身份证填写错误啦！！]]></EMSG>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.IDCardReg"/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="7" s="4">
+<O>
+<![CDATA[学历：]]></O>
+<Expand/>
+</C>
+<C c="6" r="7" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="Bachelor" value="学士"/>
+<Dict key="Master" value="硕士"/>
+<Dict key="Doctor" value="博士"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="8" s="4">
+<O>
+<![CDATA[毕业学校：]]></O>
+<Expand/>
+</C>
+<C c="2" r="8" cs="3" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="8" s="4">
+<O>
+<![CDATA[专业：]]></O>
+<Expand/>
+</C>
+<C c="6" r="8" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="9" s="4">
+<O>
+<![CDATA[联系地址：]]></O>
+<Expand/>
+</C>
+<C c="2" r="9" cs="3" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="9" s="4">
+<O>
+<![CDATA[邮编：]]></O>
+<Expand/>
+</C>
+<C c="6" r="9" cs="2" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<EMSG>
+<![CDATA[邮政编码填写错误！]]></EMSG>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\d{6}$"/>
+</Reg>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="10" s="4">
+<O>
+<![CDATA[Email：]]></O>
+<Expand/>
+</C>
+<C c="2" r="10" cs="3" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<EMSG>
+<![CDATA[邮件地址填写错误！]]></EMSG>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.CustomReg">
+<CusReg ct="^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$"/>
+</Reg>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="10" s="4">
+<O>
+<![CDATA[手机号：]]></O>
+<Expand/>
+</C>
+<C c="6" r="10" cs="2" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<EMSG>
+<![CDATA[电话写错啦！！]]></EMSG>
+<TextAttr/>
+<Reg class="com.fr.form.ui.reg.MobileReg"/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="11" s="4">
+<O>
+<![CDATA[外语语种：]]></O>
+<Expand/>
+</C>
+<C c="2" r="11" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="0"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[lan]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="11" s="4">
+<O>
+<![CDATA[外语水平：]]></O>
+<Expand/>
+</C>
+<C c="4" r="11" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.FormulaDictionary">
+<FormulaDict>
+<![CDATA[=VALUE("lan",2,1,C12)]]></FormulaDict>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="11" s="4">
+<O>
+<![CDATA[计算机水平：]]></O>
+<Expand/>
+</C>
+<C c="6" r="11" cs="2" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.ComboBox">
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="二级" value="二级"/>
+<Dict key="三级" value="三级"/>
+<Dict key="四级" value="四级"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="12" s="4">
+<O>
+<![CDATA[毕业时间：]]></O>
+<Expand/>
+</C>
+<C c="2" r="12" s="8">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.DateEditor">
+<WidgetAttr/>
+<DateAttr/>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="3" r="12" s="4">
+<O>
+<![CDATA[到职时间：]]></O>
+<Expand/>
+</C>
+<C c="4" r="12" s="8">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Widget class="com.fr.form.ui.DateEditor">
+<WidgetAttr/>
+<DateAttr/>
+<widgetValue/>
+</Widget>
+<Expand/>
+</C>
+<C c="5" r="12" s="4">
+<O>
+<![CDATA[职称：]]></O>
+<Expand/>
+</C>
+<C c="6" r="12" cs="2" s="5">
+<O>
+<![CDATA[]]></O>
+<Widget class="com.fr.form.ui.TextEditor">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="13" cs="7" s="9">
+<O>
+<![CDATA[教育经历：]]></O>
+<Expand/>
+</C>
+<C c="1" r="14" cs="7" rs="4" s="5">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Widget class="com.fr.form.ui.TextArea">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="18" cs="7" s="9">
+<O>
+<![CDATA[工作经历：]]></O>
+<Expand/>
+</C>
+<C c="1" r="19" cs="7" rs="5" s="5">
+<O>
+<![CDATA[]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Widget class="com.fr.form.ui.TextArea">
+<WidgetAttr/>
+<TextAttr/>
+</Widget>
+<Expand/>
+</C>
+<C c="1" r="25" cs="7" s="10">
+<O>
+<![CDATA[说明：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="26" cs="7" s="11">
+<O>
+<![CDATA[1、基本空白填报]]></O>
+<Expand/>
+</C>
+<C c="1" r="27" cs="7" s="11">
+<O>
+<![CDATA[   该表单没有绑定任何数据，直接在一张空白的表单中填报，所填数据直接保存到数据库中。]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="28" cs="7" s="11">
+<O>
+<![CDATA[2、填报小键盘操作]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="29" cs="7" s="11">
+<O>
+<![CDATA[   enter：确认并移至下一格]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="30" cs="7" s="11">
+<O>
+<![CDATA[   上、下、左、右：顾名思义就是上下左右移动]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="31" cs="7" s="11">
+<O>
+<![CDATA[   tab：向右移，到该行最后格后移至下一行第一格]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="32" cs="7" s="11">
+<O>
+<![CDATA[   shift+enter：移至上一格；shift+tab：向左移]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="33" cs="7" s="11">
+<O>
+<![CDATA[   delete：选择单元格点击delete清空该单元格中的内容]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="34" cs="7" s="11">
+<O>
+<![CDATA[   ctrl+enter：文本域换行]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="35" cs="7" s="12">
+<O>
+<![CDATA[3、可以点击工具栏上的“导入Excel”按钮，导入“WebReport\\员工信息.xls”]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings shrinkToFitMode="0" headerHeight="1207008" footerHeight="1207008">
+<PaperSetting orientation="1">
+<Margin top="287999" left="0" bottom="287999" right="0"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+<ReportWriteAttr>
+<Submiter class="com.fr.report.write.BuiltInSQLSubmiter" name="内置SQL">
+<Attributes dsName="FRDemo"/>
+<DMLConfig class="com.fr.base.write.config.IntelliDMLConfig">
+<Table schema="" name="EMPLOYEE"/>
+<ColumnConfig name="EMPID" isKey="false">
+<ColumnRow column="2" row="2"/>
+</ColumnConfig>
+<ColumnConfig name="EMPNAME" isKey="false">
+<ColumnRow column="2" row="4"/>
+</ColumnConfig>
+<ColumnConfig name="SEX" isKey="false">
+<ColumnRow column="4" row="4"/>
+</ColumnConfig>
+<ColumnConfig name="BIRTHDATE" isKey="false">
+<ColumnRow column="6" row="4"/>
+</ColumnConfig>
+<ColumnConfig name="POLITICAL" isKey="false">
+<ColumnRow column="4" row="5"/>
+</ColumnConfig>
+<ColumnConfig name="NATIONAL" isKey="false">
+<ColumnRow column="2" row="5"/>
+</ColumnConfig>
+<ColumnConfig name="ORIGIN" isKey="false">
+<ColumnRow column="6" row="5"/>
+</ColumnConfig>
+<ColumnConfig name="HEIGHT" isKey="false">
+<ColumnRow column="2" row="6"/>
+</ColumnConfig>
+<ColumnConfig name="WEIGHT" isKey="false">
+<ColumnRow column="4" row="6"/>
+</ColumnConfig>
+<ColumnConfig name="HEALTHCONDITION" isKey="false">
+<ColumnRow column="6" row="6"/>
+</ColumnConfig>
+<ColumnConfig name="STATUSID" isKey="false">
+<ColumnRow column="2" row="7"/>
+</ColumnConfig>
+<ColumnConfig name="QUALIFICATION" isKey="false">
+<ColumnRow column="6" row="7"/>
+</ColumnConfig>
+<ColumnConfig name="SCHOOL" isKey="false">
+<ColumnRow column="2" row="8"/>
+</ColumnConfig>
+<ColumnConfig name="MAJOR" isKey="false">
+<ColumnRow column="6" row="8"/>
+</ColumnConfig>
+<ColumnConfig name="ADDRESS" isKey="false">
+<ColumnRow column="2" row="9"/>
+</ColumnConfig>
+<ColumnConfig name="ZIPCODE" isKey="false">
+<ColumnRow column="6" row="9"/>
+</ColumnConfig>
+<ColumnConfig name="EMAIL" isKey="false">
+<ColumnRow column="2" row="10"/>
+</ColumnConfig>
+<ColumnConfig name="TEL" isKey="false">
+<ColumnRow column="6" row="10"/>
+</ColumnConfig>
+<ColumnConfig name="LANGUAGE" isKey="false">
+<ColumnRow column="2" row="11"/>
+</ColumnConfig>
+<ColumnConfig name="LEVER" isKey="false">
+<ColumnRow column="4" row="11"/>
+</ColumnConfig>
+<ColumnConfig name="COMPUTER" isKey="false">
+<ColumnRow column="6" row="11"/>
+</ColumnConfig>
+<ColumnConfig name="GRADUATED" isKey="false">
+<ColumnRow column="2" row="12"/>
+</ColumnConfig>
+<ColumnConfig name="REPORTDATE" isKey="false">
+<ColumnRow column="4" row="12"/>
+</ColumnConfig>
+<ColumnConfig name="TITLE" isKey="false">
+<ColumnRow column="6" row="12"/>
+</ColumnConfig>
+<ColumnConfig name="EDUCATION" isKey="false">
+<ColumnRow column="1" row="14"/>
+</ColumnConfig>
+<ColumnConfig name="WORKEXPERIENCE" isKey="false">
+<ColumnRow column="1" row="19"/>
+</ColumnConfig>
+<ColumnConfig name="PHOTO" isKey="false">
+<ColumnRow column="7" row="4"/>
+</ColumnConfig>
+<ColumnConfig name="WRITEDATE" isKey="false">
+<ColumnRow column="7" row="2"/>
+</ColumnConfig>
+</DMLConfig>
+</Submiter>
+</ReportWriteAttr>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="false" delayPlaying="true" windowPosition="0" align="1"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="黑体" style="0" size="120" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="6" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<Format class="java.text.SimpleDateFormat">
+<![CDATA[yyyy-MM-dd]]></Format>
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72" foreground="-13421773"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<Format class="java.text.SimpleDateFormat">
+<![CDATA[yyyy/MM]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<Format class="java.text.SimpleDateFormat">
+<![CDATA[yyyy-MM-dd]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72" foreground="-13421773"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Top style="3" color="-6894375"/>
+<Left style="3" color="-6894375"/>
+<Right style="3" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Left style="3" color="-6894375"/>
+<Right style="3" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Bottom style="3" color="-6894375"/>
+<Left style="3" color="-6894375"/>
+<Right style="3" color="-6894375"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

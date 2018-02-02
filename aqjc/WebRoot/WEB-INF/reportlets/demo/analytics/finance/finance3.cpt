@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="资产负债" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="year"/>
+<O>
+<![CDATA[2009]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [资产负债结构]A
+where 项目名称 in ('货币资金','短期投资','其他长期资产','固定资产','无形资产','其他流动资产','短期借款','长期借款','应付账款','应付利息','其他流动负债','其他非流动负债')
+and 年份=${year}]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[723900,723900,838200,676800,533400,723900,685800,495300,762000,676800,495300,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[571500,2476500,1562100,3086100,762000,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="2" s="0">
+<O>
+<![CDATA[资产分析]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="0">
+<Expand/>
+</C>
+<C c="3" r="0">
+<Expand/>
+</C>
+<C c="0" r="1" s="1">
+<Expand/>
+</C>
+<C c="1" r="1" s="2">
+<Expand/>
+</C>
+<C c="2" r="1" s="2">
+<Expand/>
+</C>
+<C c="3" r="1" s="2">
+<Expand/>
+</C>
+<C c="4" r="1" s="3">
+<Expand/>
+</C>
+<C c="0" r="2" s="4">
+<Expand/>
+</C>
+<C c="1" r="2" cs="2" s="5">
+<O>
+<![CDATA[项目名称]]></O>
+<Expand/>
+</C>
+<C c="3" r="2" s="5">
+<O>
+<![CDATA[项目金额]]></O>
+<Expand/>
+</C>
+<C c="4" r="2" s="6">
+<Expand/>
+</C>
+<C c="0" r="3" s="4">
+<Expand/>
+</C>
+<C c="1" r="3" cs="2" s="7">
+<O t="DSColumn">
+<Attributes dsName="资产负债" columnName="项目名称"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[2]]></CNUMBER>
+<CNAME>
+<![CDATA[资产大类]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[资产]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="8">
+<O t="DSColumn">
+<Attributes dsName="资产负债" columnName="项目金额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="3" s="6">
+<Expand/>
+</C>
+<C c="0" r="4" s="9">
+<Expand/>
+</C>
+<C c="1" r="4" s="10">
+<Expand/>
+</C>
+<C c="2" r="4" s="10">
+<Expand/>
+</C>
+<C c="3" r="4" s="10">
+<Expand/>
+</C>
+<C c="4" r="4" s="11">
+<Expand/>
+</C>
+<C c="0" r="6" cs="2" s="12">
+<O>
+<![CDATA[负债分析]]></O>
+<Expand/>
+</C>
+<C c="2" r="6">
+<Expand/>
+</C>
+<C c="0" r="7" s="1">
+<Expand/>
+</C>
+<C c="1" r="7" s="2">
+<Expand/>
+</C>
+<C c="2" r="7" s="2">
+<Expand/>
+</C>
+<C c="3" r="7" s="2">
+<Expand/>
+</C>
+<C c="4" r="7" s="3">
+<Expand/>
+</C>
+<C c="0" r="8" s="4">
+<Expand/>
+</C>
+<C c="1" r="8" cs="2" s="5">
+<O>
+<![CDATA[项目名称]]></O>
+<Expand/>
+</C>
+<C c="3" r="8" s="5">
+<O>
+<![CDATA[项目金额]]></O>
+<Expand/>
+</C>
+<C c="4" r="8" s="6">
+<Expand/>
+</C>
+<C c="0" r="9" s="4">
+<Expand/>
+</C>
+<C c="1" r="9" cs="2" s="7">
+<O t="DSColumn">
+<Attributes dsName="资产负债" columnName="项目名称"/>
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[2]]></CNUMBER>
+<CNAME>
+<![CDATA[资产大类]]></CNAME>
+<Compare op="0">
+<O>
+<![CDATA[负债]]></O>
+</Compare>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="9" s="8">
+<O t="DSColumn">
+<Attributes dsName="资产负债" columnName="项目金额"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="4" r="9" s="6">
+<Expand/>
+</C>
+<C c="0" r="10" s="9">
+<Expand/>
+</C>
+<C c="1" r="10" s="10">
+<Expand/>
+</C>
+<C c="2" r="10" s="10">
+<Expand/>
+</C>
+<C c="3" r="10" s="10">
+<Expand/>
+</C>
+<C c="4" r="10" s="11">
+<Expand/>
+</C>
+<C c="2" r="11" cs="2" s="13">
+<O>
+<![CDATA[更多资产负债分析]]></O>
+<NameJavaScriptGroup>
+<NameJavaScript name="网络报表1">
+<JavaScript class="com.fr.base.js.ReportletHyperlink">
+<JavaScript class="com.fr.base.js.ReportletHyperlink">
+<Parameters/>
+<TargetFrame>
+<![CDATA[_blank]]></TargetFrame>
+<Features width="600" height="400"/>
+<ReportletName>
+<![CDATA[/demo/analytics/finance/Assetsliabilities.cpt]]></ReportletName>
+</JavaScript>
+</JavaScript>
+</NameJavaScript>
+</NameJavaScriptGroup>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="11">
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="9216000" height="15408000"/>
+<Margin top="0" left="727200" bottom="0" right="7200"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<StyleList>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="宋体" style="1" size="72" foreground="-8355712"/>
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="2">
+<IM>
+<![CDATA[lO<9(kN.ld@UNU%p%320@UNU)#I6cXfRW$ncQ/@&<0O5<@n=S@[oX!K%L!+t*8LGkV28*<fV
+1DR2+&2#M*'iG9!?fn`jEHhj.>Qf/%>^"4u8^;2W-f-"/[-Ps"#=CT4LGm?)6rkX]Ap9;)cg,
+:Xp=M>^R`IX>57);OBFYLBS"_e1Gss7S9)tL+\09b!LY7c2&TIA?%9m4n<NhHK^]A5-XNuS&?
+,PUblK>Iu.A7%J~
+]]></IM>
+</Background>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+<Left style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="6" color="-6697729"/>
+<Right style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Left style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72"/>
+<Background name="ColorBackground" color="-1577999"/>
+<Border>
+<Top style="1" color="-6894375"/>
+<Bottom style="1" color="-6894375"/>
+<Left style="1" color="-6894375"/>
+<Right style="1" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Right style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1577999"/>
+<Border>
+<Top style="1" color="-6894375"/>
+<Bottom style="1" color="-6894375"/>
+<Left style="1" color="-6894375"/>
+<Right style="1" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<Format class="java.text.DecimalFormat">
+<![CDATA[¤#0.00]]></Format>
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1577999"/>
+<Border>
+<Top style="1" color="-6894375"/>
+<Bottom style="1" color="-6894375"/>
+<Left style="1" color="-6894375"/>
+<Right style="1" color="-6894375"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="6" color="-6697729"/>
+<Left style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="NullBackground"/>
+<Border>
+<Bottom style="6" color="-6697729"/>
+<Right style="6" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="1" size="72" foreground="-8355712"/>
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="2">
+<IM>
+<![CDATA[lO<9(kN.ld@UNU%p%320@UNU)#I6cXfRW$ncQ/@&<0O5<@n=S@[oX!K%L!+t*8LGkV28*<fV
+1DR2+&2#M*'iG9!?fn`jEHhj.>Qf/%>^"4u8^;2W-f-"/[-Ps"#=CT4LGm?)6rkX]Ap9;)cg,
+:Xp=M>^R`IX>57);OBFYLBS"_e1Gss7S9)tL+\09b!LY7c2&TIA?%9m4n<NhHK^]A5-XNuS&?
+,PUblK>Iu.A7%J~
+]]></IM>
+</Background>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="SimSun" style="2" size="72" foreground="-16776961" underline="1"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

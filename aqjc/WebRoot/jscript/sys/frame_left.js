@@ -1,0 +1,1 @@
+$(function(){$(".NavTitle").hover(function(){$(this).css({color:"#eef700"})},function(){$(this).css({color:"#fff"})}),$(".NavDisplay").hide(),$(".NavTitle").toggle(function(){$(this).addClass("NavTitle-z").attr("status","open").next().slideDown(500)},function(){$(this).removeClass("NavTitle-z").attr("status","open").next().slideUp(500)})});

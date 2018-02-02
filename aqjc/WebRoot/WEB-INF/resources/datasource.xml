@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DatasourceManager xmlVersion="20120203"
+	releaseVersion="7.0.0">
+	<ConnectionMap>
+		<Connection name="JDBC4" class="com.fr.data.impl.JDBCDatabaseConnection">
+			<DatabaseAttr />
+			<JDBCDatabaseAttr url="jdbc:oracle:thin:@localhost:1521:orcl"
+				driver="oracle.jdbc.driver.OracleDriver" user="sbgl" password="___0060002c006d0063"
+				encryptPassword="true">
+				<DBCPAttr />
+			</JDBCDatabaseAttr>
+		</Connection>
+	</ConnectionMap>
+</DatasourceManager>

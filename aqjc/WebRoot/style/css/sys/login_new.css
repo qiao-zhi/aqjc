@@ -1,0 +1,88 @@
+/*
+Time   : 2010-09-27 PM 3.42
+Author : Legend_Yu
+Examine: Finish
+*/
+
+* {	margin:0;padding:0}
+body {background-color:#1675b7}
+#background_login_div {
+	margin:2% auto;
+	background:url(../../images/sys/background.png) no-repeat;
+	width:1012px;
+	height:510px
+}
+#button_login_div {
+	position:relative;
+	width:250px;
+	height:150px;
+	top:240px;
+	left:420px;
+}
+#apDiv ul {
+	list-style:none;
+	margin: 0px;
+	padding: 0px;
+}
+#apDiv ul li{
+	height:40px;
+ 	line-height: 40px;
+	_padding-top: 10px;
+	_height:28px;
+ 	_line-height: 28px;
+}
+#apDiv ul li input {
+	width:130px;
+	margin-left:25px;
+	border:none;
+	background:transparent;
+}
+#username_ap, #password_ap {
+	width:230px;
+	font-size:14px;
+	font-weight:bold;
+	color:#06F;
+	outline: none
+}
+#username_ap {
+	background:url(../../images/sys/username.png) no-repeat 45px center;  
+}
+#password_ap {
+	background:url(../../images/sys/password.png) no-repeat 45px center;
+}
+#apDiv #button_div {
+	margin-top:20px;
+}
+#btn_open {
+	float:left
+}
+
+#btn_login {
+	float:left;
+	width:79px;
+	height:32px;
+	margin-right:35px;
+	background:url(../../images/sys/button_login.png) no-repeat;
+	border:none;
+	cursor:pointer;
+}
+#btn_reset {
+	float:right;
+	width:79px;
+	height:32px;
+	margin-right:35px;
+	background:url(../../images/sys/button_reset.png) no-repeat;
+	border:none;
+	cursor:pointer;
+}
+#copyright {
+	position:relative;
+	width:370px;
+	height:20px;
+	top:314px;
+	*top:342px;
+	left:333px;
+	font-size:14px;
+	color:#CCC;
+	text-align:center
+}

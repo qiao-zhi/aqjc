@@ -1,0 +1,1062 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="月"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="开始日期"/>
+<O t="Date">
+<![CDATA[1262275200000]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="结束日期"/>
+<O t="Date">
+<![CDATA[1309363200000]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="年"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="type"/>
+<O>
+<![CDATA[date]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT * FROM [订单]A 
+where 货主地区 is not null
+${if(type='date', " and format(订单.订购日期,'yyyy-mm-dd') >= '" + 开始日期 + "' and format(订单.订购日期,'yyyy-mm-dd')<='" + 结束日期 + "'", "")}
+${if(type='month', " and month(订单.订购日期) = "+ 月 + " and year(订单.订购日期) = " + 年, "")}
+${if(type='year', " and year(订单.订购日期) = " + 年, "")}
+
+
+
+]]></Query>
+</TableData>
+<TableData name="动态sql2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 货主省份 FROM [订单]A where 货主地区 = '${layer1}'  and 货主省份 is not null]]></Query>
+</TableData>
+<TableData name="动态sql3" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 货主城市 FROM [订单]A where 货主省份 = '${layer2}']]></Query>
+</TableData>
+<TableData name="动态sql1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 货主地区 FROM [订单]A where 货主地区 is not null
+${if(type='date', " and format(订单.订购日期,'yyyy-mm-dd') >= '" + 开始日期 + "' and format(订单.订购日期,'yyyy-mm-dd')<='" + 结束日期 + "'", "")}
+${if(type='month', " and month(订单.订购日期) = "+ 月 + " and year(订单.订购日期) = " + 年, "")}
+${if(type='year', " and year(订单.订购日期) = " + 年, "")}]]></Query>
+</TableData>
+<TableData name="动态sql4" class="com.fr.data.impl.DBTableData">
+<Parameters>
+<Parameter>
+<Attributes name="月"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="开始日期"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="结束日期"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="年"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="地区"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="type"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</Parameters>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT 订单.客户ID, 客户.公司名称 FROM 订单,客户 
+where 订单.客户ID = 客户.客户ID
+${if(type='date', " and format(订单.订购日期,'yyyy-mm-dd') >= '" + 开始日期 + "' and format(订单.订购日期,'yyyy-mm-dd')<='" + 结束日期 + "'", "")}
+${if(type='month', " and month(订单.订购日期) = "+ 月 + " and year(订单.订购日期) = " + 年, "")}
+${if(type='year', " and year(订单.订购日期) = " + 年, "")}
+]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars>
+<ToolBarManager>
+<Location>
+<Embed position="1"/>
+</Location>
+<ToolBar>
+<Widget class="com.fr.report.web.ui.impl.page.First">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-First')}]]></Text>
+<IconName>
+<![CDATA[first]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Previous">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Previous')}]]></Text>
+<IconName>
+<![CDATA[previous]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.PageNavi">
+<WidgetAttr/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Next">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Next')}]]></Text>
+<IconName>
+<![CDATA[next]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.page.Last">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('ReportServerP-Last')}]]></Text>
+<IconName>
+<![CDATA[last]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.FlashPrint">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Utils-Print[Client]A')}]]></Text>
+<IconName>
+<![CDATA[flashprint]]></IconName>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Print">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Print')}]]></Text>
+<IconName>
+<![CDATA[print]]></IconName>
+<PrintButtons/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Export">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Export')}]]></Text>
+<IconName>
+<![CDATA[export]]></IconName>
+<Buttons pdf="true" excelP="true" excelO="true" excelS="true" word="true" image="true"/>
+</Widget>
+<Widget class="com.fr.report.web.ui.impl.Email">
+<WidgetAttr/>
+<Text>
+<![CDATA[${i18n('Email')}]]></Text>
+<IconName>
+<![CDATA[email]]></IconName>
+</Widget>
+</ToolBar>
+</ToolBarManager>
+</ToolBars>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR F="0" T="2"/>
+<FR F="4" T="14"/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[1219200,457200,723900,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[2895600,5372100,3024000,3024000,3024000,3024000,3024000,3024000,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="0" r="0" cs="8" s="0">
+<O>
+<![CDATA[订单信息列表]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="2" s="1">
+<O>
+<![CDATA[订单号]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="1" r="2" s="1">
+<O>
+<![CDATA[客户]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="2" r="2" s="1">
+<O>
+<![CDATA[订购日期]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="3" r="2" s="1">
+<O>
+<![CDATA[运货商]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="4" r="2" s="1">
+<O>
+<![CDATA[地区]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="5" r="2" s="1">
+<O>
+<![CDATA[省份]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="6" r="2" s="1">
+<O>
+<![CDATA[城市]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="7" r="2" s="1">
+<O>
+<![CDATA[是否已付]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订单ID"/>
+<Condition class="com.fr.data.condition.ListCondition">
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[2]]></CNUMBER>
+<CNAME>
+<![CDATA[客户ID]]></CNAME>
+<Compare op="12">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(len($客户)=0, nofilter, $客户)]]></Attributes>
+</O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[15]]></CNUMBER>
+<CNAME>
+<![CDATA[是否已付]]></CNAME>
+<Compare op="12">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(len($是否已付)=0, nofilter, $是否已付)]]></Attributes>
+</O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[12]]></CNUMBER>
+<CNAME>
+<![CDATA[货主地区]]></CNAME>
+<Compare op="12">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(len($地区)=1,$地区,nofilter)]]></Attributes>
+</O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[16]]></CNUMBER>
+<CNAME>
+<![CDATA[货主省份]]></CNAME>
+<Compare op="12">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(len($地区)=2,$地区,nofilter)]]></Attributes>
+</O>
+</Compare>
+</Condition>
+</JoinCondition>
+<JoinCondition join="0">
+<Condition class="com.fr.data.condition.CommonCondition">
+<CNUMBER>
+<![CDATA[11]]></CNUMBER>
+<CNAME>
+<![CDATA[货主城市]]></CNAME>
+<Compare op="12">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if(len($地区)=3,$地区,nofilter)]]></Attributes>
+</O>
+</Compare>
+</Condition>
+</JoinCondition>
+</Condition>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Result>
+<![CDATA[$$$]]></Result>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[&A4%2 == 0]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.BackgroundHighlightAction">
+<Scope val="1"/>
+<Background name="ColorBackground" color="-985089"/>
+</HighlightAction>
+</Highlight>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性2]]></Name>
+<Condition class="com.fr.data.condition.FormulaCondition">
+<Formula>
+<![CDATA[&A4%20 == 0]]></Formula>
+</Condition>
+<HighlightAction class="com.fr.report.highlight.PageHighlightAction">
+<P i="1"/>
+</HighlightAction>
+</Highlight>
+</HighlightList>
+<Expand dir="0"/>
+</C>
+<C c="1" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="客户ID"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<DBDictAttr tableName="客户" schemaName="" ki="0" vi="1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="2" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="订购日期"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="3" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="运货商"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Present class="com.fr.base.present.DictPresent">
+<Dictionary class="com.fr.data.impl.DatabaseDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<DBDictAttr tableName="运货商" schemaName="" ki="0" vi="1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+</Dictionary>
+</Present>
+<Expand dir="0"/>
+</C>
+<C c="4" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主地区"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="5" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主省份"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="6" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="货主城市"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="7" r="3" s="2">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="是否已付"/>
+<Complex/>
+<RG class="com.fr.report.cellElement.core.FunctionGrouper"/>
+<Parameters/>
+</O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand dir="0"/>
+</C>
+<C c="0" r="4" s="3">
+<Expand/>
+</C>
+<C c="1" r="4" s="3">
+<Expand/>
+</C>
+<C c="2" r="4" s="3">
+<Expand/>
+</C>
+<C c="3" r="4" s="3">
+<Expand/>
+</C>
+<C c="4" r="4" s="3">
+<Expand/>
+</C>
+<C c="5" r="4" s="3">
+<Expand/>
+</C>
+<C c="6" r="4" s="3">
+<Expand/>
+</C>
+<C c="7" r="4" s="3">
+<Expand/>
+</C>
+<C c="0" r="5" cs="8" s="4">
+<O>
+<![CDATA[说明：]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="6" cs="8" s="5">
+<O>
+<![CDATA[1、根据条件动态显示参数控件]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="7" cs="8" s="5">
+<O>
+<![CDATA[    如该报表中选择“按日”查询时显示“开始日期”、“结束日期”]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="8" cs="8" s="5">
+<O>
+<![CDATA[    选择“按月”查询时，隐藏日期控件，显示“年”、“月”]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="9" cs="8" s="5">
+<O>
+<![CDATA[    选择“按年”查询时，只显示“年”]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="10" cs="8" s="5">
+<O>
+<![CDATA[2、下拉树]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="11" cs="8" s="5">
+<O>
+<![CDATA[3、清除/重置条件]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="12" cs="8" s="5">
+<O>
+<![CDATA[4、开始日期结束日期校验]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="13" cs="8" s="5">
+<O>
+<![CDATA[   如该报表中，若选择“按日”时，点击“查询”按钮，会对开始日期和结束日期进行判断，必须满足开始日期<结束日期]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+<C c="0" r="14" cs="8" s="6">
+<O>
+<![CDATA[   且都不为空，否则提示信息]]></O>
+<CellGUIAttr/>
+<CellPageAttr/>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<Margin top="286560" left="574560" bottom="286560" right="574560"/>
+</PaperSetting>
+</ReportSettings>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="true" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="1014" height="140"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L开始日期"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[开始日期:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="52" y="42" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.DateEditor">
+<WidgetName name="开始日期"/>
+<WidgetAttr/>
+<DateAttr start="2010-01-01" end="2011-06-30"/>
+<widgetValue>
+<O t="Date">
+<![CDATA[1262275200000]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="132" y="42" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L结束日期"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[结束日期:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="336" y="42" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.DateEditor">
+<WidgetName name="结束日期"/>
+<WidgetAttr/>
+<DateAttr start="2010-01-01" end="2011-06-30"/>
+<widgetValue>
+<O t="Date">
+<![CDATA[1309363200000]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="416" y="42" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L年"/>
+<WidgetAttr invisible="true"/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[年:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="52" y="42" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.ComboBox">
+<WidgetName name="年"/>
+<WidgetAttr invisible="true"/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="2010" value="2010"/>
+<Dict key="2011" value="2011"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[2010]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="132" y="42" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="L月"/>
+<WidgetAttr invisible="true"/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[月:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="336" y="42" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.ComboBox">
+<WidgetName name="月"/>
+<WidgetAttr invisible="true"/>
+<Dictionary class="com.fr.data.impl.FormulaDictionary">
+<FormulaDict>
+<![CDATA[=range(6)]]></FormulaDict>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[2]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="416" y="42" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Label地区"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[地区:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="51" y="73" width="82" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.TreeComboBoxEditor">
+<WidgetName name="地区"/>
+<WidgetAttr/>
+<TreeAttr/>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="0"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[动态sql1]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="0"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[动态sql2]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<TreeNodeAttr>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="0"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[动态sql3]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+</TreeNodeAttr>
+<isAutoBuild autoBuild="false"/>
+<widgetValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=['华北']A]]></Attributes>
+</O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="132" y="73" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Label客户"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[客户:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="336" y="73" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.ComboCheckBox">
+<WidgetName name="客户"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.TableDataDictionary">
+<FormulaDictAttr ki="0" vi="1"/>
+<TableDataDictAttr>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[动态sql4]]></Name>
+</TableData>
+</TableDataDictAttr>
+</Dictionary>
+<widgetValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=['BERGS','LEHMS','VINET','ROMEY']A]]></Attributes>
+</O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="416" y="73" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="Label是否已付"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[是否已付:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="52" y="106" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.CheckBoxGroup">
+<WidgetName name="是否已付"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="true" value="已付"/>
+<Dict key="false" value="未付"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=['true','false']A]]></Attributes>
+</O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="132" y="106" width="147" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[var form = this.options.form;
+var type = form.getWidgetByName("type").getValue();
+if(type=="date"){
+  var start = form.getWidgetByName("开始日期").getValue();
+  var end = form.getWidgetByName("结束日期").getValue();
+  if(start=="" || start==null){ 
+    alert("错误,开始日期不能为空");
+    return false;  
+  }
+  if(end=="" || start==null){
+    alert("错误,结束日期不能为空");
+    return false;  
+  }  
+  if(start>end){
+    alert("错误,开始日期不能大于结束日期");  
+    return false;  
+  }
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="Search"/>
+<WidgetAttr/>
+<Text>
+<![CDATA[查询]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="481" y="106" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.RadioGroup">
+<Listener event="statechange">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[var form = this.options.form;
+var value = this.getValue();
+if(value == "date"){
+form.invisible(["年","月","L年","L月"]A);
+form.visible(["开始日期","结束日期","L开始日期","L结束日期"]A);
+
+}else if(value == "month"){
+form.invisible(["开始日期","结束日期","L开始日期","L结束日期"]A);
+form.visible(["年","月","L年","L月"]A);
+
+}else if(value == "year"){
+form.invisible(["开始日期","结束日期","月","L开始日期","L结束日期",,"L月"]A);
+form.visible(["年","L年"]A);
+
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="type"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="date" value="按日"/>
+<Dict key="month" value="按月"/>
+<Dict key="year" value="按年"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[date]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="132" y="10" width="145" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[var form = this.options.form;
+form.getWidgetByName("开始日期").reset();
+form.getWidgetByName("结束日期").reset();
+form.getWidgetByName("年").reset();
+form.getWidgetByName("月").reset();
+form.getWidgetByName("地区").reset();
+form.getWidgetByName("客户").reset();
+form.getWidgetByName("是否已付").reset();]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="button0"/>
+<WidgetAttr/>
+<Text>
+<![CDATA[清除条件]]></Text>
+</InnerWidget>
+<BoundsAttr x="361" y="106" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label0"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<widgetValue>
+<O>
+<![CDATA[选择时间维度:]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="52" y="10" width="80" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label1"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72" foreground="-65536"/>
+<widgetValue>
+<O>
+<![CDATA[*注：根据选择的维度，动态显示下方的日期控件]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="298" y="10" width="263" height="21"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.Label">
+<WidgetName name="label2"/>
+<WidgetAttr/>
+<LabelAttr textalign="0" autoline="true"/>
+<FRFont name="SimSun" style="0" size="72" foreground="-65536"/>
+<widgetValue>
+<O>
+<![CDATA[*下拉树]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="277" y="73" width="59" height="21"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Parameter>
+<Attributes name="地区"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="是否已付"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+<Parameter>
+<Attributes name="客户"/>
+<O>
+<![CDATA[]]></O>
+</Parameter>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="4" imageLayout="1">
+<FRFont name="黑体" style="1" size="144" foreground="-8355712"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-2624518"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="0" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="NullBackground"/>
+<Border>
+<Top style="1" color="-6697729"/>
+<Bottom style="1" color="-6697729"/>
+<Left style="1" color="-6697729"/>
+<Right style="1" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="NullBackground"/>
+<Border/>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Top style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72" foreground="-13421773"/>
+<Background name="ColorBackground" color="-328966"/>
+<Border>
+<Bottom style="3" color="-6697729"/>
+<Left style="3" color="-6697729"/>
+<Right style="3" color="-6697729"/>
+</Border>
+</Style>
+</StyleList>
+</WorkBook>

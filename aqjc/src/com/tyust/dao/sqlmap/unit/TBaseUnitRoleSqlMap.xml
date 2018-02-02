@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UnitRole">
+
+  <typeAlias alias="unitRole" type="com.tyust.bean.unit.TBaseUnitRole"/>
+  <typeAlias alias="roleModule" type="com.tyust.bean.unit.TBaseUnitRoleModule"/>
+
+  <resultMap id="UnitRoleResult" class="unitRole">
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="roleId" column="ROLE_ID"/>
+    <result property="roleName" column="ROLE_NAME"/>
+    <result property="createUnitId" column="CREATE_UNIT_ID"/>
+    <result property="description" column="DESCRIPTION"/>
+    <result property="inuse" column="INUSE"/>
+  </resultMap>
+  
+  <resultMap id="RoleModuleResule" class="roleModule">
+    <result property="unitId" column="UNIT_ID"/>
+    <result property="roleId" column="ROLE_ID"/>
+    <result property="moduleId" column="MODULE_ID"/>
+  </resultMap>
+
+   
+ 
+<insert id="saveRole" parameterClass="unitRole">
+   INSERT INTO T_BASE_UNIT_ROLE
+    (UNIT_ID ,
+    ROLE_ID,
+    ROLE_NAME,
+    CREATE_UNIT_ID,
+    DESCRIPTION,
+    INUSE)
+   VALUES 
+   (#unitId#,#roleId#,#roleName#,#createUnitId#,#description#,#inuse#)
+</insert>  
+ 
+<update id="updateRole" parameterClass="unitRole">
+ UPDATE T_BASE_UNIT_ROLE  
+   set UNIT_ID = #unitId#,ROLE_NAME = #roleName#,CREATE_UNIT_ID = #createUnitId#,DESCRIPTION = #description#,INUSE = #inuse#
+     WHERE ROLE_ID = #roleId#
+</update>
+ 
+<delete id="deleteRole" parameterClass="string">
+DELETE FROM T_BASE_UNIT_ROLE WHERE  NOT EXISTS ( SELECT ROLE_ID FROM T_BASE_UNIT_USER_ROLE  where ROLE_ID=#roleId#) AND ROLE_ID=#roleId#
+
+</delete>
+
+ 
+<insert id="addRoleModule" parameterClass="roleModule">
+INSERT INTO T_BASE_UNIT_ROLE_MODULE VALUES(
+#unitId#,#roleId#,#moduleId#
+)
+</insert>
+ 
+<delete id="delRoleModule" parameterClass="string">
+DELETE FROM T_BASE_UNIT_ROLE_MODULE WHERE ROLE_ID=#roleId#
+</delete>
+ 
+<select id="findUnitRole" parameterClass="string" resultMap="UnitRoleResult">
+   SELECT 
+   UNIT_ID ,
+    ROLE_ID,
+    ROLE_NAME,
+    CREATE_UNIT_ID,
+    DESCRIPTION,
+    INUSE
+   FROM T_BASE_UNIT_ROLE WHERE UNIT_ID=#unitId# 
+</select>
+ 
+<select id="findRoleModules" parameterClass="string" resultMap="RoleModuleResule">
+ SELECT UNIT_ID,
+ ROLE_ID  ,
+ MODULE_ID FROM T_BASE_UNIT_ROLE_MODULE WHERE ROLE_ID=#roleId#
+</select>
+</sqlMap>

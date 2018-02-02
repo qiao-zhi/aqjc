@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WorkBook xmlVersion="20120203" releaseVersion="7.0.0">
+<TableDataMap>
+<TableData name="ds1" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT year(now())-year(birthdate) as age,sex,empid,qualification FROM EMPLOYEE]]></Query>
+</TableData>
+<TableData name="ds2" class="com.fr.data.impl.DBTableData">
+<Parameters/>
+<Attributes maxMemRowCount="-1"/>
+<Connection class="com.fr.data.impl.NameDatabaseConnection">
+<DatabaseName>
+<![CDATA[FRDemo]]></DatabaseName>
+</Connection>
+<Query>
+<![CDATA[SELECT '小于25岁' as age,empid FROM EMPLOYEE
+where year(now())-year(birthdate)<25
+union
+SELECT '25岁到35岁' as age,empid FROM EMPLOYEE
+where year(now())-year(birthdate)>=25
+and year(now())-year(birthdate)<35
+union 
+SELECT '大于35岁' as age,empid FROM EMPLOYEE
+where year(now())-year(birthdate)>=35]]></Query>
+</TableData>
+</TableDataMap>
+<ReportWebAttr>
+<WebPageContent>
+<ToolBars/>
+<WebPage isPage="false" isShowAsImage="false" isAutoScale="false"/>
+</WebPageContent>
+<WebViewContent>
+<ToolBars/>
+</WebViewContent>
+<WebWriteContent>
+<ToolBars/>
+<SelectedColor color="-10033153"/>
+</WebWriteContent>
+</ReportWebAttr>
+<Report class="com.fr.report.WorkSheet" name="sheet1">
+<ReportPageAttr>
+<HR/>
+<FR/>
+<HC/>
+<FC/>
+</ReportPageAttr>
+<RowHeight defaultValue="723900">
+<![CDATA[0,800100,800100,800100,800100,800100,800100,800100,800100,800100,266700,723900,723900,723900,723900,723900,723900,723900,723900,723900,1028700,723900,723900,723900,723900,723900,723900,1219200,723900,723900,990600,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,1143000,723900]]></RowHeight>
+<ColumnWidth defaultValue="2743200">
+<![CDATA[723900,2438400,4572000,4572000,266700,5143500,419100,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<CellElementList>
+<C c="1" r="0">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($para = 1, ds1.group(sex, true, false), if(para = 2, ds1.group(qualification, true, false), if(para = 3, ds2.group(age, true, false), ds1.group(sex, true, false))))]]></Attributes>
+</O>
+<HighlightList>
+<Highlight class="com.fr.report.highlight.DefaultHighlight">
+<Name>
+<![CDATA[条件属性1]]></Name>
+<Condition class="com.fr.data.condition.ListCondition"/>
+<HighlightAction class="com.fr.report.highlight.RowHeightHighlightAction"/>
+</Highlight>
+</HighlightList>
+<Expand dir="0"/>
+</C>
+<C c="2" r="0">
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=if($para = 1, count(ds1.select(empid, sex = B1)), if(para = 2, COUNT(ds1.select(empid, qualification = B1)), if(para = 3, count(ds2.select(empid, age = B1)), count(ds1.select(empid, sex = B1)))))]]></Attributes>
+</O>
+<Expand dir="0"/>
+</C>
+<C c="3" r="0">
+<Expand/>
+</C>
+<C c="4" r="0">
+<Expand/>
+</C>
+<C c="5" r="0">
+<Expand/>
+</C>
+<C c="1" r="1" cs="5" rs="10" s="0">
+<O t="CC">
+<LayoutAttr selectedIndex="0"/>
+<Chart name="饼图">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="GradientBackground" color1="-1" color2="-1052689" direction="1" useCell="true" begin="0.0" finish="0.0" cyclic="false"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="2" isRoundBorder="true"/>
+<newColor borderColor="-6697729"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="true"/>
+<Title>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<O>
+<![CDATA[图表标题]]></O>
+<TextAttr>
+<Attr alignText="0">
+<FRFont name="SimSun" style="0" size="72"/>
+</Attr>
+</TextAttr>
+<TitleVisible value="false" position="0"/>
+</Title>
+<Plot class="com.fr.chart.plot.Pie3DPlot">
+<Plot>
+<Plot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="true"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name="">
+<AttrList>
+<Attr class="com.fr.chart.condition.AttrFillStyle">
+<AttrFillStyle>
+<Attr/>
+</AttrFillStyle>
+</Attr>
+<Attr class="com.fr.chart.condition.AttrContents">
+<AttrContents>
+<Attr showLine="true" position="6" seriesLabel="${PERCENT}${SERIES}"/>
+</AttrContents>
+</Attr>
+</AttrList>
+</ConditionAttr>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="4" visible="false" autoAdjustSize="false"/>
+<FRFont name="Arial Narrow" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<PieAttr subType="1" smallPercent="0.15" startAngle="100" separate="15" isSeparateOut="false"/>
+</Plot>
+<Depth value="20"/>
+<Projection mode="2" elevation="25" rotation="0" focus="800"/>
+</Plot>
+</Plot>
+</Chart>
+</Chart>
+<Chart name="柱形图">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="false"/>
+<Plot class="com.fr.chart.plot.Bar3DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name=""/>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="3" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=-1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<AxisLabelCount value="=-1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="4"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="false" overlap="-0.5" interval="1.0"/>
+<Attr3D horizontalDrawBar="true" seriesIntervalPercent="0.0"/>
+<Projection mode="2" elevation="15" rotation="20" focus="800"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<Chart name="条形图">
+<Chart class="com.fr.chart.Chart">
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<ChartAttr isJSDraw="false"/>
+<Plot class="com.fr.chart.plot.Bar2DPlot">
+<CategoryPlot>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isNullValueBreak="true" isHighChart="true" interactiveBorder="true" interactiveHighlight="false" interactiveOuterlight="true" autoRefreshPerSecond="0"/>
+<newHotTooltipStyle>
+<AttrContents>
+<Attr showLine="false" position="1" seriesLabel="${VALUE}"/>
+</AttrContents>
+</newHotTooltipStyle>
+<ConditionCollection>
+<DefaultAttr class="com.fr.chart.condition.ConditionAttr">
+<ConditionAttr name=""/>
+</DefaultAttr>
+</ConditionCollection>
+<Legend>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr position="2" visible="true" autoAdjustSize="false"/>
+<FRFont name="SimSun" style="0" size="72"/>
+</Legend>
+<DataSheet>
+<GI>
+<AttrBackground>
+<Background name="NullBackground"/>
+</AttrBackground>
+<AttrBorder>
+<Attr lineStyle="1" isRoundBorder="false"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+</GI>
+<Attr isVisible="false" isLegendVisible="true"/>
+</DataSheet>
+<OuterLight>
+<Attr outerSize="0" outerAlpha="0.0"/>
+</OuterLight>
+<Shadow>
+<Attr shadowSize="4" shadowAlpha="0.0"/>
+</Shadow>
+<RectanglePlotAttr interactiveAxisTooltip="false"/>
+<xAxis>
+<CategoryAxis class="com.fr.chart.plot.axis.CategoryAxis">
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="0" SecondGridStyle="0"/>
+<newLineColor lineColor="-5197648"/>
+<AxisPosition value="2"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=-1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</CategoryAxis>
+</xAxis>
+<yAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="0" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="3"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<Format class="java.text.DecimalFormat">
+<![CDATA[#0]]></Format>
+<AxisLabelCount value="=-1"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</yAxis>
+<secondAxis>
+<ValueAxis class="com.fr.chart.plot.axis.ValueAxis">
+<ValueAxisAttr201108 alignZeroValue="false"/>
+<newAxisAttr isShowAxisLabel="true"/>
+<AxisLineStyle AxisStyle="1" MainGridStyle="1" SecondGridStyle="0"/>
+<newLineColor mainGridColor="-1184275" lineColor="-5197648"/>
+<AxisPosition value="1"/>
+<TickLine201106 type="2" secType="0"/>
+<ArrowShow arrowShow="false"/>
+<TextAttr>
+<Attr alignText="0"/>
+</TextAttr>
+<AxisLabelCount value="=0"/>
+<AxisRange/>
+<AxisUnit201106 isCustomMainUnit="false" isCustomSecUnit="false" mainUnit="=0" secUnit="=0"/>
+<ZoomAxisAttr isZoom="false"/>
+</ValueAxis>
+</secondAxis>
+<CateAttr isStacked="false"/>
+<BarAttr isHorizontal="true" overlap="-0.15" interval="1.0"/>
+<Bar2DAttr isSimulation3D="true"/>
+</CategoryPlot>
+</Plot>
+</Chart>
+</Chart>
+<NormalReportDataDefinition>
+<Series>
+<SeriesDefinition>
+<SeriesName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B1]]></Attributes>
+</O>
+</SeriesName>
+<SeriesValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C1]]></Attributes>
+</O>
+</SeriesValue>
+</SeriesDefinition>
+</Series>
+<Category>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=A1]]></Attributes>
+</O>
+</Category>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</NormalReportDataDefinition>
+</O>
+<Expand/>
+</C>
+<C c="6" r="1">
+<O>
+<![CDATA[ ]]></O>
+<Expand/>
+</C>
+</CellElementList>
+<ReportAttrSet>
+<ReportSettings headerHeight="0" footerHeight="0">
+<PaperSetting>
+<PaperSize width="18432000" height="7920000"/>
+<Margin top="0" left="7200" bottom="122400" right="7200"/>
+</PaperSetting>
+</ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
+</ReportAttrSet>
+</Report>
+<ReportParameterAttr>
+<Attributes showWindow="true" delayPlaying="false" windowPosition="1" align="0"/>
+<PWTitle>
+<![CDATA[参数]]></PWTitle>
+<ParameterUI class="com.fr.report.parameter.FormParameterUI">
+<DesignAttr width="800" height="59"/>
+<Layout class="com.fr.form.ui.container.WAbsoluteLayout">
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.container.WBorderLayout">
+<WidgetName name="border1"/>
+<WidgetAttr/>
+<Background name="ImageBackground" specifiedImageWidth="-1.0" specifiedImageHeight="-1.0" layout="2">
+<IM>
+<![CDATA[4]AZnh'5SW>5tZ6<2Tt%m(7uko(p.nA^)U<FN[oIi$E7/ZD*tL5B+pKX[+-,H#gG,]AD/ZV;-A
+O:C@</<sVN$8!^Zk(\rct[0ra!;%^4*io\ZYhDe%@j"e5ZOL8kM_@m\`jrPa")5.dit3>81^
+>OmP.T,ulPk'?;`\(4IitU'uGB>@o:dGI@AI$Xq.8;p+2D2;8WEStZ^ce)O[g[<lQTNm/G&$
+G:b/'=2cs-)/Cq19^n?`+GCUor#<q>K]ASj"nP%3&+Vo,\)1l9<6O<<`;88fY-$?Uf.'7I_d_
+3e8VFF6P6QEU+;J0,961ZbEZAmR.+Hn:_cfKX6eZ(uO^0Cb.EAb#cT0(8KL8pJ"YYL4GPAFb
+3[[sW3c\QC:=RP$`%K$@]A+A;n&Zd)u..Qro]Aar.K._(si$W5F*o^20fB.t/6NNgl&@$bReM>
+C?2qRZ[%^,V<,7RWT`Ti"m*?4Q+E9=c#9.$o$\:,=teH`CJuoq/b[igkE+T0.[E%=steQg;I
+SFEW^\fT'Z-8J2JumdEn1,<CsDIF/l+VVNo*lHah#l!"\9:_'u0Z%_g%a2dlR%\fI[p]An?=P
+A.q>M6j+pRts.)JS6,ZT;IdBc"Xlp.Ut4#g"+.')]A?IL(4Um]AdO0o/Y;F5MgP?2lGHW_75_e
+(]Af\5.q<Y6[9\p19A<kIAt:):1A-QaC^_;JU#oR>[;%Dp"&'<n1EbB8nP!@g)_QeB"%5Lp5i
+?Ib,IBBpD3GB@qc3kWQ;[j>\]AA&]Ao'KA#VD;e+(]A6Q-8lQL;GY``-E#+phtDZKUB";P2S1Ue
+YD^i8OK1dT^uI\^FSsK01'UcEi4u76HCKNK$r!NTiUc5%i:3h&hK^O+6nV&diN@V"hI)I3>;
+<4IZ]AZ:1"p<F:dK3XW?#VYd82&!RN^)\H"9%.s%"/kL$r\]Ahrjs?Br2#(u-@ZDisiT&:JhJY
+3p(Mn1COT+h9Bk=`ff),0%?p>9N4&*54E,=jgJ3#t'[@A7QhYH\$#5l+RtEDp)e1>+Qok7X0
+(.bdJ=_^.@HfJr7PG.,A@#;jQ3'#Sk:.$t*D-[8[col`58DqnoTkDtE0me`LbY_JTgZ8QO]Ai
+5"dKo.@'7g_*&iB!1BA(!&H5@0i9[pFr\Di_-e6n-NV\g/1Z5JfQhRP+G2I!H!HR^#W&,qD?
+G@Dd(<f.h3R+iA:/l*iYUV3hgf+9VV^D-BMM>3rpP'Bi&RHa01[)#h$4!#q/$(C@ke%*e3+q
+ZIM5f^0Bn@$]A6/p59X&301c95V9Brq@Fb#;qqPIfebiIe.3mB'=5;Pd#1,I6Z>^Rh7)=bjoE
+oCkb)#D/b88IUhG'\mC$>"8tlJ(g%cFt\,0oT*926Jhs&32A!.R$Uk?MgaJTM%X*nk#a*oO;
+/kH@r3lgQ1c`:eqK+]AQnQboF06:@s15:Oss@I8NlnD<(`tpkTs`6E^+>l*CJe%E-2HGBZs@o
+*7rdUq5RI?3WNqiHdX!8GrN]AkagpL$&&;V(BaFEgd43jp5"(m>Ab0?Hp8qETOk3m?SV,,!N/
+<tk4=p,BNrqX"SY+&i>0^B+nE2,67CAm)Z:h$]A,*(EdjP1>C$Gf9YRcgA242hn=%aCe2^G^V
+neQ^K#+%F',D#ON&@J&Z4bcoTeJt_>0:[6\dNgQq2'&FF,I8L:pR=.6)E065JlL\ZdI`%q6^
+Kg\Cn6dBScTr4mrlDKdGB(WV&fep&;EP2Yeb3SORjJAHOK8+QHHi,k`OD[!CT'n=n3CVm08Y
+S,bqhR]AOn5o#`KAWYd,Zj)+"Z*E^4llD@W#/`N:*#*#9;k^aik\V*h@;m&1@SIjPlb&b\"JC
+7,(WUd9hV$1`FW7e.Bqd[p"NYCg$pV)#`)Dh7DIo&u0(fH;k;h9h/9O.hi>gCjb'Y5\gmC-]A
+$eP;*-c8Sp_W8EXaGYhq*-e993[.mt`X%_l$iU(uTrhmMHO`&hNeT7_2eS#9O9(#^J3fXCW=
+9nO_fh]A'A7cr3V%5Yh$tgMHW$@X]A9(qL_la3GjoYpOY^on.PGt8iT4WpfZL/T1TW<[(DoG;$
+YY?3bBhBfr04"P_i[J8;tG64jNuhX6#7Lqo5Kp4V_kBlQA7X[;AtFr+sXB0T*<T&4f;(k78B
+'Ya6K3u["X<@IG\dT69]A;E''ao;_nju-ci"mi&H^ufb2Q]AdPV&d0?S1P'F>YUtFE'ql71BT!
+]Aq0@c(Sm"`_QUksXu'_mmQp'?T8mfW?9M7FnpG+94aH5DRDX8%1+LH<fs><qW@80G_o$h17D
+mljo!Mf[ftn?gUZ\FV1cY*tTN$3PfB-\1pjpn-6Rod19N\HJ-C*r`0q&RKgq%_o20?g"p[t`
+U(!pPRql6cX.M[rg:(W%$&?G_\Jj9(UR:&m\b0!rn$_4Ga-_1.lM"feOSh4H\#a3JD^%4)r3
+-V[n2LaZOM;QbI,J!l9U"MD5^f/:3L`^YM;f\pG#(Qb/Kn_,PT?OS75+rapS69FXMC63[9,a
+DAM-En'Z9As#O!2Q!2V%aL"7*hbZFudrGoRLQ`YQRrd921L]AgEZL#sJl#.md>++Zpf^CDJ\P
+5nJ$Jq(-YNOtjKEq]A3\l\NS2YQ6n1"s7455HUh+O]AVeF+p#Xb<idk)/DonFPSs^=]AGAJ(YB%
+j5sD/T6a%cC`,'8GKeD=jBAL)"H_TQ*KV&+@d0]AdaR,=*LugAl0(."GY$baRa9U<DI^\#bBO
+s`lGRM";4i2]A]A3`=erru'`\(V#D;]A4#_H.2Eh6H&92R(%eq`$;3h@&8r2$tpZN4`D5*CqY<c
+lUZFg,r7m8ZTF'gVG"&OK9EQ2_S;X3)\[J?qE)D>8UZ&KWN9`l8H;YdDCV]AV,MqiD"U3Fp->
+tiM.q6RWSY&)C.;1+71>@&EC'a6krc0lm5cgnR-2u#.P$6V*cZjSa!.Br+$O01&Nj0a#03aG
+_Zj(^`$(q_(3Js8dH,KRj9Us9arIt5\-V-iRrNE6g2R;mB]Aq::n4Ke2RZ]ALR:N!:"PWk\%4Q
+O-8Jm$=\(8C:ms$QLi"'9Bt0:<a0=eE-"V4rYOa?30oM2EKnbMkm0_=7o"NELF@.oG9&?PjN
+a=2>1i/,tKB_=8)bPYgaKL)eM2Vkj*#jcH_I3sB`5+\1K9HS7SZT?753oql+XM`8Zi]As^%6D
+Z+:V<9D4i?DC^-1LF=lOR)3DaC3ng,#P0-&#o!C8#Uf670]AfG/cQV68l`]A1PG\2ZrNb1&9\Y
+P1%PR\#kcjmmfjp=%rnUNcI4.0,0m!Z'GGKh-'_'-8L!0*&12i/8f\B.5#_hS8Y\L/]AIAJl>
+Hu6cD1<]A+M#!`(ZWk"bo4AkKlq2bOW~
+]]></IM>
+</Background>
+<LCAttr vgap="0" hgap="0"/>
+<Center class="com.fr.form.ui.Label">
+<WidgetName name="label1"/>
+<WidgetAttr/>
+<LabelAttr verticalcenter="true" textalign="0" autoline="true"/>
+<FRFont name="微软雅黑" style="1" size="124" foreground="-1"/>
+<widgetValue>
+<O>
+<![CDATA[员工结构分析]]></O>
+</widgetValue>
+</Center>
+</InnerWidget>
+<BoundsAttr x="17" y="0" width="454" height="41"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.RadioGroup">
+<Listener event="statechange">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.options.form.getWidgetByName("widget3").fireEvent("click");]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="para"/>
+<WidgetAttr/>
+<Dictionary class="com.fr.data.impl.CustomDictionary">
+<CustomDictAttr>
+<Dict key="1" value="性别"/>
+<Dict key="2" value="学历"/>
+<Dict key="3" value="年龄段"/>
+</CustomDictAttr>
+</Dictionary>
+<widgetValue>
+<O>
+<![CDATA[1]]></O>
+</widgetValue>
+</InnerWidget>
+<BoundsAttr x="17" y="41" width="323" height="18"/>
+</Widget>
+<Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
+<InnerWidget class="com.fr.form.ui.FreeButton">
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[this.disable();]]></Content>
+</JavaScript>
+</Listener>
+<Listener event="click">
+<JavaScript class="com.fr.base.js.JavaScriptImpl">
+<Parameters/>
+<Content>
+<![CDATA[if (this.options.form != null && $.isFunction(this.options.form.formSubmit)) {
+	this.options.form.formSubmit({
+	url : "${servletURL}?op=fr_dialog&cmd=parameters_d&sessionID=${sessionID}",
+	asyn : true,
+	callback : function(res, status) {_g().loadContentPane();}}				
+	);
+	var self = this;
+	_g().once("afterload", function() {
+		self.enable();
+	})
+}]]></Content>
+</JavaScript>
+</Listener>
+<WidgetName name="widget3"/>
+<WidgetAttr invisible="true"/>
+<Text>
+<![CDATA[提交]]></Text>
+<Hotkeys>
+<![CDATA[enter]]></Hotkeys>
+</InnerWidget>
+<BoundsAttr x="340" y="41" width="131" height="18"/>
+</Widget>
+<LCAttr vgap="0" hgap="0"/>
+</Layout>
+</ParameterUI>
+<Parameter>
+<Attributes name="para"/>
+<O>
+<![CDATA[1]]></O>
+</Parameter>
+<Background name="ColorBackground" color="-1"/>
+</ReportParameterAttr>
+<StyleList>
+<Style horizontal_alignment="2" imageLayout="1">
+<FRFont name="SimSun" style="0" size="72"/>
+<Background name="ColorBackground" color="-1"/>
+<Border/>
+</Style>
+</StyleList>
+</WorkBook>

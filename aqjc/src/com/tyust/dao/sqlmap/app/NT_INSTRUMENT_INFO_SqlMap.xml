@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_INSTRUMENT_INFO" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.app.InstrumentInfo" >
+    <result column="INSTRUMENT_ID" property="instrumentId" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="MODEL" property="model" jdbcType="VARCHAR" />
+    <result column="USE_TYPE" property="useType" jdbcType="CHAR" />
+    <result column="MANUFACTURER" property="manufacturer" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    INSTRUMENT_ID, NAME, MODEL, USE_TYPE, MANUFACTURER, CODE, REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.app.InstrumentInfoExample" >
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+	           <![CDATA[SELECT * FROM
+				(
+				SELECT A.*, ROWNUM RN
+				FROM (
+			]]>
+		</isEqual>
+	</isParameterPresent>
+    select
+    INSTRUMENT_ID, ins.NAME, MODEL, USE_TYPE, MANUFACTURER, CODE, dic.DICTIONARY_OPTION_NAME as REMARK
+    from NT_INSTRUMENT_INFO ins left join DIC_SYSTEM_DICTIONARY dic on (ins.use_TYPE=dic.DICTIONARY_OPTION_ID)
+    <isParameterPresent >
+      <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+    <isParameterPresent>
+		<isEqual property="pagination" compareValue="true">
+            <![CDATA[
+				) A
+				WHERE ROWNUM <=#limit#
+				)
+				WHERE RN >#start#
+			]]>
+		</isEqual>
+	</isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    select 
+    <include refid="NT_INSTRUMENT_INFO.Base_Column_List" />
+    from NT_INSTRUMENT_INFO
+    where INSTRUMENT_ID = #instrumentId:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    delete from NT_INSTRUMENT_INFO
+    where INSTRUMENT_ID = #instrumentId:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.app.InstrumentInfoExample" >
+    delete from NT_INSTRUMENT_INFO
+    <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    insert into NT_INSTRUMENT_INFO (INSTRUMENT_ID, NAME, MODEL, USE_TYPE, 
+      MANUFACTURER, CODE, REMARK)
+    values (#instrumentId:VARCHAR#, #name:VARCHAR#, #model:VARCHAR#, #useType:CHAR#, 
+      #manufacturer:VARCHAR#, #code:VARCHAR#, #remark:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    insert into NT_INSTRUMENT_INFO
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="instrumentId" >
+        INSTRUMENT_ID
+      </isNotNull>
+      <isNotNull prepend="," property="name" >
+        NAME
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        MODEL
+      </isNotNull>
+      <isNotNull prepend="," property="useType" >
+        USE_TYPE
+      </isNotNull>
+      <isNotNull prepend="," property="manufacturer" >
+        MANUFACTURER
+      </isNotNull>
+      <isNotNull prepend="," property="code" >
+        CODE
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="instrumentId" >
+        #instrumentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="name" >
+        #name:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        #model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="useType" >
+        #useType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="manufacturer" >
+        #manufacturer:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="code" >
+        #code:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.app.InstrumentInfoExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_INSTRUMENT_INFO
+    <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_INSTRUMENT_INFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.instrumentId" >
+        INSTRUMENT_ID = #record.instrumentId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.name" >
+        NAME = #record.name:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.model" >
+        MODEL = #record.model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.useType" >
+        USE_TYPE = #record.useType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.manufacturer" >
+        MANUFACTURER = #record.manufacturer:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.code" >
+        CODE = #record.code:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_INSTRUMENT_INFO
+    set INSTRUMENT_ID = #record.instrumentId:VARCHAR#,
+      NAME = #record.name:VARCHAR#,
+      MODEL = #record.model:VARCHAR#,
+      USE_TYPE = #record.useType:CHAR#,
+      MANUFACTURER = #record.manufacturer:VARCHAR#,
+      CODE = #record.code:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    update NT_INSTRUMENT_INFO
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="name" >
+        NAME = #name:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="model" >
+        MODEL = #model:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="useType" >
+        USE_TYPE = #useType:CHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="manufacturer" >
+        MANUFACTURER = #manufacturer:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="code" >
+        CODE = #code:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where INSTRUMENT_ID = #instrumentId:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.app.InstrumentInfo" >
+    update NT_INSTRUMENT_INFO
+    set NAME = #name:VARCHAR#,
+      MODEL = #model:VARCHAR#,
+      USE_TYPE = #useType:CHAR#,
+      MANUFACTURER = #manufacturer:VARCHAR#,
+      CODE = #code:VARCHAR#,
+      REMARK = #remark:VARCHAR#
+    where INSTRUMENT_ID = #instrumentId:VARCHAR#
+  </update>
+  
+  <select id="selRptInstrument" resultClass="java.lang.Integer" resultMap="BaseResultMap">
+  	select rptIns.INSTRUMENT_ID, insInfo.NAME, insInfo.MODEL, insInfo.USE_TYPE, insInfo.MANUFACTURER, insInfo.CODE, rptIns.id as REMARK 
+  	from NT_REPORT_INSTRUMENT rptIns left join NT_INSTRUMENT_INFO insInfo on (rptIns.INSTRUMENT_ID = insInfo.INSTRUMENT_ID)
+  	where rptIns.REPORT_ID = #rptId#
+  </select>
+  
+  <!-- 查询环境检测报告中使用到的仪器 -->
+  <select id="selEnReportInstrument" resultClass="java.lang.Integer" resultMap="BaseResultMap">
+  	select eti.INSTRUMENT_ID, insInfo.NAME, insInfo.MODEL, insInfo.USE_TYPE, insInfo.MANUFACTURER, insInfo.CODE, eti.eti_id as REMARK 
+  	from ENVIRONMENT_TEST_INSTRUMENT eti left join NT_INSTRUMENT_INFO insInfo on (eti.INSTRUMENT_ID = insInfo.INSTRUMENT_ID)
+  	where eti.ENVIRONMENT_TEST_REPORT_ID = #enTestReportId#
+  </select>
+  
+</sqlMap>

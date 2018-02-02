@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="NT_APPLY_DEVICE" >
+  <resultMap id="BaseResultMap" class="com.tyust.bean.device.ApplyDevice" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="APPLY_ID" property="applyId" jdbcType="VARCHAR" />
+    <result column="DEVICE_ID" property="deviceId" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
+      <isEqual property="oredCriteria[].valid" compareValue="true" >
+        (
+        <iterate prepend="and" property="oredCriteria[].criteriaWithoutValue" conjunction="and" >
+          $oredCriteria[].criteriaWithoutValue[]$
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithSingleValue" conjunction="and" >
+          $oredCriteria[].criteriaWithSingleValue[].condition$ #oredCriteria[].criteriaWithSingleValue[].value#
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithListValue" conjunction="and" >
+          $oredCriteria[].criteriaWithListValue[].condition$
+          <iterate property="oredCriteria[].criteriaWithListValue[].values" open="(" close=")" conjunction="," >
+            #oredCriteria[].criteriaWithListValue[].values[]#
+          </iterate>
+        </iterate>
+        <iterate prepend="and" property="oredCriteria[].criteriaWithBetweenValue" conjunction="and" >
+          $oredCriteria[].criteriaWithBetweenValue[].condition$
+          #oredCriteria[].criteriaWithBetweenValue[].values[0]# and
+          #oredCriteria[].criteriaWithBetweenValue[].values[1]#
+        </iterate>
+        )
+      </isEqual>
+    </iterate>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, APPLY_ID, DEVICE_ID, REMARK
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterClass="com.tyust.bean.device.ApplyDeviceExample" >
+    select
+    <isParameterPresent >
+      <isEqual property="distinct" compareValue="true" >
+        distinct
+      </isEqual>
+    </isParameterPresent>
+    <include refid="NT_APPLY_DEVICE.Base_Column_List" />
+    from NT_APPLY_DEVICE
+    <isParameterPresent >
+      <include refid="NT_APPLY_DEVICE.Example_Where_Clause" />
+      <isNotNull property="orderByClause" >
+        order by $orderByClause$
+      </isNotNull>
+    </isParameterPresent>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    select 
+    <include refid="NT_APPLY_DEVICE.Base_Column_List" />
+    from NT_APPLY_DEVICE
+    where ID = #id:VARCHAR#
+  </select>
+  <delete id="deleteByPrimaryKey" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    delete from NT_APPLY_DEVICE
+    where ID = #id:VARCHAR#
+  </delete>
+  <delete id="deleteByExample" parameterClass="com.tyust.bean.device.ApplyDeviceExample" >
+    delete from NT_APPLY_DEVICE
+    <include refid="NT_APPLY_DEVICE.Example_Where_Clause" />
+  </delete>
+  <insert id="insert" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    insert into NT_APPLY_DEVICE (ID, APPLY_ID, DEVICE_ID, REMARK)
+    values (#id:VARCHAR#, #applyId:VARCHAR#, #deviceId:VARCHAR#, #remark:VARCHAR#)
+  </insert>
+  <insert id="insertSelective" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    insert into NT_APPLY_DEVICE
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="id" >
+        ID
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID
+      </isNotNull>
+      <isNotNull prepend="," property="deviceId" >
+        DEVICE_ID
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK
+      </isNotNull>
+      )
+    </dynamic>
+    values
+    <dynamic prepend="(" >
+      <isNotNull prepend="," property="id" >
+        #id:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="applyId" >
+        #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deviceId" >
+        #deviceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        #remark:VARCHAR#
+      </isNotNull>
+      )
+    </dynamic>
+  </insert>
+  <select id="countByExample" parameterClass="com.tyust.bean.device.ApplyDeviceExample" resultClass="java.lang.Integer" >
+    select count(*) from NT_APPLY_DEVICE
+    <include refid="NT_APPLY_DEVICE.Example_Where_Clause" />
+  </select>
+  <update id="updateByExampleSelective" >
+    update NT_APPLY_DEVICE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="record.id" >
+        ID = #record.id:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.applyId" >
+        APPLY_ID = #record.applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.deviceId" >
+        DEVICE_ID = #record.deviceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="record.remark" >
+        REMARK = #record.remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    <isParameterPresent >
+      <include refid="NT_APPLY_DEVICE.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByExample" >
+    update NT_APPLY_DEVICE
+    set ID = #record.id:VARCHAR#,
+      APPLY_ID = #record.applyId:VARCHAR#,
+      DEVICE_ID = #record.deviceId:VARCHAR#,
+      REMARK = #record.remark:VARCHAR#
+    <isParameterPresent >
+      <include refid="NT_APPLY_DEVICE.Example_Where_Clause" />
+    </isParameterPresent>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    update NT_APPLY_DEVICE
+    <dynamic prepend="set" >
+      <isNotNull prepend="," property="applyId" >
+        APPLY_ID = #applyId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="deviceId" >
+        DEVICE_ID = #deviceId:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="remark" >
+        REMARK = #remark:VARCHAR#
+      </isNotNull>
+    </dynamic>
+    where ID = #id:VARCHAR#
+  </update>
+  <update id="updateByPrimaryKey" parameterClass="com.tyust.bean.device.ApplyDevice" >
+    update NT_APPLY_DEVICE
+    set APPLY_ID = #applyId:VARCHAR#,
+      DEVICE_ID = #deviceId:VARCHAR#,
+      REMARK = #remark:VARCHAR#
+    where ID = #id:VARCHAR#
+  </update>
+</sqlMap>

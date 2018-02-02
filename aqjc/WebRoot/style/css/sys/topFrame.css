@@ -1,0 +1,59 @@
+body {
+	background: url(../../images/sys/topFrame_bg.png) no-repeat left top;
+	font-size: 12px;
+	font-family: "����"
+}
+#topFrame_weather {
+	margin-right: 17px;
+	float: right;
+	
+}
+#topFrame_postion {
+	margin-top: 60px;
+	height: 30px;
+	line-height: 35px;
+}
+
+#topFrame_time {
+	position: absolute;
+	width: 180px;
+	left: 0px;
+	padding-left: 20px;
+	color: #094b7d;
+}
+
+#topFrame_info {
+	position: absolute;
+	right: 0px;
+	width: 82%;
+	text-align: right;
+	padding-right: 20px;
+	color: #fff
+}
+
+#topFrame_info a {
+	color: #fff
+}
+
+#topFrame_info span {
+	display: inline-block;
+}
+
+.topFrame_icon_updataPassword,.topFrame_icon_exitlogin,.topFrame_icon_home {
+	padding-left: 20px;
+	cursor: pointer
+}
+
+.topFrame_icon_updataPassword {
+	background: url(../../images/sys/topFrame_icon.gif) no-repeat 1px 7px;
+}
+
+.topFrame_icon_exitlogin {
+	background: url(../../images/sys/topFrame_icon.gif) no-repeat 1px -17px;
+}
+.topFrame_icon_home {
+	background: url(../../images/sys/dh.gif) no-repeat scroll 1px 7px transparent;
+}
+
+
+
