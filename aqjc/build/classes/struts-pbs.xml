@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 应该把一组业务功能相近的action放在同一个package中 -->
+
+	<!-- 屏蔽室申请信息 -->
+	<package name="pbsApplyInfo" namespace="/" extends="base,json-default">
+		<action name="pbsApplyInfo_savePbsApplyInfo" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="savePbsApplyInfo">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<action name="pbsApplyInfo_*" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="{1}">
+
+		</action>
+
+		<action name="pbsApplyInfo_saveImage" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="saveImage">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<action name="pbsApplyInfo_delApply" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="delApply">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<action name="pbsApplyInfo_delImage" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="delImage">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<action name="pbsApplyInfo_delAttach" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="delAttach">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+
+		<!-- 附件下载 -->
+		<action name="pbsApplyInfo_downAttach" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="downAttach">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-word</param>
+				<param name="inputName">inStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+	</package>
+
+	<package name="pbsApplyInfoZS" namespace="/" extends="base,json-default">
+		<action name="pbsApplyInfoZS_*" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+	</package>
+
+	<!-- 屏蔽室检测报告信息 -->
+	<package name="pbsTestReport" namespace="/" extends="base,json-default">
+		<action name="pbsTestReport_*" class="com.tyust.web.action.pbs.PbsTestReportAction"
+			method="{1}">
+			<result type="json">
+				<param name="root">resultJson</param>
+			</result>
+		</action>
+
+		<action name="pbsTestReport_delPbsTestReport" class="com.tyust.web.action.pbs.PbsTestReportAction"
+			method="delPbsTestReport">
+			<result type="json">
+				<param name="root">resultJson</param>
+			</result>
+		</action>
+		<action name="pbsTestReport_saveImage" class="com.tyust.web.action.pbs.PbsTestReportAction"
+			method="saveImage">
+			<result type="json">
+				<param name="root">resultJson</param>
+			</result>
+		</action>
+	</package>
+</struts>

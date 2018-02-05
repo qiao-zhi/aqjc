@@ -133,6 +133,13 @@ public class EnApplyInfoService {
 		record.setEnvironmentAttachName(enAttachFileName);
 		enAttachDAO.insert(record);
 	}
+	/**
+	 * 保存附件信息到数据库
+	 * @param record
+	 */
+	public void saveEnAttach(EnAttach record) {
+		enAttachDAO.insert(record);
+	}
 
 	public void delEnAttach(String enAttachId) {
 		String url = enAttachDAO.selectByPrimaryKey(enAttachId).getEnvironmentAttachUrl();

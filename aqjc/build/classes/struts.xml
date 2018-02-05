@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 指定action后缀 -->
+	<constant name="struts.action.extension" value="do,action"></constant>
+	<!-- 由spring负责action对象的创建 -->
+	<constant name="struts.objectFactory" value="spring"></constant>
+	<!-- 设置编码 -->
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.devMode" value="false" />
+	<!-- 上传大小为20M限制 -->
+	<constant name="struts.multipart.maxSize" value="21000000" />
+
+
+
+	<!-- 指定struts2全局视图。以后的所有包都继承base包 -->
+	<package name="base"  extends="json-default">
+		<global-results>
+			<result name="success">/admin/common/success-json.jsp</result>
+			<result name="input">/admin/common/false-json.jsp</result>
+		</global-results>
+	</package>
+
+
+	<!--加载系统管理模块的struts2配置文件 -->
+	<include file="struts-system.xml" />
+	<include file="struts-app.xml" />
+	<include file="struts-pbs.xml"/>
+	<include file="struts-en.xml"/>
+</struts>

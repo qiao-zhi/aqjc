@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 应该把一组业务功能相近的action放在同一个package中 -->
+	
+	<!-- 设备,仪器  -->
+	<package name="test" namespace="/" extends="base">
+		<action name="test_*" class="com.tyust.web.action.app.TestAction"
+			method="{1}">
+		</action>
+	</package>
+	
+	<package name="excel" namespace="/" extends="base,json-default">
+		<action name="excel" class="com.tyust.web.action.app.TestAction"
+			method="export">
+			<result name="success" type="stream">
+				<param name="contentType">application/octet-stream</param>
+				<param name="inputName">excelFile</param>
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"
+				</param>
+			</result>
+		</action>
+		
+		<action name="readExcel" class="com.tyust.web.action.app.TestAction" method="readExcel">
+			<result type="json">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 仪器  -->
+	<package name="ins" namespace="/" extends="base">
+		<action name="ins_*" class="com.tyust.web.action.app.InstrumentAction" method="{1}">
+		</action>
+	</package>
+	<!-- 设备检测申请  -->
+	<package name="dveTestApply" namespace="/" extends="base">
+		<!-- 附件下载 -->
+		<action name="dveTestApply_downAttach" class="com.tyust.web.action.device.DveTestApplyAction"
+			method="downAttach">
+			<result name="success" type="stream">
+				<param name="contentType">application/vnd.ms-word</param>
+				<param name="inputName">inStream</param>
+				<param name="contentDisposition">attachment;filename="${filename}"</param>
+			</result>
+		</action>
+
+		<action name="dveTestApply_*" class="com.tyust.web.action.device.DveTestApplyAction"
+			method="{1}">
+		</action>
+	</package>
+	
+	<package name="deviceTestApply" namespace="/" extends="base,json-default">
+		<action name="deviceTestApply_*" class="com.tyust.web.action.device.DveTestApplyAction"
+			method="{1}">
+		</action>
+	</package>
+	
+	<!-- 设备检测报告  -->
+	<package name="dveTestReport" namespace="/" extends="base">
+		<action name="dveTestReport_*" class="com.tyust.web.action.device.DveTestReportAction" method="{1}">
+		</action>
+	</package>
+	<!-- 屏蔽室信息  -->
+	<package name="pbsInfo" namespace="/" extends="base">
+		<action name="pbsInfo_*" class="com.tyust.web.action.pbs.PbsInfoAction" method="{1}">
+		</action>
+	</package>
+	<!-- 屏蔽室检测申请  -->
+	<package name="pbsApply" namespace="/" extends="base">
+		<action name="pbsApply_*" class="com.tyust.web.action.pbs.PbsTestApplyAction" method="{1}">
+		</action>
+	</package>
+	<!-- 屏蔽室检测报告  -->
+	<package name="pbsRpt" namespace="/" extends="base">
+		<action name="pbsRpt_*" class="com.tyust.web.action.pbs.PbsTestReportAction" method="{1}">
+		</action>
+	</package>
+	
+</struts>
