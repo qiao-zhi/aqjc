@@ -39,14 +39,14 @@ public class CodeFilter implements Filter {
 			if(request1.getRequestURI().indexOf("login.do")>0){
 				
 			}else if(request1.getRequestURI().indexOf(".do")>0){
-				response.getWriter().print("<script type=\"text/javascript\">window.top.document.location.href='/login.jsp'</script>");
+				response.getWriter().print("<script type=\"text/javascript\">window.top.document.location.href='"+request1.getContextPath()+"'</script>");
 				response.getWriter().close();
 				return;
 			}
 			if(request1.getRequestURI().matches("/login.jsp")){
 				
 			}else if(request1.getRequestURI().indexOf(".jsp")>0){
-				response.getWriter().print("<script type=\"text/javascript\">window.top.document.location.href='/login.jsp'</script>");
+				response.getWriter().print("<script type=\"text/javascript\">window.top.document.location.href='"+request1.getContextPath()+"'</script>");
 				response.getWriter().close();
 				return;
 			}
@@ -74,7 +74,7 @@ public class CodeFilter implements Filter {
 				 		   }
 		 				session.removeAttribute("user");
 		 				PrintWriter out =response.getWriter();
-			 			out.print("<script type=\"text/javascript\">alert('此用户已经在别处登陆!');window.top.document.location.href='/login.jsp'</script>");
+			 			out.print("<script type=\"text/javascript\">alert('此用户已经在别处登陆!');window.top.document.location.href='"+request1.getContextPath()+"'</script>");
 			 			out.close();
 			 			return;
 		 			}

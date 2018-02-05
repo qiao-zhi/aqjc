@@ -41,6 +41,12 @@
     <servlet-name>ReportServer</servlet-name>
     <url-pattern>/ReportServer</url-pattern>
   </servlet-mapping> 
+  
+  <!-- 404页面 -->
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404.jsp</location>
+  </error-page>
   <!-- 
   <servlet>
     <servlet-name>reportServlet</servlet-name>

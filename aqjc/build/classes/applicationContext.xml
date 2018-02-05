@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:faces="http://www.springframework.org/schema/faces" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:lang="http://www.springframework.org/schema/lang" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:ehcache="http://www.springmodules.org/schema/ehcache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch-2.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/faces http://www.springframework.org/schema/faces/spring-faces-2.0.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+	http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springmodules.org/schema/ehcache http://www.springmodules.org/schema/cache/springmodules-ehcache.xsd
+	">
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver">
+		</property>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:orcl">
+		</property>
+		<property name="username" value="sbgl"></property>
+		<property name="password" value="sbgl"></property>
+	</bean>	 
+
+<!-- 	
+	<jee:jndi-lookup jndi-name="jdbc/sbgl" id="dataSource" resource-ref="true" />
+ --> 
+	<bean id="namedJdbcTemplate"
+		class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
+		<constructor-arg index="0" ref="dataSource" />
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<constructor-arg index="0" ref="dataSource" />
+	</bean>
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="configLocation" value="classpath:com/tyust/dao/SqlmapConfig.xml" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="txTemplate"
+		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean"
+		abstract="true">
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<props>
+				<prop key="add*">PROPAGATION_REQUIRED</prop>
+				<prop key="insert*">PROPAGATION_REQUIRED</prop>
+				<prop key="update*">PROPAGATION_REQUIRED</prop>
+				<prop key="del*">PROPAGATION_REQUIRED</prop>
+				<prop key="save*">PROPAGATION_REQUIRED</prop>
+				<prop key="manage*">PROPAGATION_REQUIRED</prop>
+				<prop key="revoke*">PROPAGATION_REQUIRED</prop>
+				<prop key="*">PROPAGATION_SUPPORTS,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 持久层的配置 start -->
+		<!-- 字典（系统字典、行政区划） -->	
+		<bean id="SystemDictionaryDAO" class="com.tyust.dao.dic.SystemDictionaryDAOImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<bean id="DictionaryDAO" class="com.tyust.dao.dic.DictionaryDaoImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<!-- 用户（用户、角色、菜单） -->
+		<bean id="User" class="com.tyust.dao.user.UserDaoImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<bean id="UserRole" class="com.tyust.dao.user.UserRoleDaoImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<bean id="Module" class="com.tyust.dao.user.ModuleDaoImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean> 
+		<bean id="BaseUserInfoDAO" class="com.tyust.dao.user.BaseUserInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>	
+		<!-- 机构 -->	
+		<bean id="Unit" class="com.tyust.dao.unit.UnitDaoImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<bean id="UnitRoleModuleDAO" class="com.tyust.dao.unit.UnitRoleModuleImpl">
+		   <property name="sqlMapClient" ref="sqlMapClient"></property>
+		</bean>
+		<bean id="roleDAO" class="com.tyust.dao.unit.RoleDaoImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 日志-->
+		<bean id="logDAO" class="com.tyust.dao.log.LogDaoImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+
+		<!-- 设备信息  -->
+		<bean id="DeviceBaseInfoDAO" class="com.tyust.dao.app.DeviceBaseInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 仪器信息  -->
+		<bean id="InstrumentInfoDAO" class="com.tyust.dao.app.InstrumentInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 检测报告仪器  -->
+		<bean id="ReportInstrumentDAO" class="com.tyust.dao.app.ReportInstrumentDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 检测报告照片  -->
+		<bean id="TestReportPicDAO" class="com.tyust.dao.app.TestReportPicDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+
+		<!-- 设备检测申请  -->
+		<bean id="DeviceTestApplyDAO" class="com.tyust.dao.device.DeviceTestApplyDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 申请检测的设备  -->
+		<bean id="ApplyDeviceDAO" class="com.tyust.dao.device.ApplyDeviceDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 设备检测申请审核  -->
+		<bean id="DeviceApplyAuditDAO" class="com.tyust.dao.device.DeviceApplyAuditDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 设备检测报告  -->
+		<bean id="DeviceTestReportDAO" class="com.tyust.dao.device.DeviceTestReportDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 申请审核扫描件  -->
+		<bean id="ApplyAuditSmjDAO" class="com.tyust.dao.device.ApplyAuditSmjDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		<!-- 屏蔽室基本信息  -->
+		<bean id="PbsBaseInfoDAO" class="com.tyust.dao.pbs.PbsBaseInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 承建单位信息  -->
+		<bean id="PbsBuilderDAO" class="com.tyust.dao.pbs.PbsBuilderDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室设备  -->
+		<bean id="PbsDeviceDAO" class="com.tyust.dao.pbs.PbsDeviceDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室检测申请  -->
+		<bean id="PbsTestApplyDAO" class="com.tyust.dao.pbs.PbsTestApplyDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室检测申请审核  -->
+		<bean id="PbsApplyAuditDAO" class="com.tyust.dao.pbs.PbsApplyAuditDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室检测报告  -->
+		<bean id="PbsTestRptDAO" class="com.tyust.dao.pbs.PbsTestRptDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		
+		<!-- 设备检测申请附件 -->
+		<bean id="DeviceTestApplyAttachDAO" class="com.tyust.dao.device.DeviceTestApplyAttachDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+	<!-- 持久层的配置 end -->
+	
+	<!--没有事务配置start -->
+		<!-- 字典（系统字典、行政区划） -->	
+		<bean id="DicToolServiceNoTx" class="com.tyust.service.dic.DicToolService">
+			<property name="systemDictionaryDAO" ref="SystemDictionaryDAO"/>	
+		</bean>	
+		<bean id="DicServiceNoTx" class="com.tyust.service.dic.DicServiceImpl">
+			<property name="dicDao" ref="DictionaryDAO"></property>	
+		</bean>	
+		<!-- 用户（用户、角色、菜单） -->
+		<bean id="UserServiceNoTx" class="com.tyust.service.user.UserServiceImpl">
+			<property name="userDao" ref="User"></property>
+			<property name="moduleDao" ref="Module"></property>
+			<property name="userRoleDao" ref="UserRole"></property>
+		</bean>
+		<bean id="ModuleServiceNoTx" class="com.tyust.service.user.ModuleServiceImpl">
+			<property name="moduleDao" ref="Module"></property>
+		</bean>
+		<bean id="RoleServiceNoTx" class="com.tyust.service.user.RoleServiceImpl">
+			<property name="roleDao" ref="roleDAO"></property>
+			<property name="moduleDao" ref="Module"></property>
+		</bean>
+		<!-- 机构 -->
+		<bean id="UnitServiceNoTx" class="com.tyust.service.unit.UnitServiceImpl">
+			<property name="unitDao" ref="Unit"></property>
+			<property name="unitRoleModuleDao" ref="UnitRoleModuleDAO"></property>
+			<property name="dicDao" ref="DictionaryDAO"></property>
+			<property name="userDao" ref="User"></property>
+		</bean>
+		<!-- 日志-->
+		<bean id="logService" class="com.tyust.service.log.LogServiceImpl">
+			<property name="logDao" ref="logDAO"></property>
+		</bean>
+		<bean id="saveLog" class="com.tyust.common.SaveLog">
+			<property name="logDao" ref="logDAO"></property>
+		</bean>
+		
+		<!-- 设备,仪器  -->
+		<bean id="TestServiceNoTx" class="com.tyust.service.app.TestService">
+			<property name="deviceBaseInfoDAO" ref="DeviceBaseInfoDAO"></property>
+			<property name="instrumentInfoDAO" ref="InstrumentInfoDAO"></property>
+			<property name="reportInstrumentDAO" ref="ReportInstrumentDAO"></property>
+			<property name="applyDeviceDAO" ref="ApplyDeviceDAO"></property>
+		</bean>
+		
+		<!-- 设备检测申请  -->
+		<bean id="DveTestApplyServiceNoTx" class="com.tyust.service.device.DveTestApplyService">
+			<property name="deviceTestApplyDAO" ref="DeviceTestApplyDAO"></property>
+			<property name="applyDeviceDAO" ref="ApplyDeviceDAO"></property>
+			<property name="deviceApplyAuditDAO" ref="DeviceApplyAuditDAO"></property>
+			<property name="applyAuditSmjDAO" ref="ApplyAuditSmjDAO"></property>
+			<property name="deviceTestApplyAttachDAO" ref="DeviceTestApplyAttachDAO"></property>
+			<property name="deviceBaseInfoDAO" ref="DeviceBaseInfoDAO"></property>
+		</bean>
+		<!-- 设备检测报告  -->
+		<bean id="DveTestReportServiceNoTx" class="com.tyust.service.device.DveTestReportService">
+			<property name="deviceTestReportDAO" ref="DeviceTestReportDAO"></property>
+			<property name="reportInstrumentDAO" ref="ReportInstrumentDAO"></property>
+			<property name="testReportPicDAO" ref="TestReportPicDAO"></property>
+			<property name="deviceTestApplyDAO" ref="DeviceTestApplyDAO"></property>
+		</bean>
+		
+		<!-- 屏蔽室信息  -->
+		<bean id="PbsInfoServiceNoTx" class="com.tyust.service.pbs.PbsInfoService">
+			<property name="pbsBaseInfoDAO" ref="PbsBaseInfoDAO"></property>
+			<property name="pbsBuilderDAO" ref="PbsBuilderDAO"></property>
+			<property name="pbsDeviceDAO" ref="PbsDeviceDAO"></property>
+		</bean>
+		<!-- 屏蔽室检测申请  -->
+		<bean id="PbsTestApplyServiceNoTx" class="com.tyust.service.pbs.PbsTestApplyService">
+			<property name="pbsTestApplyDAO" ref="PbsTestApplyDAO"></property>
+			<property name="pbsApplyAuditDAO" ref="PbsApplyAuditDAO"></property>
+		</bean>
+		<!-- 屏蔽室检测报告  -->
+		<bean id="PbsTestRptServiceNoTx" class="com.tyust.service.pbs.PbsTestRptService">
+			<property name="pbsTestRptDAO" ref="PbsTestRptDAO"></property>
+			<property name="reportInstrumentDAO" ref="ReportInstrumentDAO"></property>
+			<property name="testReportPicDAO" ref="TestReportPicDAO"></property>
+			<property name="pbsTestApplyDAO" ref="PbsTestApplyDAO"></property>
+		</bean>
+	<!--没有事务配置end -->
+	
+	<!-- Service层 start -->
+		<!-- 字典（系统字典、行政区划） -->	
+		<bean id="dicToolService" parent="txTemplate">
+			<property name="target" ref="DicToolServiceNoTx" />
+		</bean>	
+		<bean id="dicService" parent="txTemplate">
+			<property name="target" ref="DicServiceNoTx" />
+		</bean>
+		<!-- 用户（用户、角色、菜单） -->
+		<bean id="userService" parent="txTemplate">
+			<property name="target" ref="UserServiceNoTx" />
+		</bean>
+		<bean id="moduleService" parent="txTemplate">
+			<property name="target" ref="ModuleServiceNoTx" />
+		</bean>
+		<bean id="roleService" parent="txTemplate">
+			<property name="target" ref="RoleServiceNoTx" />
+		</bean>
+		<!-- 机构 -->
+		<bean id="unitService" parent="txTemplate">
+			<property name="target" ref="UnitServiceNoTx" />
+		</bean>
+		<!-- 设备,仪器  -->
+		<bean id="testService" parent="txTemplate">
+			<property name="target" ref="TestServiceNoTx" />
+		</bean>
+		<!-- 设备检测申请  -->
+		<bean id="dveTestApplyService" parent="txTemplate">
+			<property name="target" ref="DveTestApplyServiceNoTx" />
+		</bean>
+		<!-- 设备检测报告  -->
+		<bean id="dveTestReportService" parent="txTemplate">
+			<property name="target" ref="DveTestReportServiceNoTx" />
+		</bean>
+		<!-- 屏蔽室信息  -->
+		<bean id="pbsInfoService" parent="txTemplate">
+			<property name="target" ref="PbsInfoServiceNoTx" />
+		</bean>
+		<!-- 屏蔽室检测申请  -->
+		<bean id="pbsTestApplyService" parent="txTemplate">
+			<property name="target" ref="PbsTestApplyServiceNoTx" />
+		</bean>
+		<!-- 屏蔽室检测报告  -->
+		<bean id="pbsTestRptService" parent="txTemplate">
+			<property name="target" ref="PbsTestRptServiceNoTx" />
+		</bean>
+	<!-- Service层 end -->
+	
+		<!-- 屏蔽室申请信息DAO -->
+		<bean id="PbsApplyInfoDAO" class="com.tyust.dao.pbs.PbsApplyInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室图片DAO -->
+		<bean id="PbsPicDAO" class="com.tyust.dao.pbs.PbsPicDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		<!-- 屏蔽室附件DAO -->
+		<bean id="PbsAttachDAO" class="com.tyust.dao.pbs.PbsAttachDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室申请信息服务类 -->
+		<bean id="pbsApplyInfoService" class="com.tyust.service.pbs.PbsApplyInfoService">
+			<property name="pbsApplyInfoDAO" ref="PbsApplyInfoDAO"/>
+			<property name="pbsPicDAO" ref="PbsPicDAO"/>
+			<property name="pbsAttachDAO" ref="PbsAttachDAO"/>
+		</bean> 
+	
+		<!-- 屏蔽室检测报告DAO -->
+		<bean id="PbsTestReportDAO" class="com.tyust.dao.pbs.PbsTestReportDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室检测报告服务 -->
+		<bean id="pbsTestReportService" class="com.tyust.service.pbs.PbsTestReportService">
+			<property name="pbsTestReportDAO" ref="PbsTestReportDAO"/>
+			<property name="pbsPicDAO" ref="PbsPicDAO"/>
+		</bean>
+		
+		<!-- 环境检测申请DAO -->
+		<bean id="EnApplyInfoDAO" class="com.tyust.dao.en.EnApplyInfoDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 环境检测图片DAO -->
+		<bean id="EnPicDAO" class="com.tyust.dao.en.EnPicDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 环境检测附件DAO -->
+		<bean id="EnAttachDAO" class="com.tyust.dao.en.EnAttachDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		<!-- 屏蔽室检测报告服务 -->
+		<bean id="enApplyInfoService" class="com.tyust.service.en.EnApplyInfoService">
+			<property name="enApplyInfoDAO" ref="EnApplyInfoDAO"/>
+			<property name="enAttachDAO" ref="EnAttachDAO"/>
+			<property name="enPicDAO" ref="EnPicDAO"/>
+			<property name="enApplyAuditDAO" ref="EnApplyAuditDAO"/>
+		</bean>
+		<!-- 环境检测报告 -->
+		<bean id="EnTestReportDAO" class="com.tyust.dao.en.EnTestReportDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		<bean id="EnTestInstrumentDAO" class="com.tyust.dao.en.EnTestInstrumentDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		<bean id="EnApplyAuditDAO" class="com.tyust.dao.en.EnApplyAuditDAOImpl">
+			<property name="sqlMapClient" ref="sqlMapClient" />
+		</bean>
+		
+		<bean id="enTestReportService" class="com.tyust.service.en.EnTestReportService">
+			<property name="enTestReportDAO" ref="EnTestReportDAO"/>
+			<property name="enPicDAO" ref="EnPicDAO"/>
+			<property name="enTestInstrumentDAO" ref="EnTestInstrumentDAO"/>
+		</bean>
+</beans>

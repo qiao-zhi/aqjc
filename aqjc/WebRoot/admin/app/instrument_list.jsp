@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.*,com.tyust.common.DateHandler" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -194,6 +195,11 @@
 				<tr>
 					<td class="title_td">仪器序列号</td>
 					<td colspan="3"><input id="add_code" name="instrumentInfo.code" isempty="no" tip="序列号不能为空"/><font color="red">*</font></td>
+				</tr>
+				<tr>
+					<td class="title_td">有效日期</td>
+					<td colspan="3"><input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.starttime" isempty="no" tip="开始日期不能为空"/><font color="red">*</font>&nbsp;&nbsp;——&nbsp;&nbsp;
+									<input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.endtime" isempty="no" tip="结束日期不能为空" /><font color="red">*</font>
 				</tr>
 				<tr>
 					<td class="title_td">仪器厂商</td>
