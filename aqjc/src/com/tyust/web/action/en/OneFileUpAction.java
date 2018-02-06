@@ -73,7 +73,7 @@ public class OneFileUpAction  extends ActionSupport{
         record.setEnvironmentAttachDate(new Date());
         record.setEnvironmentAttachId(UUIDUtil.getUUID2());
         record.setEnvironmentAttachName(fileNameFileName);
-        record.setEnvironmentAttachUrl(fileNewName+"."+sufix);
+        record.setEnvironmentAttachUrl(fileNewName+"."+"pdf");
         record.setEnvironmentAttachType(attachType);
         this.saveAttarch(record);
         result = "success";//上传结果返回前台
@@ -85,7 +85,7 @@ public class OneFileUpAction  extends ActionSupport{
     
     public String saveAttarch(EnAttach record){
     	enApplyInfoService.saveEnAttach(record);
-    	return null;
+    	return "success";
     }
     
     

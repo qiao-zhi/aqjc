@@ -8,6 +8,10 @@
 <head>
 <title></title>
 <jsp:include page="../common/include-common.jsp"></jsp:include>
+<style type="text/css">
+	a{
+	text-decoration: none}
+</style>
 <script>
 $(function(){		
 	$("#enApply-grid").flexigrid({

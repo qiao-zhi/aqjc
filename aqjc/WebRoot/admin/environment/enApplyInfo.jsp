@@ -147,12 +147,14 @@
             
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">申请书扫描照片</h3>
+                <h3 class="box-title">申请书扫描附件</h3>
               </div>
               <div class="box-body">
-         		<div class="container" id="pic">
-             	 	
-               </div>
+              	 <div class="row" id="file">
+              	 	<div class="col-sm-8">
+              			<div id="scanFile"></div>
+              		</div>
+              	 </div>
               </div>
             </div>
             
@@ -192,9 +194,12 @@
 <script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
 <script>
 	$(function() {
+		//显示申请基本信息
 		showEnApplyInfo();
-		showEnPic();
-		showEnAttach();
+		//显示扫描附件信息
+		showEnAttach('3');
+		//显示申请书附件
+		showEnAttach('1');
 	});
 	
 	var isAttach = false;
@@ -217,15 +222,16 @@
 			}
 		});
 	}
-	
-	function showEnPic(){
+	//查询申请书扫描附件
+	<%-- function showScanFile(){
 		$.ajax({
-			url : '${pageContext.request.contextPath}/enApplyInfo_selEnPic.do',
+			url : '${pageContext.request.contextPath}/enApplyInfo_selEnAttach.do',
 			data : {'enApplyId' : '<%= enApplyId%>',
-				'enPicType' : '1'},
+				'enAttachType' : '3'},
 			type : 'POST',
 			dataType : 'json',
 			success : function(response) {
+				debugger
 				var pic = eval(response);
 				var len = pic.length;
 				var a = len / 3;
@@ -251,12 +257,17 @@
 				}
 			}
 		});
-	}
+	} --%>
 	
-	function showEnAttach(){
+	/**
+	查询附件信息
+	**/
+	function showEnAttach(attachType){
 		$.ajax({
 			url : '${pageContext.request.contextPath}/enApplyInfo_selEnAttach.do',
-			data : {'enApplyId' : '<%= enApplyId%>'},
+			data : {'enApplyId' : '<%= enApplyId%>',
+					'enAttachType' : attachType	
+			},
 			type : 'POST',
 			dataType : 'json',
 			success : function(response) {
@@ -269,11 +280,13 @@
 					var url = info.fileUrl;
 					var fileName = info.fileName;
 					var enAttachId = info.enAttachId;
-					var URL = '${pageContext.request.contextPath}/enApplyInfo_downAttach.do?filename='+url;
-					$("#fileName").append("<a href='"+URL+"'>"+fileName+"</a>");
-					$("#delAttach").click(function (){
-						delAttachConf(enAttachId);
-					});
+					var URL='/file/'+url;
+					//如果是扫描附件
+					if(attachType == '3'){
+						$("#scanFile").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
+					}else{//如果是申请书电子版
+						$("#fileName").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
+					}
 				}
 			}
 		});

@@ -10,6 +10,7 @@ import com.tyust.bean.en.EnAttach;
 import com.tyust.bean.en.EnAttachExample;
 import com.tyust.bean.en.EnPic;
 import com.tyust.bean.en.EnPicExample;
+import com.tyust.common.DeleteFileUtil;
 import com.tyust.common.FileHandler;
 import com.tyust.dao.en.EnApplyAuditDAO;
 import com.tyust.dao.en.EnApplyInfoDAO;
@@ -143,7 +144,7 @@ public class EnApplyInfoService {
 
 	public void delEnAttach(String enAttachId) {
 		String url = enAttachDAO.selectByPrimaryKey(enAttachId).getEnvironmentAttachUrl();
-		FileHandler.deleteFile(url, "enAttach");
+		DeleteFileUtil.deleteFile(url);//根据UUID名字删除文件
 		enAttachDAO.deleteByPrimaryKey(enAttachId);
 	}
 

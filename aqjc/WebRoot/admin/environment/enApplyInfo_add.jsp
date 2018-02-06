@@ -247,7 +247,7 @@
 
 										<div class="box box-info">
 											<div class="box-header with-border">
-												<h3 class="box-title">申请书电子版上传</h3>
+												<h3 class="box-title">申请书电子版</h3>
 											</div>
 											<div class="box-body">
 												<form id="attach_form">
@@ -265,12 +265,10 @@
 							</div>
 							<!-- /.box-body -->
 
-							<div class="box-footer">
-								<center>
+							<div class="box-footer" style="text-align:center">
 									<button id="save" type="button" class="btn btn-default">保存</button>
 									<button id="submit" type="button" style="margin-left: 20px;"
 										class="btn btn-info">提交</button>
-								</center>
 							</div>
 						</div>
 						<!-- /.box -->
@@ -288,18 +286,18 @@
 	<!-- ./wrapper -->
 	<script
 		src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script type="text/javascript"
+<%-- 	<script type="text/javascript"
 		src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/jquery.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
+			src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/upload_enApplyInfo.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
+		src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/upload_enApplyInfo.js"></script> --%>
+		
+<%--  	<script type="text/javascript"	src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
 	<script type="text/javascript"
 		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
 	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>  --%>
 	<script
 		src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
 
@@ -326,15 +324,18 @@
 $(document).ready(function(){
 		$("#save").click(function (){
 			$("#operate").val("save");
-			var o = isOK();
-			if (o == true){
+			if(confirm("您确认保存申请信息?")){
 				saveInfo();
-			}
+			}	
 		});
 		$("#submit").click(function (){
 			$("#operate").val("submit");
 			var o = isOK();
 			if (o == true){
+				if (validate()){
+					alert("请完善信息");
+					return;
+				}
 				saveInfo();
 			}
 		});
@@ -373,12 +374,10 @@ function validate(){
 		return true;
 	}
 }
-
+/**
+ * 保存
+ */
 function saveInfo(){
-	if (validate()){
-		alert("请完善信息");
-		return;
-	}
 	$.ajax({
 		url : '<%=request.getContextPath()%>/enApplyInfo_saveEnApplyInfo.do',
 		type : 'POST',
@@ -391,8 +390,27 @@ function saveInfo(){
 				var enApplyId = data.enApplyId;
 				//设置传回来的申请编号
 				$("#hidden_apply_id").val(enApplyId);
-				//上传扫描的照片附件
-				$("#bootUpOne").fileinput("upload");
+				//保存成功之后上传文件:
+				//判断扫描文件是否选上
+				var scanFile = $("#bootUpOne")[0].files;
+				var scanFile_length = scanFile.length;
+				
+				//判断申请书电子版文件是否选上
+				var applyFile = $("#attach")[0].files;
+				var applyFile_length = applyFile.length;
+				
+				if(scanFile_length == 0  && applyFile_length){
+					alert("保存成功!");
+				}
+				
+				if(scanFile_length > 0){//上传扫描照片
+					//上传扫描的照片附件
+					$("#bootUpOne").fileinput("upload");
+				}
+				if(applyFile_length > 0){//上传申请书附件
+					//上传扫描的照片附件
+					$("#attach").fileinput("upload");
+				}
 			}
 		},
 		error : function(data){
@@ -400,6 +418,7 @@ function saveInfo(){
 		}
 	});
 }
+
 
 //附件上传功能:传入申请id作为参数
 function fileUpload(id){
@@ -471,6 +490,7 @@ function changeUnit(){
 $("#bootUpOne").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
+    uploadAsync:false,//是否异步
     dropZoneEnabled: false,//是否显示拖拽区域
     showPreview:true,//是否显示预览区域
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
@@ -482,6 +502,9 @@ $("#bootUpOne").fileinput({
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
          actionUpload:''//上传按钮不显示
     },
+    previewSettings: {//限制预览区域的宽高
+        pdf: {width: "0px", height: "0px"}
+    },
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
         		applyId:$("#hidden_apply_id").val(),
@@ -490,16 +513,14 @@ $("#bootUpOne").fileinput({
         return data;
     },
     validateInitialCount:true,
-    allowedFileExtensions: ['pdf','doc','docx'],//允许上传问价你的后缀
+    allowedFileExtensions: ['pdf'],//允许上传问价你的后缀
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-        	/* alert(JSON.stringify(data.response)) */
-        	//上传扫描的照片附件
-			$("#attach").fileinput("upload");
+        	alert("保存成功!");
         }
     });
 
@@ -513,8 +534,12 @@ $("#attach").fileinput({
     showUpload: true, //是否显示上传按钮,跟随文本框的那个
     showRemove : true, //显示移除按钮,跟随文本框的那个
     showCaption: true,//是否显示标题,就是那个文本框
-    uploadAsync:true,
+    uploadAsync:false,//是否异步
     enctype: 'multipart/form-data',
+    previewSettings: {//限制预览区域的宽高
+        pdf: {width: "0px", height: "0px"},
+        other: {width: "0px", height: "0px"}
+    },
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
@@ -524,14 +549,14 @@ $("#attach").fileinput({
         return data;
     },
     validateInitialCount:true,
-    allowedFileExtensions: ['pdf'],//允许上传问价你的后缀
+    allowedFileExtensions: ['pdf','doc','docx']//允许上传问价你的后缀
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-            alert('处理成功');
+           /*  alert('处理成功'); */
         }
     });
 /***E   上传文件相关操作****/
