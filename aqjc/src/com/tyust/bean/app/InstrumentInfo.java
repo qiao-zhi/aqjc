@@ -1,5 +1,9 @@
 package com.tyust.bean.app;
 
+import java.util.Date;
+
+import org.apache.struts2.json.annotations.JSON;
+
 public class InstrumentInfo {
     /**
      * 检测仪器表，主键
@@ -35,6 +39,15 @@ public class InstrumentInfo {
      * null
      */
     private String remark;
+    
+    /**
+     * 有效期开始日期
+     */
+    private Date startTime;
+    /**
+     * 有效期结束日期
+     */
+    private Date endTime;
 
     /**
      * 获取 检测仪器表，主键
@@ -161,4 +174,34 @@ public class InstrumentInfo {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+    /**
+     * 获取开始日期
+     * @return
+     */
+	public Date getStartTime() {
+		return startTime;
+	}
+	/**
+	 * 设置开始日期
+	 * @param startTime
+	 */
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+	/**
+	 * 获取结束日期
+	 * @return
+	 */
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	/**
+	 * 设置结束日期
+	 * @param endTime
+	 */
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+    
 }

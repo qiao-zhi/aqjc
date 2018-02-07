@@ -12,6 +12,7 @@ import org.json.JSONObject;
 import com.tyust.bean.app.InstrumentInfo;
 import com.tyust.bean.app.InstrumentInfoExample;
 import com.tyust.bean.app.ReportInstrumentExample;
+import com.tyust.common.DateHandler;
 import com.tyust.common.OpertionType;
 import com.tyust.common.SaveLog;
 import com.tyust.common.UtilTools;
@@ -77,6 +78,9 @@ public class InstrumentAction {
 					json.put("UseType", info.getUseType());
 					json.put("Code", info.getCode());
 					json.put("Manufacturer", info.getManufacturer());
+					json.put("StartTime", DateHandler.dateToString(info.getStartTime()));
+					json.put("EndTime", DateHandler.dateToString(info.getEndTime()));
+					json.put("FixTime",DateHandler.dateToString(info.getStartTime())+" 至 "+ DateHandler.dateToString(info.getEndTime()));
 					// json.put("Remark", info.getRemark());
 					if (info.getUseType().equals("1")) {
 						json.put("Remark", "设备检测仪器");

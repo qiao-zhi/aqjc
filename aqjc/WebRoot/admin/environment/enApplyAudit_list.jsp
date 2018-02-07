@@ -19,7 +19,7 @@
 	          {display: 'ID', name : 'ApplyId', width : 70, sortable : false, align: 'center',hide: true},
 	          {display: '申请单位', name : 'Unit', width : 100, sortable : false, align: 'center'},
 	          {display: '申请人', name : 'User', width : 100, sortable : false, align: 'center'},
-	          {display: '日期日期', name : 'Apply_Date', width : 100, sortable : true, align: 'center'},
+	          {display: '申请日期', name : 'Apply_Date', width : 100, sortable : true, align: 'center'},
 	          {display: '状态', name : 'State', width : 100, sortable : true, align: 'center'},
 	          {display: '操作', name : 'operate', width : 150, sortable : true, align: 'center'}
 					],

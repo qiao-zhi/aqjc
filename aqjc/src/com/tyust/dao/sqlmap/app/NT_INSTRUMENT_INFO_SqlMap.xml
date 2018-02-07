@@ -9,6 +9,8 @@
     <result column="MANUFACTURER" property="manufacturer" jdbcType="VARCHAR" />
     <result column="CODE" property="code" jdbcType="VARCHAR" />
     <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="START_TIME" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="END_TIME" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <iterate property="oredCriteria" conjunction="or" prepend="where" removeFirstPrepend="iterate" >
@@ -49,7 +51,7 @@
 		</isEqual>
 	</isParameterPresent>
     select
-    INSTRUMENT_ID, ins.NAME, MODEL, USE_TYPE, MANUFACTURER, CODE, dic.DICTIONARY_OPTION_NAME as REMARK
+    INSTRUMENT_ID, ins.NAME, MODEL, USE_TYPE, MANUFACTURER, CODE,START_TIME,END_TIME, dic.DICTIONARY_OPTION_NAME as REMARK
     from NT_INSTRUMENT_INFO ins left join DIC_SYSTEM_DICTIONARY dic on (ins.use_TYPE=dic.DICTIONARY_OPTION_ID)
     <isParameterPresent >
       <include refid="NT_INSTRUMENT_INFO.Example_Where_Clause" />
@@ -112,6 +114,12 @@
       <isNotNull prepend="," property="remark" >
         REMARK
       </isNotNull>
+      <isNotNull prepend="," property="startTime" >
+        START_TIME
+      </isNotNull>
+      <isNotNull prepend="," property="endTime" >
+        END_TIME
+      </isNotNull>
       )
     </dynamic>
     values
@@ -136,6 +144,12 @@
       </isNotNull>
       <isNotNull prepend="," property="remark" >
         #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startTime" >
+        #startTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="endTime" >
+        #endTime:TIMESTAMP#
       </isNotNull>
       )
     </dynamic>
@@ -206,6 +220,12 @@
       </isNotNull>
       <isNotNull prepend="," property="remark" >
         REMARK = #remark:VARCHAR#
+      </isNotNull>
+      <isNotNull prepend="," property="startTime" >
+        START_TIME = #startTime:TIMESTAMP#
+      </isNotNull>
+      <isNotNull prepend="," property="endTime" >
+       END_TIME = #endTime:TIMESTAMP#
       </isNotNull>
     </dynamic>
     where INSTRUMENT_ID = #instrumentId:VARCHAR#

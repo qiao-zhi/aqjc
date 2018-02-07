@@ -3,6 +3,7 @@ package com.tyust.web.action.en;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.mozilla.javascript.edu.emory.mathcs.backport.java.util.Arrays;
 
+import com.opensymphony.xwork2.ActionSupport;
 import com.tyust.bean.en.EnApplyInfo;
 import com.tyust.bean.en.EnPic;
 import com.tyust.bean.en.EnPicExample;
@@ -22,10 +24,12 @@ import com.tyust.bean.en.EnTestInstrument;
 import com.tyust.bean.en.EnTestReport;
 import com.tyust.bean.en.EnTestReportExample;
 import com.tyust.common.DateHandler;
+import com.tyust.common.DefaultValue;
+import com.tyust.common.ValidateCheck;
 import com.tyust.service.en.EnApplyInfoService;
 import com.tyust.service.en.EnTestReportService;
-
-public class EnTestReportAction {
+@SuppressWarnings("all")
+public class EnTestReportAction extends ActionSupport{
 
 	private EnTestReport enTestReport;
 
@@ -271,6 +275,33 @@ public class EnTestReportAction {
 		return "success";
 	}
 
+	
+	/********S   QLQ加的一些方法***********/
+	public String selEnviromentId() {
+		jsonStr = new HashMap();
+		String  enviromentId = enTestReportService.selEnviromentId();
+		if(ValidateCheck.isNotNull(enviromentId)){
+			//生成最后三位数
+			int int_nul = Integer.parseInt(enviromentId);
+			int_nul++;
+			enviromentId = String.valueOf(int_nul);
+			if(enviromentId.length()==1){
+				enviromentId = "00"+enviromentId;
+			}else if(enviromentId.length()==2){
+				enviromentId = "0"+enviromentId;
+			}
+			//生成中间的月份
+			String time = DateHandler.dateToString(new Date(), "yyyyMM");
+			//最终生成的编号
+			enviromentId = DefaultValue.ENVIRONMENT_NUM_PREFIX+time+DefaultValue.ENVIRONMENT_NUM_MIDDLE+enviromentId;
+			jsonStr.put("enviromentId", enviromentId);
+		}
+		return SUCCESS;
+	}
+	/********E   QLQ加的一些方法***********/
+	
+	
+	
 	public EnTestReport getEnTestReport() {
 		return enTestReport;
 	}
@@ -318,4 +349,5 @@ public class EnTestReportAction {
 	public void setEnApplyInfoService(EnApplyInfoService enApplyInfoService) {
 		this.enApplyInfoService = enApplyInfoService;
 	}
+
 }

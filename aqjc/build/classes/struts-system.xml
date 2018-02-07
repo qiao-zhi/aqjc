@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 应该把一组业务功能相近的action放在同一个package中 -->
+	<!-- 用户模块相关操作 -->
+	<package name="user" namespace="/" extends="base">
+		<action name="login" class="com.tyust.web.action.user.LoginAction">
+			<result name="login">/admin/frame_main.jsp</result>
+		</action>
+		<action name="logout" class="com.tyust.web.action.user.LogoutAction">
+			<result name="logout" type="redirect">/login.jsp</result>
+		</action>
+		<action name="findModule"
+			class="com.tyust.web.action.user.FindUserRoleModuleAction" method="findModule">
+			<result name="left">/admin/frame_left.jsp</result>
+		</action>
+		<action name="tree" class="com.tyust.web.action.unit.FindUnitTree" method="findUpUnit">
+			<result name="tree">/admin/tree/unittree.jsp</result>
+		</action>
+		<action name="selUser_*" class="com.tyust.web.action.user.SelUserAction"
+			method="{1}">
+		</action>
+		<action name="addUser" class="com.tyust.web.action.user.AddUserAction"
+			method="execute">
+		</action>
+		<action name="editUser_*" class="com.tyust.web.action.user.UpdateUserAction"
+			method="{1}">
+		</action>
+		<action name="addUserRole" class="com.tyust.web.action.user.EditUserRoleAction"
+			method="addUserRole">
+		</action>
+		<action name="delUser" class="com.tyust.web.action.user.DelUserAction">
+		</action>
+		<action name="register" class="com.tyust.web.action.user.RegisterAction"
+			method="execute">
+		</action>
+		<!-- 添加部门管理员 -->
+		<action name="addUnitAdmin" class="com.tyust.web.action.user.AddUnitAdminAction"
+			method="execute">
+		</action>
+	</package>
+	<!-- 机构模块相关操作 -->
+	<package name="unit" namespace="/" extends="base">
+		<action name="findUnitByUpId" class="com.tyust.web.action.unit.FindUnitTree"
+			method="findUnitByUpId">
+			<result name="downUnit">/admin/tree/unittree_down.jsp</result>
+		</action>
+		<action name="lowUnits" class="com.tyust.web.action.unit.FindUnitAction">
+		</action>
+		<action name="saveUnit" class="com.tyust.web.action.unit.SaveUnitAction">
+		</action>
+		<action name="findSameUnitName" class="com.tyust.web.action.unit.FindSameUnitNameAction">
+		</action>
+		<action name="updateUnit" class="com.tyust.web.action.unit.UpdateUnitAction">
+		</action>
+		<action name="delUnit" class="com.tyust.web.action.unit.DelUnitAction">
+		</action>
+		<action name="loadUnitName" class="com.tyust.web.action.unit.LoadUnitNameAction" method="loadUnitName">
+		
+		</action>
+	</package>
+	<!-- 字典管理 -->
+	<package name="dictronary" namespace="/" extends="base">
+		<action name="finddic_*" class="com.tyust.web.action.dic.FinddicAction"
+			method="{1}">
+			<result name="success">/admin/sys/dic/dictree.jsp</result>
+			<result name="succ">/admin/sys/dic/dictree_down.jsp</result>
+		</action>
+		<action name="dicManage_*" class="com.tyust.web.action.dic.EditdicAction"
+			method="{1}">
+		</action>
+	</package>
+	<!-- 菜单管理 -->
+	<package name="module" namespace="/" extends="base">
+		<action name="findModule_*" class="com.tyust.web.action.user.FindModuleAction"
+			method="{1}">
+			<result name="success">/admin/sys/menu/menutree.jsp</result>
+			<result name="succ">/admin/sys/menu/menutree_down.jsp</result>
+		</action>
+		<action name="editModule_*" class="com.tyust.web.action.user.EditModuleAction"
+			method="{1}">
+		</action>
+	</package>
+	<!-- 角色管理 -->
+	<package name="role" namespace="/" extends="base">
+		<action name="findRoles" class="com.tyust.web.action.user.FindRolesAction">
+		</action>
+		<action name="addRole" class="com.tyust.web.action.user.AddRoleAction">
+		</action>
+		<action name="updateRole" class="com.tyust.web.action.user.UpdateRoleAction">
+		</action>
+		<action name="deleteRole" class="com.tyust.web.action.user.DeleteRoleAction">
+		</action>
+		<action name="identifyRole" class="com.tyust.web.action.user.IdentifyRoleAction">
+		</action>
+		<action name="selectRoleModule" class="com.tyust.web.action.user.SelectRoleModuleAction">
+		<result name="select">/admin/sys/user/edit_role_module.jsp</result>
+		</action>
+		<action name="editRoleModule" class="com.tyust.web.action.user.EditRoleModuleAction">
+		<result name="success">/admin/sys/user/roleList.jsp</result>
+		</action>
+	</package>
+	<!-- 日志管理 -->
+	<package name="log" namespace="/" extends="base">
+		<action name="logManage_*" class="com.tyust.web.action.log.LogAction" method="{1}">
+		</action>
+	</package>
+	<!-- 字典tool -->
+	<package name="dicTool" namespace="/" extends="base">
+		<action name="dicTool_*" class="com.tyust.web.action.dic.DicToolAction"  method="{1}">
+		</action>
+	</package>
+		
+</struts>

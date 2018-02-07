@@ -1,9 +1,12 @@
 package com.tyust.dao.en;
 
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
+
 import com.tyust.bean.en.EnTestReport;
 import com.tyust.bean.en.EnTestReportExample;
-import java.util.List;
-import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 
 public class EnTestReportDAOImpl extends SqlMapClientDaoSupport implements EnTestReportDAO {
 
@@ -153,7 +156,6 @@ public class EnTestReportDAOImpl extends SqlMapClientDaoSupport implements EnTes
         private Object record;
 
         public UpdateByExampleParms(Object record, EnTestReportExample example) {
-            super(example);
             this.record = record;
         }
 
@@ -161,4 +163,10 @@ public class EnTestReportDAOImpl extends SqlMapClientDaoSupport implements EnTes
             return record;
         }
     }
+/*************S  QLQ加的完成业务逻辑的代码****************/
+	@Override
+	public String selEnviromentId() {
+		return (String) getSqlMapClientTemplate().queryForObject("ENVIRONMENT_TEST_REPORT.selEnviromentId");
+	}
+	/*************E  QLQ加的完成业务逻辑的代码****************/
 }

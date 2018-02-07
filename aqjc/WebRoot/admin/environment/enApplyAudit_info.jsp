@@ -52,7 +52,7 @@
 
         <div class="box box-solid box-primary">
           <div class="box-header with-border">
-            <h3 class="box-title">环境检测申请</h3>
+            <h3 class="box-title">环境检测审核信息</h3>
           </div><!-- /.box-header -->
 
           <div class="box-body pad">
@@ -140,13 +140,14 @@
             
             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">申请书扫描照片</h3>
+                <h3 class="box-title">申请书扫描附件</h3>
               </div>
               <div class="box-body">
-         		<div class="container" id="pic">
-             	 	
-               </div>
-
+              	 <div class="row" id="file">
+              	 	<div class="col-sm-8">
+              			<div id="scanFile"></div>
+              		</div>
+              	 </div>
               </div>
             </div>
             
@@ -155,7 +156,7 @@
                 <h3 class="box-title">申请书电子版</h3>
               </div>
               <div class="box-body">
-              	 <div class="row" id="file">
+              	 <div class="row" id="attachFile">
               	 	<div class="col-sm-8">
               			<div id="fileName"></div>
               		</div>
@@ -232,9 +233,12 @@
 <script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
 <script>
 	$(function() {
+		//查询申请信息
 		showEnApplyInfo();
-		showEnPic();
-		showEnAttach();
+		//显示扫描附件信息
+		showEnAttach('3');
+		//显示申请书附件
+		showEnAttach('1');
 		loadEnApplyAudit();
 	});
 	
@@ -294,10 +298,15 @@
 		});
 	}
 	
-	function showEnAttach(){
+	/**
+	查询附件信息
+	**/
+	function showEnAttach(attachType){
 		$.ajax({
 			url : '${pageContext.request.contextPath}/enApplyInfo_selEnAttach.do',
-			data : {'enApplyId' : '<%= enApplyId%>'},
+			data : {'enApplyId' : '<%= enApplyId%>',
+					'enAttachType' : attachType	
+			},
 			type : 'POST',
 			dataType : 'json',
 			success : function(response) {
@@ -310,11 +319,15 @@
 					var url = info.fileUrl;
 					var fileName = info.fileName;
 					var enAttachId = info.enAttachId;
-					var URL = '${pageContext.request.contextPath}/enApplyInfo_downAttach.do?filename='+url;
-					$("#fileName").append("<a href='"+URL+"'>"+fileName+"</a>");
-					$("#delAttach").click(function (){
-						delAttachConf(enAttachId);
-					});
+					var URL='/file/'+url;
+					//如果是扫描附件
+					if(attachType == '3'){
+						$("#hidden_scan_id").val(enAttachId);//向隐藏的扫描附件赋值
+						$("#scanFile").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
+					}else{//如果是申请书电子版
+						$("#hidden_attach_id").val(enAttachId);//向隐藏的申请附件赋值
+						$("#fileName").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
+					}
 				}
 			}
 		});

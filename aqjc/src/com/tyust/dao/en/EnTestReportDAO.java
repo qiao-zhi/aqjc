@@ -92,4 +92,13 @@ public interface EnTestReportDAO {
      * @ibatorgenerated
      */
     int updateByPrimaryKey(EnTestReport record);
+    
+    
+    /*************S   QLQ加的一些完成业务逻辑的代码***************/
+    /**
+     * 查询当前环境变量的编号
+     * @return
+     */
+    public String selEnviromentId();
+    
 }

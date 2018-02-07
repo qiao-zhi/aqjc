@@ -89,7 +89,11 @@ public class EnApplyInfoAction {
 			return this.filename;
 		}
 	}
-
+	/**
+	 * 分页查询申请信息
+	 * @return
+	 * @throws IOException
+	 */
 	public String selEnApplyInfoList() throws IOException {
 		String result = "success";
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -104,7 +108,8 @@ public class EnApplyInfoAction {
 		example.enablePagination();
 		example.setOrderByClause("environment_apply_date desc");
 		EnApplyInfoExample.Criteria cri = example.createCriteria();
-		cri.andEnvironmentApplyUnitIdEqualTo(unitId);
+		/****取消单位限制*****/
+//		cri.andEnvironmentApplyUnitIdEqualTo(unitId);
 		String state = request.getParameter("state");
 		if (state != null && !state.equals("all")) {
 			cri.andEnvironmentApplyStatusEqualTo(state);
@@ -228,6 +233,7 @@ public class EnApplyInfoAction {
 		String enApplyId = request.getParameter("enApplyId");
 		EnApplyInfo info = enApplyInfoService.getEnApplyInfoDAO().selectByPrimaryKey(enApplyId);
 		jsonStr.put("enApplyDate", DateHandler.dateToString(info.getEnvironmentApplyDate()));
+		jsonStr.put("enApplyUnitId", info.getEnvironmentApplyUnitId());
 		jsonStr.put("enApplyUserName", info.getEnvironmentApplyUserName());
 		jsonStr.put("enApplyTel", info.getEnvironmentApplyTel());
 		jsonStr.put("enApplySamply", info.getEnvironmentApplySamply());
@@ -266,6 +272,10 @@ public class EnApplyInfoAction {
 		return "success";
 	}
 
+	/**
+	 * 查询图片
+	 * @return
+	 */
 	public String selEnPic() {
 		jsonStr = new HashMap<String, Object>();
 		HttpServletRequest request = ServletActionContext.getRequest();
@@ -318,7 +328,11 @@ public class EnApplyInfoAction {
 		jsonStr.put("result", result);
 		return "success";
 	}
-
+	/**
+	 * 查询附件
+	 * @return
+	 */
+	private String enAttachType;//附件类型: 1 申请书电子版  3扫描照片附件
 	public String selEnAttach() {
 		jsonStr = new HashMap<String, Object>();
 		String result = "success";
@@ -327,6 +341,7 @@ public class EnApplyInfoAction {
 		EnAttachExample example = new EnAttachExample();
 		EnAttachExample.Criteria cri = example.createCriteria();
 		cri.andEnvironmentApplyIdEqualTo(enApplyId);
+		cri.andEnvironmentAttachTypeEqualTo(enAttachType);
 		int flag = 0;
 		try {
 			List<EnAttach> list = enApplyInfoService.getEnAttachDAO().selectByExample(example);
@@ -458,6 +473,8 @@ public class EnApplyInfoAction {
 		String enApplyId = request.getParameter("enApplyId");
 		String auditResult = request.getParameter("auditResult");
 		String auditOppinion = request.getParameter("auditOppinion");
+		String auditUserName = request.getParameter("auditUserName");//审核人
+		String auditDate = request.getParameter("auditDate");//审核日期
 		try {
 			EnApplyInfo applyInfo = new EnApplyInfo();
 			applyInfo.setEnvironmentApplyId(enApplyId);
@@ -471,11 +488,11 @@ public class EnApplyInfoAction {
 
 			TBaseUserInfo user = (TBaseUserInfo) request.getSession().getAttribute("user");
 			EnApplyAudit enApplyAudit = new EnApplyAudit();
-			enApplyAudit.setAuditDate(new Date());
+			enApplyAudit.setAuditDate(DateHandler.changeStringToDate(auditDate));//设置审核日期
 			enApplyAudit.setApplyId(enApplyId);
 			enApplyAudit.setAuditResult(auditResult);
 			enApplyAudit.setAuditOppinion(auditOppinion);
-			enApplyAudit.setAuditUser(user.getUserName());
+			enApplyAudit.setAuditUser(auditUserName);//设置审核人
 
 			enApplyInfoService.insertEnApplyAudit(enApplyAudit);
 		} catch (Exception e) {
@@ -642,6 +659,14 @@ public class EnApplyInfoAction {
 
 	public void setEnTestReportService(EnTestReportService enTestReportService) {
 		this.enTestReportService = enTestReportService;
+	}
+
+	public String getEnAttachType() {
+		return enAttachType;
+	}
+
+	public void setEnAttachType(String enAttachType) {
+		this.enAttachType = enAttachType;
 	}
 
 }

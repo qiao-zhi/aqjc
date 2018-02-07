@@ -22,6 +22,7 @@
 	TBaseUserInfo user = userList.get(0);
 	
 %>
+<%@include file="/public/tag.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +47,12 @@
 		.dataTab input{width:220px;height:23px;}
 		.dataTab select{width:110px;height:22px;}
 	</style>
-
+<!-- S     QLQ引入的bootstrapFileinput的CSS -->
+<link rel="stylesheet" type="text/css"
+	href="${baseurl}/bootstrapFileinput/css/default.css">
+<link href="${baseurl}/bootstrapFileinput/css/fileinput.css" media="all"
+	rel="stylesheet" type="text/css" />
+<!-- E     QLQ引入的bootstrapFileinput的CSS -->
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -78,9 +84,14 @@
                   	  <div class="form-group">
                        <label for="input1" class="col-sm-4 control-label">申请单位</label>
                       <div class="col-sm-8">
-                      	<!-- 隐藏 -->
-                      	<input name="enApplyInfo.environmentApplyUnitId" value="<%=enApplyUnitId %>" type="hidden">
-                        <input type="text" class="form-control" value="<%=unit.getUnitName() %>">
+                      	<!-- 隐藏申请单位信息 -->
+                      	<input name="enApplyInfo.environmentApplyUnitId" id="enApplyUnitId" type="hidden">
+                        
+							<!-- 申请单位下拉列表 -->
+							<select id="unitSelect" class="form-control"
+								onchange="changeUnit()">
+							</select>
+                        
                       </div>
                       </div>
                     </div>
@@ -154,9 +165,9 @@
              </div>
             </div>
             
-            <div class="box box-info">
+<!--             <div class="box box-info">
               <div class="box-header with-border">
-                <h3 class="box-title">申请书扫描照片</h3>
+                <h3 class="box-title">申请书扫描附件</h3>
               </div>
               <div class="box-body">
          		<div class="container" id="pic">
@@ -164,7 +175,7 @@
                </div>
 
                <div id="container">
-             	 <!--头部，相册选择和格式选择-->
+             	 头部，相册选择和格式选择
               	<div id="uploader">
                	 <div class="queueList">
                     <div id="dndArea" class="placeholder">
@@ -184,19 +195,51 @@
                  </div>
                </div>
               </div>
+            </div> -->
+            
+            
+            
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">申请书扫描附件</h3>
+                <!-- 隐藏该申请书电子版附件的主键 -->
+                <input type="hidden" id="hidden_scan_id">
+              </div>
+              <div class="box-body">
+				<form enctype="multipart/form-data" id="scanFileForm" style="display:none;">
+					<input id="bootUpOne" class="file" type="file"
+						name="fileName">
+				</form>
+              	
+              	 <div class="row" id="scanDiv">
+              	 	<div class="col-sm-8">
+              			<div id="scanFile"></div>
+              		</div>
+         		    <div class="col-sm-4">
+              			<button style="float:right;" id="delScanFile" class="btn btn-info" onclick="deleteAttach('3')">删除</button>
+              		</div>
+              	 </div>
+              </div>
             </div>
+            
             
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">申请书电子版</h3>
+                <!-- 隐藏该申请书电子版附件的主键 -->
+                <input type="hidden" id="hidden_attach_id">
               </div>
               <div class="box-body">
-              	 <div class="row" id="file">
+				<form id="attach_form" style="display:none;">
+					<input id="attach" name="fileName" class="file"
+						type="file" multiple data-min-file-count="1">
+				</form>              	
+              	 <div class="row" id="attachDiv">
               	 	<div class="col-sm-8">
               			<div id="fileName"></div>
               		</div>
               		<div class="col-sm-4">
-              			<button style="float:right;" id="delAttach" class="btn btn-info">删除</button>
+              			<button style="float:right;" id="delAttach" class="btn btn-info" onclick="deleteAttach('1')">删除</button>
               		</div>
               	 </div>
               </div>
@@ -204,11 +247,9 @@
             </div>
            </div>   
           </div><!-- /.box-body -->
-          <div class="box-footer">
-          	<center>
+          <div class="box-footer" style="text-align:center">
 		      <button id="save" type="button" class="btn btn-default">保存</button>
               <button id="submit" type="button" style="margin-left:20px;" class="btn btn-info">提交</button>
-		   	</center>
 		  </div>
         </div><!-- /.box -->
 
@@ -224,280 +265,350 @@
 </div>
 <!-- ./wrapper -->
 <script src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/jquery.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/jquery.js"></script> --%>
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/upload_enApplyInfo.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script> --%>
+<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script> --%>
 <script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
+
+	<!--S  QLQ引入发bootstrapFileiput的JS  -->
+	<script src="${baseurl }/bootstrapFileinput/js/fileinput.js"
+		type="text/javascript"></script>
+	<!--简体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh.js"
+		type="text/javascript"></script>
+	<!--繁体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh-TW.js"
+		type="text/javascript"></script>
+	<!-- Bootstrap的JS -->
+	<script src="${baseurl }/bootstrapFileinput/js/bootstrap.min.js"
+		type="text/javascript"></script>
+
+	<!--E  QLQ引入发bootstrapFileiput的JS  -->
+
+
+<!-- S QLQ -->
 <script>
-	$(function() {
-		showEnApplyInfo();
-		showEnPic();
-		showEnAttach();
+var hasUploadAttach = true;//标记附件是否上传
+var hasUploadScan = true; //标记扫描文件是否上传
+$(document).ready(function(){
+	//查询申请信息
+	showEnApplyInfo();
+	//显示扫描附件信息
+	showEnAttach('3');
+	//显示申请书附件
+	showEnAttach('1');
+});
+// 显示屏蔽室申请信息
+function showEnApplyInfo() {
+	$.ajax({
+		url : '${pageContext.request.contextPath}/enApplyInfo_selEnApplyInfoById.do',
+		data : {'enApplyId' : '<%= enApplyId%>'},
+		type : 'POST',
+		dataType : 'json',
+		success : function(response) {
+			var info = eval(response);
+			$("#enApplyDate").val(info.enApplyDate);
+			$("#enApplyUnitId").val(info.enApplyUnitId);
+			$("#enApplyUserName").val(info.enApplyUserName)
+			$("#enApplyTel").val(info.enApplyTel);
+			$("#enApplySamply").val(info.enApplySamply);
+			$("#enApplyProduction").val(info.enApplyProduction);
+			$("#enApplyOpinion").val(info.enApplyOpinion);
+			loadUnitName();
+		}
 	});
-	
-	var isAttach = false;
-	
-	// 显示屏蔽室申请信息
-	function showEnApplyInfo() {
-		$.ajax({
-			url : '${pageContext.request.contextPath}/enApplyInfo_selEnApplyInfoById.do',
-			data : {'enApplyId' : '<%= enApplyId%>'},
-			type : 'POST',
-			dataType : 'json',
-			success : function(response) {
-				var info = eval(response);
-				$("#enApplyDate").val(info.enApplyDate);
-				$("#enApplyUserName").val(info.enApplyUserName)
-				$("#enApplyTel").val(info.enApplyTel);
-				$("#enApplySamply").val(info.enApplySamply);
-				$("#enApplyProduction").val(info.enApplyProduction);
-				$("#enApplyOpinion").val(info.enApplyOpinion);
-			}
-		});
-	}
-	
-	function showEnPic(){
-		$.ajax({
-			url : '${pageContext.request.contextPath}/enApplyInfo_selEnPic.do',
-			data : {'enApplyId' : '<%= enApplyId%>',
-				'enPicType' : '1'},
-			type : 'POST',
-			dataType : 'json',
-			success : function(response) {
-				var pic = eval(response);
-				var len = pic.length;
-				var a = len / 3;
-				var row = parseInt(a);
-				if(a > row){
-					row = row + 1;
+}
+
+
+
+/**
+查询附件信息
+**/
+function showEnAttach(attachType){
+	$.ajax({
+		url : '${pageContext.request.contextPath}/enApplyInfo_selEnAttach.do',
+		data : {'enApplyId' : '<%= enApplyId%>',
+				'enAttachType' : attachType	
+		},
+		type : 'POST',
+		dataType : 'json',
+		success : function(response) {
+			var info = eval(response);
+			var isNull = info.isNull;
+			if (isNull == 0) {//如果为空的话
+				displayBootstraoControl();
+			} else {//如果文件不为空的话
+				var url = info.fileUrl;
+				var fileName = info.fileName;
+				var enAttachId = info.enAttachId;
+				var URL='/file/'+url;
+				//如果是扫描附件
+				if(attachType == '3'){
+					$("#hidden_scan_id").val(enAttachId);//向隐藏的扫描附件赋值
+					$("#scanFile").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
+				}else{//如果是申请书电子版
+					$("#hidden_attach_id").val(enAttachId);//向隐藏的申请附件赋值
+					$("#fileName").append("<a target='_blank' href='"+URL+"'>"+fileName+"</a>");
 				}
-				for(var i = 0;i < row;i++){
-					var str  = "<div class='row'>";
-					for(var j = 0;j<3;j++){
-						var index = i*3+j;
-						if(index < len){
-							var ind = new Number(index);
-							var url = pic[ind].enPicUrl;
-							var id = pic[ind].enPicId;
-							str = str + "<div class='col-sm-3' id='"+id+"'>";
-		        			str = str + "<a href='../../uploads/enPic/"+url+"' data-lightbox='1'><img width='210px' height='290px' src='../../uploads/enPic/"+url+"'></a>";
-		        			str = str + "<div class='row'>";
-		        			str = str + "<div class='col-sm-2'>";
-		        			str = str + "<button class='btn btn-default' onclick='delEnPic(\""+id+"\")'>删除</button>";
-		        			str = str + "</div>"
-		        			str = str + "</div>";
-		        			str = str + "</div>";
-						}
-					}
-        			str = str + "</div>";
-        			$("#pic").append(str);
-				}
+				displayBootstraoControl();
 			}
-		});
-	}
-	
-	function showEnAttach(){
-		$.ajax({
-			url : '${pageContext.request.contextPath}/enApplyInfo_selEnAttach.do',
-			data : {'enApplyId' : '<%= enApplyId%>'},
-			type : 'POST',
-			dataType : 'json',
-			success : function(response) {
-				var info = eval(response);
-				var isNull = info.isNull;
-				if (isNull == 0) {
-					$("#file").empty();
-					loadFileinput();
-				} else {
-					var url = info.fileUrl;
-					var fileName = info.fileName;
-					var enAttachId = info.enAttachId;
-					var URL = '${pageContext.request.contextPath}/enApplyInfo_downAttach.do?filename='+url;
-					$("#fileName").append("<a href='"+URL+"'>"+fileName+"</a>");
-					$("#delAttach").click(function (){
-						delAttachConf(enAttachId);
-					});
-				}
-			}
-		});
-	}
-	
-	
-	$(document).ready(function(){
-		$("#save").click(function (){
-			$("#operate").val("save");
-			saveInfo();
-		});
-		$("#submit").click(function (){
-			$("#operate").val("submit");
-			saveInfo();
-		});
+		}
 	});
-	
-	function validate(){
-		if($("#enApplyUserName").val() == "") {
-			return true;
-		}
-		if($("#enApplyTel").val() == ""){
-			return true;
-		}
-		if($("#enApplySamply").val() == ""){
-			return true;
-		}
-		if($("#enApplyProduction").val() == "") {
-			return true;
-		}
-	}
-	
-	// 添加图片的数量
-	var num = 0;
-	function saveInfo(){
-		if (validate()){
-			alert("请完善信息");
-			return;
-		}
-		$.ajax({
-			url : '<%=request.getContextPath()%>/enApplyInfo_saveEnApplyInfo.do',
+}
+
+//加载部门名称
+function loadUnitName(){
+	$.ajax({
+		url : '<%=request.getContextPath()%>/loadUnitName.do',
 			type : 'POST',
 			dataType : 'json',
-			data : $("#enApplyInfo_form").serializeArray(),
-			success : function(data){
+			success : function(data) {
 				var data = eval(data);
-				if (data.result == "success"){
-					// 获取保存好的屏蔽室申请ID
-					var enApplyId = data.enApplyId;
-					// 添加图片的数量
-					num = uploader.getFiles().length;
-					if (num > 0) {
-						uploadImage(enApplyId);
+				var optionStr = "";
+				for (var i = 0; i < data.length; i++) {
+					optionStr += "<option value='" + data[i].unitId + "'";
+					//动态设置哪个选中
+					if ($("#enApplyUnitId").val() == data[i].unitId) {
+						optionStr += " selected='selected' ";
 					}
-					// 附件上传
-					if (isAttach) {
-						fileUpload(enApplyId);
-					}
-					alert("保存成功！")
-			  	}
+					optionStr += ">" + data[i].unitName + "</option>";
+				}
+				$("#unitSelect").append(optionStr);
 			},
-			error : function(data){
+			error : function(data) {
 				alert("error");
 			}
 		});
 	}
 	
-	function uploadImage(enApplyId){
-		// 设置图片上传的url
-		var url = "<%=request.getContextPath()%>/enApplyInfo_saveEnPic.do?enApplyId="+enApplyId;
-		uploader.option('server',url);
-		uploader.upload();
-		uploader.on( 'uploadSuccess', function( file ) {
-			num  = num - 1;
-		});
-	}
-	
-	
-	//附件上传功能:传入申请id作为参数
-	function fileUpload(id){
-		var v = $("#attach").val();
-		if (v != "") {
-			//设置屏蔽室申请ID
-			$("#attach_enApplyId").val(id);
-			var formData = new FormData($('#attach_form')[0]);
-			$.ajax({
-			       url: '${pageContext.request.contextPath}/enApplyInfo_saveEnAttach.do',
-			       data: formData,
-			       async: false,
-			       contentType: false,
-			       processData: false,
-			       cache: false,
-			       type: 'post',
-			       success: function(data) {
-			    	   alert("附件上传成功！");
-			       },
-			       error : function(){
-			    	   alert("附件上传失败，请重试！");
-			       }
-			   });
-		}
-		
-	}
-	
-	// 确认删除附件 
-	function delAttachConf(enAttachId){
-		var con = confirm("是否确认删除附件？");
-		if (con == true) {
-			delAttach(enAttachId);
-		}
-	}
-	
-	// 根据附件编号删除附件
-	function delAttach(enAttachId){
-		$.ajax({
-			url : '${pageContext.request.contextPath}/enApplyInfo_delEnAttach.do',
-			type : 'POST',
-			data : {'enAttachId' : enAttachId},
-			dataType : 'json',
-			success : function (data){
-				var data = eval(data);
-				if (data.result == 'success'){
-					// 清空
-					$("#file").empty();
-					// 加载上传附件
-					loadFileinput();
-				}
-			},
-			error : function (){
-				alert("删除附件失败");
+/*********************S   保存*****************/
+$(document).ready(function(){
+	//保存信息
+	$("#save").click(function (){
+		$("#operate").val("save");
+		if(confirm("您确认保存申请信息?")){
+			saveInfo();
+		}	
+	});
+	//提交信息
+	$("#submit").click(function (){
+		$("#operate").val("submit");
+		var o = isOK();
+		if (o == true){
+			if (validate()){
+				alert("请完善信息");
+				return;
 			}
-		});
-	}
-	
-	function loadFileinput(){
-		var dom = '<form id="attach_form" enctype="multipart/form-data">';
-  	 	dom = dom + '<input id="attach_enApplyId" name="enAttach.environmentApplyId" type="hidden"/>';
-  	 	dom = dom + '<input name="enAttach.environmentAttachType" type="hidden" value="1"/>';
-		dom = dom + '<input id="attach" name="attach" class="file" type="file" multiple data-min-file-count="1">';
-		dom = dom + '</form>';
-		$("#file").html(dom);
-		loadStyle();
-		isAttach = true;
-	}
-	
-	//准备附件上传的样式
-	function loadStyle(){
-		$("#attach").fileinput({
-			language : 'zh',
-			showUpload : false, //是否显示上传按钮
-			allowedFileExtensions : [ 'doc', 'docx' ]
-		});
-	}
-	
-	// 删除图片
-	function delEnPic(enPicId){
-		var con = confirm("确认删除该图片吗？");
-		if (con == true) {
-			$.ajax({
-				url : '${pageContext.request.contextPath}/enApplyInfo_delEnPic.do',
-				data : {'enPicId' : enPicId},
-				type : 'POST',
-				dataType : 'json',
-				success : function (data){
-					var data = eval(data);
-					if (data.result == "success"){
-						// 删除节点
-						$("#"+enPicId).empty();
-					} else {
-						alert("删除图片失败！");
-					}
-				},
-				error : function (){
-					alert("删除图片失败！");
-				}
-			});
+			if(confirm("您确认提交信息?提交之后不可以修改!")){
+				saveInfo();
+			}
+		}else{
+			alert("请先上传附件!");
 		}
-	}	
+	});
+});
+
+function isOK(){
+	return hasUploadScan && hasUploadAttach;
+}
+
+function validate(){
+	if($("#enApplyUserName").val() == "") {
+		return true;
+	}
+	if($("#enApplyTel").val() == ""){
+		return true;
+	}
+	if($("#enApplySamply").val() == ""){
+		return true;
+	}
+	if($("#enApplyProduction").val() == "") {
+		return true;
+	}
+	if(!hasUploadScan){
+		return true;
+	}
+	if(!hasUploadAttach){
+		return true;
+	}
+}
+
+function saveInfo(){
+	$.ajax({
+		url : '<%=request.getContextPath()%>/enApplyInfo_saveEnApplyInfo.do',
+		type : 'POST',
+		dataType : 'json',
+		data : $("#enApplyInfo_form").serializeArray(),
+		success : function(data){
+			alert("保存成功!")
+		},
+		error : function(data){
+			alert("error");
+		}
+	});
+}	
+/*********************S   保存*****************/	
+	
+/**
+ * 获取下拉菜单的单位信息给隐藏的值赋值
+ */
+function changeUnit(){
+	var opt = $("#unitSelect option:selected");
+	var value = opt.val();
+	$("[name='enApplyInfo.environmentApplyUnitId']").val(value);//向隐藏的单位ID赋值	
+}
+
+
+// 根据附件编号删除附件
+function deleteAttach(attachType){
+	if(!confirm("您确认删除该文件并进行修改?")){
+		return;
+	}
+	var enAttachId = "";
+	if(attachType == '1'){//删除附件
+		enAttachId = $("#hidden_attach_id").val();
+	}else{//删除扫描件
+		enAttachId = $("#hidden_scan_id").val();
+	}
+	$.ajax({
+		url : '${pageContext.request.contextPath}/enApplyInfo_delEnAttach.do',
+		type : 'POST',
+		data : {'enAttachId' : enAttachId},
+		dataType : 'json',
+		success : function (data){
+			var data = eval(data);
+			if (data.result == 'success'){
+				if(attachType == '1'){//删除附件之后
+					$("#attachDiv").css("display","none");
+					$("#attach_form").css("display","block");
+					hasUploadScan = false;//将上传标记标记为false
+					
+				  }else{//删除扫描件之后
+					 $("#scanDiv").css("display","none");
+					 $("#scanFileForm").css("display","block");
+					 hasUploadAttach = false;//将上传标记标记为false
+				}
+			}
+		},
+		error : function (){
+			alert("删除附件失败");
+		}
+	});
+}
+
+function displayBootstraoControl(){
+	var hidden_attach_id = $("#hidden_attach_id").val();
+	var hidden_scan_id = $("#hidden_scan_id").val();
+	//判断附件显示的控件信息
+	if(hidden_attach_id == null || ""==hidden_attach_id){//如果为空证明未上传文件
+		$("#attachDiv").css("display","none");
+		$("#attach_form").css("display","block");
+		 hasUploadAttach = false ;
+	}else{
+		$("#attachDiv").css("display","block");
+		$("#attach_form").css("display","none");
+		 hasUploadAttach = true ;
+	}
+	//判断扫描件显示的控件信息
+	if(hidden_scan_id == null || ""==hidden_scan_id){//如果为空证明未上传文件
+		$("#scanDiv").css("display","none");
+		$("#scanFileForm").css("display","block");
+		 hasUploadScan = false ;
+	}else{
+		$("#scanDiv").css("display","block");
+		$("#scanFileForm").css("display","none");
+		 hasUploadScan = true ;
+	}
+}
+
+
+/***S   上传文件相关操作****/
+/**
+ * 上传扫描的pdf原件
+ */
+//利用插件异步上传单文件
+$("#bootUpOne").fileinput({
+    language: 'zh',//中文
+    uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
+    dropZoneEnabled: false,//是否显示拖拽区域
+    showPreview:true,//是否显示预览区域
+    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showCaption: true,//是否显示标题,就是那个文本框
+    uploadAsync:true,
+    enctype: 'multipart/form-data',
+    layoutTemplates:{//预览区域删除按钮与上传按钮的显示
+        actionUpload:''//上传按钮不显示
+   },
+    previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+    uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
+        var data = {
+        		applyId:$("#enApplyId").val(),
+       			attachType:'3'
+        };
+        return data;
+    },
+    validateInitialCount:true,
+    allowedFileExtensions: ['pdf']//允许上传问价你的后缀
+}).on('filepreupload', function(event, data, previewId, index) {//文件上传之前的操作
+    var form = data.form, files = data.files, extra = data.extra,
+        response = data.response, reader = data.reader;
+}) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
+        if(data.response)
+        {	
+        	saveInfo();//文件上传之后临时保存修改的信息
+        	//重新执行查询文件
+        	window.location.reload(); //上传成功之后局部刷新页面 
+        }
+    });
+
+/**
+ * 上传申请书电子版
+ */
+$("#attach").fileinput({
+    language: 'zh',//中文
+    uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
+    dropZoneEnabled: false,//是否显示拖拽区域
+    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
+    showCaption: true,//是否显示标题,就是那个文本框
+    uploadAsync:true,
+    enctype: 'multipart/form-data',
+    previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
+    uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
+        var data = {
+        	applyId:$("#enApplyId").val(),
+        	attachType:'1'
+        };
+        return data;
+    },
+    validateInitialCount:true,
+    layoutTemplates:{//预览区域删除按钮与上传按钮的显示
+        actionUpload:''//上传按钮不显示
+   },
+    allowedFileExtensions: ['pdf','doc','docx'],//允许上传问价你的后缀
+}).on('filepreupload', function(event, data, previewId, index) {
+    var form = data.form, files = data.files, extra = data.extra,
+        response = data.response, reader = data.reader;
+}) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
+        if(data.response)
+        {
+        	saveInfo();//文件上传之后临时保存修改的信息
+        	window.location.reload(); //上传成功之后局部刷新页面 
+        }
+    });
+/***E   上传文件相关操作****/
+
+
+
+
+</script>
+<!-- E QLQ -->
+
+<script>
 </script>
 </body>
 </html>
