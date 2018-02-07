@@ -7,7 +7,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * 根据文件的名字到对应的文件夹下面删除对应的文件
+ * 根据文件的名字到对应的文件夹下面删除对应的文件(需要借助commons-io.jar和ResourceUtil)
  * 
  * @author QiaoLiQiang
  * @time 2018年2月6日下午2:22:40
