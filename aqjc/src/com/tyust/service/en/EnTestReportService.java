@@ -89,6 +89,15 @@ public class EnTestReportService {
 		enTestInstrumentDAO.deleteByExample(example);
 	}
 
+	
+	/*************S    QLQ加的********************/
+	public String selEnviromentId() {
+		return enTestReportDAO.selEnviromentId();
+	}
+	/*************E    QLQ加的********************/
+	
+	
+	
 	public EnTestReportDAO getEnTestReportDAO() {
 		return enTestReportDAO;
 	}

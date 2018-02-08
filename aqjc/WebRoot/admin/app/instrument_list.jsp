@@ -25,6 +25,9 @@
 	          {display: '类型dic', name : 'UseType', width : 100, sortable : true, align: 'center',hide: true},
 	          {display: '仪器型号', name : 'Model', width : 150, sortable : true, align: 'center'},
 	          {display: '仪器序列号', name : 'Code', width : 150, sortable : true, align: 'center'},
+	          {display: '有效期开始时间', name : 'StartTime', width : 100, sortable : true, align: 'center',hide: true},
+	          {display: '有效期结束时间', name : 'EndTime', width : 100, sortable : true, align: 'center',hide: true},
+	          {display: '有效期', name : 'FixTime', width : 200, sortable : true, align: 'center'},          
 	          {display: '设备厂商', name : 'Manufacturer', width : 200, sortable : true, align: 'center'}	          
 					],
 			buttons : [
@@ -80,8 +83,10 @@
 					$('#update_name').val($.trim(data[2]));
 					$('#update_model').val($.trim(data[5]));
 					$('#update_code').val($.trim(data[6]));
-					$('#update_manufacturer').val($.trim(data[7]));
+					$('#update_manufacturer').val($.trim(data[10]));
 					$('#update_useType').val($.trim(data[4]));
+					$('#update_startTime').val($.trim(data[7]));//开始日期
+					$('#update_endTime').val($.trim(data[8]));//结束日期
 					$.dialog({
 						content:$("#updateTab")[0],
 						title:'修改仪器信息',
@@ -198,8 +203,8 @@
 				</tr>
 				<tr>
 					<td class="title_td">有效日期</td>
-					<td colspan="3"><input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.starttime" isempty="no" tip="开始日期不能为空"/><font color="red">*</font>&nbsp;&nbsp;——&nbsp;&nbsp;
-									<input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.endtime" isempty="no" tip="结束日期不能为空" /><font color="red">*</font>
+					<td colspan="3"><input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.startTime" isempty="no" tip="开始日期不能为空"/><font color="red">*</font>&nbsp;&nbsp;——&nbsp;&nbsp;
+									<input id="add_manufacturer" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.endTime" isempty="no" tip="结束日期不能为空" /><font color="red">*</font>
 				</tr>
 				<tr>
 					<td class="title_td">仪器厂商</td>
@@ -241,6 +246,11 @@
 				<tr>
 					<td class="title_td">仪器序列号</td>
 					<td colspan="3"><input id="update_code" name="instrumentInfo.code" isempty="no" tip="序列号不能为空"/><font color="red">*</font></td>
+				</tr>
+				<tr>
+					<td class="title_td">有效日期</td>
+					<td colspan="3"><input id="update_startTime" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.startTime" isempty="no" tip="开始日期不能为空"/><font color="red">*</font>&nbsp;&nbsp;——&nbsp;&nbsp;
+									<input id="update_endTime" class="form-control" readonly onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})" name="instrumentInfo.endTime" isempty="no" tip="结束日期不能为空" /><font color="red">*</font>
 				</tr>
 				<tr>
 					<td class="title_td">仪器厂商</td>
