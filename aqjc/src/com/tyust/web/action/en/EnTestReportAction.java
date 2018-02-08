@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import org.mozilla.javascript.edu.emory.mathcs.backport.java.util.Arrays;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.tyust.bean.app.InstrumentInfo;
 import com.tyust.bean.en.EnApplyInfo;
 import com.tyust.bean.en.EnPic;
 import com.tyust.bean.en.EnPicExample;
@@ -119,6 +120,7 @@ public class EnTestReportAction extends ActionSupport{
 			applyInfo.setEnvironmentApplyStatus("6");
 		}
 		try {
+			enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
 			String enTestReportId = enTestReportService.insertEnTestReport(enTestReport);
 			enApplyInfoService.getEnApplyInfoDAO().updateByPrimaryKeySelective(applyInfo);
 			jsonStr.put("enTestReportId", enTestReportId);
@@ -147,6 +149,7 @@ public class EnTestReportAction extends ActionSupport{
 			applyInfo.setEnvironmentApplyStatus("6");
 		}
 		try {
+			enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
 			enTestReportService.getEnTestReportDAO().updateByPrimaryKey(enTestReport);
 			enApplyInfoService.getEnApplyInfoDAO().updateByPrimaryKeySelective(applyInfo);
 		} catch (Exception e) {
@@ -171,6 +174,13 @@ public class EnTestReportAction extends ActionSupport{
 				jsonStr.put("testUnitName", report.getTestUnitName());
 				jsonStr.put("testSampleName", report.getTestSampleName());
 				jsonStr.put("testResult", report.getTestResult());
+				jsonStr.put("testProject", report.getTestProject());
+				jsonStr.put("testCriterion", report.getTestCriterion());//依据标准
+				jsonStr.put("testLocation", report.getTestLocation());//检测位置
+				jsonStr.put("createTime", report.getCreateTime());//建成时间
+				jsonStr.put("environmentStatus", report.getEnvironmentStatus());//状态
+				jsonStr.put("environmentSize", report.getEnvironmentSize());//尺寸
+				jsonStr.put("environmentApplyProduction", report.getEnvironmentApplyProduction());//生产厂家
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -298,6 +308,20 @@ public class EnTestReportAction extends ActionSupport{
 		}
 		return SUCCESS;
 	}
+	/**
+	 * 查询设备信息
+	 * @return
+	 */
+	public String getInstrumentInfosByReportId(){
+		jsonStr = new HashMap();
+		HttpServletRequest request = ServletActionContext.getRequest();
+		String enTestReportId = request.getParameter("enTestReportId");
+		List<InstrumentInfo> instrumentInfos = enTestReportService.getEnTestReportDAO().getInstrumentInfosByReportId(enTestReportId);
+		jsonStr.put("instrumentInfos", instrumentInfos);
+		return SUCCESS;
+	}
+	
+	
 	/********E   QLQ加的一些方法***********/
 	
 	

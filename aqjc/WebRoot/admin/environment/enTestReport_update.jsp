@@ -46,7 +46,21 @@
 		.dataTab input{width:220px;height:23px;}
 		.dataTab select{width:110px;height:22px;}
 	</style>
-	
+	<!--S   QLQ预览照片相关css     -->
+	    <style>
+        .imageDiv{
+            float: left;
+            margin-left: 10px;
+        }
+        .deleteImgA{
+            display: block;text-align: center
+        }
+        .priImg{
+        height:140px;
+        width:160px;
+        }
+    </style>
+    <!--S   QLQ预览照片相关css     -->
 	
 <!-- S     QLQ引入的bootstrapFileinput的CSS -->
 <link rel="stylesheet" type="text/css"
@@ -68,21 +82,6 @@
 		type="text/javascript"></script>
 	<!--E  QLQ引入发bootstrapFileiput的JS  -->
 <script>
-$(function(){
-	loadEnTestReport();
-	loadEnTestPic1();
-	loadEnTestPic2();
-	$("#save").click(function() {
-		$("#operate").val("save");
-		saveInfo();
-	});
-	$("#submit").click(function() {
-		$("#operate").val("submit");
-		saveInfo();
-	});
-});
-
-
 function load(){
 	var v = $("#selectedInsTab tr").length;
 	var insIdStr = "";
@@ -94,14 +93,14 @@ function load(){
 	$.ajax({
 		url : '${pageContext.request.contextPath}/ins_chooseInsList.do',
 		data : {'useType':'3',
-			'existInsIds' : insIdStr},
+			'existInsIds' : insIdStr.toString().substring(0,insIdStr.length-1)},
 		dataType : 'json',
 		type : 'POST',
 		success : function(data) {
 			var json = eval(data.rows);
 			if(json.length>0){
 				for(var v=0;v<json.length;v++){
-					$("#selectedInsTab1").append("<tr><td><input type='hidden' name='insId' value='"+json[v].InstrumentId+"'/><div>"+json[v].Name+"</div></td>"+
+					$("#selectedInsTab1").append("<tr><td><input type='hidden' name='insId1' value='"+json[v].InstrumentId+"'/><div>"+json[v].Name+"</div></td>"+
 							"<td>"+json[v].Model+"</td>"+
 							"<td>"+json[v].Code+"</td>"+
 							"<td>"+json[v].Manufacturer+"</td>"+
@@ -135,47 +134,6 @@ function delSeletedIns(obj){
 	$(obj).parent().parent().remove();
 }
 
-
-// 加载图片
-function loadEnTestPic1(){
-	$.ajax({
-		url : '${pageContext.request.contextPath}/enTestReport_selEnPic.do',
-		data : {'enApplyId' : '<%=enApplyId %>',
-				'enPicType' :'2'},
-		type : 'POST',
-		dataType : 'json',
-		success : function(response) {
-			var pic = eval(response);
-			var len = pic.length;
-			var a = len / 3;
-			var row = parseInt(a);
-			if(a > row){
-				row = row + 1;
-			}
-			for(var i = 0;i < row;i++){
-				var str  = "<div class='row'>";
-				for(var j = 0;j<3;j++){
-					var index = i*3+j;
-					if(index < len){
-						var ind = new Number(index);
-						var url = pic[ind].enPicUrl;
-						var id = pic[ind].enPicId;
-						str = str + "<div class='col-sm-3' id='"+id+"'>";
-	        			str = str + "<a href='../../uploads/enPic/"+url+"' data-lightbox='1'><img width='210px' height='290px' src='../../uploads/enPic/"+url+"'></a>";
-	        			str = str + "<div class='row'>";
-	        			str = str + "<div class='col-sm-2'>";
-	        			str = str + "<button class='btn btn-default' onclick='delEnPic(\""+id+"\")'>删除</button>";
-	        			str = str + "</div>"
-	        			str = str + "</div>";
-	        			str = str + "</div>";
-					}
-				}
-    			str = str + "</div>";
-    			$("#pic1").append(str);
-			}
-		}
-	});
-}
 function loadEnTestPic2(){
 	$.ajax({
 		url : '${pageContext.request.contextPath}/enTestReport_selEnPic.do',
@@ -318,7 +276,7 @@ function loadEnTestPic2(){
                    <div class="form-group">
                     <label for="input1" class="col-sm-4 control-label">检测日期</label>
                     <div class="col-sm-8">
-                      <input id="testDate" name="enTestReport.testDate" type="text" class="form-control" value="<%= DateHandler.dateToString(new Date()) %>"
+                      <input id="testDate" name="enTestReport.testDate" type="text" class="form-control"
                       onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})">
                     </div>
                   </div>
@@ -379,7 +337,7 @@ function loadEnTestPic2(){
 	                  <div class="form-group">
 	                    <label for="input1" class="col-sm-2 control-label">依据标准</label>
 	                    <div class="col-sm-10">
-	                      <input type="text" name="enTestReport.testCriterion" class="form-control" value="《密码工作环境电磁安全监察规范》" id="applyUsername">
+	                      <input type="text" name="enTestReport.testCriterion" class="form-control" id="testCriterion">
 	                    </div>
 	                  </div>
 	              </div>
@@ -393,7 +351,7 @@ function loadEnTestPic2(){
 	                  <div class="form-group">
 	                    <label for="input1" class="col-sm-2 control-label">检测位置</label>
 	                    <div class="col-sm-10">
-	                      <input type="text" class="form-control" name="enTestReport.testLocation" id="applyUsername">
+	                      <input type="text" class="form-control" name="enTestReport.testLocation" id="testLocation">
 	                    </div>
 	                  </div>
 	              </div>
@@ -401,7 +359,7 @@ function loadEnTestPic2(){
               			<br/>
             		  <label for="input1" class="col-sm-2 control-label">检测结论</label>
               			<br/>
-               		 <textarea id="testResult" name="enTestReport.testResult" class="textarea333" placeholder="请填写检测结论" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">检测结论:使用现有检测手段实施检查，没有发现信息窃取装置。 </textarea>     
+               		 <textarea id="testResult" name="enTestReport.testResult" class="textarea333" placeholder="请填写检测结论" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>     
            		 </div>
        		 	</div>
               	</div>
@@ -454,7 +412,7 @@ function loadEnTestPic2(){
 			                  <div class="form-group">
 			                    <label for="input1" class="col-sm-4 control-label">建成时间</label>
 			                    <div class="col-sm-8">
-			                      <input type="text" value="" name="enTestReport.crateTime" class="form-control" />
+			                      <input type="text" id="createTime" name="enTestReport.createTime" class="form-control" />
 			                    </div>
 			                  </div>
 			              </div>
@@ -465,7 +423,7 @@ function loadEnTestPic2(){
 			                    <label for="input1" class="col-sm-4 control-label">尺寸</label>
 			                    <div class="col-sm-8">
 			                    		<div class="input-group">
-											<input type="text" class="form-control" name="enTestReport.environmentSize">
+											<input type="text" id="environmentSize" class="form-control" name="enTestReport.environmentSize">
 											<span style="background-color:rgb(238,238,238)" class="input-group-addon">㎡</span>
 										</div>		
 			                    </div>
@@ -483,7 +441,7 @@ function loadEnTestPic2(){
 		                  <div class="form-group">
 		                    <label for="input1" class="col-sm-2 control-label">状&nbsp;&nbsp;&nbsp;&nbsp;态</label>
 		                    <div class="col-sm-10">
-		                      <input type="text" value="" name="enTestReport.environmentApplyProduction" class="form-control" />
+		                      <input type="text" id="environmentStatus" name="enTestReport.environmentStatus" class="form-control" />
 		                    </div>
 		                  </div>
 		              </div>
@@ -496,15 +454,13 @@ function loadEnTestPic2(){
             </div>
             </div>
              <!--E  检测内容及结论  -->
-            
-            
-        
-              
-            
-            
-            
-            
-            <div class="box box-info">
+
+
+
+
+
+
+			<div class="box box-info">
                <div class="box-header with-border">
                  <h3 class="box-title">检测照片</h3>
                </div>
@@ -539,59 +495,92 @@ function loadEnTestPic2(){
                   </div>
                   </div>
                 </div>
-<!--                   头部，相册选择和格式选择
-                   <div id="uploader">
-                      <div class="queueList">
-                         <div id="dndArea" class="placeholder">
-                           <div id="filePicker"></div>
-                           <p>或将照片拖到这里，单次最多可选300张</p>
-                        </div>
-                      </div>
-                   <div class="statusBar" style="display:none;">
-                      <div class="progress">
-                        <span class="text">0%</span>
-                        <span class="percentage"></span>
-                      </div><div class="info"></div>
-                    <div class="btns">
-                        <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
-                    </div>
-                  </div>
-                 </div> -->
+                
+                
+                
  					<div class="box-body planePicture pictureDiv" id="pingmianDiv" style="margin-top:20px;">
-							<form enctype="multipart/form-data">
-								<div>
-									<input id="upPlanePicture" class="file planePicture" type="file"
-										name="fileName">
+								<!-- 存放之前已经选好的图片 -->
+								<div id="pingmianPriviousDiv">
+										<!-- 提示语 -->
+										<p>下面是您之前已经上传的照片，点击图片可以查看!</p>
+									   <!--  <div class="imageDiv">
+									        <img src="http://localhost/picture/0b6c3372f3fc4ebb884eb228f5d46364.png" class="priImg">
+									        <a href="javascript:void(0)" class="deleteImgA">删除</a>
+									    </div > -->
 								</div>
-								<p>您选择的是平面简图:请选择单张图进行上传，平面简图只能上传单张!</p>
-							</form>
+								
+								<div style="clear:both;margin-top:20px;">
+									<form enctype="multipart/form-data">
+										<div>
+											<input id="upPlanePicture" class="file planePicture" type="file"
+												name="fileName">
+										</div>
+										<p>您选择的是平面简图:请选择单张图进行上传，平面简图只能上传单张!</p>
+									</form>
+								</div>
 					</div>
  					<div class="box-body  environmentPicture pictureDiv" id="XX" style="margin-top:20px;display:none;">
-							<form enctype="multipart/form-data">
-								<div>
-									<input id="upEnvironmentPicture" class="file" multiple type="file"
-										name="fileName">
+								<!-- 存放之前已经选好的图片 -->
+								<div id="enviPriviousDiv">
+										<!-- 提示语 -->
+										<p>下面是您之前已经上传的照片，点击图片可以查看!</p>
+									    <!-- <div class="imageDiv">
+									        <img src="http://localhost/picture/0b6c3372f3fc4ebb884eb228f5d46364.png" class="priImg">
+									        <a href="javascript:void(0)" class="deleteImgA">删除</a>
+									    </div > -->
 								</div>
-								<p>您选择的是环境照片:可以同时选择多张照片，也可以选择单张照片!</p>
-							</form>
+								
+							<div style="clear:both;margin-top:20px;">
+								<form enctype="multipart/form-data">
+									<div>
+										<input id="upEnvironmentPicture" class="file" multiple type="file"
+											name="fileName">
+									</div>
+									<p>您选择的是环境照片:可以同时选择多张照片，也可以选择单张照片!</p>
+								</form>
+							</div>
 					</div>
  					<div class="box-body processPicture pictureDiv" id="XXX"  style="margin-top:20px;display:none;">
-							<form enctype="multipart/form-data">
-								<div>
-									<input id="upProcessPicture" class="file" multiple type="file"
-										name="fileName">
+								<!-- 存放之前已经选好的图片 -->
+								<div id="processPriviousDiv">
+										<!-- 提示语 -->
+										<p>下面是您之前已经上传的照片，点击图片可以查看!</p>
+									    <!-- <div class="imageDiv">
+									        <img src="http://localhost/picture/0b6c3372f3fc4ebb884eb228f5d46364.png" class="priImg">
+									        <a href="javascript:void(0)" class="deleteImgA">删除</a>
+									    </div > -->
 								</div>
-								<p>您选择的是检测过程照片:可以同时选择多张照片，也可以选择单张照片!</p>
-							</form>
+								
+								<div style="clear:both;margin-top:20px;">
+									<form enctype="multipart/form-data">
+										<div>
+											<input id="upProcessPicture" class="file" multiple type="file"
+												name="fileName">
+										</div>
+										<p>您选择的是检测过程照片:可以同时选择多张照片，也可以选择单张照片!</p>
+									</form>
+								</div>
 					</div>
  					<div class="box-body frequencyPicture pictureDiv" id="XXXX"  style="margin-top:20px;display:none;">
-							<form enctype="multipart/form-data">
-								<div>
-									<input id="upFrequencyPicture" class="file" multiple type="file"
-										name="fileName">
+								<!-- 存放之前已经选好的图片 -->
+								<div id="frequencyPriviousDiv">
+										<!-- 提示语 -->
+										<p>下面是您之前已经上传的照片，点击图片可以查看!</p>
+									    <!-- <div class="imageDiv">
+									        <img src="http://localhost/picture/0b6c3372f3fc4ebb884eb228f5d46364.png" class="priImg">
+									        <a href="javascript:void(0)" class="deleteImgA">删除</a>
+									    </div > -->
 								</div>
-								<p>您选择的是检测过程频谱分析:可以同时选择多张照片，也可以选择单张照片!</p>
-							</form>
+								
+								<div style="clear:both;margin-top:20px;">
+									<form enctype="multipart/form-data">
+										<div>
+											<input id="upFrequencyPicture" class="file" multiple type="file"
+												name="fileName">
+										</div>
+										<p>您选择的是检测过程频谱分析:可以同时选择多张照片，也可以选择单张照片!</p>
+									</form>
+								</div>
 					</div>
              </div>
             </div>
@@ -634,6 +623,30 @@ function loadEnTestPic2(){
       <!-- /.row -->
 
     </section>
+    
+    
+    
+    
+     <!-- S   预览照片模态框-->
+     <!-- /.content -->           
+     <div id="imgModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel111" aria-hidden="true">
+      <div class="modal-dialog">
+		<div class="modal-content">
+			
+             <div class="box-body">
+             		<!-- <div style="float: left;height:100%;">><</div> -->
+             		<div><img id="dynamicImage" src=""  style="width:90%;height:90%"></div>
+             		<!-- <div style="float: left;height:100%;">><</div> -->
+         	</div><!-- /.box-body -->
+        </div>
+     </div>
+   </div> 
+     <!-- E   预览照片模态框-->
+    
+    
+    
+    
+    
     <!-- /.content -->           
      <div id="chooseInsTab" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -653,7 +666,8 @@ function loadEnTestPic2(){
                 </tr>
               </table>
          	</div><!-- /.box-body -->
-         	
+         	<br/>
+         	<br/>
        		</div><!-- /.box -->
       	   </div>
         </div>
@@ -665,28 +679,7 @@ function loadEnTestPic2(){
 <!-- ./wrapper -->
 
 <script type="text/javascript">
-function validate(){
-	if($("#testReportNumber").val() == "") {
-		return true;
-	}
-	if($("#testDate").val() == ""){
-		return true;
-	}
-	if($("#testUserName").val() == ""){
-		return true;
-	}
-	if($("#testUnitName").val() == "") {
-		return true;
-	}
-	if($("#testSampleName").val() == "") {
-		return true;
-	}
-	if($("#testResult").val() == "") {
-		return true;
-	}
-}
-
-	function saveInfo(){
+<%-- 	function saveInfo(){
 		if (validate()){
 			alert("请完善信息");
 			return;
@@ -726,55 +719,7 @@ function validate(){
 			}
 		});
 	}
-	
-	function saveEnIns(enTestReportId){
-		var v = $("#selectedInsTab tr").length;
-		var insIdStr = "";
-		if(v > 1){
-			$("input[name='insId']").each(function(index,item){
-				insIdStr = insIdStr + $(this).val()+",";
-			});
-		}
-		$.ajax({
-			url : '<%=request.getContextPath()%>/enTestReport_saveReportAndIns.do',
-			data : {'enTestReportId' : enTestReportId,
-				'insIdStr' : insIdStr},
-			dataType : 'json',
-			type : 'POST',
-			success : function(data){
-				
-			},
-			error : function(data){
-				alert("检测仪器保存失败");			
-			}
-		});
-	}
-	
-		// 删除图片
-	function delEnPic(enPicId){
-		var con = confirm("确认删除该图片吗？");
-		if (con == true) {
-			$.ajax({
-				url : '${pageContext.request.contextPath}/enTestReport_delEnPic.do',
-				data : {'enPicId' : enPicId},
-				type : 'POST',
-				dataType : 'json',
-				success : function (data){
-					var data = eval(data);
-					if (data.result == "success"){
-						// 删除节点
-						$("#"+enPicId).empty();
-					} else {
-						alert("删除图片失败！");
-					}
-				},
-				error : function (){
-					alert("删除图片失败！");
-				}
-			});
-		}
-	}	
-	
+	 --%>
 	// 初始化图片上传
 	function initUpload(){
 		var type = $("input[type='radio']:checked").val();

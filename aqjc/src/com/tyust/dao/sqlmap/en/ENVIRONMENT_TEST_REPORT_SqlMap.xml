@@ -347,25 +347,25 @@
       </isNotNull>
       
       <!-- S -->
-      <isNotNull prepend="," property="record.testProject" >
+      <isNotNull prepend="," property="testProject" >
         TEST_PROJECT = #record.testProject:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.testCriterion" >
+      <isNotNull prepend="," property="testCriterion" >
         TEST_CRITERION = #record.testCriterion:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.testLocation" >
+      <isNotNull prepend="," property="testLocation" >
         TEST_LOCATION = #record.testLocation:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.createTime" >
+      <isNotNull prepend="," property="createTime" >
         CREATE_TIME = #record.createTime:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.environmentStatus" >
+      <isNotNull prepend="," property="environmentStatus" >
         ENVIRONMENT_STATUS = #record.environmentStatus:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.environmentSize" >
+      <isNotNull prepend="," property="environmentSize" >
         ENVIRONMENT_SIZE = #record.environmentSize:VARCHAR#
       </isNotNull>
-      <isNotNull prepend="," property="record.environmentApplyProduction" >
+      <isNotNull prepend="," property="environmentApplyProduction" >
         ENVIRONMENT_APPLY_PRODUCTION = #record.environmentApplyProduction:VARCHAR#
       </isNotNull>
       <!-- E -->
@@ -384,8 +384,15 @@
       TEST_DATE = #testDate:TIMESTAMP#,
       TEST_UNIT_NAME = #testUnitName:VARCHAR#,
       TEST_STATUS = #testStatus:CHAR#,
-      TEST_SAMPLE_NAME = #testSampleName:VARCHAR#,
-      TEST_RESULT = #testResult:VARCHAR#
+      TEST_RESULT = #testResult:VARCHAR#,
+      TEST_PROJECT = #testProject:VARCHAR#,
+      TEST_LOCATION = #testLocation:VARCHAR#,
+      TEST_CRITERION = #testCriterion:VARCHAR#,
+      CREATE_TIME = #createTime:VARCHAR#,
+      ENVIRONMENT_STATUS = #environmentStatus:VARCHAR#,
+       ENVIRONMENT_SIZE = #environmentSize:VARCHAR#,
+       ENVIRONMENT_APPLY_PRODUCTION = #environmentApplyProduction:VARCHAR#
+       
     where ENVIRONMENT_TEST_REPORT_ID = #environmentTestReportId:VARCHAR#
   </update>
   
@@ -395,6 +402,9 @@
   <!-- 查询当前环境编号的最大值 -->
   <select id="selEnviromentId" resultClass="java.lang.String">
  	select NVL(max(SUBSTR(TEST_REPORT_NUMBER,15,3)),'000') from ENVIRONMENT_TEST_REPORT where LENGTH(TEST_REPORT_NUMBER)=17  
+  </select>
+  <select id="getInstrumentInfosByReportId" resultClass="com.tyust.bean.app.InstrumentInfo" parameterClass="java.lang.String">
+ 	 select INSTRUMENT_ID as InstrumentId,Name,MODEL as Model,CODE as Code,MANUFACTURER as Manufacturer from NT_INSTRUMENT_INFO where INSTRUMENT_ID in (select INSTRUMENT_ID from ENVIRONMENT_TEST_INSTRUMENT where  ENVIRONMENT_TEST_REPORT_ID=#value#)
   </select>
   <!-- E QLQ手写的一些完成业务逻辑的代码 -->
   

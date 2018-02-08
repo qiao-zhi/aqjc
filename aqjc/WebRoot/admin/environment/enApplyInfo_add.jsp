@@ -319,7 +319,7 @@
 
 
 	<script>
-
+var saveScan=true,saveAtta=true;
 //先提交表单信息，成功后返回该信息的主键，然后在保存相关的图片和附件
 $(document).ready(function(){
 		$("#save").click(function (){
@@ -378,9 +378,13 @@ function validate(){
  * 保存
  */
 function saveInfo(){
+	//上传前将两个按钮置为不可点击
+	$("#save").prop("disabled",true);
+	$("#submit").prop("disabled",true);
 	$.ajax({
 		url : '<%=request.getContextPath()%>/enApplyInfo_saveEnApplyInfo.do',
 		type : 'POST',
+		async:false,
 		dataType : 'json',
 		data : $("#enApplyInfo_form").serializeArray(),
 		success : function(data){
@@ -399,10 +403,10 @@ function saveInfo(){
 				var applyFile = $("#attach")[0].files;
 				var applyFile_length = applyFile.length;
 				
-				if(scanFile_length == 0  && applyFile_length){
+				if(scanFile_length == 0  && applyFile_length ==0 ){
 					alert("保存成功!");
+					window.location.href=contextPath+"/admin/environment/enApplyInfo_list.jsp";
 				}
-				
 				if(scanFile_length > 0){//上传扫描照片
 					//上传扫描的照片附件
 					$("#bootUpOne").fileinput("upload");
@@ -411,6 +415,7 @@ function saveInfo(){
 					//上传扫描的照片附件
 					$("#attach").fileinput("upload");
 				}
+				
 			}
 		},
 		error : function(data){
@@ -448,6 +453,7 @@ function fileUpload(id){
 $(document).ready(function(){
 	loadUnitName();
 });
+
 // 加载部门名称
 function loadUnitName(){
 	$.ajax({
@@ -490,9 +496,9 @@ function changeUnit(){
 $("#bootUpOne").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
-    uploadAsync:false,//是否异步
     dropZoneEnabled: false,//是否显示拖拽区域
     showPreview:true,//是否显示预览区域
+    showClose:false,//显示关闭按钮
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
     showRemove : true, //显示移除按钮,跟随文本框的那个
     showCaption: true,//是否显示标题,就是那个文本框
@@ -517,10 +523,15 @@ $("#bootUpOne").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
+   		 saveScan = false;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
-        {
-        	alert("保存成功!");
+        { 
+        	saveScan = true;
+        	if(saveScan&&saveAtta){
+        		alert("上传成功!");
+        		window.location.href=contextPath+"/admin/environment/enApplyInfo_list.jsp";
+        	}
         }
     });
 
@@ -531,10 +542,14 @@ $("#attach").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
-    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showUpload: false, //是否显示上传按钮,跟随文本框的那个
     showRemove : true, //显示移除按钮,跟随文本框的那个
     showCaption: true,//是否显示标题,就是那个文本框
-    uploadAsync:false,//是否异步
+    showClose:false,//显示关闭按钮
+    uploadAsync:true,//是否异步
+    layoutTemplates:{//预览区域删除按钮与上传按钮的显示
+        actionUpload:''//上传按钮不显示
+    },
     enctype: 'multipart/form-data',
     previewSettings: {//限制预览区域的宽高
         pdf: {width: "0px", height: "0px"},
@@ -553,10 +568,15 @@ $("#attach").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
+    	saveAtta = false;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
-        {
-           /*  alert('处理成功'); */
+        {	
+        	saveAtta = true;
+        	if(saveScan&&saveAtta){
+        		alert("上传成功!");
+        		window.location.href=contextPath+"/admin/environment/enApplyInfo_list.jsp";
+        	}
         }
     });
 /***E   上传文件相关操作****/

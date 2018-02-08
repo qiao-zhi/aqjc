@@ -71,7 +71,7 @@ public class  MultipleFileUpAction extends ActionSupport{
             enPic.setEnPicId(UUIDUtil.getUUID2());
             enPic.setEnPicName(fileNameFileName[i]);
             enPic.setEnPicType(pictureType);
-            enPic.setEnPicUrl(fileNewName);
+            enPic.setEnPicUrl(fileNewName+"."+sufix);
             this.saveEnPic(enPic);//保存数据库信息
         }
         return SUCCESS;
