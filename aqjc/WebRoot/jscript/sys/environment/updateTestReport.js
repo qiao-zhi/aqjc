@@ -10,6 +10,8 @@
 /***********E   页面只执行一次的相关操作*****************/
  
  
+ var isReset = false;
+ 
 /********S   页面初始化相关操作***************/
 $(function(){
 	//单选按钮的点击事件
@@ -22,6 +24,28 @@ $(function(){
 	showEnApplyInfo();
 	//2.初始化检测信息(需要完善)
 	loadEnTestReport();
+	//查询环境检测照片
+	loadEnTestPic("3");
+	//查询环境检测照片
+	loadEnTestPic("4");
+	//查询环境检测照片
+	loadEnTestPic("2");
+	//查询环境检测照片
+	loadEnTestPic("1");
+	//以前图片的点击事件:
+	 $('body').on('click','.priImg', function () {
+			var src = $(this).prop("src");
+			$("#dynamicImage").prop("src",src);
+			$("#imgModal").modal("show");
+     });
+	//删除按钮点击事件:
+	 $('body').on('click','.deleteImgA', function () {
+		 if(confirm("您确认此照片?")){
+			 var enPicId = $(this).parent().children("img").prop("id");
+			 //删除图片
+			 delEnPic(enPicId);
+		 }
+  });
 	
 });
 //查询环境申请信息
@@ -81,12 +105,99 @@ function loadEnTestReport(){
 				$("#testDate").val(data.testDate);
 				$("#testResult").val(data.testResult);
 				$("#testSampleName").val(data.testSampleName);
+				
+				//给检测项目赋值
+				var testProject = data.testProject;
+				if(testProject != null && "" != testProject && testProject.length>0){
+					var projectArray = testProject.toString().split(",");
+					for(var i=0,length_1=projectArray.length;i<length_1;i++){
+						$("[name='enTestReport.testProject'][value='"+projectArray[i]+"']").prop("checked",true);
+					}
+				}
+				
+				$("#testProject").val(data.testProject);
+				$("#testCriterion").val(data.testCriterion);
+				$("#testLocation").val(data.testLocation);
+				$("#createTime").val(data.createTime);
+				$("#environmentStatus").val(data.environmentStatus);
+				$("#environmentSize").val(data.environmentSize);
+				$("#environmentApplyProduction").val(data.environmentApplyProduction);
 			}
 		},
 		error : function(){
 			alert("加载检测报告信息错误");
 		}
 	});
+}
+//根据图片类型查询图片加载图片
+function loadEnTestPic(pictureType){
+	$.ajax({
+		url : contextPath + '/enTestReport_selEnPic.do',
+		data : {'enApplyId' : $("#hidden_apply_id").val(),
+				'enPicType' : pictureType},
+		type : 'POST',
+		dataType : 'json',
+		success : function(response) {
+			if(response!=null && response.length>0){
+				if(pictureType == "1"){
+					$("#processPriviousDiv .imageDiv").remove();
+					for(var i=0;i<response.length;i++){
+						$("#processPriviousDiv").append(
+								'<div class="imageDiv"><img src="/picture/'+response[i].enPicUrl+'" class="priImg" id="'+response[i].enPicId+'">'
+								+'<a href="javascript:void(0)" class="deleteImgA">删除</a></div >')
+						
+					}
+				}
+				if(pictureType == "2"){
+					$("#frequencyPriviousDiv .imageDiv").remove();
+					for(var i=0;i<response.length;i++){
+						$("#frequencyPriviousDiv").append(						
+								'<div class="imageDiv"><img src="/picture/'+response[i].enPicUrl+'" class="priImg" id="'+response[i].enPicId+'">'
+								+'<a href="javascript:void(0)" class="deleteImgA">删除</a></div >')
+						
+					}
+				}
+				if(pictureType == "3"){
+					$("#enviPriviousDiv .imageDiv").remove();
+					for(var i=0;i<response.length;i++){
+						$("#enviPriviousDiv").append(				
+								'<div class="imageDiv"><img src="/picture/'+response[i].enPicUrl+'" class="priImg" id="'+response[i].enPicId+'">'
+								+'<a href="javascript:void(0)" class="deleteImgA">删除</a></div >')
+					}
+				}
+				if(pictureType == "4"){
+					$("#pingmianPriviousDiv .imageDiv").remove();
+					for(var i=0;i<response.length;i++){
+						$("#pingmianPriviousDiv").append(			
+								'<div class="imageDiv"><img src="/picture/'+response[i].enPicUrl+'" class="priImg" id="'+response[i].enPicId+'">'
+								+'<a href="javascript:void(0)" class="deleteImgA">删除</a></div >')
+						
+					}
+				}
+			}
+		}
+	});
+}
+// 删除图片
+function delEnPic(enPicId){
+		$.ajax({
+			url : contextPath+'/enTestReport_delEnPic.do',
+			data : {'enPicId' : enPicId},
+			type : 'POST',
+			dataType : 'json',
+			success : function (data){
+				var data = eval(data);
+				if (data.result == "success"){
+					// 删除节点
+					$("#"+enPicId).parent().remove();
+				} else {
+					alert("删除图片失败！");
+				}
+			},
+			error : function (){
+				alert("删除图片失败！");
+			}
+		});
 }
 
 /********E   页面初始化相关操作***************/
@@ -98,17 +209,31 @@ $(function(){
 	//保存的点击事件
 	$("#save").click(function() {
 		if(confirm("您确认保存信息?保存之后可以修改!")){
-			saveInfo();
+			saveEnIns();//保存设备信息
+			saveInfo();//保存检测信息
 		}
 	});
 	//提交
 	$("#submit").click(function() {
-		$("#operate").val("submit");
-		if (validate()){
-			alert("请完善信息");
-			return;
+		if(confirm("您确认提交信息?提交之后不可以更改!")){
+			$("#operate").val("submit");
+			saveEnIns();//保存设备信息
+			if (validate()){
+				alert("请完善信息");
+				return;
+			}
+			//验证设备信息
+			if(!validateInstrument()){
+				alert("请完善设备信息");
+				return;
+			}
+			//验证图片信息
+			if(!validatePicture()){
+				alert("请完善图片信息");
+				return;
+			}
+			saveInfo();//保存基本信息
 		}
-		saveInfo();
 	});
 	
 	
@@ -116,18 +241,22 @@ $(function(){
 
 function showInsTab(){
 	$.ajax({
-		url : contextPath+'/ins_showInsTab.do',
-		data : {'useType':'3'},
+		url : contextPath+'/enTestReport_getInstrumentInfosByReportId.do',
+		data : {'useType':'3',
+			'enTestReportId' : $("#environmentTestReportId").val()//报告编号
+			},
 		type : 'POST',
+		async:false,
 		dataType : 'json',
 		success : function(response) {
-			var json = eval(response.data);
+			var json = response.instrumentInfos;
 			if(json.length>0){
+				$("#selectedInsTab  tr:not(:first)").html("");
 				for(var v=0;v<json.length;v++){
-					$("#selectedInsTab").append("<tr><td><input type='hidden' name='insId' value='"+json[v].InstrumentId+"'/>"+json[v].Name+"</td>"+
-							"<td>"+json[v].Model+"</td>"+
-							"<td>"+json[v].Code+"</td>"+
-							"<td>"+json[v].Manufacturer+"</td>"+
+					$("#selectedInsTab").append("<tr><td><input type='hidden' name='insId' value='"+json[v].instrumentId+"'/>"+json[v].name+"</td>"+
+							"<td>"+json[v].model+"</td>"+
+							"<td>"+json[v].code+"</td>"+
+							"<td>"+json[v].manufacturer+"</td>"+
 							"<td><a href='javascript:void(0)' onclick='delSeletedIns(this)'><i class='fa fa-trash'></i></td></tr>");
 				}
 			}
@@ -154,6 +283,31 @@ function validate(){
 	if($("#testResult").val() == "") {
 		return true;
 	}
+	if($("#environmentTestReportId").val() == "") {
+		return true;
+	}
+	if($("#createTime").val() == "") {
+		return true;
+	}
+	if($("#environmentSize").val() == "") {
+		return true;
+	}
+	if($("#environmentStatus").val() == "") {
+		return true;
+	}
+}
+//验证设备信息
+function validateInstrument(){
+	var length = $("#selectedInsTab tr").length;
+	return length>1?true:false;
+}
+//验证图片信息
+function validatePicture(){
+	if($("#pingmianPriviousDiv").find(".imageDiv").length==0) return false;
+	if($("#enviPriviousDiv").find(".imageDiv").length==0) return false;
+	if($("#processPriviousDiv").find(".imageDiv").length==0) return false;
+	if($("#frequencyPriviousDiv").find(".imageDiv").length==0) return false;
+	return true;
 }
 
 	function saveInfo(){
@@ -161,16 +315,15 @@ function validate(){
 		$("#save").prop("disabled",true);
 		$("#submit").prop("disabled",true);
 		$.ajax({
-			url : '<%=request.getContextPath()%>/enTestReport_saveEnTestReport.do',
+			url : contextPath+'/enTestReport_updateEnTestReport.do',
 			type : 'POST',
 			dataType : 'json',
 			data : $("#enTestReportForm").serializeArray(),
 			success : function(data){
-				$("#environmentTestReportId").val(data.enTestReportId);
-				//保存设备信息
-				saveEnIns();
-				// 设置图片上传的url
-				savePicture();
+				if(data.result=="success"){
+					alert("保存成功");
+					window.location.reload();
+				}
 			},
 			error : function(data){
 				alert("error");
@@ -191,13 +344,15 @@ function validate(){
 			});
 		}
 		$.ajax({
-			url : '<%=request.getContextPath()%>/enTestReport_saveReportAndIns.do',
+			url : contextPath+'/enTestReport_saveReportAndIns.do',
 			data : {'enTestReportId' : $("#environmentTestReportId").val(),
-				'insIdStr' : insIdStr},
+					'insIdStr' : insIdStr.toString().substring(0,insIdStr.length-1)//去掉最后一个逗号
+				},
 			dataType : 'json',
 			type : 'POST',
 			success : function(data){
-				
+//				成功之后重新查询设备信息
+				showInsTab();
 			},
 			error : function(data){
 				alert("检测仪器保存失败");			
@@ -250,18 +405,16 @@ $("#upPlanePicture").fileinput({
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
-        actionUpload:''//上传按钮不显示
+        actionUpload:'',//上传按钮不显示
+        progress:''//隐藏进度条
    },
     autoReplace:true,//是否自动替换上一个文件
     enctype: 'multipart/form-data',
-/*     layoutTemplates : {
-    	actionUpload:"<input type='text' placeholder='请输入图片名称' onchange='changePictureName(this)' style='width:100px;background-color:rgb(238,238,238);'/>"
-    }, */
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
@@ -271,7 +424,7 @@ $("#upPlanePicture").fileinput({
         return data;
     },
     previewSettings: {//限制预览区域的宽高
-        image: {width: "100px", height: "100px"},
+    	image: {width: "160px", height: "160px"}
     },
     validateInitialCount:true,
     allowedFileExtensions: ['jpg','png']//允许上传问价你的后缀
@@ -279,11 +432,13 @@ $("#upPlanePicture").fileinput({
     var form = data.form, files = data.files, extra = data.extra,response = data.response, reader = data.reader;
     
 }).on("filebatchselected", function(event, files) {//文件选中函数
-	
+	$(this).fileinput("upload");
 }).on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-           /*  alert('处理成功'); */
+        	alert("上传成功!");
+        	$(this).fileinput("reset");
+        	loadEnTestPic("4");
         }
     });
 /**
@@ -294,12 +449,13 @@ $("#upPlanePicture").fileinput({
 	    uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
 	    dropZoneEnabled: false,//是否显示拖拽区域
 	    showUpload: false, //是否显示上传按钮,跟随文本框的那个
-	    showRemove : false, //显示移除按钮,跟随文本框的那个
+	    showRemove : true, //显示移除按钮,跟随文本框的那个
 	    showClose:false,//显示关闭按钮
 	    showCaption: true,//是否显示标题,就是那个文本框
 	    uploadAsync:true,//是否异步
 	    layoutTemplates:{//预览区域删除按钮与上传按钮的显示
-	        actionUpload:''//上传按钮不显示
+	        actionUpload:'',//上传按钮不显示
+	        progress:''//隐藏进度条
 	   },
 	   autoReplace:true,//是否自动替换，只能替换上一步选择的文件
 	    enctype: 'multipart/form-data',
@@ -315,17 +471,22 @@ $("#upPlanePicture").fileinput({
 	        return data;
 	    },
 	    previewSettings: {//限制预览区域的宽高
-	        image: {width: "0px", height: "0px"},
+	    	image: {width: "160px", height: "160px"}
 	    },
 	    validateInitialCount:true,
 	    allowedFileExtensions: ['jpg','png']//允许上传问价你的后缀
 	}).on('filepreupload', function(event, data, previewId, index) {
 	    var form = data.form, files = data.files, extra = data.extra,
 	        response = data.response, reader = data.reader;
-	}) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
+	}).on("filebatchselected", function(event, files) {//文件选中函数(选完上传)
+		$(this).fileinput("upload");
+	}).on("fileuploaded", function(event, data) {//上传成功之后的一些处理(成功之后重置)
 	        if(data.response)
 	        {
-	           /*  alert('处理成功'); */
+	           alert('上传成功');
+	           //查询环境检测照片
+	           $("#upEnvironmentPicture").fileinput("reset");
+	           loadEnTestPic("3");
 	        }
 	    });
 /**
@@ -335,18 +496,19 @@ $("#upProcessPicture").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
-    showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
-        actionUpload:''//上传按钮不显示
+        actionUpload:'',//上传按钮不显示
+        progress:''
    },
     enctype: 'multipart/form-data',
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     previewSettings: {//限制预览区域的宽高
-        image: {width: "0px", height: "0px"},
+    	image: {width: "160px", height: "160px"}
     },
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
@@ -360,10 +522,15 @@ $("#upProcessPicture").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
+}).on("filebatchselected", function(event, files) {//文件选中函数
+	$(this).fileinput("upload");
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-           /*  alert('处理成功'); */
+	           alert('上传成功');
+	           //查询环境检测照片
+	           $("#upProcessPicture").fileinput("reset");
+	           loadEnTestPic("1");
         }
     });
 /**
@@ -373,18 +540,19 @@ $("#upFrequencyPicture").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
-    showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
-        actionUpload:''//上传按钮不显示
-   },
+        actionUpload:'',//上传按钮不显示
+        progress:''//隐藏进度条
+    },
     enctype: 'multipart/form-data',
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     previewSettings: {//限制预览区域的宽高
-        image: {width: "0px", height: "0px"},
+    	image: {width: "160px", height: "160px"}
     },
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
@@ -398,10 +566,20 @@ $("#upFrequencyPicture").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
-}) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
+}).on("filebatchselected", function(event, files) {//文件选中函数(选中之后上传文件)
+	isReset = false;
+	$(this).fileinput("upload");
+}).on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-           /*  alert('处理成功'); */
+        	alert("上传成功!");
+        	if(!isReset){
+        		$("#upFrequencyPicture").fileinput("reset");//将此插件重置(前提是不显示上传进度条，否则将留下进度条)
+        		loadEnTestPic("2");//执行页面的一个JS函数重新查询图片
+        		isReset = true;
+        	}
         }
     });
 /************E    四种图片上传插件的显示*/
+
+

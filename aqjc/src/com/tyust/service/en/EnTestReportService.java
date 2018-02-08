@@ -11,6 +11,7 @@ import com.tyust.bean.en.EnTestInstrument;
 import com.tyust.bean.en.EnTestInstrumentExample;
 import com.tyust.bean.en.EnTestReport;
 import com.tyust.bean.en.EnTestReportExample;
+import com.tyust.common.DeleteFileUtil;
 import com.tyust.common.FileHandler;
 import com.tyust.dao.en.EnPicDAO;
 import com.tyust.dao.en.EnTestInstrumentDAO;
@@ -70,8 +71,8 @@ public class EnTestReportService {
 
 	public void delEnTestPic(String enPicId) {
 		String url = enPicDAO.selectByPrimaryKey(enPicId).getEnPicUrl();
-		FileHandler.deleteFile(url, "enPic");
-		enPicDAO.deleteByPrimaryKey(enPicId);
+		DeleteFileUtil.deletePicture(url);//删除图片
+		enPicDAO.deleteByPrimaryKey(enPicId);//删除记录
 	}
 
 	// 保存检测报告和检测仪器之间的关系

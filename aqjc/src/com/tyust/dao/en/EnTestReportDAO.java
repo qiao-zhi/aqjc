@@ -1,8 +1,10 @@
 package com.tyust.dao.en;
 
+import java.util.List;
+
+import com.tyust.bean.app.InstrumentInfo;
 import com.tyust.bean.en.EnTestReport;
 import com.tyust.bean.en.EnTestReportExample;
-import java.util.List;
 
 public interface EnTestReportDAO {
     /**
@@ -100,5 +102,15 @@ public interface EnTestReportDAO {
      * @return
      */
     public String selEnviromentId();
+    /**
+     * 根据报告编号查询报告的设备信息
+     * @param reportId
+     * @return
+     */
+    public List<InstrumentInfo> getInstrumentInfosByReportId(String reportId);
+    
+    
+    
+    
     
 }

@@ -291,6 +291,7 @@
 
 <!-- S QLQ -->
 <script>
+var saveScan=true,saveAtta=true;//标记上传是否完成
 var hasUploadAttach = true;//标记附件是否上传
 var hasUploadScan = true; //标记扫描文件是否上传
 $(document).ready(function(){
@@ -388,31 +389,79 @@ function loadUnitName(){
 $(document).ready(function(){
 	//保存信息
 	$("#save").click(function (){
-		$("#operate").val("save");
 		if(confirm("您确认保存申请信息?")){
-			saveInfo();
+			$("#operate").val("save");
+			//上传前将两个按钮置为不可点击
+			$("#save").prop("disabled",true);
+			$("#submit").prop("disabled",true);
+			uploadFile();//上传文件，成功之后自动保存基本信息
 		}	
 	});
 	//提交信息
 	$("#submit").click(function (){
-		$("#operate").val("submit");
+		//验证基本信息
+		if (validate()){
+			alert("请完善信息");
+			return;
+		}
 		var o = isOK();
 		if (o == true){
-			if (validate()){
-				alert("请完善信息");
-				return;
-			}
 			if(confirm("您确认提交信息?提交之后不可以修改!")){
-				saveInfo();
+				$("#operate").val("submit");
+				//上传前将两个按钮置为不可点击
+				$("#save").prop("disabled",true);
+				$("#submit").prop("disabled",true);
+				uploadFile();//上传文件，成功之后自动保存基本信息
 			}
 		}else{
-			alert("请先上传附件!");
+			alert("请先选择附件!");
 		}
 	});
 });
 
 function isOK(){
-	return hasUploadScan && hasUploadAttach;
+	//保存成功之后上传文件:
+	//判断扫描文件是否选上
+	var scanFile = $("#bootUpOne")[0].files;
+	var scanFile_length = scanFile.length;
+	var scanFileHasLength = $("div#scanFile").children("a").length;
+	if(scanFileHasLength==0 && scanFile_length==0){
+		return false;
+	}
+	
+	
+	//判断申请书电子版文件是否选上
+	var applyFile = $("#attach")[0].files;
+	var applyFile_length = applyFile.length;
+	var applyFileHasLength = $("div#fileName").children("a").length;
+	if(applyFile_length==0 && applyFileHasLength==0){
+		return false;
+	}
+	return true;
+}
+
+function uploadFile(){
+	//保存成功之后上传文件:
+	//判断扫描文件是否选上
+	var scanFile = $("#bootUpOne")[0].files;
+	var scanFile_length = scanFile.length;
+	
+	//判断申请书电子版文件是否选上
+	var applyFile = $("#attach")[0].files;
+	var applyFile_length = applyFile.length;
+	
+	if(scanFile_length == 0  && applyFile_length ==0 ){
+		saveInfo();//如果未选中文件直接保存上面信息
+	}
+	if(scanFile_length > 0){//上传扫描照片
+		//上传扫描的照片附件
+		$("#bootUpOne").fileinput("upload");
+	}
+	if(applyFile_length > 0){//上传申请书附件
+		//上传扫描的照片附件
+		$("#attach").fileinput("upload");
+	}
+	
 }
 
 function validate(){
@@ -428,12 +477,12 @@ function validate(){
 	if($("#enApplyProduction").val() == "") {
 		return true;
 	}
-	if(!hasUploadScan){
+/* 	if(!hasUploadScan){
 		return true;
 	}
 	if(!hasUploadAttach){
 		return true;
-	}
+	} */
 }
 
 function saveInfo(){
@@ -443,7 +492,8 @@ function saveInfo(){
 		dataType : 'json',
 		data : $("#enApplyInfo_form").serializeArray(),
 		success : function(data){
-			alert("保存成功!")
+			alert("保存成功!");
+			window.location.href=contextPath+"/admin/environment/enApplyInfo_list.jsp";
 		},
 		error : function(data){
 			alert("error");
@@ -535,13 +585,17 @@ $("#bootUpOne").fileinput({
     uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
     showPreview:true,//是否显示预览区域
-    showUpload: true, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showUpload: false, //是否显示上传按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,
+    showClose:false,
     enctype: 'multipart/form-data',
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
         actionUpload:''//上传按钮不显示
+   },
+   previewSettings: {//限制预览区域的宽高
+       pdf: {width: "0px", height: "0px"}
    },
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
@@ -556,12 +610,14 @@ $("#bootUpOne").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {//文件上传之前的操作
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
+    	saveScan = false;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {	
-        	saveInfo();//文件上传之后临时保存修改的信息
-        	//重新执行查询文件
-        	window.location.reload(); //上传成功之后局部刷新页面 
+            saveScan = true;
+            if(saveScan&&saveAtta){
+                saveInfo();
+            }
         }
     });
 
@@ -572,10 +628,11 @@ $("#attach").fileinput({
     language: 'zh',//中文
     uploadUrl:"upLoadOne.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
-    showUpload: true, //是否显示上传按钮,跟随文本框的那个
+    showUpload: false, //是否显示上传按钮,跟随文本框的那个
     showRemove : true, //显示移除按钮,跟随文本框的那个
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,
+    showClose:false,
     enctype: 'multipart/form-data',
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
@@ -586,6 +643,9 @@ $("#attach").fileinput({
         return data;
     },
     validateInitialCount:true,
+    previewSettings: {//限制预览区域的宽高
+        pdf: {width: "0px", height: "0px"}
+    },
     layoutTemplates:{//预览区域删除按钮与上传按钮的显示
         actionUpload:''//上传按钮不显示
    },
@@ -593,11 +653,14 @@ $("#attach").fileinput({
 }).on('filepreupload', function(event, data, previewId, index) {
     var form = data.form, files = data.files, extra = data.extra,
         response = data.response, reader = data.reader;
+    	saveAtta = false;
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-        	saveInfo();//文件上传之后临时保存修改的信息
-        	window.location.reload(); //上传成功之后局部刷新页面 
+           saveAtta = true;
+           if(saveScan&&saveAtta){
+       			saveInfo();//文件上传之后临时保存修改的信息
+           }
         }
     });
 /***E   上传文件相关操作****/

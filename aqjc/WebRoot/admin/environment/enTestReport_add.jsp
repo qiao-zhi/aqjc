@@ -364,7 +364,7 @@ function loadUnitName(){
 			                  <div class="form-group">
 			                    <label for="input1" class="col-sm-4 control-label">建成时间</label>
 			                    <div class="col-sm-8">
-			                      <input type="text" value="" name="enTestReport.crateTime" class="form-control" />
+			                      <input type="text" value="" name="enTestReport.createTime" class="form-control" />
 			                    </div>
 			                  </div>
 			              </div>
@@ -393,7 +393,7 @@ function loadUnitName(){
 		                  <div class="form-group">
 		                    <label for="input1" class="col-sm-2 control-label">状&nbsp;&nbsp;&nbsp;&nbsp;态</label>
 		                    <div class="col-sm-10">
-		                      <input type="text" value="" name="enTestReport.environmentApplyProduction" class="form-control" />
+		                      <input type="text" value="" name="enTestReport.environmentStatus" class="form-control" />
 		                    </div>
 		                  </div>
 		              </div>
@@ -634,7 +634,7 @@ $("#upPlanePicture").fileinput({
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
@@ -655,7 +655,7 @@ $("#upPlanePicture").fileinput({
         return data;
     },
     previewSettings: {//限制预览区域的宽高
-        image: {width: "100px", height: "100px"},
+    	image: {width: "160px", height: "160px"}
     },
     validateInitialCount:true,
     allowedFileExtensions: ['jpg','png']//允许上传问价你的后缀
@@ -678,7 +678,7 @@ $("#upPlanePicture").fileinput({
 	    uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
 	    dropZoneEnabled: false,//是否显示拖拽区域
 	    showUpload: false, //是否显示上传按钮,跟随文本框的那个
-	    showRemove : false, //显示移除按钮,跟随文本框的那个
+	    showRemove : true, //显示移除按钮,跟随文本框的那个
 	    showClose:false,//显示关闭按钮
 	    showCaption: true,//是否显示标题,就是那个文本框
 	    uploadAsync:true,//是否异步
@@ -699,7 +699,7 @@ $("#upPlanePicture").fileinput({
 	        return data;
 	    },
 	    previewSettings: {//限制预览区域的宽高
-	        image: {width: "0px", height: "0px"},
+	    	image: {width: "160px", height: "160px"}
 	    },
 	    validateInitialCount:true,
 	    allowedFileExtensions: ['jpg','png']//允许上传问价你的后缀
@@ -720,7 +720,7 @@ $("#upProcessPicture").fileinput({
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
@@ -730,7 +730,7 @@ $("#upProcessPicture").fileinput({
     enctype: 'multipart/form-data',
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     previewSettings: {//限制预览区域的宽高
-        image: {width: "0px", height: "0px"},
+    	image: {width: "160px", height: "160px"}
     },
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
@@ -758,7 +758,7 @@ $("#upFrequencyPicture").fileinput({
     uploadUrl:"upLoadMultiple.do",//上传的地址，加上这个才会出现删除按钮
     dropZoneEnabled: false,//是否显示拖拽区域
     showUpload: false, //是否显示上传按钮,跟随文本框的那个
-    showRemove : false, //显示移除按钮,跟随文本框的那个
+    showRemove : true, //显示移除按钮,跟随文本框的那个
     showClose:false,//显示关闭按钮
     showCaption: true,//是否显示标题,就是那个文本框
     uploadAsync:true,//是否异步
@@ -768,7 +768,7 @@ $("#upFrequencyPicture").fileinput({
     enctype: 'multipart/form-data',
     previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
     previewSettings: {//限制预览区域的宽高
-        image: {width: "0px", height: "0px"},
+    	image: {width: "160px", height: "160px"}
     },
     uploadExtraData: function (previewId, index) {//携带其他一些数据的格式
         var data = {
