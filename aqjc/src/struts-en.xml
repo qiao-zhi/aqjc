@@ -28,6 +28,7 @@
 		<action name="enApplyInfo_selAllApplyList" class="com.tyust.web.action.en.EnApplyInfoAction" method="selAllApplyList">
 			
 		</action>
+				
 		
 	</package>
 	
