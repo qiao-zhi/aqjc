@@ -99,6 +99,7 @@ function load(){
 		success : function(data) {
 			var json = eval(data.rows);
 			if(json.length>0){
+				$("#selectedInsTab1  tr:not(:first)").html("");
 				for(var v=0;v<json.length;v++){
 					$("#selectedInsTab1").append("<tr><td><input type='hidden' name='insId1' value='"+json[v].InstrumentId+"'/><div>"+json[v].Name+"</div></td>"+
 							"<td>"+json[v].Model+"</td>"+
@@ -497,7 +498,7 @@ function loadEnTestPic2(){
                 </div>
                 
                 
-                
+                <div id="imgBigDiv">
  					<div class="box-body planePicture pictureDiv" id="pingmianDiv" style="margin-top:20px;">
 								<!-- 存放之前已经选好的图片 -->
 								<div id="pingmianPriviousDiv">
@@ -582,6 +583,7 @@ function loadEnTestPic2(){
 									</form>
 								</div>
 					</div>
+             	</div>
              </div>
             </div>
             
@@ -634,9 +636,15 @@ function loadEnTestPic2(){
 		<div class="modal-content">
 			
              <div class="box-body">
-             		<!-- <div style="float: left;height:100%;">><</div> -->
-             		<div><img id="dynamicImage" src=""  style="width:90%;height:90%"></div>
-             		<!-- <div style="float: left;height:100%;">><</div> -->
+             		 <span style="">
+             		 	<img alt="" src="${baseurl }/images/left.jpg" style="width:40px;height:60px;margin-bottom:40%" title="点击查看上一张" onclick="lastImg()">
+             		 </span>
+             		<span>
+             			<img id="dynamicImage" src=""  style="width:83%;height:83%">
+             		</span>
+             		<span style="">
+             			<img alt="" src="${baseurl }/images/right.jpg" style="width:40px;height:60px;margin-bottom:40%" title="点击查看下一张" onclick="nextImg()">
+           			</span>
          	</div><!-- /.box-body -->
         </div>
      </div>
