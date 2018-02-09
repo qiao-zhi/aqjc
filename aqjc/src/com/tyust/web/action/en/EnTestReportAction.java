@@ -92,7 +92,7 @@ public class EnTestReportAction extends ActionSupport{
 			}
 			jsonObject.put("rows", jsonArray);
 			jsonObject.put("page", pageNum);
-			jsonObject.put("total", list.size());
+			jsonObject.put("total", enTestReportService.getEnTestReportDAO().countByExample(ex));
 			ServletActionContext.getResponse().getWriter().write(jsonObject.toString());
 		}catch (JSONException e) {
 			e.printStackTrace();

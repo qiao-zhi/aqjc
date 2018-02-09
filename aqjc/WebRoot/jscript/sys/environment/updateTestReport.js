@@ -178,6 +178,33 @@ function loadEnTestPic(pictureType){
 		}
 	});
 }
+/**
+ * 加载设备信息
+ */
+function showInsTab(){
+	$.ajax({
+		url : contextPath+'/enTestReport_getInstrumentInfosByReportId.do',
+		data : {'useType':'3',
+			'enTestReportId' : $("#environmentTestReportId").val()//报告编号
+			},
+		type : 'POST',
+		async:false,
+		dataType : 'json',
+		success : function(response) {
+			var json = response.instrumentInfos;
+			if(json.length>0){
+				$("#selectedInsTab  tr:not(:first)").html("");
+				for(var v=0;v<json.length;v++){
+					$("#selectedInsTab").append("<tr><td><input type='hidden' name='insId' value='"+json[v].instrumentId+"'/>"+json[v].name+"</td>"+
+							"<td>"+json[v].model+"</td>"+
+							"<td>"+json[v].code+"</td>"+
+							"<td>"+json[v].manufacturer+"</td>"+
+							"<td><a href='javascript:void(0)' onclick='delSeletedIns(this)'><i class='fa fa-trash'></i></td></tr>");
+				}
+			}
+		}
+	});
+}
 // 删除图片
 function delEnPic(enPicId){
 		$.ajax({
@@ -239,31 +266,6 @@ $(function(){
 	
 });
 
-function showInsTab(){
-	$.ajax({
-		url : contextPath+'/enTestReport_getInstrumentInfosByReportId.do',
-		data : {'useType':'3',
-			'enTestReportId' : $("#environmentTestReportId").val()//报告编号
-			},
-		type : 'POST',
-		async:false,
-		dataType : 'json',
-		success : function(response) {
-			var json = response.instrumentInfos;
-			if(json.length>0){
-				$("#selectedInsTab  tr:not(:first)").html("");
-				for(var v=0;v<json.length;v++){
-					$("#selectedInsTab").append("<tr><td><input type='hidden' name='insId' value='"+json[v].instrumentId+"'/>"+json[v].name+"</td>"+
-							"<td>"+json[v].model+"</td>"+
-							"<td>"+json[v].code+"</td>"+
-							"<td>"+json[v].manufacturer+"</td>"+
-							"<td><a href='javascript:void(0)' onclick='delSeletedIns(this)'><i class='fa fa-trash'></i></td></tr>");
-				}
-			}
-		}
-	});
-}
-
 function validate(){
 	if($("#testReportNumber").val() == "") {
 		return true;
@@ -322,7 +324,7 @@ function validatePicture(){
 			success : function(data){
 				if(data.result=="success"){
 					alert("保存成功");
-					window.location.reload();
+					window.location.href=contextPath+"/admin/environment/enTestReport_list.jsp";
 				}
 			},
 			error : function(data){
@@ -436,7 +438,6 @@ $("#upPlanePicture").fileinput({
 }).on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-        	alert("上传成功!");
         	$(this).fileinput("reset");
         	loadEnTestPic("4");
         }
@@ -479,14 +480,17 @@ $("#upPlanePicture").fileinput({
 	    var form = data.form, files = data.files, extra = data.extra,
 	        response = data.response, reader = data.reader;
 	}).on("filebatchselected", function(event, files) {//文件选中函数(选完上传)
+		isReset = false ; 
 		$(this).fileinput("upload");
 	}).on("fileuploaded", function(event, data) {//上传成功之后的一些处理(成功之后重置)
 	        if(data.response)
 	        {
-	           alert('上传成功');
-	           //查询环境检测照片
-	           $("#upEnvironmentPicture").fileinput("reset");
-	           loadEnTestPic("3");
+	        	if(!isReset){
+	 	           //查询环境检测照片
+	 	           $("#upEnvironmentPicture").fileinput("reset");
+	 	           loadEnTestPic("3");
+	        		isReset = true;
+		        	}
 	        }
 	    });
 /**
@@ -524,13 +528,17 @@ $("#upProcessPicture").fileinput({
         response = data.response, reader = data.reader;
 }).on("filebatchselected", function(event, files) {//文件选中函数
 	$(this).fileinput("upload");
+	isReset = false ; 
 }) .on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-	           alert('上传成功');
-	           //查询环境检测照片
-	           $("#upProcessPicture").fileinput("reset");
-	           loadEnTestPic("1");
+	        	if(!isReset){
+	 	           //查询环境检测照片
+	 	           $("#upProcessPicture").fileinput("reset");
+	 	           loadEnTestPic("1");
+	        		isReset = true;
+	        	}
+	           
         }
     });
 /**
@@ -572,7 +580,6 @@ $("#upFrequencyPicture").fileinput({
 }).on("fileuploaded", function(event, data) {//上传成功之后的一些处理
         if(data.response)
         {
-        	alert("上传成功!");
         	if(!isReset){
         		$("#upFrequencyPicture").fileinput("reset");//将此插件重置(前提是不显示上传进度条，否则将留下进度条)
         		loadEnTestPic("2");//执行页面的一个JS函数重新查询图片
@@ -581,5 +588,32 @@ $("#upFrequencyPicture").fileinput({
         }
     });
 /************E    四种图片上传插件的显示*/
+
+
+/************  S   预览图片的上一张下一张*******************/
+function lastImg(){
+	var src = $("#dynamicImage").attr("src");
+	var imgName = src.toString().substring(src.length-36);//获取图片名字
+	var imgParent = $("#imgBigDiv").find("[src$='"+imgName+"']").parent();//获取到class为imageDiv的div
+	var lastImageDiv = imgParent.prev("div");
+	if(lastImageDiv.length == 0){
+		alert("已经是第一张了");
+	}else{
+		$("#dynamicImage").prop("src",lastImageDiv.children("img").prop("src"));
+	}
+}
+function nextImg(){
+	var src = $("#dynamicImage").attr("src");
+	var imgName = src.toString().substring(src.length-36);//获取图片名字
+	var imgParent = $("#imgBigDiv").find("[src$='"+imgName+"']").parent();//获取到class为imageDiv的div
+	var lastImageDiv = imgParent.next("div");
+	if(lastImageDiv.length == 0){
+		alert("已经是最后一张了");
+	}else{
+		$("#dynamicImage").prop("src",lastImageDiv.children("img").prop("src"));
+	}
+}
+/************  E   预览图片的上一张下一张*******************/
+
 
 

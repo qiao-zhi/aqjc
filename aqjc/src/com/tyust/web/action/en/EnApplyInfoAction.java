@@ -109,14 +109,16 @@ public class EnApplyInfoAction {
 		example.setOrderByClause("environment_apply_date desc");
 		EnApplyInfoExample.Criteria cri = example.createCriteria();
 		/****取消单位限制*****/
-//		cri.andEnvironmentApplyUnitIdEqualTo(unitId);
+		if(!unitId.equals("1"))
+			cri.andEnvironmentApplyUnitIdEqualTo(unitId);
 		String state = request.getParameter("state");
 		if (state != null && !state.equals("all")) {
 			cri.andEnvironmentApplyStatusEqualTo(state);
 		}
 
 		List<EnApplyInfo> list = enApplyInfoService.getEnApplyInfoDAO().selectByExample(example);
-		int count = list.size();
+		/*int count = list.size();*/
+		int count = enApplyInfoService.getEnApplyInfoDAO().countByExample(example);
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		int i = 1;
@@ -405,7 +407,7 @@ public class EnApplyInfoAction {
 		TBaseUnitInfo unit = new TBaseUnitInfo();
 
 		List<EnApplyInfo> list = enApplyInfoService.getEnApplyInfoDAO().selectByExample(ex);
-		int total = list.size();
+		int total = enApplyInfoService.getEnApplyInfoDAO().countByExample(ex);
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		EnApplyInfo info = new EnApplyInfo();

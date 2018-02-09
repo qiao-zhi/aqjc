@@ -808,12 +808,14 @@ $(function(){
 		}
 	});
 	$("#submit").click(function() {
-		$("#operate").val("submit");
-		if (validate()){
-			alert("请完善信息");
-			return;
+		if(confirm("您确认保存信息?保存之后可以修改!")){
+			if (validate()){
+				alert("请完善信息");
+				return;
+			}
+			$("#operate").val("submit");
+			saveInfo();
 		}
-		saveInfo();
 	});
 	
 	
@@ -836,7 +838,7 @@ function load(){
 			var json = eval(data.rows);
 			if(json.length>0){
 				for(var v=0;v<json.length;v++){
-					$("#selectedInsTab1").append("<tr><td><input type='hidden' name='insId' value='"+json[v].InstrumentId+"'/><div>"+json[v].Name+"</div></td>"+
+					$("#selectedInsTab1").append("<tr><td><input type='hidden' name='insId1' value='"+json[v].InstrumentId+"'/><div>"+json[v].Name+"</div></td>"+
 							"<td>"+json[v].Model+"</td>"+
 							"<td>"+json[v].Code+"</td>"+
 							"<td>"+json[v].Manufacturer+"</td>"+
@@ -992,7 +994,7 @@ function validate(){
 		$.ajax({
 			url : '<%=request.getContextPath()%>/enTestReport_saveReportAndIns.do',
 			data : {'enTestReportId' : $("#environmentTestReportId").val(),
-				'insIdStr' : insIdStr},
+				'insIdStr' : insIdStr.toString().substring(0,insIdStr.length-1)},
 			dataType : 'json',
 			type : 'POST',
 			success : function(data){
