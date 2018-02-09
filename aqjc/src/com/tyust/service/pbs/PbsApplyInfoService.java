@@ -9,6 +9,7 @@ import com.tyust.bean.pbs.PbsAttach;
 import com.tyust.bean.pbs.PbsPic;
 import com.tyust.bean.pbs.PbsPicExample;
 import com.tyust.common.FileHandler;
+import com.tyust.common.FileNameUtil;
 import com.tyust.dao.pbs.PbsApplyInfoDAO;
 import com.tyust.dao.pbs.PbsAttachDAO;
 import com.tyust.dao.pbs.PbsPicDAO;
@@ -141,13 +142,16 @@ public class PbsApplyInfoService {
 	// 屏蔽室附件上传
 	public void insertPbsAttach(PbsAttach record, File pbsApplyInfoAttach, String pbsApplyInfoAttachFileName) {
 		String pbsAttachId = UUID.randomUUID().toString();
-		String fileType = pbsApplyInfoAttachFileName.substring(pbsApplyInfoAttachFileName.indexOf("."));
-		String pbsAttachUrl = pbsAttachId + fileType;
+		//获取文件类型
+		String fileType = FileNameUtil.getFileSufix(pbsApplyInfoAttachFileName);
+		String pbsAttachUrl = pbsAttachId +"."+ fileType;
 		// 保存文件
-		FileHandler.uploadFile(pbsApplyInfoAttach, pbsAttachUrl, "pbsAttach");
+		//FileHandler.uploadFile(pbsApplyInfoAttach, pbsAttachUrl, "pbsAttach");
+		FileHandler.uploadFileToDisk(pbsApplyInfoAttach, pbsAttachUrl, "pbsfile");
 		record.setPbsAttachId(pbsAttachId);
 		record.setPbsAttachName(pbsApplyInfoAttachFileName);
-		record.setPbsAttachUrl(pbsAttachUrl);
+		//数据库中保存PDF格式的文件
+		record.setPbsAttachUrl(pbsAttachId+".pdf");
 		Date pbsAttachDate = new Date();
 		record.setPbsAttachDate(pbsAttachDate);
 		// 保存记录
@@ -158,7 +162,9 @@ public class PbsApplyInfoService {
 	public void delPbsAttach(String pbsAttachId) {
 		// 获取附件url
 		String pbsAttachUrl = pbsAttachDAO.selectByPrimaryKey(pbsAttachId).getPbsAttachUrl();
-		FileHandler.deleteFile(pbsAttachUrl, "pbsAttach");
+		//FileHandler.deleteFile(pbsAttachUrl, "pbsAttach");
+		//删除磁盘中的文件
+		FileHandler.deleteFileFromDisk(pbsAttachUrl, "pbsfile");
 		pbsAttachDAO.deleteByPrimaryKey(pbsAttachId);
 	}
 

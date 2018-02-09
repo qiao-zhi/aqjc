@@ -3,7 +3,33 @@ package com.tyust.bean.pbs;
 import java.util.Date;
 
 public class PbsTestReport {
+	
+	/************ S ll 屏蔽室检测报告增加的字段**********/
+	private String pbsTestSampleName;//样品名称
 
+    private String pbsTestTypeSpecification;//型号规格
+
+    private String pbsTestTemperature;//温度
+
+    private String pbsTestHumidity;//湿度
+
+    private String pbsTestProject;//检测项目
+
+    private String pbsTestStandard;//依据标准
+
+    private String pbsTestLocation;//检测位置
+
+    private String pbsTestGrade;//符合性能依据（等级）
+
+    private String pbsTestConclusion;//检测结论
+
+    private Date pbsTestCompletionTime;//建成时间
+
+    private String pbsTestPbsStatus;//状态
+
+    private String pbsTestPbsSize;//尺寸
+	/************ D ll 屏蔽室检测报告增加的字段**********/
+	
     private String pbsTestReportId;
 
     private String pbsApplyId;
@@ -138,4 +164,126 @@ public class PbsTestReport {
     public void setTestStatus(String testStatus) {
         this.testStatus = testStatus;
     }
+
+
+	public String getPbsTestSampleName() {
+		return pbsTestSampleName;
+	}
+
+
+	public void setPbsTestSampleName(String pbsTestSampleName) {
+		this.pbsTestSampleName = pbsTestSampleName;
+	}
+
+
+	public String getPbsTestTypeSpecification() {
+		return pbsTestTypeSpecification;
+	}
+
+
+	public void setPbsTestTypeSpecification(String pbsTestTypeSpecification) {
+		this.pbsTestTypeSpecification = pbsTestTypeSpecification;
+	}
+
+
+	public String getPbsTestTemperature() {
+		return pbsTestTemperature;
+	}
+
+
+	public void setPbsTestTemperature(String pbsTestTemperature) {
+		this.pbsTestTemperature = pbsTestTemperature;
+	}
+
+
+	public String getPbsTestHumidity() {
+		return pbsTestHumidity;
+	}
+
+
+	public void setPbsTestHumidity(String pbsTestHumidity) {
+		this.pbsTestHumidity = pbsTestHumidity;
+	}
+
+
+	public String getPbsTestProject() {
+		return pbsTestProject;
+	}
+
+
+	public void setPbsTestProject(String pbsTestProject) {
+		this.pbsTestProject = pbsTestProject;
+	}
+
+
+	public String getPbsTestStandard() {
+		return pbsTestStandard;
+	}
+
+
+	public void setPbsTestStandard(String pbsTestStandard) {
+		this.pbsTestStandard = pbsTestStandard;
+	}
+
+
+	public String getPbsTestLocation() {
+		return pbsTestLocation;
+	}
+
+
+	public void setPbsTestLocation(String pbsTestLocation) {
+		this.pbsTestLocation = pbsTestLocation;
+	}
+
+
+	public String getPbsTestGrade() {
+		return pbsTestGrade;
+	}
+
+
+	public void setPbsTestGrade(String pbsTestGrade) {
+		this.pbsTestGrade = pbsTestGrade;
+	}
+
+
+	public String getPbsTestConclusion() {
+		return pbsTestConclusion;
+	}
+
+
+	public void setPbsTestConclusion(String pbsTestConclusion) {
+		this.pbsTestConclusion = pbsTestConclusion;
+	}
+
+
+	public Date getPbsTestCompletionTime() {
+		return pbsTestCompletionTime;
+	}
+
+
+	public void setPbsTestCompletionTime(Date pbsTestCompletionTime) {
+		this.pbsTestCompletionTime = pbsTestCompletionTime;
+	}
+
+
+	public String getPbsTestPbsStatus() {
+		return pbsTestPbsStatus;
+	}
+
+
+	public void setPbsTestPbsStatus(String pbsTestPbsStatus) {
+		this.pbsTestPbsStatus = pbsTestPbsStatus;
+	}
+
+
+	public String getPbsTestPbsSize() {
+		return pbsTestPbsSize;
+	}
+
+
+	public void setPbsTestPbsSize(String pbsTestPbsSize) {
+		this.pbsTestPbsSize = pbsTestPbsSize;
+	}
+    
+    
 }

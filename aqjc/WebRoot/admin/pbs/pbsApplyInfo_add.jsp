@@ -3,6 +3,7 @@
 <%@ page import="org.springframework.context.ApplicationContext,org.springframework.web.context.support.WebApplicationContextUtils"%>
 <%@ page import="com.tyust.dao.unit.IunitDao,com.tyust.bean.unit.TBaseUnitInfo"%>
 <%@ page import="java.util.*,com.tyust.common.DateHandler" %>
+<%@include file="/public/tag.jsp"%>
 <%
 	// 获取当前用户
 	TBaseUserInfo user = (TBaseUserInfo) request.getSession().getAttribute("user");
@@ -38,7 +39,14 @@
 		.dataTab input{width:220px;height:23px;}
 		.dataTab select{width:110px;height:22px;}
 	</style>
-
+	
+	<!-- S    ll引入的bootstrapFileinput的CSS -->
+	<link rel="stylesheet" type="text/css"
+		href="${baseurl}/bootstrapFileinput/css/default.css">
+	<link href="${baseurl}/bootstrapFileinput/css/fileinput.css" media="all"
+		rel="stylesheet" type="text/css" />
+	<!-- E   ll引入的bootstrapFileinput的CSS -->
+	
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -70,7 +78,7 @@
                   	  <div class="form-group">
                        <label for="input1" class="col-sm-4 control-label">申请单位</label>
                       <div class="col-sm-8" style="padding-top:5px;font-size:15px;">
-                      	<select id="pbsApplyUnitName" name="pbsApplyInfo.pbsApplyUnitId" class="form-control select2" style="width: 100%;">
+                      	<select id="pbsApplyUnitName" name="pbsApplyInfo.pbsApplyUnitId" class="form-control" style="width: 100%;">
                       		
                     	</select>
                       </div>
@@ -107,6 +115,42 @@
                     </div>
                   </div>
                 </div>
+                <!--S 新增字段 ll -->
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                    <label for="input1" class="col-sm-4 control-label">生产单位</label>
+                    <div class="col-sm-8">
+                       <input name="pbsApplyInfo.pbsApplyProduction" type="text" class="form-control" >
+                    </div>
+                    </div>
+                   </div>
+                   <div class="col-sm-6">
+                     <div class="form-group">
+                     <label for="input1" class="col-sm-4 control-label">评测等级</label>
+                      <div class="col-sm-8">
+                       <select class="form-control" name="pbsApplyInfo.pbsApplyGrade">
+						    <option value="A">A级</option>
+							<option value="B">B级</option>
+							<option value="C" selected>C级</option>
+							<option value="D">D级</option>
+						</select>
+                     </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="input1" class="col-sm-2 control-label">申请意见</label>
+							<div class="col-sm-10">
+								<textarea id="add_opinion" name="pbsApplyInfo.pbsApplyOpinion" class="textarea333" placeholder="请填写申请意见" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+                <!--D 新增字段 ll -->
                 <!-- 隐藏项 ：操作-提交与保存-->
                 <input type="hidden" id="operate" name="operate" value="save"/>
                 </form>
@@ -116,18 +160,22 @@
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">申请书扫描照片PDF文件</h3>
+                 <button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('${baseurl}/admin/scanner_file.jsp')">扫描</button>
               </div>
               <div class="box-body">
-         		<div id="container">
+         		<!-- <div id="container"> -->
+         		<div>
              	 <form id="attach_form1" enctype="multipart/form-data">
               	 	<input id="attach_pbsApplyId1" name="pbsApplyInfo.pbsApplyId" type="hidden"/>
               	 	<input name="pbsAttach.pbsAttachType" type="hidden" value="1"/>
 					<input id="attach1" name="pbsApplyInfoAttach" class="file" type="file" multiple data-min-file-count="1">
+					<!-- <input id="bootUpOne" class="file" type="file"	name="pbsApplyInfoAttach"> -->
 				</form>
                </div>
               </div>
             </div>
             
+           
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">申请书电子版</h3>
@@ -209,7 +257,10 @@ function loadUnitName(){
 			var data = eval(data);
 			var optionStr = "";
 			for(var i=0;i<data.length;i++){
-				optionStr += "<option value="+data[i].unitId+">"+data[i].unitName+"</option>";
+				if(i == 0)
+					optionStr += "<option value="+data[i].unitId+" selected>"+data[i].unitName+"</option>";
+				else
+					optionStr += "<option value="+data[i].unitId+">"+data[i].unitName+"</option>";
 			}
 			$("#pbsApplyUnitName").append(optionStr);
 		},
@@ -303,9 +354,20 @@ function fileUpload2(id){
 //准备附件上传的样式
 $("#attach1").fileinput({
 	  language : 'zh',
+	  uploadUrl:'#',
+ 	  dropZoneEnabled: false,//是否显示拖拽区域
+	  showPreview:true,//是否显示预览区域
 	  showUpload: false, //是否显示上传按钮
-      allowedFileExtensions : ['pdf']
-   });
+	  showCaption: true,//是否显示标题,就是那个文本框
+      allowedFileExtensions : ['pdf'],
+      layoutTemplates:{//预览区域删除按钮与上传按钮的显示
+	         actionUpload:''//上传按钮不显示
+	    },
+      previewSettings: {//限制预览区域的宽高
+        pdf: {width: "0px", height: "0px"}
+      }
+	    
+   }); 
    
 $("#attach2").fileinput({
 	  language : 'zh',
@@ -315,6 +377,7 @@ $("#attach2").fileinput({
  
 //Initialize Select2 Elements
 $(".select2").select2();
+
 </script>
 </body>
 </html>
