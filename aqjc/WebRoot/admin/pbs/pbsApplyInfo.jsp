@@ -101,6 +101,39 @@
                     </div>
                   </div>
                 </div>
+                
+                <!--S 新增字段 ll -->
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                    <label for="input1" class="col-sm-4 control-label">生产单位</label>
+                    <div class="col-sm-8">
+                       <input id="pbsApplyProduction" name="pbsApplyInfo.pbsApplyProduction" readonly="readonly" type="text" class="form-control" >
+                    </div>
+                    </div>
+                   </div>
+                   <div class="col-sm-6">
+                     <div class="form-group">
+                     <label for="input1" class="col-sm-4 control-label">评测等级</label>
+                      <div class="col-sm-8">                      
+						<input id="pbsApplyGrade"  readonly="readonly" type="text" class="form-control" >
+                     </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="row">
+					<div class="col-sm-12">
+						<div class="form-group">
+							<label for="input1" class="col-sm-2 control-label">申请意见</label>
+							<div class="col-sm-10">
+								<textarea id="pbsApplyOpinion" readonly="readonly" name="pbsApplyInfo.pbsApplyOpinion" class="textarea333" placeholder="请填写申请意见" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+                <!--D 新增字段 ll -->
+                
                 <!-- 隐藏 -->
                 <input type="hidden" id="operate" name="operate" value="add"/>
                 </form>
@@ -163,6 +196,9 @@
 				$("#pbsApplyDate").val(info.pbsApplyDate);
 				$("#pbsApplyUserName").val(info.pbsApplyUserName);
 				$("#pbsApplyTel").val(info.pbsApplyTel);
+				$("#pbsApplyProduction").val(info.pbsApplyProduction);
+				$("#pbsApplyGrade").val(info.pbsApplyGrade+"级");
+				$("#pbsApplyOpinion").val(info.pbsApplyOpinion);
 			}
 		});
 	}
@@ -179,8 +215,11 @@
 				var info = eval(response);
 				var url = info[0].fileUrl;
 				var fileName = info[0].fileName;
-				var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
-				$("#fileName1").append("<a href='"+URL+"'>"+fileName+"</a>");
+				var fileUrl = info[0].pbsAttachUrl;
+				//在线预览PDF
+				var URL ='/pbs/file/'+fileUrl;
+				//var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
+				$("#fileName1").append("<a href='"+URL+"' target='_blank'>"+fileName+"</a>");
 			}
 		});
 	}
@@ -196,8 +235,11 @@
 				var info = eval(response);
 				var url = info[0].fileUrl;
 				var fileName = info[0].fileName;
-				var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
-				$("#fileName2").append("<a href='"+URL+"'>"+fileName+"</a>");
+				var fileUrl = info[0].pbsAttachUrl;
+				//在线预览PDF
+				var URL ='/pbs/file/'+fileUrl;
+				//var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
+				$("#fileName2").append("<a href='"+URL+"' target='_blank'>"+fileName+"</a>");
 			}
 		});
 	}

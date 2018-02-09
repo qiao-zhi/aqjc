@@ -8,6 +8,7 @@
 <%@ page import="com.tyust.dao.unit.IunitDao"%>
 <%@ page import="com.tyust.dao.user.IuserDao"%>
 <%@ page import="java.util.*,com.tyust.common.DateHandler"%>
+<%@include file="/public/tag.jsp"%>
 <%
 	ApplicationContext context = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getSession().getServletContext());
 	
@@ -128,6 +129,44 @@
 															</div>
 														</div>
 													</div>
+													
+													<!--S 新增字段 ll -->
+									                <div class="row">
+									                  <div class="col-sm-6">
+									                    <div class="form-group">
+									                    <label for="input1" class="col-sm-4 control-label">生产单位</label>
+									                    <div class="col-sm-8">
+									                       <input id="pbsApplyProduction" name="pbsApplyInfo.pbsApplyProduction" type="text" class="form-control" >
+									                    </div>
+									                    </div>
+									                   </div>
+									                   <div class="col-sm-6">
+									                     <div class="form-group">
+									                     <label for="input1" class="col-sm-4 control-label">评测等级</label>
+									                      <div class="col-sm-8">
+									                       <select id="pbsApplyGrade" class="form-control" name="pbsApplyInfo.pbsApplyGrade">
+															    <option value="A">A级</option>
+																<option value="B">B级</option>
+																<option value="C" selected>C级</option>
+																<option value="D">D级</option>
+															</select>
+									                     </div>
+									                    </div>
+									                  </div>
+									                </div>
+									                
+									                <div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label for="input1" class="col-sm-2 control-label">申请意见</label>
+																<div class="col-sm-10">
+																	<textarea id="pbsApplyOpinion" name="pbsApplyInfo.pbsApplyOpinion" class="textarea333" placeholder="请填写申请意见" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+																</div>
+															</div>
+														</div>
+													</div>
+									                <!--D 新增字段 ll -->
+													
 													<!-- 屏蔽室申请id -->
 													<input type="hidden" id="pbsApplyId"
 														name="pbsApplyInfo.pbsApplyId" value="<%=pbsApplyId%>">
@@ -237,6 +276,9 @@
 				$("#pbsApplyDate").val(info.pbsApplyDate);
 				$("#pbsApplyUserName").val(info.pbsApplyUserName);
 				$("#pbsApplyTel").val(info.pbsApplyTel);
+				$("#pbsApplyProduction").val(info.pbsApplyProduction);
+				$("#pbsApplyGrade").val(info.pbsApplyGrade);
+				$("#pbsApplyOpinion").val(info.pbsApplyOpinion);
 			}
 		});
 	}
@@ -258,9 +300,12 @@
 				} else {
 					var url = info[0].fileUrl;
 					var fileName = info[0].fileName;
+					var fileUrl = info[0].pbsAttachUrl;
 					var pbsAttachId = info[0].pbsAttachId;
-					var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
-					$("#fileName1").append("<a href='"+URL+"'>"+fileName+"</a>");
+					//var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
+					//在线预览PDF
+					var URL ='/pbs/file/'+fileUrl;
+					$("#fileName1").append("<a href='"+URL+"' target='_blank'>"+fileName+"</a>");
 					$("#delAttach1").click(function (){
 						delAttachConf(pbsAttachId,"1");
 					});
@@ -278,16 +323,22 @@
 			dataType : 'json',
 			success : function(response) {
 				var info = eval(response);
-				var v = info[0];
+				var v = info[0];		
 				if (v == null) {
 					$("#file2").empty();
 					loadFileinput2();
 				} else {
 					var url = info[0].fileUrl;
 					var fileName = info[0].fileName;
+					var fileUrl = info[0].pbsAttachUrl;
 					var pbsAttachId = info[0].pbsAttachId;
-					var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;
-					$("#fileName2").append("<a href='"+URL+"'>"+fileName+"</a>");
+					//var URL = '${pageContext.request.contextPath}/pbsApplyInfo_downAttach.do?filename='+url;					
+					/* //在线预览PDF
+					var fileNewName = fileUrl.substring(0, fileUrl.lastIndexOf("."));					
+					var URL ='/pbs/file/'+fileNewName+'.pdf'; */
+					//在线预览PDF
+					var URL ='/pbs/file/'+fileUrl;
+					$("#fileName2").append("<a href='"+URL+"' target='_blank'>"+fileName+"</a>");
 					$("#delAttach2").click(function (){
 						delAttachConf(pbsAttachId,'2');
 					});

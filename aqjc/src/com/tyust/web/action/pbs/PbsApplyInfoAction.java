@@ -234,6 +234,9 @@ public class PbsApplyInfoAction {
 			json.put("pbsApplyDate", DateHandler.dateToString(info.getPbsApplyDate()));
 			json.put("pbsApplyUserName", info.getPbsApplyUserName());
 			json.put("pbsApplyTel", info.getPbsApplyTel());
+			json.put("pbsApplyProduction", info.getPbsApplyProduction());
+			json.put("pbsApplyGrade", info.getPbsApplyGrade());
+			json.put("pbsApplyOpinion", info.getPbsApplyOpinion());
 		}
 		ServletActionContext.getResponse().getWriter().write(json.toString());
 		return null;
@@ -282,6 +285,7 @@ public class PbsApplyInfoAction {
 					json.put("fileUrl", attach.getPbsAttachUrl());
 					json.put("fileName", attach.getPbsAttachName());
 					json.put("pbsAttachId", attach.getPbsAttachId());
+					json.put("pbsAttachUrl", attach.getPbsAttachUrl());
 					jsonArray.put(json);
 				}
 			}
