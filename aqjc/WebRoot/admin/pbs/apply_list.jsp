@@ -44,9 +44,15 @@ $(function(){
 				if (selected_count == 1){
 					$('.trSelected td:nth-child(3) div', grid).each(function(i) {
 						var id = $(this).text();
-						var c = confirm("确定删除该申请记录的所有信息吗？");
-						if (c == true) {
-							delApply(id);
+						var $tds = $(this).parents("tr").children("td");
+						var status = $tds.eq(4).children().text();
+						if(status=="未提交"){							
+							var c = confirm("确定删除该申请记录的所有信息吗？");
+							if (c == true) {								
+								delApply(id);
+							}
+						}else{
+							alert("不能删除！")
 						}
 					});
 				} else {
@@ -93,7 +99,10 @@ $(function(){
 					<select id="search_state" name="state">
 					    <option value="all">请选择</option>
 						<option value="1">未提交</option>
-						<option value="2">已提交</option>
+						<option value="2">待审核</option>
+						<option value="3">审核未通过</option>
+						<option value="4">审核通过</option>
+						<option value="5">已检测</option>
 					</select>
 				</td>
 				<td class="btn-td">

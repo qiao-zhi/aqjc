@@ -172,7 +172,7 @@
                     <div class="form-group">
                     <label for="input1" class="col-sm-3 control-label">审核人</label>
                     <div class="col-sm-8">
-                      <input id="auditUserName" type="text" class="form-control" readonly>
+                      <input id="auditUserName" type="text" class="form-control">
                     </div>
                     </div>
                    </div>
@@ -194,24 +194,16 @@
                    		 <label for="pbsApplyDate" class="col-sm-4 control-label">审核意见</label>
 	              	 	<div class="col-sm-12">
 	              	 		<br/>
-	               			<textarea id="auditOppinion"  class="textarea333" placeholder="请填写审核意见" readonly style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>     
+	               			<textarea id="auditOppinion"  class="textarea333" placeholder="请填写审核意见" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>     
 	              		</div>
               		</div>
               	 </div>
-              	 <!-- 审核结果 -->
-              	  <div class="row">
-		              <div class="col-sm-6">
-		                <form class="form-horizontal">
-		                  <div class="form-group">
-		                    <label for="input1" class="col-sm-4 control-label">审核结果</label>
-		                    <div class="col-sm-8">
-		                      <span id="auditResult" style="padding-left:10px;padding-top:5px;padding-bottom:5px;font-size:25px;font-family:黑体;"></span>
-		                    </div>
-		                  </div>
-		                </form>
-		              </div>
-	            	</div> 
-            	              	 
+              <input type="hidden" id="auditResult"/>
+              <div style="text-align:center">
+				      <button id="audityes" type="button" class="btn btn-info">审核通过</button>
+		              <button id="auditno" type="button" style="margin-left:20px;" class="btn btn-default">不通过</button>
+		      </div>
+             
             <!-- ll 增加审核信息 -->
             </div>
            </div>   
@@ -232,12 +224,16 @@
 <!-- ./wrapper -->
 <script src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
+
+<!-- 日期控件 -->
+<script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
+
+
 <script>
 	$(function() {
 		showPbsApplyInfo();
 		showPbsAttach1();
 		showPbsAttach2();
-		showPbsAuditInfo();
 	});
 
 	// 显示屏蔽室申请信息
@@ -299,29 +295,56 @@
 			}
 		});
 	}
-	
-	function showPbsAuditInfo(){
+	/* ll 添加的  S*/
+	$(document).ready(function(){
+		$("#audityes").click(function (){
+			$("#auditResult").val("1");
+			saveInfo();
+		});
+		$("#auditno").click(function (){
+			$("#auditResult").val("2");
+			saveInfo();
+		});
+	});
+	/* 保存审核信息 */
+	function saveInfo(){
+		
+		var auditResult = $("#auditResult").val();
+		var auditOppinion = $("#auditOppinion").val();
+		var pbsApplyId = '<%=pbsApplyId %>';		
+		var auditUserName = $("#auditUserName").val();
+		var auditDate = $("#auditDate").val();		
+		if(auditUserName == "" || auditDate == "" || auditOppinion == ""){
+			alert("请完善审核信息!");
+			return;
+		}
+		if(!confirm("确认进行审核?审核之后审核信息不可更改!")){
+			return;
+		}
 		$.ajax({
-			url:"${pageContext.request.contextPath}/pbsApplyInfo_selEnApplyAudit.do",
-			data:{"pbsApplyId":'<%= pbsApplyId%>'},
-			type:"post",
-			dataType:"json",
-			success:function(responce){
-				var audit = eval(responce);
-				$("#auditOppinion").val(audit.auditOppinion);
-				$("#auditDate").val(audit.auditDate);
-				$("#auditUserName").val(audit.auditUser);
-				if(audit.auditResult == "1"){
-					$("#auditResult").html("通过");
-				} else if(audit.auditResult == "2"){
-					$("#auditResult").html("不通过");
+			url : '${pageContext.request.contextPath}/pbsApplyInfo_savePbsApplyAudit.do',
+			data : {'pbsApplyAudit.auditResult' : auditResult,//审核结果
+				'pbsApplyAudit.auditOppinon' : auditOppinion,//审核意见
+				'pbsApplyAudit.auditUser':auditUserName,//审核人
+				'pbsApplyAudit.auditDate':auditDate,//审核日期
+				'pbsApplyAudit.pbsApplyId' : pbsApplyId},
+			dataType : 'json',
+			type : 'POST',
+			success : function(data){
+				var data = eval(data);
+				if(data.result == "success"){
+					alert("审核成功");
+					window.location.href = 'apply_audit_list.jsp';
+				} else {
+					alert("保存错误");
 				}
 			},
-			error:function(){
-				alert("加载审核信息失败！")
+			error : function(){
+				alert("审核错误");
 			}
-		})
+		});
 	}
+	/* ll  E*/
 	
 </script>
 </body>

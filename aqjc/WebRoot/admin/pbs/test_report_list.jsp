@@ -289,14 +289,14 @@
 	<div id="searchDiv">
 		<table id="serach-table">
 			<tr>
-				<td class="title_td">申请部门</td>
+				<!-- <td class="title_td">申请部门</td>
 				<td><input type="text" id="search_applyUnitName"></td>
 				<td class="title_td">检测日期</td>
 				<td>
 					<input id="search_startDate" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})">
 					--
 					<input id="search_endDate" onclick="WdatePicker({skin:'whyGreen',dateFmt:'yyyy-MM-dd'})">
-				</td>
+				</td> -->
 				<td class="title_td">检测报告状态</td>
 				<td colspan="3">
 					<select id="search_state" name="state">
