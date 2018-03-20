@@ -1,5 +1,8 @@
 package com.tyust.dao.pbs;
 
+import com.tyust.bean.app.InstrumentInfo;
+import com.tyust.bean.pbs.PbsTestDatas;
+import com.tyust.bean.pbs.PbsTestInstrument;
 import com.tyust.bean.pbs.PbsTestReport;
 import com.tyust.bean.pbs.PbsTestReportExample;
 import java.util.List;
@@ -161,4 +164,61 @@ public class PbsTestReportDAOImpl extends SqlMapClientDaoSupport implements PbsT
             return record;
         }
     }
+    
+    
+    /******ll 增加的方法 S******/
+    //获取屏蔽室检测报告编号用于生成新的检测报告编号
+	@Override
+	public String getPbsTestReportNumber() {
+		String num = (String) getSqlMapClientTemplate().queryForObject("PBS_TEST_REPORT.ibatorgenerated_selectPbsNum");
+		return num;
+	}
+	
+	//根据屏蔽室检测ID删除屏蔽室检测仪器表中的信息
+	@Override
+	public int deleteTestInsByReportId(String pbsReportId) {
+		int rows = getSqlMapClientTemplate().delete("PBS_TEST_REPORT.deleteTestInsByReportId", pbsReportId);
+		return rows;
+	}
+	
+	//向屏蔽室检测仪器表中插入数据
+	@Override
+	public void insertTestInstrument(PbsTestInstrument pbsTestInstrument) {		
+		getSqlMapClientTemplate().insert("PBS_TEST_REPORT.insertTestInstrument", pbsTestInstrument);
+	}
+	
+	//根据屏蔽室检测编号删除屏蔽室检测数据表中的信息
+	@Override
+	public int deleteTestDatasByReportId(String pbsReportId) {
+		int rows = getSqlMapClientTemplate().delete("PBS_TEST_REPORT.deleteTestDatasByReportId", pbsReportId);
+		return rows;
+	}
+	
+	//向屏蔽室检测数据表中插入数据
+	@Override
+	public void insertTestDatas(PbsTestDatas pbsTestDatas) {
+		getSqlMapClientTemplate().insert("PBS_TEST_REPORT.insertTestDatas", pbsTestDatas);
+	}
+	
+	//根据检测报告ID查询屏蔽室检测仪器信息
+	@Override
+	public List<InstrumentInfo> getPbsInsInfoListByReportId(String testReportId) {
+		List<InstrumentInfo> list = (List<InstrumentInfo>) getSqlMapClientTemplate().queryForList("PBS_TEST_REPORT.getPbsInsInfoListByReportId",testReportId);
+		return list;
+	}
+	
+	//根据检测报告ID查询屏蔽室检测数据信息
+	@Override
+	public List<PbsTestDatas> getPbsTestDatasByReportId(String testReportId) {
+		List<PbsTestDatas> list = (List<PbsTestDatas>) getSqlMapClientTemplate().queryForList("PBS_TEST_REPORT.getPbsTestDatasByReportId",testReportId);
+		return list;
+	}
+	
+	//根据申请ID查询屏蔽室申请单位信息
+	@Override
+	public String getPbsApplyUnitNameByApplyId(String applyId) {		
+		return (String) getSqlMapClientTemplate().queryForObject("PBS_TEST_REPORT.getPbsApplyUnitNameByApplyId",applyId);
+	}
+
+	
 }

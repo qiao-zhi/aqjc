@@ -121,6 +121,12 @@ public class EnApplyInfoAction {
 		int count = enApplyInfoService.getEnApplyInfoDAO().countByExample(example);
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
+		
+		ApplicationContext context = WebApplicationContextUtils
+				.getRequiredWebApplicationContext(request.getSession().getServletContext());
+		IunitDao unitDao = (IunitDao) context.getBean("Unit");
+		TBaseUnitInfo unit = null;
+		
 		int i = 1;
 		try {
 			if (list.size() > 0) {
@@ -129,7 +135,8 @@ public class EnApplyInfoAction {
 					json.put("num", i++);
 					json.put("enApplyId", info.getEnvironmentApplyId());
 					json.put("userName", info.getEnvironmentApplyUserName());
-					json.put("unitName", "NO");
+					unit = unitDao.findUnit(info.getEnvironmentApplyUnitId());
+					json.put("unitName", unit.getUnitName());					
 					json.put("enApplyDate", DateHandler.dateToString(info.getEnvironmentApplyDate()));
 					if (info.getEnvironmentApplyStatus().equals("1")) {
 						// 未提交

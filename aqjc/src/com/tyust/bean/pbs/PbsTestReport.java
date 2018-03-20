@@ -2,6 +2,8 @@ package com.tyust.bean.pbs;
 
 import java.util.Date;
 
+import org.apache.struts2.json.annotations.JSON;
+
 public class PbsTestReport {
 	
 	/************ S ll 屏蔽室检测报告增加的字段**********/
@@ -125,6 +127,7 @@ public class PbsTestReport {
      *
      * @ibatorgenerated
      */
+    @JSON(format="yyyy-MM-dd")
     public Date getTestDate() {
         return testDate;
     }
@@ -255,7 +258,7 @@ public class PbsTestReport {
 		this.pbsTestConclusion = pbsTestConclusion;
 	}
 
-
+	@JSON(format="yyyy-MM-dd")
 	public Date getPbsTestCompletionTime() {
 		return pbsTestCompletionTime;
 	}

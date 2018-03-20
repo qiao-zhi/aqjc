@@ -130,7 +130,8 @@ public class PbsApplyInfoService {
 		// 根据文件ID 获取文件存储路径中的文件名（url）
 		String picUrl = pbsPicDAO.selectByPrimaryKey(pbsPicId).getPbsPicUrl();
 		pbsPicDAO.deleteByPrimaryKey(pbsPicId);
-		FileHandler.deleteFile(picUrl, "pbsPic");
+		//FileHandler.deleteFile(picUrl, "pbsPic");
+		FileHandler.deletePictureFromDisk(picUrl, "pbspicture");
 	}
 
 	public void delPbsPic2(String pbsApplyId,String picType) {

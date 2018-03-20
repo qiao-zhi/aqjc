@@ -35,6 +35,40 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/lightbox/css/lightbox.min.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/css/fileinput.min.css" />
     <script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>	
+	
+	<!-- ll S  -->
+	<script src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/jquery.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/upload_pbsApplyInfo.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
+	<%-- <script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+    --%>	
+	
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.full.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/app.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/demo.js"></script>
+	
+	<!--S bootstrapFileiput的JS  -->
+	<script src="${baseurl }/bootstrapFileinput/js/fileinput.js"
+		type="text/javascript"></script>
+	<!--简体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh.js"
+		type="text/javascript"></script>
+	<!--繁体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh-TW.js"
+		type="text/javascript"></script>
+	<!-- Bootstrap的JS -->
+	<script src="${baseurl }/bootstrapFileinput/js/bootstrap.min.js"
+		type="text/javascript"></script>
+
+	<!--E bootstrapFileiput的JS  -->
+	
+		
+	<!-- ll E  -->
+	
 	<style>
 		.dataTab input{width:220px;height:23px;}
 		.dataTab select{width:110px;height:22px;}
@@ -212,39 +246,31 @@
 
 </div>
 <!-- ./wrapper -->
-<script src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/jquery.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/dist/webuploader.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/webuploader/upload_pbsApplyInfo.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
-<script src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
 
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/bootstrap/js/bootstrap.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.full.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/app.js"></script>
-<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/demo.js"></script>
 <script>
 
 //先提交表单信息，成功后返回该信息的主键，然后在保存相关的图片和附件
 $(document).ready(function(){
 		$("#save").click(function (){
-			$("#operate").val("save");
-			var o = isOK();
-			if (o == true){
-				saveInfo();
+			if(confirm("您确认保存申请信息?保存之后可以修改")){
+				$("#operate").val("save");
+				var o = isOK();
+				if (o == true){
+					saveInfo();
+				}
 			}
 		});
 		$("#submit").click(function (){
-			$("#operate").val("submit");
-			var o = isOK();
-			if (o == true){
-				if (validate()){
-					alert("请完善信息");
-					return;
+			if(confirm("您确认提交申请信息吗?提交之后不可修改")){
+				$("#operate").val("submit");
+				var o = isOK();
+				if (o == true){
+					if (validate()){
+						alert("请完善信息");
+						return;
+					}
+					saveInfo();
 				}
-				saveInfo();
 			}
 		});
 		
@@ -310,6 +336,9 @@ function validate(){
 }
 
 function saveInfo(){
+	//上传前将两个按钮置为不可点击
+	$("#save").prop("disabled",true);
+	$("#submit").prop("disabled",true);
 	$.ajax({
 		url : '<%=request.getContextPath()%>/pbsApplyInfo_savePbsApplyInfo.do',
 		type : 'POST',
@@ -405,6 +434,7 @@ $("#attach2").fileinput({
 //Initialize Select2 Elements
 $(".select2").select2();
 
+ 
 </script>
 </body>
 </html>

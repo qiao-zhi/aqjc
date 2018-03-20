@@ -30,7 +30,7 @@
 	content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
 	name="viewport">
 
-<link rel="stylesheet"	href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
+<%-- <link rel="stylesheet"	href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"	href="<%=request.getContextPath() %>/newStyle/font-awesome-4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet"	href="<%=request.getContextPath() %>/newStyle/ionicons-2.0.1/css/ionicons.min.css">
 <link rel="stylesheet"	href="<%=request.getContextPath() %>/newStyle/dist/css/AdminLTE.min.css">
@@ -41,6 +41,66 @@
 
 <link rel="stylesheet" type="text/css"	href="<%=request.getContextPath() %>/newStyle/plugins/lightbox/css/lightbox.min.css" />
 <link rel="stylesheet" type="text/css" 	href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/css/fileinput.min.css" />
+ --%>
+<!-- ll s -->
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/font-awesome-4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/ionicons-2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/iCheck/flat/blue.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/skins/skin-blue.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.css">
+	
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/webuploader/css/webuploader.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/webuploader/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/lightbox/css/lightbox.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/css/fileinput.min.css" />
+<!-- ll e -->
+
+
+<!-- ll S -->
+	<script
+		src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
+	<%-- <script type="text/javascript"
+		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
+ --%>	<script
+		src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
+	
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript"
+		src="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.full.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/app.js"></script>
+	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/demo.js"></script>
+
+	<!--S bootstrapFileiput的JS  -->
+	<script src="${baseurl }/bootstrapFileinput/js/fileinput.js"
+		type="text/javascript"></script>
+	<!--简体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh.js"
+		type="text/javascript"></script>
+	<!--繁体中文-->
+	<script src="${baseurl }/bootstrapFileinput/js/locales/zh-TW.js"
+		type="text/javascript"></script>
+	<!-- Bootstrap的JS -->
+	<script src="${baseurl }/bootstrapFileinput/js/bootstrap.min.js"
+		type="text/javascript"></script>
+
+	<!--E bootstrapFileiput的JS  -->
+
+<!-- ll E -->
+	
+	<!-- S    ll引入的bootstrapFileinput的CSS -->
+	<link rel="stylesheet" type="text/css"
+		href="${baseurl}/bootstrapFileinput/css/default.css">
+	<link href="${baseurl}/bootstrapFileinput/css/fileinput.css" media="all"
+		rel="stylesheet" type="text/css" />
+	<!-- E   ll引入的bootstrapFileinput的CSS -->s
+	
 <style>
 .dataTab input {
 	width: 220px;
@@ -86,8 +146,8 @@
 																<label for="input1" class="col-sm-4 control-label">申请单位</label>
 																<div class="col-sm-8">
 																	<select id="pbsApplyUnitName"
-																		name="pbsApplyInfo.pbsApplyUnitId"
-																		class="form-control select2" style="width: 100%;">
+																		name="pbsApplyInfo.pbsApplyUnitId" 
+																		class="form-control" style="width: 100%;font-size:14px;">
 																	</select>
 																</div>
 															</div>
@@ -180,6 +240,7 @@
 										<div class="box box-info">
 											<div class="box-header with-border">
 												<h3 class="box-title">申请书扫描照片PDF文件</h3>
+												<button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('${baseurl}/admin/scanner_file.jsp')">扫描</button>
 											</div>
 											<div class="box-body">
 												<div class="row" id="file1">
@@ -235,22 +296,7 @@
 
 	</div>
 	<!-- ./wrapper -->
-	<script
-		src="<%=request.getContextPath() %>/newStyle/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/lightbox/js/lightbox-plus-jquery.min.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/js/fileinput_locale_zh.js"></script>
-	<script
-		src="<%=request.getContextPath() %>/controls/JCalendar/WdatePicker.js"></script>
 	
-	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/bootstrap/js/bootstrap.js"></script>
-	<script type="text/javascript"
-		src="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.full.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/app.js"></script>
-	<script type="text/javascript" src="<%=request.getContextPath() %>/newStyle/dist/js/demo.js"></script>
 	
 	<script>
 	$(function() {
@@ -349,16 +395,20 @@
 	
 	$(document).ready(function(){
 		$("#save").click(function (){
-			$("#operate").val("save");
-			saveInfo();
+			if(confirm("您确认保存申请信息?保存之后可以修改")){
+				$("#operate").val("save");
+				saveInfo();
+			}
 		});
 		$("#submit").click(function (){
-			$("#operate").val("submit");
-			if(validate()){
-				alert("请完善信息！")
-				return;
+			if(confirm("您确认提交申请信息吗?提交之后不可修改")){
+				$("#operate").val("submit");
+				if(validate()){
+					alert("请完善信息！")
+					return;
+				}
+				saveInfo();
 			}
-			saveInfo();
 		});
 	});
 	
@@ -538,8 +588,18 @@
 	function loadStyle1(){
 		$("#attach1").fileinput({
 			language : 'zh',
-			showUpload : false, //是否显示上传按钮
-			allowedFileExtensions : [ 'pdf' ]
+		 	uploadUrl:'#',
+	 	    dropZoneEnabled: false,//是否显示拖拽区域
+		    showPreview:true,//是否显示预览区域
+		    showUpload: false, //是否显示上传按钮
+		    showCaption: true,//是否显示标题,就是那个文本框
+	        allowedFileExtensions : ['pdf'],
+	        layoutTemplates:{//预览区域删除按钮与上传按钮的显示
+		         actionUpload:''//上传按钮不显示
+		     },
+	        previewSettings: {//限制预览区域的宽高
+	        pdf: {width: "0px", height: "0px"}
+	       }
 		});
 	}
 	
@@ -569,8 +629,7 @@
 					}
 				}
 			
-				$("#pbsApplyUnitName").append(optionStr);
-				var select  = $(".select2").select2();
+				$("#pbsApplyUnitName").append(optionStr);				
 				
 			},
 			error : function(data){

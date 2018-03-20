@@ -21,6 +21,7 @@ $(function(){
         colModel : [
 		  {display: '序号', name : 'num', width : 50, sortable : false, align: 'center'},
           {display: 'ID', name : 'enApplyId', width : 70, sortable : false, align: 'center',hide: true},
+          {display: '申请单位', name : 'unitName', width : 100, sortable : false, align: 'center'},
           {display: '申请人', name : 'userName', width : 100, sortable : false, align: 'center'},
           {display: '申请日期', name : 'enApplyDate', width : 100, sortable : true, align: 'center'},
           {display: '状态', name : 'state', width : 100, sortable : true, align: 'center'},

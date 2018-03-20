@@ -20,7 +20,9 @@
 	          {display: 'ID', name : 'ReportId', width : 70, sortable : false, align: 'center',hide: true},
 	          {display: '申请编号', name : 'ApplyId', width : 70, sortable : false, align: 'center',hide: true},
 	          {display: '检测报告编号', name : 'TestCode', width : 150, sortable : false, align: 'center'},
-	          {display: '检测日期', name : 'TestDate', width : 150, sortable : true, align: 'center'},
+	          {display: '申请单位', name : 'pbsApplyUnitName', width : 100, sortable : true, align: 'center'},
+	          {display: '评测等级', name : 'pbsApplyGrade', width : 50, sortable : true, align: 'center'},
+	          {display: '检测日期', name : 'TestDate', width : 100, sortable : true, align: 'center'},	          
 	          {display: '检测人', name : 'TestUser', width : 100, sortable : true, align: 'center'},
 	          {display: '状态', name : 'State', width : 100, sortable : true, align: 'center'},
 	          {display: '操作', name : 'Operate', width : 300, sortable : true, align: 'center'}

@@ -18,8 +18,10 @@ $(function(){
         colModel : [
 		  {display: '序号', name : 'num', width : 50, sortable : false, align: 'center'},
           {display: 'ID', name : 'pbsApplyId', width : 70, sortable : false, align: 'center',hide: true},
-          {display: '申请人', name : 'userName', width : 100, sortable : false, align: 'center'},
-          {display: '申请日期', name : 'pbsApplyDate', width : 100, sortable : true, align: 'center'},
+          {display: '申请单位', name : 'pbsApplyUnitName', width : 100, sortable : true, align: 'center'},
+          {display: '评测等级', name : 'pbsApplyGrade', width : 100, sortable : true, align: 'center'},
+          {display: '申请人', name : 'userName', width : 100, sortable : false, align: 'center'},          
+          {display: '申请日期', name : 'pbsApplyDate', width : 100, sortable : true, align: 'center'},          
           {display: '状态', name : 'state', width : 100, sortable : true, align: 'center'},
           {display: '操作', name : 'operate', width : 150, sortable : true, align: 'center'}
 				],
@@ -45,7 +47,7 @@ $(function(){
 					$('.trSelected td:nth-child(3) div', grid).each(function(i) {
 						var id = $(this).text();
 						var $tds = $(this).parents("tr").children("td");
-						var status = $tds.eq(4).children().text();
+						var status = $tds.eq(6).children().text();
 						if(status=="未提交"){							
 							var c = confirm("确定删除该申请记录的所有信息吗？");
 							if (c == true) {								

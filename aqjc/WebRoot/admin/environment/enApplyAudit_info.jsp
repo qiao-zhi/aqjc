@@ -203,7 +203,8 @@
                   <div class="form-group">
                     <label for="input1" class="col-sm-4 control-label">审核结果</label>
                     <div class="col-sm-8">
-                      <span id="auditResult" style="padding-left:10px;padding-top:5px;padding-bottom:5px;font-size:25px;font-family:黑体;"></span>
+                      <!-- <span id="auditResult" style="padding-left:10px;padding-top:5px;padding-bottom:5px;font-size:25px;font-family:黑体;"></span> -->
+                      <img id="devtz" alt="审核结果" >
                     </div>
                   </div>
                 </form>
@@ -347,9 +348,11 @@
 				$("#auditDate").val(audit.auditDate);
 				$("#auditUser").val(audit.auditUser);
 				if(audit.auditResult == "1"){
-					$("#auditResult").html("通过");
+					//$("#auditResult").html("通过");
+					$("#devtz").prop("src","../../images/dev/devtz_pass.png");
 				} else if(audit.auditResult == "0"){
-					$("#auditResult").html("不通过");
+					//$("#auditResult").html("不通过");
+					$("#devtz").prop("src","../../images/dev/devtz_notpass.png");
 				}
 			},
 			error : function(){

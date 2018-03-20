@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,7 @@ import com.tyust.common.DateHandler;
 import com.tyust.dao.unit.IunitDao;
 import com.tyust.service.pbs.PbsApplyInfoService;
 import com.tyust.service.pbs.PbsTestReportService;
+import com.tyust.service.unit.UnitService;
 import com.tyust.service.user.UserService;
 
 /**
@@ -51,7 +53,7 @@ public class PbsApplyInfoAction {
 	// 屏蔽室审核表
 	private PbsApplyAudit pbsApplyAudit;
 	// 屏蔽室申请ID
-	private String pbsApplyId;
+	private String pbsApplyId;	
 	
 	private Map<String, Object> jsonStr;
 
@@ -61,6 +63,8 @@ public class PbsApplyInfoAction {
 	private PbsTestReportService pbsTestReportService;
 	// 用户服务类
 	private UserService userService;
+	//单位服务类
+	private UnitService unitService;
 	// 图片
 	private File pbsApplyImage;
 
@@ -249,6 +253,7 @@ public class PbsApplyInfoAction {
 			json.put("pbsApplyProduction", info.getPbsApplyProduction());
 			json.put("pbsApplyGrade", info.getPbsApplyGrade());
 			json.put("pbsApplyOpinion", info.getPbsApplyOpinion());
+			json.put("pbsApplyUnitId", info.getPbsApplyUnitId());
 		}
 		ServletActionContext.getResponse().getWriter().write(json.toString());
 		return null;
@@ -332,8 +337,11 @@ public class PbsApplyInfoAction {
 				cri.andPbsApplyStatusEqualTo(state);
 			}else if (state.equals("3")) {
 				cri.andPbsApplyStatusEqualTo(state);
-			}else if (state.equals("4")) {
-				cri.andPbsApplyStatusEqualTo(state);
+			}else if (state.equals("4")) {				
+				List<String> values = new ArrayList<String>();
+				values.add("4");
+				values.add("6");
+				cri.andPbsApplyStatusIn(values);
 			}else if(state.equals("5")){
 				cri.andPbsApplyStatusEqualTo(state);
 			}
@@ -352,6 +360,8 @@ public class PbsApplyInfoAction {
 					json.put("userName", info.getPbsApplyUserName());
 					json.put("unitName", "NO");
 					json.put("pbsApplyDate", DateHandler.dateToString(info.getPbsApplyDate()));
+					json.put("pbsApplyGrade",info.getPbsApplyGrade()+"级");
+					json.put("pbsApplyUnitName", unitService.findUnit(info.getPbsApplyUnitId()).getUnitName());
 					if (unitId.equals("1")) {
 						if (info.getPbsApplyStatus().equals("1")) {
 							// 未提交
@@ -387,12 +397,23 @@ public class PbsApplyInfoAction {
 											+ "&pbsApplyUserId=" + info.getPbsApplyUserId() + "&pbsApplyId="
 											+ info.getPbsApplyId() + "'>查看</a>");
 							jsonArray.put(json);
-						} 
-
-						/*
-						 * 应该对状态为3进行处理： 根据PBSApplyId从PBS_TEST_PRT表中查询rptId
-						 * 
-						 */
+						}else if (info.getPbsApplyStatus().equals("6")) {
+							
+							json.put("state", "审核通过");
+							json.put("operate",
+									"<a href='apply_audit_info.jsp?pbsApplyUnitId=" + info.getPbsApplyUnitId()
+											+ "&pbsApplyUserId=" + info.getPbsApplyUserId() + "&pbsApplyId="
+											+ info.getPbsApplyId() + "'>查看</a>");
+							jsonArray.put(json);
+						}else if (info.getPbsApplyStatus().equals("5")) {
+							
+							json.put("state", "已检测");
+							json.put("operate",
+									"<a href='report.jsp?pbsTestReportId=" 
+											+ pbsTestReportService.getPbsTestReportIdByApplyId(info.getPbsApplyId()) + "'>查看检测报告</a>");
+							jsonArray.put(json);
+						} 					
+						
 					} else {
 						if (info.getPbsApplyStatus().equals("2")) {
 							json.put("state", "已提交");
@@ -519,7 +540,7 @@ public class PbsApplyInfoAction {
 		
 		if (state != null && !"all".equals(state)) {
 			if (state.equals("4")) {
-				String[] s = { "4", "5" };
+				String[] s = { "4", "6" };
 				List<String> str = Arrays.asList(s);
 				cri.andPbsApplyStatusIn(str);
 			} else {
@@ -549,6 +570,7 @@ public class PbsApplyInfoAction {
 					json.put("pbsApplyId", info.getPbsApplyId());
 					unit = unitDao.findUnit(info.getPbsApplyUnitId());
 					json.put("unitName", unit.getUnitName());
+					json.put("pbsApplyGrade",info.getPbsApplyGrade()+"级");
 					json.put("userName", info.getPbsApplyUserName());
 					json.put("pbsApplyDate", DateHandler.dateToString(info.getPbsApplyDate()));
 					if (unitId.equals("1")) {
@@ -570,14 +592,19 @@ public class PbsApplyInfoAction {
 						} else if(info.getPbsApplyStatus().equals("4")){
 							json.put("state", "审核已通过");
 							json.put("operate",									
-								"<a href='report_add.jsp?pbsApplyId=" + info.getPbsApplyId() + "'>填写检测报告</a>");
+								"<a href='report_add.jsp?pbsApplyId=" + info.getPbsApplyId() +"&pbsApplyUnitId=" + info.getPbsApplyUnitId()+ "'>填写检测报告</a>");
+							jsonArray.put(json);
+						}else if(info.getPbsApplyStatus().equals("6")){
+							//审核已通过且填写检测报告未提交
+							json.put("state", "审核已通过");
+							json.put("operate",									
+								"<a href='report_update.jsp?pbsTestReportId=" + pbsTestReportService.getPbsTestReportIdByApplyId(info.getPbsApplyId())+ "'>填写检测报告</a>");
 							jsonArray.put(json);
 						}else if(info.getPbsApplyStatus().equals("5")){
 							json.put("state", "已检测");
 							json.put("operate",
-									"<a href='pbsApplyInfo.jsp?pbsApplyUnitId=" + info.getPbsApplyUnitId()
-											+ "&pbsApplyUserId=" + info.getPbsApplyUserId() + "&pbsApplyId="
-											+ info.getPbsApplyId() + "'>查看</a>");
+									"<a href='report.jsp?pbsTestReportId=" 
+											+ pbsTestReportService.getPbsTestReportIdByApplyId(info.getPbsApplyId()) + "'>查看检测报告</a>");
 							jsonArray.put(json);
 						}
 						
@@ -764,7 +791,16 @@ public class PbsApplyInfoAction {
 	public void setPbsApplyId(String pbsApplyId) {
 		this.pbsApplyId = pbsApplyId;
 	}
+
+	public UnitService getUnitService() {
+		return unitService;
+	}
+
+	public void setUnitService(UnitService unitService) {
+		this.unitService = unitService;
+	}
+
 	
 	
-	
+
 }
