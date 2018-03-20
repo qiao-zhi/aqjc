@@ -24,15 +24,31 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
+	<%-- <link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/font-awesome-4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/ionicons-2.0.1/css/ionicons.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/AdminLTE.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/iCheck/flat/blue.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/skins/skin-blue.min.css">
 	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/lightbox/css/lightbox.min.css" />
+ --%>	
+	<!-- ll s -->
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/font-awesome-4.5.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/ionicons-2.0.1/css/ionicons.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/iCheck/flat/blue.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/dist/css/skins/skin-blue.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/newStyle/plugins/select2/select2.css">
+	
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/webuploader/css/webuploader.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/webuploader/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/lightbox/css/lightbox.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/newStyle/plugins/bootstrap-fileinput/css/fileinput.min.css" />
+    <!-- ll e -->
+	
 	<style>
 		.dataTab input{width:220px;height:23px;}
 		.dataTab select{width:110px;height:22px;}
@@ -205,7 +221,8 @@
 		                  <div class="form-group">
 		                    <label for="input1" class="col-sm-4 control-label">审核结果</label>
 		                    <div class="col-sm-8">
-		                      <span id="auditResult" style="padding-left:10px;padding-top:5px;padding-bottom:5px;font-size:25px;font-family:黑体;"></span>
+		                     <!--  <span id="auditResult" style="padding-left:10px;padding-top:5px;padding-bottom:5px;font-size:25px;font-family:黑体;"></span> -->
+		                   	  <img id="devtz" alt="审核结果" src="../../images/dev/devtz_pass.png">		                   	 
 		                    </div>
 		                  </div>
 		                </form>
@@ -312,9 +329,11 @@
 				$("#auditDate").val(audit.auditDate);
 				$("#auditUserName").val(audit.auditUser);
 				if(audit.auditResult == "1"){
-					$("#auditResult").html("通过");
+					//$("#auditResult").html("通过");
+					$("#devtz").prop("src","../../images/dev/devtz_pass.png");
 				} else if(audit.auditResult == "2"){
-					$("#auditResult").html("不通过");
+					//$("#auditResult").html("不通过");
+					$("#devtz").prop("src","../../images/dev/devtz_notpass.png");
 				}
 			},
 			error:function(){

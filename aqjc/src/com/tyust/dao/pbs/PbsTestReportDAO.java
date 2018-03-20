@@ -1,8 +1,12 @@
 package com.tyust.dao.pbs;
 
+import java.util.List;
+
+import com.tyust.bean.app.InstrumentInfo;
+import com.tyust.bean.pbs.PbsTestDatas;
+import com.tyust.bean.pbs.PbsTestInstrument;
 import com.tyust.bean.pbs.PbsTestReport;
 import com.tyust.bean.pbs.PbsTestReportExample;
-import java.util.List;
 
 public interface PbsTestReportDAO {
     /**
@@ -92,5 +96,30 @@ public interface PbsTestReportDAO {
      * @ibatorgenerated
      */
     int updateByPrimaryKey(PbsTestReport record);
+    
+    /******ll 增加的方法 S******/
+    //获取屏蔽室检测报告编号用于生成新的检测报告编号
+    public String getPbsTestReportNumber();
+    
+    //根据屏蔽室检测ID删除屏蔽室检测仪器表中的信息
+    public int deleteTestInsByReportId(String pbsReportId);
+    
+    //向屏蔽室检测仪器表中插入数据
+    public void insertTestInstrument(PbsTestInstrument pbsTestInstrument);
+    
+    //根据屏蔽室检测编号删除屏蔽室检测数据表中的信息
+    public int deleteTestDatasByReportId(String pbsReportId);
+    
+    //向屏蔽室检测数据表中插入数据
+    public void insertTestDatas(PbsTestDatas pbsTestDatas);
+    
+	//根据检测报告ID查询屏蔽室检测仪器信息
+	public List<InstrumentInfo> getPbsInsInfoListByReportId(String testReportId);
+	
+	//根据检测报告ID查询屏蔽室检测数据信息
+	public List<PbsTestDatas> getPbsTestDatasByReportId(String testReportId);
+    
+	//根据屏蔽室申请ID查询屏蔽室申请单位信息
+	public String getPbsApplyUnitNameByApplyId(String applyId);
     
 }

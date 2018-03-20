@@ -16,9 +16,11 @@ import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.tyust.bean.en.EnPic;
+import com.tyust.common.DefaultValue;
 import com.tyust.common.FileNameUtil;
 import com.tyust.common.ResourcesUtil;
 import com.tyust.common.UUIDUtil;
+import com.tyust.common.image.ImageScale;
 import com.tyust.service.en.EnTestReportService;
 /**
  * Struts上传多个文件(用于接收图片)
@@ -64,6 +66,10 @@ public class  MultipleFileUpAction extends ActionSupport{
             inputStream.close();
             outputStream.close();
             
+            String imageFileName = fileNewName+"."+sufix;
+            //压缩图片
+            scalePicToDisk(imageFileName, "picture");
+            
             //保存完毕之后保存数据库信息
             enPic = new EnPic();
             enPic.setEnApplyId(applyId);
@@ -88,6 +94,30 @@ public class  MultipleFileUpAction extends ActionSupport{
 		return "success";
 	}
     
+ 	//压缩图片
+    public void scalePicToDisk(String imageFileName,String pathKey){
+    	//图片伸缩的宽度、高度
+		int scaledWidth,scaledHeight;
+		//设置图片伸缩大小 1：检测过程图片  2：频谱图3、环境描述 4、平面简图
+		if (pictureType.equals("1")||pictureType.equals("3")) {
+			scaledWidth = 280;
+			scaledHeight = 280;
+		}else if(pictureType.equals("2")){
+			scaledWidth = 590;
+			scaledHeight = 190;
+		}else if(pictureType.equals("4")){
+			scaledWidth = DefaultValue.PIC_PLANE_DIAGRAM_WIDTH;
+			scaledHeight = DefaultValue.PIC_PLANE_DIAGRAM_HEIGHT;
+		}else{
+			scaledWidth = 280;
+			scaledHeight = 280;
+		}
+        
+        //对磁盘中的文件进行缩放处理
+        ImageScale.scaleToDisk(imageFileName,pathKey, scaledWidth, scaledHeight);
+    }
+ 	
+ 	
     public File[] getFileName() {
         return fileName;
     }

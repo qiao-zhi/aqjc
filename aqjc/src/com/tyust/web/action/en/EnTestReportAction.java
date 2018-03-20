@@ -10,6 +10,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.Validate;
 import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -120,7 +121,9 @@ public class EnTestReportAction extends ActionSupport{
 			applyInfo.setEnvironmentApplyStatus("6");
 		}
 		try {
-			enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
+			if(ValidateCheck.isNotNull(enTestReport.getTestProject())){
+				enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
+			}			
 			String enTestReportId = enTestReportService.insertEnTestReport(enTestReport);
 			enApplyInfoService.getEnApplyInfoDAO().updateByPrimaryKeySelective(applyInfo);
 			jsonStr.put("enTestReportId", enTestReportId);
@@ -149,7 +152,9 @@ public class EnTestReportAction extends ActionSupport{
 			applyInfo.setEnvironmentApplyStatus("6");
 		}
 		try {
-			enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
+			if(ValidateCheck.isNotNull(enTestReport.getTestProject())){
+				enTestReport.setTestProject(enTestReport.getTestProject().replace(" ", ""));//去除空格
+			}	
 			enTestReportService.getEnTestReportDAO().updateByPrimaryKey(enTestReport);
 			enApplyInfoService.getEnApplyInfoDAO().updateByPrimaryKeySelective(applyInfo);
 		} catch (Exception e) {

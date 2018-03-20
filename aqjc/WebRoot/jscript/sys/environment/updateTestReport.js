@@ -40,7 +40,7 @@ $(function(){
      });
 	//删除按钮点击事件:
 	 $('body').on('click','.deleteImgA', function () {
-		 if(confirm("您确认此照片?")){
+		 if(confirm("您确认删除此照片?")){
 			 var enPicId = $(this).parent().children("img").prop("id");
 			 //删除图片
 			 delEnPic(enPicId);

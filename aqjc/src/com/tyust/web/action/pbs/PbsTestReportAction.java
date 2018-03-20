@@ -16,25 +16,41 @@ import org.apache.struts2.ServletActionContext;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.mozilla.javascript.edu.emory.mathcs.backport.java.util.Arrays;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import com.tyust.bean.app.InstrumentInfo;
 import com.tyust.bean.pbs.PbsApplyInfo;
 import com.tyust.bean.pbs.PbsApplyInfoExample;
 import com.tyust.bean.pbs.PbsPicExample;
+import com.tyust.bean.pbs.PbsTestDatas;
+import com.tyust.bean.pbs.PbsTestInstrument;
 import com.tyust.bean.pbs.PbsTestReport;
 import com.tyust.bean.pbs.PbsTestReportExample;
 import com.tyust.bean.unit.TBaseUnitInfo;
 import com.tyust.bean.user.TBaseUserInfo;
 import com.tyust.common.DateHandler;
+import com.tyust.common.DefaultValue;
 import com.tyust.common.OpertionType;
 import com.tyust.common.SaveLog;
+import com.tyust.common.ValidateCheck;
 import com.tyust.dao.unit.IunitDao;
 import com.tyust.service.pbs.PbsApplyInfoService;
 import com.tyust.service.pbs.PbsTestReportService;
 
 public class PbsTestReportAction {
-
+	
+	// 检测等级
+	private String pbsApplyGrade;
+	// 检测仪器编号
+	private String pbsInstrumentIds;
+	// 屏蔽室检测编号
+	private String pbsTestReportId;
+	// 屏蔽室检测数据信息
+	private List<PbsTestDatas> pbsTestDatasList;	
+	
+	
 	private PbsTestReportService pbsTestReportService;
 
 	private PbsApplyInfoService pbsApplyInfoService;
@@ -148,7 +164,7 @@ public class PbsTestReportAction {
 		if (flag == true) {
 			list = pbsTestReportService.listPbsTestReport(example);
 		}
-		int total = list.size();
+		int total = pbsTestReportService.getPbsTestReportDAO().countByExample(example);
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = new JSONObject();
 		PbsTestReport report = new PbsTestReport();
@@ -162,6 +178,8 @@ public class PbsTestReportAction {
 			json.put("TestUser", report.getTestUserName());
 			json.put("TestDate", DateHandler.dateToString(report.getTestDate()));
 			json.put("pbsApplyId", report.getPbsApplyId());
+			json.put("pbsApplyGrade", report.getPbsTestGrade());
+			json.put("pbsApplyUnitName", pbsTestReportService.getPbsApplyUnitNameByApplyId(report.getPbsApplyId()));
 			if (unitId.equals("1")) {
 				if (report.getTestStatus().equals("2")) {
 					json.put("State", "已提交");
@@ -205,15 +223,19 @@ public class PbsTestReportAction {
 		String operate = request.getParameter("operate");
 		if ("save".equals(operate)) {
 			pbsTestReport.setTestStatus("1");
-			pbsApplyInfo.setPbsApplyStatus("3");
+			pbsApplyInfo.setPbsApplyStatus("6");
 		}
 		if ("submit".equals(operate)) {
 			pbsTestReport.setTestStatus("2");
-			pbsApplyInfo.setPbsApplyStatus("4");
+			pbsApplyInfo.setPbsApplyStatus("5");
 		}
 		String result = "success";
+		String pbsTestReportId = null;
 		try {
-			pbsTestReportService.insertPbsTestReport(pbsTestReport);
+			if(ValidateCheck.isNotNull(pbsTestReport.getPbsTestLocation())){				
+				pbsTestReport.setPbsTestLocation(pbsTestReport.getPbsTestLocation().replace(" ", ""));//去除空格
+			}
+			pbsTestReportId = pbsTestReportService.insertPbsTestReport(pbsTestReport);
 			pbsApplyInfoService.getPbsApplyInfoDAO().updateByPrimaryKeySelective(pbsApplyInfo);
 		} catch (Exception e) {
 			result = "error";
@@ -222,6 +244,7 @@ public class PbsTestReportAction {
 			out.println("<script>alert('操作异常！');</script>");
 		}
 		resultJson.put("result", result);
+		resultJson.put("pbsTestReportId", pbsTestReportId);
 		return "success";
 	}
 
@@ -236,14 +259,17 @@ public class PbsTestReportAction {
 		String operate = request.getParameter("operate");
 		if ("save".equals(operate)) {
 			pbsTestReport.setTestStatus("1");
-			pbsApplyInfo.setPbsApplyStatus("3");
+			pbsApplyInfo.setPbsApplyStatus("6");
 		}
 		if ("submit".equals(operate)) {
 			pbsTestReport.setTestStatus("2");
-			pbsApplyInfo.setPbsApplyStatus("4");
+			pbsApplyInfo.setPbsApplyStatus("5");
 		}
 		String result = "success";
 		try {
+			if(ValidateCheck.isNotNull(pbsTestReport.getPbsTestLocation())){				
+				pbsTestReport.setPbsTestLocation(pbsTestReport.getPbsTestLocation().replace(" ", ""));//去除空格
+			}
 			pbsTestReportService.updatePbsTestReport(pbsTestReport);
 			pbsApplyInfoService.getPbsApplyInfoDAO().updateByPrimaryKeySelective(pbsApplyInfo);
 		} catch (Exception e) {
@@ -273,6 +299,7 @@ public class PbsTestReportAction {
 				resultJson.put("testUserName", report.getTestUserName());
 				resultJson.put("testReportNumber", report.getTestReportNumber());
 				resultJson.put("testDate", DateHandler.dateToString(report.getTestDate()));
+				resultJson.put("testReport", report);
 			}
 		}
 		return "success";
@@ -325,7 +352,98 @@ public class PbsTestReportAction {
 		resultJson.put("result", result);
 		return "success";
 	}
-
+	
+	/***********ll S**************/
+	//生成屏蔽室检测报告编号
+	public String selPbsTestReportNumber(){
+		resultJson = new HashMap<String,Object>();
+		String reportNum = pbsTestReportService.getPbsTestReportNumber();
+		if(ValidateCheck.isNotNull(reportNum)){
+			//生成最后三位数
+			int int_nul = Integer.parseInt(reportNum);
+			int_nul++;
+			reportNum = String.valueOf(int_nul);
+			if(reportNum.length()==1){
+				reportNum = "00"+reportNum;
+			}else if(reportNum.length()==2){
+				reportNum = "0"+reportNum;
+			}
+			//生成中间的月份
+			String time = DateHandler.dateToString(new Date(), "yyyyMM");
+			//最终生成的编号
+			reportNum = DefaultValue.PBS_NUM_PREFIX+time+pbsApplyGrade+reportNum;
+			resultJson.put("testReportNumber", reportNum);
+		}
+		return "success";			
+	}
+	
+	//保存屏蔽室检测仪器信息	
+	public String savePbsTestInstrument(){
+		String result = "success";
+		resultJson = new HashMap<String,Object>();		
+		List<String> insIdList = new ArrayList<String>();
+		PbsTestInstrument pbsTestInstrument = null;
+		if (!pbsInstrumentIds.equals("")) {
+			String[] insId = pbsInstrumentIds.trim().split(",");
+			insIdList = Arrays.asList(insId);
+		}
+		
+		try {
+			//先将原来的检测仪器信息删除
+			pbsTestReportService.deletePbsTestInsInfo(pbsTestReportId);
+			if(insIdList.size()>0){
+				for (String insId : insIdList) {
+					pbsTestInstrument = new PbsTestInstrument();
+					pbsTestInstrument.setInstrumentId(insId);
+					pbsTestInstrument.setPbsTestReportId(pbsTestReportId);
+					pbsTestReportService.savePbsTestInsInfo(pbsTestInstrument);
+				}
+			}
+		} catch (Exception e) {			
+			e.printStackTrace();
+			result = "error";
+		}
+		resultJson.put("result", result);		
+		return "success";		
+	}
+	
+	//保存屏蔽室检测数据信息
+	public String savePbsTestDatas(){
+		String result = "success";
+		resultJson = new HashMap<String,Object>();		
+		try {
+			//先将原来的信息删除
+			pbsTestReportService.deletePbsTestDatasInfo(pbsTestReportId);
+			if(pbsTestDatasList.size()>0){
+				for (PbsTestDatas pbsTestDatas : pbsTestDatasList) {
+					pbsTestReportService.savePbsTestDatasInfo(pbsTestDatas);
+				}
+			}
+		} catch (Exception e) {
+			result = "error";
+			e.printStackTrace();
+		}
+		resultJson.put("result", result);
+		
+		return "success";
+	}
+	
+	//根据检测报告ID查询屏蔽室检测仪器信息
+	public String getPbsInsInfoListByReportId(){
+		resultJson = new HashMap<String,Object>();
+		List<InstrumentInfo> insInfoList = pbsTestReportService.getPbsInsInfoListByReportId(pbsTestReportId);
+		resultJson.put("insInfoList", insInfoList);
+		return "success";
+	}
+	
+	//根据检测报告ID查询屏蔽室检测报告信息
+	public String getPbsTestDatasByReportId(){
+		resultJson = new HashMap<String,Object>();
+		List<PbsTestDatas> pbsTestDatasList = pbsTestReportService.getPbsTestDatasByReportId(pbsTestReportId);
+		resultJson.put("pbsTestDatasList", pbsTestDatasList);
+		return "success";
+	}
+	
 	public PbsTestReportService getPbsTestReportService() {
 		return pbsTestReportService;
 	}
@@ -372,6 +490,38 @@ public class PbsTestReportAction {
 
 	public void setPbsApplyInfoService(PbsApplyInfoService pbsApplyInfoService) {
 		this.pbsApplyInfoService = pbsApplyInfoService;
+	}
+
+	public String getPbsApplyGrade() {
+		return pbsApplyGrade;
+	}
+
+	public void setPbsApplyGrade(String pbsApplyGrade) {
+		this.pbsApplyGrade = pbsApplyGrade;
+	}
+
+	public String getPbsInstrumentIds() {
+		return pbsInstrumentIds;
+	}
+
+	public void setPbsInstrumentIds(String pbsInstrumentIds) {
+		this.pbsInstrumentIds = pbsInstrumentIds;
+	}
+
+	public String getPbsTestReportId() {
+		return pbsTestReportId;
+	}
+
+	public void setPbsTestReportId(String pbsTestReportId) {
+		this.pbsTestReportId = pbsTestReportId;
+	}
+
+	public List<PbsTestDatas> getPbsTestDatasList() {
+		return pbsTestDatasList;
+	}
+
+	public void setPbsTestDatasList(List<PbsTestDatas> pbsTestDatasList) {
+		this.pbsTestDatasList = pbsTestDatasList;
 	}
 
 }

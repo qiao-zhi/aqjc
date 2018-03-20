@@ -104,6 +104,15 @@ public class FileHandler {
 		if(new File(dir + baseName + ".docx").exists()) new File(dir + baseName + ".docx").delete();		
 		return true;
 	}
+	
+	public static boolean deletePictureFromDisk(String fileName,String pathKey){
+		if (fileName == null) {
+			return false;
+		}
+		String dir = ResourcesUtil.getValue("path", pathKey);// 获取文件图片的基本目录
+		new File(dir + fileName).delete();
+		return true;
+	}
 	/******D ll*****/
 		
 }
