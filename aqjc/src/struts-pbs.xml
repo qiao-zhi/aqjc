@@ -54,6 +54,23 @@
 				<param name="contentDisposition">attachment;filename="${filename}"</param>
 			</result>
 		</action>
+		
+		<!-- ll s -->
+		<!-- 保存审核信息 -->
+		<action name="pbsApplyInfo_savePbsApplyAudit" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="savePbsApplyAudit">
+			<result type="json" name="success">
+				<param name="root">jsonStr</param>
+			</result>
+		</action> 
+		<!-- 查询单个审核信息 -->
+		<action name="pbsApplyInfo_selEnApplyAudit" class="com.tyust.web.action.pbs.PbsApplyInfoAction" 
+			method="selEnApplyAudit">
+			<result type="json" name="success">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<!-- ll e -->
 	</package>
 
 	<package name="pbsApplyInfoZS" namespace="/" extends="base,json-default">

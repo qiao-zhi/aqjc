@@ -354,9 +354,32 @@
 		});
 		$("#submit").click(function (){
 			$("#operate").val("submit");
+			if(validate()){
+				alert("请完善信息！")
+				return;
+			}
 			saveInfo();
 		});
 	});
+	
+	//校验
+	function validate(){
+		if($("#pbsApplyDate").val() == "") {
+			return true;
+		}
+		if($("#pbsApplyUserName").val() == ""){
+			return true;
+		}	
+		if($("#pbsApplyProduction").val() == "") {
+			return true;
+		}
+		if($("#pbsApplyTel").val() == ""){
+			return true;
+		}	
+		if($("#pbsApplyOpinion").val() == "") {
+			return true;
+		}	
+	}
 	
 	// 保存信息
 	function saveInfo(){
@@ -372,6 +395,7 @@
 				return;
 			}
 		}
+		
 		$.ajax({
 			url : '<%=request.getContextPath()%>/pbsApplyInfo_savePbsApplyInfo.do',
 			type : 'POST',
@@ -381,8 +405,8 @@
 				var data = eval(data);
 				if (data.result == "success"){
 					// 获取保存好的屏蔽室申请ID
-					alert("isAttach1="+isAttach1+" #attach1.val()= "+$("#attach1").val());
-					alert("isAttach2="+isAttach2+" #attach2.val()= "+$("#attach2").val());
+					//alert("isAttach1="+isAttach1+" #attach1.val()= "+$("#attach1").val());
+					//alert("isAttach2="+isAttach2+" #attach2.val()= "+$("#attach2").val());
 					
 					var pbsApplyId = data.pbsApplyId;
 					// 附件上传

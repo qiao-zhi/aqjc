@@ -4,24 +4,25 @@
 <!DOCTYPE html>
 <html>
 <head>
+<%
+	TBaseUserInfo user = (TBaseUserInfo) request.getSession().getAttribute("user");
+%>
 <title></title>
 <jsp:include page="../common/include-common.jsp"></jsp:include>
 <script>
 	$(function(){		
 		//设备安全检测申请列表
 		$("#pbsTestApply-grid").flexigrid({
-			url: '${pageContext.request.contextPath}/pbsApply_selSubList.do',
+			url: '${pageContext.request.contextPath}/pbsApplyInfo_selAllApplyInfo.do?unitId=<%= user.getUnitId() %>',
 	        dataType: 'json',
 	        display : 'true',   
 	        colModel : [
                   {display: '序号', name : 'num', width : 50, sortable : false, align: 'center'},
-      	          {display: 'ID', name : 'TestApplyId', width : 70, sortable : false, align: 'center',hide: true},
-      	          {display: '申请单位', name : 'Unit', width : 100, sortable : false, align: 'center'},
-      	          {display: '申请日期', name : 'Apply_Date', width : 100, sortable : true, align: 'center'},
-      	          {display: '申请检测的屏蔽室', name : 'PbsName', width : 150, sortable : true, align: 'center'},
-      	          {display: '申请检测的类别', name : 'ApplyTestType', width : 100, sortable : true, align: 'center'},
-      	          {display: '申请检测的级别', name : 'ApplyTestGrade', width : 100, sortable : true, align: 'center'},
-      	          {display: '状态', name : 'State', width : 100, sortable : true, align: 'center'},
+      	          {display: 'ID', name : 'pbsApplyId', width : 70, sortable : false, align: 'center',hide: true},
+      	          {display: '申请单位', name : 'unitName', width : 100, sortable : false, align: 'center'},
+      	          {display: '申请人', name : 'userName', width : 100, sortable : false, align: 'center'},
+      	          {display: '申请日期', name : 'pbsApplyDate', width : 100, sortable : true, align: 'center'},
+      	          {display: '状态', name : 'state', width : 100, sortable : true, align: 'center'},
       	          {display: '操作', name : 'operate', width : 150, sortable : true, align: 'center'}
 					],
 					
@@ -30,7 +31,7 @@
             usepager: true,   
             checkbox : false,
             useRp: true,
-            title: '屏蔽室检测申请列表',
+            title: '屏蔽室申请审核列表',
             rp: 10,   
             width: 'auto',
             height:'auto',

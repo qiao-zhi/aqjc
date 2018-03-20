@@ -102,7 +102,7 @@
                     <div class="col-sm-8">
                       <!-- 隐藏 -->
                       <input name="pbsApplyInfo.pbsApplyUserId" value="<%=user.getUserId() %>" type="hidden">
-                      <input name="pbsApplyInfo.pbsApplyUserName" type="text" class="form-control" value="<%=user.getName() %>">
+                      <input name="pbsApplyInfo.pbsApplyUserName" id="add_UserName" type="text" class="form-control" value="<%=user.getName() %>">
                     </div>
                     </div>
                    </div>
@@ -110,7 +110,7 @@
                      <div class="form-group">
                      <label for="input1" class="col-sm-4 control-label">联系方式</label>
                       <div class="col-sm-8">
-                       <input type="text" name="pbsApplyInfo.pbsApplyTel" class="form-control" value="<%=user.getTelephone() %>">
+                       <input type="text" id="add_Tel" name="pbsApplyInfo.pbsApplyTel" class="form-control" value="<%=user.getTelephone() %>">
                      </div>
                     </div>
                   </div>
@@ -121,7 +121,7 @@
                     <div class="form-group">
                     <label for="input1" class="col-sm-4 control-label">生产单位</label>
                     <div class="col-sm-8">
-                       <input name="pbsApplyInfo.pbsApplyProduction" type="text" class="form-control" >
+                       <input id="add_Production" name="pbsApplyInfo.pbsApplyProduction" type="text" class="form-control" >
                     </div>
                     </div>
                    </div>
@@ -240,6 +240,10 @@ $(document).ready(function(){
 			$("#operate").val("submit");
 			var o = isOK();
 			if (o == true){
+				if (validate()){
+					alert("请完善信息");
+					return;
+				}
 				saveInfo();
 			}
 		});
@@ -287,6 +291,24 @@ function  isOK(){
 	return ok;
 }
 
+function validate(){
+	if($("#pbsApplyDate").val() == "") {
+		return true;
+	}
+	if($("#add_UserName").val() == ""){
+		return true;
+	}	
+	if($("#add_Tel").val() == "") {
+		return true;
+	}
+	if($("#add_Production").val() == ""){
+		return true;
+	}	
+	if($("#add_opinion").val() == "") {
+		return true;
+	}	
+}
+
 function saveInfo(){
 	$.ajax({
 		url : '<%=request.getContextPath()%>/pbsApplyInfo_savePbsApplyInfo.do',
@@ -295,7 +317,12 @@ function saveInfo(){
 		data : $("#pbsApplyInfo_form").serializeArray(),
 		success : function(data){
 			var data = eval(data);
-			alert("保存成功");
+			var attach1 = $("#attach1").val();
+			var attach2 = $("#attach2").val();
+			if(attach1==""&&attach2==""){				
+				alert("保存成功");
+				window.location.href = 'apply_list.jsp';
+			}
 			if (data.result == "success"){
 				var pbsApplyId = data.pbsApplyId;
 				fileUpload1(pbsApplyId);

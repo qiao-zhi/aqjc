@@ -312,11 +312,13 @@
 		<bean id="PbsAttachDAO" class="com.tyust.dao.pbs.PbsAttachDAOImpl">
 			<property name="sqlMapClient" ref="sqlMapClient" />
 		</bean>
+		
 		<!-- 屏蔽室申请信息服务类 -->
 		<bean id="pbsApplyInfoService" class="com.tyust.service.pbs.PbsApplyInfoService">
 			<property name="pbsApplyInfoDAO" ref="PbsApplyInfoDAO"/>
 			<property name="pbsPicDAO" ref="PbsPicDAO"/>
 			<property name="pbsAttachDAO" ref="PbsAttachDAO"/>
+			<property name="pbsApplyAuditDAO" ref="PbsApplyAuditDAO"/>
 		</bean> 
 	
 		<!-- 屏蔽室检测报告DAO -->

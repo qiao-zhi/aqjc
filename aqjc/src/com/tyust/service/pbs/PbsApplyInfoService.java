@@ -4,12 +4,15 @@ import java.io.File;
 import java.util.Date;
 import java.util.UUID;
 
+import com.tyust.bean.pbs.PbsApplyAudit;
 import com.tyust.bean.pbs.PbsApplyInfo;
 import com.tyust.bean.pbs.PbsAttach;
 import com.tyust.bean.pbs.PbsPic;
 import com.tyust.bean.pbs.PbsPicExample;
 import com.tyust.common.FileHandler;
 import com.tyust.common.FileNameUtil;
+import com.tyust.common.UUIDUtil;
+import com.tyust.dao.pbs.PbsApplyAuditDAO;
 import com.tyust.dao.pbs.PbsApplyInfoDAO;
 import com.tyust.dao.pbs.PbsAttachDAO;
 import com.tyust.dao.pbs.PbsPicDAO;
@@ -27,6 +30,9 @@ public class PbsApplyInfoService {
 	private PbsPicDAO pbsPicDAO;
 
 	private PbsAttachDAO pbsAttachDAO;
+	
+	//屏蔽室审核DAO
+	private PbsApplyAuditDAO pbsApplyAuditDAO;
 
 	/**
 	 * 插入屏蔽室申请信息
@@ -167,7 +173,16 @@ public class PbsApplyInfoService {
 		FileHandler.deleteFileFromDisk(pbsAttachUrl, "pbsfile");
 		pbsAttachDAO.deleteByPrimaryKey(pbsAttachId);
 	}
-
+	
+	// 屏蔽室审核信息的保存
+	public void insertPbsApplyInfo(PbsApplyAudit pbsApplyAudit) {
+		pbsApplyAudit.setAuditId(UUIDUtil.getUUID2());
+		pbsApplyAudit.setRemark1("11");
+		pbsApplyAudit.setRemark2("22");
+		pbsApplyAuditDAO.insertSelective(pbsApplyAudit);
+	}
+	
+	
 	public PbsApplyInfoDAO getPbsApplyInfoDAO() {
 		return pbsApplyInfoDAO;
 	}
@@ -192,4 +207,14 @@ public class PbsApplyInfoService {
 		this.pbsPicDAO = pbsPicDAO;
 	}
 
+	public PbsApplyAuditDAO getPbsApplyAuditDAO() {
+		return pbsApplyAuditDAO;
+	}
+
+	public void setPbsApplyAuditDAO(PbsApplyAuditDAO pbsApplyAuditDAO) {
+		this.pbsApplyAuditDAO = pbsApplyAuditDAO;
+	}
+
+	
+	
 }
