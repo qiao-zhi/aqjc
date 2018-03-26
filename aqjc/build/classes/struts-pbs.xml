@@ -54,6 +54,23 @@
 				<param name="contentDisposition">attachment;filename="${filename}"</param>
 			</result>
 		</action>
+		
+		<!-- ll s -->
+		<!-- 保存审核信息 -->
+		<action name="pbsApplyInfo_savePbsApplyAudit" class="com.tyust.web.action.pbs.PbsApplyInfoAction"
+			method="savePbsApplyAudit">
+			<result type="json" name="success">
+				<param name="root">jsonStr</param>
+			</result>
+		</action> 
+		<!-- 查询单个审核信息 -->
+		<action name="pbsApplyInfo_selEnApplyAudit" class="com.tyust.web.action.pbs.PbsApplyInfoAction" 
+			method="selEnApplyAudit">
+			<result type="json" name="success">
+				<param name="root">jsonStr</param>
+			</result>
+		</action>
+		<!-- ll e -->
 	</package>
 
 	<package name="pbsApplyInfoZS" namespace="/" extends="base,json-default">
@@ -67,6 +84,13 @@
 
 	<!-- 屏蔽室检测报告信息 -->
 	<package name="pbsTestReport" namespace="/" extends="base,json-default">
+		
+		<global-results>
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</global-results>
+		
 		<action name="pbsTestReport_*" class="com.tyust.web.action.pbs.PbsTestReportAction"
 			method="{1}">
 			<result type="json">
@@ -86,5 +110,10 @@
 				<param name="root">resultJson</param>
 			</result>
 		</action>
+		
+		<!-- 屏蔽室检测报告图片上传 -->
+		<action name="pbsMultipleFileUpAction" class="com.tyust.web.action.pbs.PbsMultipleFileUpAction">
+		</action>
+		
 	</package>
 </struts>

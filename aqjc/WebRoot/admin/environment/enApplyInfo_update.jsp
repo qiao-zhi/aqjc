@@ -202,7 +202,7 @@
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">申请书扫描附件</h3>
-                <button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('/aqjc/admin/scanner_file.jsp')">扫描</button>
+                <button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('${baseurl}/admin/scanner_file.jsp')">扫描</button>
                 <!-- 隐藏该申请书电子版附件的主键 -->
                 <input type="hidden" id="hidden_scan_id">
               </div>

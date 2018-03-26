@@ -158,7 +158,7 @@
                   <div class="form-group">
                     <label for="input1" class="col-sm-4 control-label">报告编号</label>
                     <div class="col-sm-8">
-                      <input id="pbs_testReportNumber" name="pbsTestReport.testReportNumber" type="text" class="form-control" readonly>
+                      <input id="pbs_testReportNumber" name="pbsTestReport.testReportNumber" type="text" class="form-control">
                     </div>
                   </div>
              	</div>

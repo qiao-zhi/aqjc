@@ -220,7 +220,7 @@ function loadUnitName(){
                    <div class="form-group">
                     <label for="input1" class="col-sm-4 control-label" >报告编号</label>
                     <div class="col-sm-8">
-                      <input id="testReportNumber" name="enTestReport.testReportNumber" readonly style="background-color:#ffffff;" type="text" class="form-control">
+                      <input id="testReportNumber" name="enTestReport.testReportNumber" style="background-color:#ffffff;" type="text" class="form-control">
                     </div>
                    </div>
                 </div>
