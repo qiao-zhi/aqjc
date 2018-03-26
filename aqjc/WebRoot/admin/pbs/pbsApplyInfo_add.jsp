@@ -136,7 +136,7 @@
                     <div class="col-sm-8">
                       <!-- 隐藏 -->
                       <input name="pbsApplyInfo.pbsApplyUserId" value="<%=user.getUserId() %>" type="hidden">
-                      <input name="pbsApplyInfo.pbsApplyUserName" id="add_UserName" type="text" class="form-control" value="<%=user.getName() %>">
+                      <input name="pbsApplyInfo.pbsApplyUserName" id="add_UserName" type="text" class="form-control" >
                     </div>
                     </div>
                    </div>
@@ -144,7 +144,7 @@
                      <div class="form-group">
                      <label for="input1" class="col-sm-4 control-label">联系方式</label>
                       <div class="col-sm-8">
-                       <input type="text" id="add_Tel" name="pbsApplyInfo.pbsApplyTel" class="form-control" value="<%=user.getTelephone() %>">
+                       <input type="text" id="add_Tel" name="pbsApplyInfo.pbsApplyTel" class="form-control" >
                      </div>
                     </div>
                   </div>

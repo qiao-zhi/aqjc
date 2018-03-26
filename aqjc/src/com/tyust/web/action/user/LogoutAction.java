@@ -41,7 +41,8 @@ public class LogoutAction{
 			request.getSession().invalidate();
 			SaveLog.saveLog(request, "用户退出", OpertionType.State.LOGOUT, "退出成功");
 			PrintWriter out = ServletActionContext.getResponse().getWriter();
-			out.println("<script>window.location='"+request.getContextPath()+"'</script>");
+			//out.println("<script>window.location='"+request.getContextPath()+"'</script>");
+			out.println("<script>window.location='/'</script>");
 		}catch(Exception e){
 			e.printStackTrace();
 			SaveLog.saveLog(request, "用户退出",  OpertionType.State.LOGOUT, e.getMessage());

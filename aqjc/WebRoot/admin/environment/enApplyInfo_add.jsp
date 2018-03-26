@@ -137,7 +137,7 @@
 																	<input id="add_userName"
 																		name="enApplyInfo.environmentApplyUserName"
 																		type="text" class="form-control"
-																		value="<%=user.getName() %>">
+																		>
 																</div>
 															</div>
 														</div>
@@ -147,7 +147,7 @@
 																<div class="col-sm-8">
 																	<input type="text" id="add_tel"
 																		name="enApplyInfo.environmentApplyTel"
-																		class="form-control" value="<%=user.getTelephone() %>">
+																		class="form-control" >
 																</div>
 															</div>
 														</div>
@@ -234,7 +234,7 @@
 										<div class="box box-info">
 											<div class="box-header with-border">
 												<h3 class="box-title">申请书扫描件pdf文件上传</h3>
-												 <button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('scanner_file.jsp')">扫描</button>
+												 <button type="button" class="btn btn-info" title="点击进行文件扫描" onclick="window.open('${baseurl}/admin/scanner_file.jsp')">扫描</button>
 											</div>
 											<div class="box-body">
 												<form enctype="multipart/form-data">
